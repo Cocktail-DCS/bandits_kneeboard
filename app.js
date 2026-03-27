@@ -58,7 +58,15 @@ function initNotesSaves() {
     });
 }
 
+// Añadir en app.js o en un <script> al final del body
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const arrow = document.querySelector('#sidebar-toggle .toggle-arrow');
+    const isOpen = sidebar.classList.toggle('open');
+    arrow.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+}
+
 // Cargar la primera pestaña (WP0) por defecto cuando se abre la página
 window.addEventListener('DOMContentLoaded', () => {
-    loadTab('wp0', null);
+    loadTab('startup_taxi', null);
 });

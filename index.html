@@ -8,6 +8,11 @@
 </head>
 <body>
 
+    <button id="sidebar-toggle" onclick="toggleSidebar()">
+        <span class="toggle-arrow">▼</span>
+        RADIO COMMS &amp; NOTAS
+    </button>
+
     <aside id="sidebar" min-width="300px">
         <table class="radio-table">
             <colgroup>
@@ -75,20 +80,15 @@
                 <strong>Hard Deck: FL120</strong>
                 <br>
                 <br>
-                <br>
                 <img src="images/holds.png" class="img-full" style="width: 100%;">
             </div>
         </aside>
 
     <main id="main">
         <nav class="tabs-nav">
-            <button class="tab-btn active" onclick="loadTab('wp0', event)">En tierra</button>
-            <button class="tab-btn" onclick="loadTab('wp1', event)">WP 1</button>
-            <button class="tab-btn" onclick="loadTab('wp2', event)">WP 2 - AAR</button>
-            <button class="tab-btn" onclick="loadTab('wp3', event)">WP 3 - Esperas</button>
-            <button class="tab-btn" onclick="loadTab('wp456-strike', event)">WP 4, 5, 6 - Misión</button>
-            <button class="tab-btn" onclick="loadTab('wp456-cap', event)">WP 4, 5, 6 - Misión</button>
-            <button class="tab-btn" onclick="loadTab('wp456-sead', event)">WP 4, 5, 6 - Misión</button>
+            <button class="tab-btn active" onclick="loadTab('startup_taxi', event)">En tierra - Inicio</button>
+            <button class="tab-btn" onclick="loadTab('tanker', event)">Repostaje</button>
+            <button class="tab-btn" onclick="loadTab('shutdown_taxi', event)">En tierra - Fin</button>
         </nav>
 
         <div id="tab-content-container" class="tab-content active" style="display: block;">
