@@ -1,0 +1,120 @@
+<div style="display: flex; justify-content: space-between; align-items: center;">
+    <h2>WP 0: Arranque, Taxi y Despegue</h2>
+</div>
+
+<div class="card">
+    <h3>1. CHECKLIST: PRE-ARRANQUE</h3>
+    <ul style="column-count: 2; list-style-type: none; padding: 0;">
+        <li><input type="checkbox"> Sintonizar ATIS para obtener información X</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h3>Apunta aqui la información X</h3>
+    <textarea id="notes-wp0" class="notes-input" style="min-height: 550px;" placeholder=
+"Ejemplo: 
+
+ATIS INFORMATION NOVEMBER
+INCIRLIK AIRFIELD
+1847 LOCAL TIME
+
+WIND: 087 DEGREES, 6 KNOTS
+VISIBILITY: 8 STATUTE MILES
+CEILING: SCATTERED AT 8,000 FEET, BROKEN AT 10,000 FEET
+TEMPERATURE: 18 CELSIUS
+DEW POINT: N/A
+ALTIMETER: 29.58 INCHES MERCURY
+RUNWAY IN USE: 05
+APPROACH: ILS RUNWAY 05 AT 109.3
+ILS RUNWAY 23 AT 111.7
+TRANSITION LEVEL: FL240
+LANDING RUNWAY: 05 LEFT
+TRANSITION ALTITUDE: 4,000 FEET
+
+REMARKS:
+- LIGHT CROSSWIND FROM NORTHEAST
+- GOOD VISIBILITY CONDITIONS
+- EXPECT MINIMAL TURBULENCE AT ALTITUDE
+- QNH: 29.58 INHG (MANDATORY)
+
+INFORMATION NOVEMBER
+REQUEST CONFIRMATION UPON RECEIPT
+
+ADVISE ON INITIAL CONTACT YOU HAVE RECEIVED 
+INFORMATION NOVEMBER">
+</textarea>
+</div>
+
+<div class="card">
+    <h3>COMMS: SOLICITUD DE ARRANQUE</h3>
+    <pre class="notes-input" style="min-height: auto;">
+PILOTO: "Andersen Ground, Cigar-1, en plataforma con información November, solicitamos autorización para arranque"
+GROUND: "Cigar-1, AUTORIZACION"
+PILOTO: "Copiado, Cigar-1"
+</pre>
+
+    <h3>COMMS: SOLICITUD DE RODAJE</h3>
+    <pre class="notes-input" style="min-height: auto;">
+PILOTO: "Andersen, Cigar-1, X aviones listos, solicitamos instrucciones de rodaje"
+GROUND: "Cigar-1, INSTRUCCIONES DE RODAJE"
+PILOTO: "Copiado, Cigar-1"
+</pre></div>
+
+<div class="card">
+    <h3>2. RODAJE (TAXI)</h3>
+    <p><strong>Ruta ejemplo:</strong> Tu plataforma → Taxiway Alfa → EOR de pista 05</p>
+    <p><strong>Que hacer:</strong> Localizar tu plataforma en la carta → Identificar ruta por taxi Alfa hasta llegar a espera 06R → Parar en EOR y completar armado de armas</p>
+    <img src="images/incirlik_chart.png" class="img-full">
+    <p><small><i>*Vigilar tráfico en taxiway. Mantener formación de 4 aviones a distancia segura.</i></small></p>
+</div>
+
+<div class="card" style="border-left: 5px solid #e67e22;">
+    <h3>3. PROCEDIMIENTO EOR (End Of Runway)</h3>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+        <div>
+            <strong>Armado de Armas:</strong>
+            <ul style="font-size: 0.85em;">
+                <li>Pines Misiles/Bombas/JDAM: RETIRADOS</li>
+                <li>Sistemas de Armas: COLD</li>
+                <li>IFF: ACTIVO</li>
+                <li>Datalink: ACTIVO</li>
+                <li>Superficies de control: MÓVILES</li>
+                <li>Combustible: MÁXIMO</li>
+                <li>Gear: DOWN (3 verdes)</li>
+            </ul>
+        </div>
+    </div>
+
+    <h3>COMMS: EOR</h3>
+    <pre class="notes-input" style="min-height: auto;">
+CAMBIAMOS A FRECUENCIA DE EOR AL LLEGAR
+PILOTO: "GROUND, Cigar-1, en espera en EOR"
+GROUND: "Cigar-1, copiado en EOR, pines retirados, sistemas en COLD, listo comunique a torre"
+PILOTO: "Copiado, Cigar-1, pines retirados, sistemas en COLD, listo para comunicar a torre"</pre>
+</div>
+
+<div class="card">
+    <h3>4. DESPEGUE</h3>
+    <pre class="notes-input" style="min-height: auto;">
+PILOTO: "TOWER, Cigar-1, en espera en EOR, listo para despegue"
+TOWER: "Cigar-1, copiado en EOR, autorizado para despegue en pista 05, viento 087 a 6 nudos"
+PILOTO: "Copiado, Cigar-1, autorizado para despegue en pista 05"
+
+(Al despegar)
+PILOTO: "TOWER, Cigar-1, Vuelo Cigar-1 en el aire"
+TOWER: "Cigar-1, copiado, notifique en punto Falcon FL50"
+PILOTO: "Copiado, Cigar-1"
+
+(Al llegar al punto Falcon)
+PILOTO: "TOWER, Cigar-1, alcanzando punto Falcon a FL50"
+TOWER: "Cigar-1, copiado en punto Falcon, autorizado a cambiar a frecuencia Departure"
+</pre>
+    <img src="images/salida_incirlik.png" class="img-full">
+    <p><strong>SALIDA FALCON: Despegamos y nos dirigimos al punto falcon en el radial 070º ascendiendo a FL50 (o el indicado por torre). Al llegar al punto falcon, reportamos a torre y cambiamos a frecuencia táctica para continuar con el paquete de ataque.</strong></p>
+    </strong> </p>
+
+    <p><strong>
+    Debemos estar en el radial 070º a FL50 antes de llegar al punto falcon, que se encuentra a 10nm del TCN. Tras eso pasamos a departure (camino desde FALCON a WP1)
+    </strong> </p>
+</div>
