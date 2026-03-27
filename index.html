@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCS Advanced Kneeboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <aside id="sidebar" min-width="300px">
+        <table class="radio-table">
+            <colgroup>
+                <col class="col-small"> <col class="col-large"> <col class="col-small"> <col class="col-small"> <col class="col-large"> <col class="col-small"> </colgroup>
+
+            <thead>
+                <tr><th colspan="6" class="header-green">RADIO COMMS</th></tr>
+                <tr class="bg-white">
+                    <th>1</th><th>AGCY(BORODINO)</th><th>FREQ</th>
+                    <th>2</th><th>AGCY(LEIPZIG)</th><th>FREQ</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white">
+                <tr>
+                    <td>1</td><td class="bg-orange">INCIRLIK AB</td><td>360.15</td>
+                    <td>1</td><td class="bg-blue">RACCOON-1</td><td>122</td>
+                </tr>
+                <tr>
+                    <td>2</td><td class="bg-blue">OVERLORD-1</td><td>251</td>
+                    <td>2</td><td class="bg-blue">RACCOON-2</td><td>122.1</td>
+                </tr>
+                <tr>
+                    <td>3</td><td class="bg-purple">TEXACO-1</td><td>252</td>
+                    <td>3</td><td class="bg-yellow">CIGAR-1</td><td>123</td>
+                </tr>
+                <tr>
+                    <td>4</td><td class="bg-purple">ARCO-1</td><td>252.1</td>
+                    <td>4</td><td class="bg-yellow">CIGAR-2</td><td>123.1</td>
+                </tr>
+                <tr>
+                    <td>5</td><td class="bg-orange">CVN-71 "ROUGH RIDER"</td><td>271.75</td>
+                    <td>5</td><td class="bg-green-light">TRASH-1</td><td>124</td>
+                </tr>
+                <tr>
+                    <td>6</td><td class="bg-yellow">GOLDPLATE-7</td><td>252.5</td>
+                    <td>6</td><td class="bg-green-light">TRASH-2</td><td>124.1</td>
+                </tr>
+                <tr>
+                    <td>7</td><td class="bg-orange" style="background-color: #e67e22;">EOR INCIRLIK AB</td><td>250.25</td>
+                    <td>7</td><td class="bg-blue" style="background-color: #2980b9;">SWORD-1</td><td>125</td>
+                </tr>
+                <tr>
+                    <td>8</td><td class="bg-blue" style="background-color: #2980b9;">SURUS-1</td><td></td>
+                    <td>8</td><td class="bg-blue" style="background-color: #2980b9;">SWORD-2</td><td>125.1</td>
+                </tr>
+                <tr>
+                    <td>9</td><td class="bg-yellow">ROBIN-1</td><td></td>
+                    <td>9</td><td class="bg-yellow">SHIELD-1</td><td>126</td>
+                </tr>
+                <tr>
+                    <td>10</td><td></td><td></td>
+                    <td>10</td><td class="bg-yellow">SHIELD-2</td><td>126.1</td>
+                </tr>
+                <tr>
+                    <td>11</td><td></td><td></td>
+                    <td>11</td><td class="bg-green-light" style="background-color: #6aa84f;">KNIGHT-1</td><td>127</td>
+                </tr>
+            </tbody>
+        </table>
+
+            <div class="card">
+                <h3>NOTAS GENERALES</h3>
+                <strong>Soft Deck: FL150</strong>
+                <br>
+                <strong>Hard Deck: FL120</strong>
+                <br>
+                <br>
+                <br>
+                <img src="images/holds.png" class="img-full" style="width: 100%;">
+            </div>
+        </aside>
+
+    <main id="main">
+        <nav class="tabs-nav">
+            <button class="tab-btn active" onclick="loadTab('wp0', event)">En tierra</button>
+            <button class="tab-btn" onclick="loadTab('wp1', event)">WP 1</button>
+            <button class="tab-btn" onclick="loadTab('wp2', event)">WP 2 - AAR</button>
+            <button class="tab-btn" onclick="loadTab('wp3', event)">WP 3 - Esperas</button>
+            <button class="tab-btn" onclick="loadTab('wp456-strike', event)">WP 4, 5, 6 - Misión</button>
+            <button class="tab-btn" onclick="loadTab('wp456-cap', event)">WP 4, 5, 6 - Misión</button>
+            <button class="tab-btn" onclick="loadTab('wp456-sead', event)">WP 4, 5, 6 - Misión</button>
+        </nav>
+
+        <div id="tab-content-container" class="tab-content active" style="display: block;">
+            </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
