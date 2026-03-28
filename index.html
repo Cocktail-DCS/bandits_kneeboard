@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DCS Advanced Kneeboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="d-flex flex-column flex-lg-row bg-dark text-light" style="height: 100vh; overflow: hidden;">
 
-    <button id="sidebar-toggle" onclick="toggleSidebar()">
+    <button id="sidebar-toggle" class="btn btn-dark d-flex d-lg-none align-items-center gap-2 w-100" onclick="toggleSidebar()" style="border-bottom: 2px solid #333; border-radius: 0; flex-shrink: 0;">
         <span class="toggle-arrow">▼</span>
         RADIO COMMS &amp; NOTAS
     </button>
 
-    <aside id="sidebar" min-width="300px">
-        <table class="radio-table" id="radio-table">
+    <aside id="sidebar" class="flex-shrink-0 overflow-auto d-none d-lg-block" style="width: 550px; background-color: #1e1e1e; border-right: 2px solid #333; padding: 10px;">
+        <table class="radio-table table table-sm table-bordered" id="radio-table">
             <colgroup>
                 <col class="col-small"> <col class="col-large"> <col class="col-small">
                 <col class="col-small"> <col class="col-large"> <col class="col-small">
@@ -29,40 +30,41 @@
             </tbody>
         </table>
 
-        <div class="card" id="package-selector-card">
-            <h3>PAQUETE DE VUELO</h3>
-            <select id="package-select" class="package-select">
+        <div class="card bg-dark" id="package-selector-card">
+            <h3 class="card-title text-primary">PAQUETE DE VUELO</h3>
+            <select id="package-select" class="form-select form-select-sm bg-dark text-light">
                 <!-- Se rellena dinámicamente desde packages.csv -->
             </select>
         </div>
 
-        <div class="card">
-            <h3>NOTAS GENERALES</h3>
+        <div class="card bg-dark">
+            <h3 class="card-title text-primary">NOTAS GENERALES</h3>
             <strong>Soft Deck: FL150</strong>
             <br>
             <strong>Hard Deck: FL120</strong>
             <br>
             <br>
-            <img src="images/holds.png" class="img-full" style="width: 100%;">
-            <textarea id="notes-wp0" class="notes-input" style="min-height: 100px;" placeholder=
+            <img src="images/holds.png" class="img-fluid" style="border-radius: 4px; margin-top: 10px;">
+            <textarea id="notes-aside" class="form-control notes-input" style="min-height: 100px; margin-top: 10px;" placeholder=
 "Este espacio esta reservado para tus notas.
 Usalo sabiamente.">
 </textarea>
         </div>
     </aside>
 
-    <main id="main">
-        <nav class="tabs-nav">
+    <main id="main" class="flex-grow-1 d-flex flex-column overflow-hidden" style="min-width: 0;">
+        <nav class="d-flex gap-2 bg-dark border-bottom" style="border-color: #333; padding: 10px; border-bottom: 2px solid #333; flex-wrap: wrap;">
             <!-- Aqui se añaden los distintos archivos para que aparezcan en la barra -->
-            <button class="tab-btn active" onclick="loadTab('startup_taxi', event)">En tierra - Inicio</button>
-            <button class="tab-btn" onclick="loadTab('tanker', event)">Repostaje</button>
-            <button class="tab-btn" onclick="loadTab('shutdown_taxi', event)">En tierra - Fin</button>
+            <button class="tab-btn btn btn-dark active" onclick="loadTab('startup_taxi', event)" style="border: none; border-radius: 5px 5px 0 0; padding: 8px 15px; background: #007bff;">En tierra - Inicio</button>
+            <button class="tab-btn btn btn-dark" onclick="loadTab('tanker', event)" style="border: none; border-radius: 5px 5px 0 0; padding: 8px 15px; background: #333;">Repostaje</button>
+            <button class="tab-btn btn btn-dark" onclick="loadTab('shutdown_taxi', event)" style="border: none; border-radius: 5px 5px 0 0; padding: 8px 15px; background: #333;">En tierra - Fin</button>
         </nav>
 
-        <div id="tab-content-container" class="tab-content active" style="display: block;">
+        <div id="tab-content-container" class="tab-content active overflow-y-auto flex-grow-1" style="padding: 20px;">
         </div>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

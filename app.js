@@ -32,7 +32,7 @@ async function loadTab(tabId, event) {
         initNotesSaves();
     } catch (error) {
         console.error("Error cargando la pestaña:", error);
-        container.innerHTML = `<div style="color: red; padding: 20px;">
+        container.innerHTML = `<div style="color: #007bff; padding: 20px;">
             <h3>Error</h3>
             <p>No se encontró el archivo de este waypoint.</p>
         </div>`;
@@ -132,7 +132,7 @@ async function buildRadioTable() {
     } catch (err) {
         console.error("Error cargando radio comms CSV:", err);
         document.getElementById("radio-table-body").innerHTML =
-            `<tr><td colspan="6" style="color:red">Error: ${err.message}</td></tr>`;
+            `<tr><td colspan="6" style="color:#007bff">Error: ${err.message}</td></tr>`;
     }
 }
 

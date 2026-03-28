@@ -1,30 +1,30 @@
-<div style="display: flex; justify-content: space-between; align-items: center;">
+<div class="d-flex justify-content-between align-items-center">
     <h2>Post-aterrizaje y apagado</h2>
 </div>
 
-<div class="card">
-    <h3>SITUACIÓN</h3>
+<div class="card bg-dark">
+    <h3 class="card-title text-primary">SITUACIÓN</h3>
     <p>Acabas de aterrizar, casi has acabado, solo te queda salir de pista, desarmar las armas que te queden y aparcar el avion</p>
 </div>
 
-<div class="card">
-    <h3>Salir de pista</h3>
+<div class="card bg-dark">
+    <h3 class="card-title text-primary">Salir de pista</h3>
     <p>Mientras el avion rueda por la pista espera a que CGI te asigne una via de salida, si no es el caso despeja la pista al final</p>
 </div>
 
-<div class="card">
-    <h3>RODAJE (TAXI) a EOR</h3>
+<div class="card bg-dark">
+    <h3 class="card-title text-primary">RODAJE (TAXI) a EOR</h3>
     <p><strong>Ruta ejemplo:</strong> Final de pista 05 (inicio de la 23) → Taxiway Echo → EOR de pista 23</p>
     <p><strong>Que hacer:</strong> Localizar tu posicion en la carta → Identificar ruta por taxi X hasta llegar a EOR → Parar en EOR y completar desarmado de armas</p>
-    <img src="images/airport_chart.png" class="img-full">
+    <img src="images/airport_chart.png" class="img-fluid" style="width: 50%; border-radius: 4px;">
     <p><small><i>*Vigilar tráfico en taxiway.</i></small></p>
 </div>
 
-<div class="card" style="border-left: 5px solid red;">
-    <h3>PROCEDIMIENTO EOR (End Of Runway)</h3>
+<div class="card bg-dark border-start border-danger" style="border-left: 5px solid red;">
+    <h3 class="card-title text-primary">PROCEDIMIENTO EOR (End Of Runway)</h3>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-        <div>
+    <div class="row g-3">
+        <div class="col-md-6">
             <strong>Armado de Armas:</strong>
             <ul style="font-size: 0.85em;">
                 <li>Pines Misiles/Bombas/JDAM: PUESTOS</li>
@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    <div class="notes-input" style="min-height: auto;">
+    <div class="notes-input bg-dark border p-2" style="min-height: auto;">
         CAMBIAMOS A FRECUENCIA DE EOR AL LLEGAR<br>
         PILOTO: "GROUND, Cigar-1, en espera en EOR"<br>
         GROUND: "Cigar-1, copiado en EOR, pines retirados, sistemas en COLD, listo comunique a torre"<br>
