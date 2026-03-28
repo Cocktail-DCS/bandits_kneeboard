@@ -54,16 +54,16 @@ INFORMATION NOVEMBER">
     <h3>SOLICITUD DE ARRANQUE</h3>
     <div class="notes-input" style="min-height: auto;">
         PILOTO: "Andersen Ground, Cigar-1, en plataforma con información November, solicitamos autorización para arranque"<br>
-        GROUND: "Cigar-1, AUTORIZACION"<br>
+        GROUND: "Cigar-1, autorizado puesta en marcha."<br>
         PILOTO: "Copiado, Cigar-1"
     </div>
-    <small>NOTAS DE ACLARACION DEL PORQUE DE LAS COMMS</small>
+    <small>Pedimos autorización al control de tierra para arrancar motores, y notificamos así al control del aeropuerto que pronto estaremos saliendo.</small>
 
     <h3>SOLICITUD DE RODAJE</h3>
     <div class="notes-input" style="min-height: auto;">
-        PILOTO: "Andersen, Cigar-1, X aviones listos, solicitamos instrucciones de rodaje"<br>
-        GROUND: "Cigar-1, INSTRUCCIONES DE RODAJE"<br>
-        PILOTO: "Copiado, Cigar-1"<br>
+        PILOTO: "Andersen, Cigar-1, listos para rodar"<br>
+        GROUND: "Cigar-1, autorizado a rodar a EOR pista 05, ruede derecha via HOTEL, izquierda ALFA, hold en EOR"<br>
+        PILOTO: "Cigar-1, rodando EOR 05"<br>
     </div>
 </div>
 
@@ -96,26 +96,33 @@ INFORMATION NOVEMBER">
     <div class="notes-input" style="min-height: auto;">
         CAMBIAMOS A FRECUENCIA DE EOR AL LLEGAR<br>
         PILOTO: "GROUND, Cigar-1, en espera en EOR"<br>
-        GROUND: "Cigar-1, copiado en EOR, pines retirados, sistemas en COLD, listo comunique a torre"<br>
-        PILOTO: "Copiado, Cigar-1, pines retirados, sistemas en COLD, listo para comunicar a torre"
-    </div>
+        GROUND: "Cigar-1, copiado en EOR, pines retirados, sistemas en COLD, cambie a frecuencia de torre"<br>
+        PILOTO: "Copiado, Cigar-1, push frecuencia de torre"
+  </div>
+    <small>Una vez finalizada la comprobación en la EOR, pasamos al área de influencia del TOWER control, que son las pistas y los holding short. Cambiamos a frecuencia y notificamos.</small>
 </div>
 
+<div class="notes-input" style="min-height: auto;">
+        COMUNICAMOS CON TORRE<br>
+        PILOTO: "TOWER, Cigar-1, holding short pista 05"<br>
+        TOWER: "Cigar-1, autorizado a alinear y mantener pista 05"<br>
+        PILOTO: "Copiado, Cigar-1, alinear y mantener"
+  </div>
+    <small>La torre puede mandarnos 3 cosas principalmente: Mantener holding short, alinear en pista y mantener, o alinear y despegar directamente. En este caso, alineamos Y MANTENEMOS en la pista, aprovechando para hacer comprobaciones antes de salir</small>
+</div>
 <div class="card">
     <h3>DESPEGUE</h3>
     <div class="notes-input" style="min-height: auto;">
-        PILOTO: "TOWER, Cigar-1, en espera en EOR, listo para despegue"<br>
-        TOWER: "Cigar-1, copiado en EOR, autorizado para despegue en pista 05, viento 087 a 6 nudos"<br>
-        PILOTO: "Copiado, Cigar-1, autorizado para despegue en pista 05"<br>
+        TOWER: "Cigar-1, TOWER, autorizado a despegar pista 05, viento 087 a 4 nudos, QFE 29.89; departure FALCON05, notifique a las 10 millas"<br>
+        PILOTO: "Cigar-1, autorizado a despegar, departure FALCON05<br>
         <br>
         (Al despegar)<br>
-        PILOTO: "TOWER, Cigar-1, Vuelo Cigar-1 en el aire"<br>
-        TOWER: "Cigar-1, copiado, notifique en punto Falcon FL50"<br>
-        PILOTO: "Copiado, Cigar-1"<br>
+        PILOTO: "TOWER, Cigar-1, 4 elementos en el aire, pista despejada"<br>
+        TOWER: "Cigar-1, TOWER, copiado."<br>
         <br>
-        (Al llegar al punto Falcon)<br>
-        PILOTO: "TOWER, Cigar-1, alcanzando punto Falcon a FL50"<br>
-        TOWER: "Cigar-1, copiado en punto Falcon, autorizado a cambiar a frecuencia Departure"
+        (Al las 10 millas o al llegar al punto departure FALCON05)<br>
+        PILOTO: "TOWER, Cigar-1, alcanzando punto Falcon a FL50/a 10 millas del TACAN"<br>
+        TOWER: "Cigar-1, TOWER, autorizado a cambiar a frecuencia Area controller, monitorice canal de guardia"
     </div>
     <img src="images/departure_chart.png" class="img-full">
     <p><strong>SALIDA FALCON: Despegamos y nos dirigimos al punto falcon en el radial 070º ascendiendo a FL50 (o el indicado por torre). Al llegar al punto falcon, reportamos a torre y cambiamos a frecuencia táctica para continuar con el paquete de ataque.</strong></p>
