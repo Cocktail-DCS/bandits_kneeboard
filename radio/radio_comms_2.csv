@@ -1,0 +1,12 @@
+radio,callsign,freq,color
+1,RACCOON-1,122,blue
+2,RACCOON-2,122.1,blue
+3,CIGAR-1,123,yellow
+4,CIGAR-2,123.1,yellow
+5,TRASH-1,124,green-light
+6,TRASH-2,124.1,green-light
+7,SWORD-1,125,blue-dark
+8,SWORD-2,125.1,blue-dark
+9,SHIELD-1,126,yellow
+10,SHIELD-2,126.1,yellow
+11,KNIGHT-1,127,green
