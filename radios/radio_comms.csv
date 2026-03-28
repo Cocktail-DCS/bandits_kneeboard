@@ -2,11 +2,12 @@ radio,callsign,freq,color
 1,INCIRLIK AB,360.15,orange
 2,OVERLORD-1,251,blue
 3,TEXACO-1,252,purple
-4,ARCO-1,252.1,purple
+4,ARCO-1,252.15,purple
 5,CVN-71 "ROUGH RIDER",271.75,orange
 6,GOLDPLATE-7,252.5,yellow
-7,EOR INCIRLIK AB,250.25,orange-dark
+7,EOR INCIRLIK AB,313.6,orange-dark
 8,SURUS-1,,blue-dark
 9,ROBIN-1,,yellow
-10,,,
+10,ATIS INCIRLIK,284.420,yellow
 11,,,
+12,,,

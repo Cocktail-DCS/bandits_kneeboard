@@ -1,6 +1,7 @@
 // ── Pestañas fijas (siempre visibles, en orden) ───────────────────────────────
 const FIXED_TABS = [
     { id: "startup_taxi", label: "En tierra - Inicio" },
+    { id: "departures", label: "Salida" },
     { id: "tanker",       label: "Repostaje"          },
 ];
 
