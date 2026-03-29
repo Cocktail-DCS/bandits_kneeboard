@@ -4,7 +4,5 @@ RACCOON-1,RACCOON-1,holding_push_raccoon1|Hoding;op_raccoon1|Strike
 RACCOON-2,RACCOON-2,holding_push_raccoon2|Hoding;op_raccoon2|Strike
 KNIGHT-1,KNIGHT-1,holding_push_knight1|Hoding;op_knight1|Tarcap
 KNIGHT-2,KNIGHT-2,holding_push_knight2|Hoding;op_knight2|Tarcap
-SPEAR-1,SPEAR-1,holding_push_spear1|Hoding;op_spear1|Strike
-SPEAR-2,SPEAR-2,holding_push_spear2|Hoding;op_spear2|Strike
-CIGAR-1,CIGAR-1,holding_push_cigar1|Hoding;op_cigar1|Strike
-CIGAR-2,CIGAR-2,holding_push_cigar2|Hoding;op_cigar2|Strike
+SPEAR-1,SPEAR-1,holding_push_spear1|Hoding;op_spear1|DEAD
+CIGAR-1,CIGAR-1,holding_push_cigar1|Hoding;op_cigar1|SEAD
