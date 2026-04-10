@@ -45,11 +45,16 @@ body {
 .header-green { background-color: #4f7c3e; color: black; }
 
 .bg-orange { background-color: #e69138; }
-.bg-blue { background-color: #3d85c6; }
+.bg-blue   { background-color: #3d85c6; }
 .bg-purple { background-color: #8e7cc3; }
 .bg-yellow { background-color: #f1c232; }
+.bg-white  { background-color: #ffffff; }
+.bg-orange-dark { background-color: #e69138; } 
+.bg-blue-dark { background-color: #3d85c6; }
 .bg-green-light { background-color: #93c47d; }
-.bg-white { background-color: #ffffff; }
+.bg-green       { background-color: #93c47d; }
+.bg-red       { background-color: #e06666; }
+.bg-red-light { background-color: #ea9999; }
 
 /* ── MAIN ── */
 #main {

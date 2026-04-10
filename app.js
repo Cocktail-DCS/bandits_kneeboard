@@ -73,6 +73,8 @@ const COLOR_CLASS = {
     "yellow":      "bg-yellow",
     "green-light": "bg-green-light",
     "green":       "bg-green-light",
+    "red":         "bg-red",
+    "red-light":   "bg-red-light",
 };
 
 function parseCSV(text) {
@@ -109,8 +111,8 @@ async function buildRadioTable() {
         ]);
 
         document.getElementById("radio-header-row").innerHTML = `
-            <th>1</th><th>AGCY(BORODINO)</th><th>FREQ</th>
-            <th>2</th><th>AGCY(LEIPZIG)</th><th>FREQ</th>
+            <th>PRI</th><th>AGCY(BORODINO)</th><th>FREQ</th>
+            <th>SEC</th><th>AGCY(LEIPZIG)</th><th>FREQ</th>
         `;
 
         const tbody = document.getElementById("radio-table-body");
