@@ -7,6 +7,7 @@ const FIXED_TABS_END = [
 
 // ── Estado global ─────────────────────────────────────────────────────────────
 let currentPackageTabs = [];
+let allTabs = [];
 
 
 // ── Carga de páginas ──────────────────────────────────────────────────────────
@@ -191,16 +192,18 @@ function onPackageChange(event) {
     localStorage.setItem("selectedPackage", select.value);
 
     renderTabBar();
-    loadTab(FIXED_TABS[0].id, null);
+    loadTab(allTabs[0].id, null);
     const firstBtn = document.querySelector('.tab-btn');
     if (firstBtn) firstBtn.classList.add('active');
 }
+
+
 
 function renderTabBar() {
     const nav = document.querySelector('.tabs-nav');
     nav.innerHTML = "";
 
-    const allTabs = [
+    allTabs = [
         ...FIXED_TABS,
         ...currentPackageTabs,
         ...FIXED_TABS_END,
@@ -225,7 +228,7 @@ window.addEventListener('DOMContentLoaded', () => {
     renderTabBar();
 
     // Carga la primera pestaña fija por defecto
-    loadTab(FIXED_TABS[0].id, null);
+    loadTab(allTabs[0].id, null);
     const firstBtn = document.querySelector('.tab-btn');
     if (firstBtn) firstBtn.classList.add('active');
 });
