@@ -1,13 +1,8 @@
 // ── Pestañas fijas (siempre visibles, en orden) ───────────────────────────────
 const FIXED_TABS = [
-    { id: "startup_taxi", label: "En tierra - Inicio" },
-    { id: "departures", label: "Salida" },
-    { id: "tanker",       label: "Repostaje"          },
 ];
 
 const FIXED_TABS_END = [
-    { id: "arrivals", label: "Llegadas" },
-    { id: "shutdown_taxi", label: "En tierra - Fin" },
 ];
 
 // ── Estado global ─────────────────────────────────────────────────────────────
@@ -49,7 +44,7 @@ function initNotesSaves() {
         if (savedText) textarea.value = savedText;
         textarea.addEventListener('input', function(event) {
             localStorage.setItem(event.target.id, event.target.value);
-        });
+        })
     });
 }
 

@@ -1,3 +1,4 @@
 package,label,tabs
 BRIEFING, BRIEFING, alskdf|asdf
-
+RACCOON-1, RACCOON-1, startup_taxi|En tierra - Inicio;departures|Salida;tanker|Repostaje;op_raccoon1|TARCAP;arrivals|Legada;shutdown_taxi|En tierra - Fin
+RACCOON-2, RACCOON-2, startup_taxi|En tierra - Inicio;departures|Salida;tanker|Repostaje;op_raccoon2|TARCAP;arrivals|Legada;shutdown_taxi|En tierra - Fin
