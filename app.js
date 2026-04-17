@@ -8,6 +8,7 @@ const FIXED_TABS_END = [
 // ── Estado global ─────────────────────────────────────────────────────────────
 let currentPackageTabs = [];
 let allTabs = [];
+let armamentoCache = null;   // caché del CSV de armamento
 
 
 // ── Carga de páginas ──────────────────────────────────────────────────────────
@@ -27,6 +28,7 @@ async function loadTab(tabId, event) {
         const html = await response.text();
         container.innerHTML = html;
         initNotesSaves();
+        await buildArmamento(tabId);
     } catch (error) {
         console.error("Error cargando la pestaña:", error);
         container.innerHTML = `<div style="color: red; padding: 20px;">
@@ -98,12 +100,48 @@ async function loadCSV(url) {
 }
 
 
+// ── Armamento desde CSV ──────────────────────────────────────────────────────
+async function buildArmamento(pageId) {
+    const placeholder = document.getElementById('armamento-placeholder');
+    if (!placeholder) return;   // la página no tiene sección de armamento
+
+    try {
+        // Cargar CSV solo una vez
+        if (!armamentoCache) {
+            armamentoCache = await loadCSV('conf/armamento.csv');
+        }
+
+        const items = armamentoCache.filter(row => row.page === pageId);
+        if (!items.length) return;
+
+        // Eliminar items previos (conservar el <h3> y lo que haya tras él)
+        placeholder.querySelectorAll('.arma-item').forEach(el => el.remove());
+
+        // Insertar antes del primer <br> o al final del placeholder
+        const brRef = placeholder.querySelector('br');
+        items.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'card arma-item';
+            const nota = item.nota ? `: <span style="font-weight:normal">${item.nota}</span>` : '';
+            div.innerHTML = `<strong>${item.cantidad} ${item.arma}</strong>${nota}`;
+            if (brRef) {
+                placeholder.insertBefore(div, brRef);
+            } else {
+                placeholder.appendChild(div);
+            }
+        });
+    } catch (err) {
+        console.error('Error cargando armamento.csv:', err);
+    }
+}
+
+
 // ── Tabla de radios ───────────────────────────────────────────────────────────
 async function buildRadioTable() {
     try {
         const [r1, r2] = await Promise.all([
-            loadCSV("radios/radio_comms.csv"),
-            loadCSV("radios/radio_comms_2.csv"),
+            loadCSV("conf/radio_comms.csv"),
+            loadCSV("conf/radio_comms_2.csv"),
         ]);
 
         document.getElementById("radio-header-row").innerHTML = `
@@ -148,7 +186,7 @@ function parsePackageTabs(tabsStr) {
 
 async function buildPackageSelector() {
     try {
-        const packages = await loadCSV("packages/packages.csv");
+        const packages = await loadCSV("conf/packages.csv");
         const select = document.getElementById("package-select");
 
         // Opción vacía inicial
