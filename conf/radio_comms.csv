@@ -1,5 +1,5 @@
 radio,callsign,freq,color
-1,ANDERSEN TOWER,360.15,orange
+1,ANDERSEN TOWER,250.15,orange
 2,OVERLORD-1,251,blue
 3,TEXACO-1,252,purple
 4,ARCO-1,252.1,purple
@@ -8,5 +8,5 @@ radio,callsign,freq,color
 7,ANDERSEN GROUND,250.25,orange-dark
 8,,,
 9,,,
-10,ATIS INCIRLIK,254.325,yellow
+10,ATIS INCIRLIK,254.3,yellow
 G,UHF,243,black
