@@ -1,12 +1,12 @@
 radio,callsign,freq,color
 1,RACCOON-1,122,blue
 2,RACCOON-2,122.1,blue
-3,CIGAR-1,123,yellow
-3,CIGAR-2,123.1,yellow
-5,COBRA-1,124,green
+3,BADGER-1,123,yellow
+3,BADGER-2,123.1,yellow
+5,,,
 6,,,
-7,,,
-8,,,
+7,BADGER-3,125,blue
+8,BADGER-4,125.1,blue
 9,,,
 10,,,
 11,,,

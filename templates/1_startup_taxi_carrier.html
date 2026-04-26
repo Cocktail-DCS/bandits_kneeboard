@@ -1,0 +1,142 @@
+<div style="display: flex; justify-content: space-between; align-items: center;">
+    <h2>Arranque, Taxi y Despegue (Operaciones Embarcadas)</h2>
+</div>
+
+<div class="card">
+    <h3>SITUACIÓN</h3>
+    <p>Te acabas de subir al avión en la cubierta de vuelo (Flight Deck) del portaaviones. Conoces el briefing de la misión, tienes los datos del barco y sabes qué catapulta usar. ¡¡A POR ELLOS!!</p>
+</div>
+
+<div class="card">
+    <h3>ARRANQUE</h3>
+    <ul style="column-count: 2; list-style-type: none; padding: 0;">
+        <li><input type="checkbox"> Sintonizar frecuencia de Torre (Tower/Marshal)</li>
+        <li><input type="checkbox"> Asegurarnos que tenemos toda la informacion del portaaviones</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h3>Apunta aquí la información del Portaaviones</h3>
+    <textarea id="notes-wp0" class="notes-input" style="min-height: 340px;" placeholder=
+"Ejemplo: 
+
+MOTHER: CVN-73 George Washington
+TOWER FREQ: 305.000 MHz
+LSO FREQ: 265.000 MHz
+TACAN: 73X
+ICLS: Channel 11
+DATALINK: 336.000 MHz
+
+WEATHER:
+WIND OVER DECK: 25 KNOTS
+VISIBILITY: +10 NM
+CLOUD COVER: SCATTERED AT 12,000 FEET
+CASE RECOVERY: CASE I
+
+CARRIER DATA:
+BRC (Base Recovery Course): 350
+MAGNETIC VARIATION: +4 DEG">
+</textarea>
+</div>
+
+<div class="card">
+    <h3>ARRANQUE Y RODAJE</h3>
+    <div class="notes-input" style="min-height: auto;">
+        (Aqui no se pide arranque, esto es un portaaviones, todo el mundo ya sabe que hay que arrancar, asi que vamos a lo importante)<br>
+        PILOTO: "TOWER, Cigar-1, listo para rodar a catapulta"<br>
+        TOWER: "Cigar-1, ruede a catapulta 2, siga las instrucciones del director de cubierta"
+    </div>
+    <small>En operaciones embarcadas, el control de la aeronave en cubierta es fundamentalmente <strong>visual</strong>. Las comunicaciones de radio se reducen al mínimo. Los "Yellow Shirts" (Directores) te guiarán por la cubierta mediante gestos.</small>
+</div>
+
+<div class="card">
+    <h3>RODAJE (TAXI) EN CUBIERTA</h3>
+    <p><strong>Ruta ejemplo:</strong> Tu zona de parking (Spot) → Zona detrás de los deflectores de chorro (JBD) → Catapulta 2</p>
+    <p><strong>Qué hacer:</strong> Rodar <strong>SIEMPRE con las alas plegadas</strong>. Seguir estrictamente las indicaciones del "Yellow Shirt". Vigilar no golpear otras aeronaves con los estabilizadores horizontales. Esperar detrás del JBD de la catapulta hasta que te llamen para alinear.</p>
+    <img src="images/carrier_deck.png" class="img-full">
+    <p><small><i>*Nunca aceleres bruscamente en cubierta. Mantén NWS HI (Nose Wheel Steering High) activado.</i></small></p>
+</div>
+
+<div class="card" style="border-left: 5px solid red;">
+    <h3>PROCEDIMIENTO DE ENGANCHE A CATAPULTA (Hook-Up)</h3>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+        <div>
+            <strong>Comprobaciones Previas:</strong>
+            <ul>
+                <li>Alas: DESPLEGADAS Y BLOQUEADAS (Spread & Locked)</li>
+                <li>Trim de despegue (T/O Trim): CONFIGURADO según el peso de la aeronave</li>
+                <li>Wipeout: COMPROBADO (Superficies de control libres y respondiendo)</li>
+                <li>Flaps: HALF / AUTO (Según peso)</li>
+                <li>Gancho de apontaje (Hook): UP</li>
+                <li>Asiento Eyectable: ARMADO</li>
+                <li>Radar/Armas: EMCON / SAFE (Desactivados por seguridad en cubierta)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="notes-input" style="min-height: auto;">
+        1. Siguiendo al director, nos alineamos en el riel de la catapulta.<br>
+        2. Director señala "Bajar Barra": Bajamos el Launch Bar.<br>
+        3. Avanzamos lentamente hasta sentir que la barra cae en el "shuttle" (patín de la catapulta).<br>
+        4. Paramos. El director señala "Tensión".<br>
+        5. El avión es tirado hacia abajo y el Launch Bar sube automáticamente. ¡Estamos enganchados!
+    </div>
+    <small>Es vital no bajar la barra de lanzamiento hasta que el director de la catapulta lo indique. Una vez en tensión, no toques los pedales ni el freno.</small>
+</div>
+
+<div class="card">
+    <h3>LANZAMIENTO Y DESPEGUE</h3>
+    <div class="notes-input" style="min-height: auto;">
+        EL SHOOTER TOMA EL CONTROL VISUAL<br>
+        1. Potencia a MILITARY (o MAX/Afterburner según el peso bruto).<br>
+        2. Comprobación de motores e instrumentos (Engine Run-up).<br>
+        3. Piloto hace el saludo militar (Salute) o enciende luces exteriores de noche.<br>
+        4. El piloto suelta los mandos de vuelo y apoya la cabeza en el asiento (Hold back).<br>
+        <br>
+        Lanzamiento
+    </div>
+    <small>Tras salir de la cubierta, el avión caerá ligeramente. Deja que el sistema de vuelo (FCS) haga su trabajo, mantén el rumbo y un ligero ascenso estable.</small>
+</div>
+
+<div class="card" style="border-left: 5px solid green;">
+    <h3>SALIDA CASO I (CASE I DEPARTURE)</h3>
+    <p><strong>Clearing Turn:</strong> Inmediatamente al dejar la cubierta (y si es seguro), realiza un suave viraje de limpieza (clearing turn) a la derecha (si despegas de las catapultas de proa 1 y 2) o a la izquierda (si despegas de las catapultas de cintura 3 y 4) unos 10-20 grados para evitar la trayectoria de vuelo del portaaviones por si hay un fallo de motor.</p>
+    
+    <p><strong>Vuelo paralelo:</strong> Vuelve al rumbo BRC paralelo al barco y mantén una altitud máxima de <strong>500 pies y 300 nudos</strong> hasta estar al menos a 7 millas (7 NM) del barco para no interferir con el tráfico que está apontando.</p>
+    
+    <div class="notes-input" style="min-height: auto;">
+        (Tras pasar las 7 millas náuticas)<br>
+        PILOTO: "Washington, Uzi-1, airborne, procediendo a misión"<br>
+        TOWER: "Uzi-1, copiado, cambie a frecuencia táctica"
+    </div>
+    <img src="images/case1dep.png" class="img-full">
+</div>
+
+<div class="card" style="border-left: 5px solid yellow;">
+    <h3>SALIDA CASO II (CASE II DEPARTURE)</h3>
+    <p><strong>Condiciones:</strong> Día, con techo de nubes inferior a 3.000 pies o visibilidad inferior a 5 millas náuticas (pero la zona del barco sigue en VMC/Visual).</p>
+    <p><strong>Procedimiento:</strong> El lanzamiento es visual. Al igual que en el Case I, realizas el <i>clearing turn</i> (viraje de limpieza) y vuelas paralelo al rumbo del portaaviones (BRC) manteniendo <strong>500 pies y 300 nudos</strong>. Al alcanzar las 7 millas náuticas (7 NM) del TACAN, viras para interceptar tu radial de salida asignado.</p>
+    <p><strong>Ascenso:</strong> Debes mantenerte en condiciones visuales (VMC) por debajo de la capa de nubes hasta que el controlador te autorice a ascender a través de ella, o hasta abandonar la zona de control.</p>
+    <div class="notes-input" style="min-height: auto;">
+        (Tras alcanzar las 7 millas)<br>
+        PILOTO: "Departure, Uzi-1, airborne, pasando 7 millas"<br>
+        DEPARTURE: "Uzi-1, contacto radar, autorizado ascenso por radial asignado, notifique cruzando capa de nubes."
+    </div>
+    <img src="images/case2dep.png" class="img-full">
+</div>
+
+<div class="card" style="border-left: 5px solid red;">
+    <h3>SALIDA CASO III (CASE III DEPARTURE)</h3>
+    <p><strong>Condiciones:</strong> Operaciones nocturnas o condiciones IMC (vuelo puramente instrumental) con techo inferior a 1.000 pies o mala visibilidad.</p>
+    <p><strong>Procedimiento Estricto:</strong> Lanzamiento totalmente por instrumentos (IFR). <strong>NO se realiza viraje de limpieza</strong>. Tras salir de la catapulta, mantén las alas niveladas y asciende directamente en el rumbo de la catapulta manteniendo 300 nudos y un régimen de ascenso constante.</p>
+    <p><strong>Interceptación:</strong> Al alcanzar las 7 millas náuticas (7 NM) en ascenso continuo, inicias el viraje para interceptar el arco de 10 NM o directamente el radial de salida que te haya asignado el control (Departure). Es vital mantener estrictamente las altitudes y rumbos asignados, ya que se depende del control de radar para la separación con otros aviones (lanzados a intervalos de 60 segundos).</p>
+    <div class="notes-input" style="min-height: auto;">
+        (Inmediatamente tras el despegue, comprobando ascenso positivo)<br>
+        PILOTO: "Departure, Uzi-1, airborne"<br>
+        DEPARTURE: "Uzi-1, Departure, contacto radar. Proceda por radial 090, ascienda y mantenga FL150"<br>
+        PILOTO: "Copiado, procediendo por radial 090 a FL150, Uzi-1"
+    </div>
+    <small>Bajo CASE III la desorientación espacial es un riesgo real. Fíate exclusivamente de tus instrumentos (HUD, ADI y HSI), no de tus sentidos.</small>
+    <img src="images/case3dep.png" class="img-full">
+</div>
