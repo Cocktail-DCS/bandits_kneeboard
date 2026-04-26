@@ -1,13 +1,12 @@
 radio,callsign,freq,color
-1,INCIRLIK AB,360.15,orange
+1,ANDERSEN TOWER,360.15,orange
 2,OVERLORD-1,251,blue
 3,TEXACO-1,252,purple
-4,ARCO-1,252.15,purple
+4,ARCO-1,252.1,purple
 5,CVN-71 ROUGH RIDER,271.75,orange
 6,GOLDPLATE-7,252.5,yellow
-7,INCIRLIK GROUND,313.6,orange-dark
+7,ANDERSEN GROUND,250.25,orange-dark
 8,,,
 9,,,
-10,ATIS INCIRLIK,284.420,yellow
-11,,,
-12,,,
+10,ATIS INCIRLIK,254.325,yellow
+G,UHF,243,black

@@ -73,6 +73,7 @@ const COLOR_CLASS = {
     "green":       "bg-green-light",
     "red":         "bg-red",
     "red-light":   "bg-red-light",
+    "black":       "bg-black",
 };
 
 function parseCSV(text) {

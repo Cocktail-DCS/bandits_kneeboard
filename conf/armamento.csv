@@ -1,23 +1,21 @@
 page,cantidad,arma,nota
-op_badger1,x4,ADM-141 TALD,Lanzamiento sobre objetivo con 10º de desviacion entre ellos
-op_badger1,x2,AIM-9X,
-op_badger1,x2,AIM-120C,
-op_badger1,x578,20mm M61 Vulcan,
-op_badger2,x4,ADM-141 TALD,Lanzamiento sobre objetivo con 10º de desviacion entre ellos
-op_badger2,x2,AIM-9X,
-op_badger2,x2,AIM-120C,
-op_badger2,x578,20mm M61 Vulcan,
-op_badger3,x2,GBU-31,Objetivos marcados
-op_badger3,x2,AIM-9X,
-op_badger3,x1,AIM-120C,
-op_badger3,x578,20mm M61 Vulcan,
-op_badger4,x2,AGM-88,Objetivos de oportunidad en el area de operaciones
-op_badger4,x2,AIM-9X,
-op_badger4,x1,AIM-120C,
-op_badger4,x578,20mm M61 Vulcan,
-op_raccoon1,x2,AIM-9X,
-op_raccoon1,x4,AIM-120C,
-op_raccoon1,x578,20mm M61A1 Vulcan,
-op_raccoon2,x2,AIM-9X,
-op_raccoon2,x4,AIM-120C,
-op_raccoon2,x578,20mm M61A1 Vulcan,
+op_raccoon1,x4,MK-82 500lb, Lanzamiento sobre TGT en CCRP. PICKLE
+op_raccoon1,x1, AN/AAQ-28 LITENING II, En anclaje de fuselaje
+op_raccoon2,x4,MK-82 500lb, Lanzamiento sobre TGT en CCRP. PICKLE
+op_raccoon2,x1, AN/AAQ-28 LITENING II, En anclaje de fuselaje
+op_raccoon3,x4,MK-82 500lb, Lanzamiento sobre TGT en CCRP. PICKLE
+op_raccoon3,x1, AN/AAQ-28 LITENING II, En anclaje de fuselaje
+op_raccoon4,x4,MK-82 500lb, Lanzamiento sobre TGT en CCRP. PICKLE
+op_raccoon4,x1, AN/AAQ-28 LITENING II, En anclaje de fuselaje
+op_raccoon5,x4,MK-82 500lb, Lanzamiento sobre TGT en CCRP. PICKLE
+op_raccoon5,x1, AN/AAQ-28 LITENING II, En anclaje de fuselaje
+op_badger1,x4,MK-82 500lb, Lanzamiento sobre TGT en CCRP. PICKLE
+op_badger1,x1, AN/ASQ-228 ATFLIR, En anclaje de fuselaje
+op_badger2,x4,MK-82 500lb, Lanzamiento sobre TGT en CCRP. PICKLE
+op_badger2,x1, AN/ASQ-228 ATFLIR, En anclaje de fuselaje
+op_badger3,x4,MK-82 500lb, Lanzamiento sobre TGT en CCRP. PICKLE
+op_badger3,x1, AN/ASQ-228 ATFLIR, En anclaje de fuselaje
+op_badger4,x4,MK-82 500lb, Lanzamiento sobre TGT en CCRP. PICKLE
+op_badger4,x1, AN/ASQ-228 ATFLIR, En anclaje de fuselaje
+op_badger5,x4,MK-82 500lb, Lanzamiento sobre TGT en CCRP. PICKLE
+op_badger5,x1, AN/ASQ-228 ATFLIR, En anclaje de fuselaje

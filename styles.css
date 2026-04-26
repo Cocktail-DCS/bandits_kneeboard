@@ -55,6 +55,7 @@ body {
 .bg-green       { background-color: #93c47d; }
 .bg-red       { background-color: #e06666; }
 .bg-red-light { background-color: #ea9999; }
+.bg-black     { background-color: #000000; color: #ffffff;}
 
 /* ── MAIN ── */
 #main {
