@@ -1,0 +1,42 @@
+{
+  "op_raccoon1": [
+    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP. PICKLE" },
+    { "cantidad": "x1", "arma": "AN/AAQ-28 LITENING II", "nota": "En anclaje de fuselaje" }
+  ],
+  "op_raccoon2": [
+    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP. PICKLE" },
+    { "cantidad": "x1", "arma": "AN/AAQ-28 LITENING II", "nota": "En anclaje de fuselaje" }
+  ],
+  "op_raccoon3": [
+    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP. PICKLE" },
+    { "cantidad": "x1", "arma": "AN/AAQ-28 LITENING II", "nota": "En anclaje de fuselaje" }
+  ],
+  "op_raccoon4": [
+    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP. PICKLE" },
+    { "cantidad": "x1", "arma": "AN/AAQ-28 LITENING II", "nota": "En anclaje de fuselaje" }
+  ],
+  "op_raccoon5": [
+    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP. PICKLE" },
+    { "cantidad": "x1", "arma": "AN/AAQ-28 LITENING II", "nota": "En anclaje de fuselaje" }
+  ],
+  "op_badger1": [
+    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP. PICKLE" },
+    { "cantidad": "x1", "arma": "AN/ASQ-228 ATFLIR", "nota": "En anclaje de fuselaje" }
+  ],
+  "op_badger2": [
+    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP. PICKLE" },
+    { "cantidad": "x1", "arma": "AN/ASQ-228 ATFLIR", "nota": "En anclaje de fuselaje" }
+  ],
+  "op_badger3": [
+    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP. PICKLE" },
+    { "cantidad": "x1", "arma": "AN/ASQ-228 ATFLIR", "nota": "En anclaje de fuselaje" }
+  ],
+  "op_badger4": [
+    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP. PICKLE" },
+    { "cantidad": "x1", "arma": "AN/ASQ-228 ATFLIR", "nota": "En anclaje de fuselaje" }
+  ],
+  "op_badger5": [
+    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP. PICKLE" },
+    { "cantidad": "x1", "arma": "AN/ASQ-228 ATFLIR", "nota": "En anclaje de fuselaje" }
+  ]
+}
