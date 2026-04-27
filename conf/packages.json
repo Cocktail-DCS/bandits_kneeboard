@@ -3,14 +3,9 @@
     "id": "ATC",
     "label": "ATC",
     "tabs": [
-      { "id": "1_startup_taxi_ground", "label": "Arranque taxi y despegue" },
-      { "id": "2_departures", "label": "Check-IN" },
-      { "id": "3_tanker", "label": "Repostaje" },
-      { "id": "holding_push_raccoon1", "label": "Esperas RACCOON" },
-      { "id": "holding_push_badger1", "label": "Esperas BADGER" },
-      { "id": "op_raccoon1", "label": "STRIKE" },
-      { "id": "8_arrivals_ground", "label": "Llegada" },
-      { "id": "9_shutdown_taxi_ground", "label": "Taxi y apagado" }
+      { "id": "atc_ground", "label": "Ground" },
+      { "id": "atc_overlord", "label": "Overlord" },
+      { "id": "atc_tower", "label": "Tower" }
     ]
   },
   {

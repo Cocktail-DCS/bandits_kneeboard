@@ -7,7 +7,9 @@ Web estatica para piernografo de DCS.
 El contenido que cambia entre misiones esta en `conf/`:
 
 - `packages.json`: paquetes de vuelo y pestanas que ve cada paquete.
+- `atc.json`: pantallas especiales del paquete ATC: Ground, Overlord y Tower.
 - `radios.json`: tabla de radios principal y secundaria.
+- `tankers.json`: informacion de tankers usada por Repostaje y ATC Overlord.
 - `loadouts.json`: armamento por pagina de operacion.
 - `holdings.json`: puntos de espera, altitudes, fuel y procedimiento.
 - `notes.json`: notas generales, soft deck y hard deck.

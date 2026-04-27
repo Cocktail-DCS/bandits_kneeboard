@@ -8,6 +8,8 @@ let allTabs = [];
 let packageConfig = [];
 let loadoutConfig = null;
 let holdingConfig = null;
+let atcConfig = null;
+let tankerConfig = null;
 
 
 // ── Carga de páginas ──────────────────────────────────────────────────────────
@@ -23,9 +25,23 @@ async function loadTab(tabId, event) {
     container.innerHTML = '<p>Cargando información del waypoint...</p>';
 
     try {
+        const atcPage = await getAtcPage(tabId);
+        if (atcPage) {
+            container.innerHTML = await renderAtcPage(atcPage);
+            initNotesSaves();
+            return;
+        }
+
         const holding = await getHolding(tabId);
         if (holding) {
             container.innerHTML = renderHolding(holding);
+            initNotesSaves();
+            return;
+        }
+
+        const tankerPage = await getTankerPage(tabId);
+        if (tankerPage) {
+            container.innerHTML = renderTankerPage(tankerPage);
             initNotesSaves();
             return;
         }
@@ -133,6 +149,17 @@ async function getLoadouts() {
     return loadoutConfig;
 }
 
+async function getRadioConfig() {
+    return loadJSON("conf/radios.json");
+}
+
+async function getTankerConfig() {
+    if (!tankerConfig) {
+        tankerConfig = await loadJSON("conf/tankers.json");
+    }
+    return tankerConfig;
+}
+
 async function buildArmamento(pageId) {
     const placeholder = document.getElementById('armamento-placeholder');
     if (!placeholder) return;
@@ -163,7 +190,7 @@ async function buildArmamento(pageId) {
 // ── Tabla de radios ───────────────────────────────────────────────────────────
 async function buildRadioTable() {
     try {
-        const radioConfig = await loadJSON("conf/radios.json");
+        const radioConfig = await getRadioConfig();
         renderRadioGroups(radioConfig.groups);
     } catch (err) {
         console.error("Error cargando radio comms:", err);
@@ -277,6 +304,292 @@ function loadFirstTab() {
     loadTab(firstTab.id, null);
     const firstBtn = document.querySelector('.tab-btn');
     if (firstBtn) firstBtn.classList.add('active');
+}
+
+
+// ── ATC ───────────────────────────────────────────────────────────────────────
+async function getAtcConfig() {
+    if (!atcConfig) {
+        atcConfig = await loadJSON("conf/atc.json");
+    }
+    return atcConfig;
+}
+
+async function getAtcPage(tabId) {
+    const config = await getAtcConfig();
+    const page = config.pages?.[tabId];
+    if (!page) return null;
+
+    return {
+        id: tabId,
+        flights: config.flights || [],
+        ...page,
+    };
+}
+
+async function renderAtcPage(page) {
+    if (page.id === "atc_ground") return renderAtcGround(page);
+    if (page.id === "atc_overlord") return renderAtcOverlord(page);
+    if (page.id === "atc_tower") return renderAtcTower(page);
+    return `<h2>${escapeHTML(page.title || "ATC")}</h2>`;
+}
+
+async function renderAtcGround(page) {
+    const [radioConfig, loadouts, holdings] = await Promise.all([
+        getRadioConfig(),
+        getLoadouts(),
+        getMergedHoldings(),
+    ]);
+    const atisRows = getRadioRows(radioConfig)
+        .filter(row => String(row.callsign || "").toUpperCase().includes("ATIS"));
+
+    return `
+        <h2>${escapeHTML(page.title)}</h2>
+        ${renderImageSection("Cartas del aeropuerto", page.airportCharts)}
+        ${renderAtcFlightBingos(page.flights, holdings)}
+        ${renderAtisSection(page.atis || atisRows)}
+        ${renderAtcLoadouts(page.flights, loadouts)}
+    `;
+}
+
+async function renderAtcOverlord(page) {
+    const [holdings, tankers] = await Promise.all([
+        getMergedHoldings(),
+        getTankerConfig(),
+    ]);
+
+    return `
+        <h2>${escapeHTML(page.title)}</h2>
+        ${renderTankers(tankers.tankers)}
+        ${renderAtcHoldingSummary(page.flights, holdings)}
+        ${renderAtcTotSummary(page.flights, holdings)}
+        ${renderImageSection("Códigos de autorización", page.authCodes)}
+    `;
+}
+
+async function renderAtcTower(page) {
+    return `
+        <h2>${escapeHTML(page.title)}</h2>
+        ${renderImageSection("Cartas de departure", page.departureCharts)}
+        ${renderImageSection("Cartas de ingreso a la base", page.arrivalCharts)}
+    `;
+}
+
+function getRadioRows(radioConfig) {
+    return (radioConfig.groups || []).flatMap(group => group.rows || []);
+}
+
+function renderImageSection(title, images) {
+    if (!images?.length) return "";
+
+    const cards = images.map(image => `
+        <div class="card">
+            <h4>${escapeHTML(image.title)}</h4>
+            <img src="${escapeHTML(image.src)}" class="img-full atc-img">
+        </div>
+    `).join("");
+
+    return `
+        <div class="card">
+            <h3>${escapeHTML(title)}</h3>
+            <div class="atc-image-grid">${cards}</div>
+        </div>
+    `;
+}
+
+function renderAtisSection(atisRows) {
+    if (!atisRows?.length) return "";
+
+    const rows = atisRows.map(row => `
+        <tr>
+            <td>${escapeHTML(row.callsign)}</td>
+            <td>${escapeHTML(row.freq)}</td>
+            <td>${escapeHTML(row.notes || "")}</td>
+        </tr>
+    `).join("");
+
+    return `
+        <div class="card">
+            <h3>ATIS</h3>
+            <table class="data-table">
+                <thead><tr><th>Agencia</th><th>Frecuencia</th><th>Notas</th></tr></thead>
+                <tbody>${rows}</tbody>
+            </table>
+        </div>
+    `;
+}
+
+function renderAtcFlightBingos(flights, holdings) {
+    const rows = flights.map(flight => {
+        const holding = holdings[flight.holdingId];
+        return `
+            <tr>
+                <td>${escapeHTML(flight.label)}</td>
+                <td>${escapeHTML(holding?.joker || "")}</td>
+                <td>${escapeHTML(holding?.bingo || "")}</td>
+            </tr>
+        `;
+    }).join("");
+
+    return `
+        <div class="card">
+            <h3>Bingos de vuelos</h3>
+            <table class="data-table">
+                <thead><tr><th>Vuelo</th><th>Joker</th><th>Bingo</th></tr></thead>
+                <tbody>${rows}</tbody>
+            </table>
+        </div>
+    `;
+}
+
+function renderAtcLoadouts(flights, loadouts) {
+    const cards = flights.map(flight => {
+        const items = loadouts?.[flight.loadoutId] || [];
+        const weapons = items.length
+            ? items.map(item => `<li><strong>${escapeHTML(item.cantidad)} ${escapeHTML(item.arma)}</strong>${item.nota ? `: ${escapeHTML(item.nota)}` : ""}</li>`).join("")
+            : "<li>Sin armamento configurado</li>";
+
+        return `
+            <div class="card">
+                <h4>${escapeHTML(flight.label)}</h4>
+                <ul>${weapons}</ul>
+            </div>
+        `;
+    }).join("");
+
+    return `
+        <div class="card">
+            <h3>Armamento</h3>
+            <div class="data-grid">${cards}</div>
+        </div>
+    `;
+}
+
+function renderTankers(tankers) {
+    if (!tankers?.length) return "";
+
+    const cards = tankers.map(tanker => `
+        <div class="card">
+            <strong>${escapeHTML(tanker.callsign)}</strong>
+            <p>Frecuencia: ${escapeHTML(tanker.freq)}</p>
+            <p>TACAN: ${escapeHTML(tanker.tacan)}</p>
+            <p>Altitud: ${escapeHTML(tanker.altitude || "")}</p>
+        </div>
+    `).join("");
+
+    return `
+        <div class="card">
+            <h3>Tankers</h3>
+            <div class="data-grid">${cards}</div>
+        </div>
+    `;
+}
+
+function renderAtcHoldingSummary(flights, holdings) {
+    const rows = flights.map(flight => {
+        const data = holdings[flight.holdingId];
+        return `
+            <tr>
+                <td>${escapeHTML(flight.label)}</td>
+                <td>${escapeHTML(data?.holding?.point || "")}</td>
+                <td>${escapeHTML(data?.holding?.altitude || "")}</td>
+            </tr>
+        `;
+    }).join("");
+
+    return `
+        <div class="card">
+            <h3>Puntos de espera</h3>
+            <table class="data-table">
+                <thead><tr><th>Vuelo</th><th>Punto</th><th>Altitud</th></tr></thead>
+                <tbody>${rows}</tbody>
+            </table>
+        </div>
+    `;
+}
+
+function renderAtcTotSummary(flights, holdings) {
+    const rows = flights.map(flight => {
+        const data = holdings[flight.holdingId];
+        return `
+            <tr>
+                <td>${escapeHTML(flight.label)}</td>
+                <td>${escapeHTML(data?.tot?.description || "")}</td>
+                <td>${escapeHTML(data?.tot?.pushPoint || "")}</td>
+                <td>${escapeHTML(data?.bingo || "")}</td>
+            </tr>
+        `;
+    }).join("");
+
+    return `
+        <div class="card">
+            <h3>TOT y Bingo</h3>
+            <table class="data-table">
+                <thead><tr><th>Vuelo</th><th>TOT</th><th>Push</th><th>Bingo</th></tr></thead>
+                <tbody>${rows}</tbody>
+            </table>
+        </div>
+    `;
+}
+
+async function getMergedHoldings() {
+    if (!holdingConfig) {
+        holdingConfig = await loadJSON("conf/holdings.json");
+    }
+
+    return Object.fromEntries(
+        Object.entries(holdingConfig.items || {}).map(([id, item]) => [
+            id,
+            { ...holdingConfig.defaults, ...item },
+        ])
+    );
+}
+
+
+// ── Tankers ───────────────────────────────────────────────────────────────────
+async function getTankerPage(tabId) {
+    if (tabId !== "3_tanker") return null;
+    return getTankerConfig();
+}
+
+function renderTankerPage(data) {
+    const summary = (data.tankers || []).map(tanker => `
+        <div class="card"><strong>${escapeHTML(tanker.callsign)}: ${escapeHTML(tanker.aircraft)}</strong></div>
+    `).join("");
+
+    const tankerCards = (data.tankers || []).map(tanker => `
+        <div class="card">
+            <div><strong>${escapeHTML(tanker.callsign)}</strong></div>
+            <div class="data-grid">
+                <div class="card"><strong>Rol:</strong> ${escapeHTML(tanker.role)}</div>
+                <div class="card"><strong>Frecuencia:</strong> ${escapeHTML(tanker.freq)}</div>
+                <div class="card"><strong>TCN:</strong> ${escapeHTML(tanker.tacan)}</div>
+                <div class="card"><strong>Altitud:</strong> ${escapeHTML(tanker.altitude)}</div>
+            </div>
+        </div>
+    `).join("");
+
+    const notes = (data.notes || []).map(note => `
+        <div class="card">
+            <h3>${escapeHTML(note.title)}</h3>
+            ${(note.text || []).map(line => `<p>${escapeHTML(line)}</p>`).join("")}
+        </div>
+    `).join("");
+
+    return `
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>${escapeHTML(data.title || "Repostaje")}</h2>
+        </div>
+
+        <div class="card">
+            <h3>SITUACIÓN</h3>
+            <p>${escapeHTML(data.situation)}</p>
+        </div>
+
+        <div class="data-grid">${summary}</div>
+        ${tankerCards}
+        ${notes}
+    `;
 }
 
 
