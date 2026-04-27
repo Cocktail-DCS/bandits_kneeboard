@@ -1,6 +1,0 @@
-package,label,tabs
-ATC, ATC, 1_startup_taxi_ground|Arranque taxi y despegue;2_departures|Check-IN;3_tanker|Repostaje;holding_push_raccoon1|Esperas RACCOON;holding_push_badger1|Esperas BADGER;op_raccoon1|STRIKE;8_arrivals_ground|Legada;9_shutdown_taxi_ground|Taxi y apagado
-RACCOON-1, RACCOON-1, 1_startup_taxi_ground|Arranque taxi y despegue;2_departures|Check-IN;3_tanker|Repostaje;holding_push_raccoon1|Esperas;op_raccoon1|STRIKE;8_arrivals_ground|Legada;9_shutdown_taxi_ground|Taxi y apagado 
-RACCOON-2, RACCOON-2, 1_startup_taxi_ground|Arranque taxi y despegue;2_departures|Check-IN;3_tanker|Repostaje;holding_push_raccoon2|Esperas;op_raccoon2|STRIKE;8_arrivals_ground|Legada;9_shutdown_taxi_ground|Taxi y apagado
-BADGER-1, BADGER-1, 1_startup_taxi_ground|Arranque taxi y despegue;2_departures|Check-IN;3_tanker|Repostaje;holding_push_badger1|Esperas;op_badger1|STRIKE;8_arrivals_ground|Legada;9_shutdown_taxi_ground|Taxi y apagado
-BADGER-2, BADGER-2, 1_startup_taxi_ground|Arranque taxi y despegue;2_departures|Check-IN;3_tanker|Repostaje;holding_push_badger2|Esperas;op_badger2|STRIKE;8_arrivals_ground|Legada;9_shutdown_taxi_ground|Taxi y apagado

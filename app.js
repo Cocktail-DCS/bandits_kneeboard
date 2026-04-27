@@ -1,18 +1,19 @@
 // ── Pestañas fijas (siempre visibles, en orden) ───────────────────────────────
-const FIXED_TABS = [
-];
-
-const FIXED_TABS_END = [
-];
+const FIXED_TABS = [];
+const FIXED_TABS_END = [];
 
 // ── Estado global ─────────────────────────────────────────────────────────────
 let currentPackageTabs = [];
 let allTabs = [];
-let armamentoCache = null;   // caché del CSV de armamento
+let packageConfig = [];
+let loadoutConfig = null;
+let holdingConfig = null;
 
 
 // ── Carga de páginas ──────────────────────────────────────────────────────────
 async function loadTab(tabId, event) {
+    if (!tabId) return;
+
     if (event) {
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
         event.currentTarget.classList.add('active');
@@ -22,11 +23,17 @@ async function loadTab(tabId, event) {
     container.innerHTML = '<p>Cargando información del waypoint...</p>';
 
     try {
+        const holding = await getHolding(tabId);
+        if (holding) {
+            container.innerHTML = renderHolding(holding);
+            initNotesSaves();
+            return;
+        }
+
         const response = await fetch(`pages/${tabId}.html`);
         if (!response.ok) throw new Error(`No se pudo cargar ${tabId}.html`);
 
-        const html = await response.text();
-        container.innerHTML = html;
+        container.innerHTML = await response.text();
         initNotesSaves();
         await buildArmamento(tabId);
     } catch (error) {
@@ -41,13 +48,13 @@ async function loadTab(tabId, event) {
 
 // ── Persistencia de notas ─────────────────────────────────────────────────────
 function initNotesSaves() {
-    const textareas = document.querySelectorAll('.notes-input');
+    const textareas = document.querySelectorAll('textarea.notes-input');
     textareas.forEach(textarea => {
         const savedText = localStorage.getItem(textarea.id);
         if (savedText) textarea.value = savedText;
         textarea.addEventListener('input', function(event) {
             localStorage.setItem(event.target.id, event.target.value);
-        })
+        });
     });
 }
 
@@ -61,7 +68,27 @@ function toggleSidebar() {
 }
 
 
-// ── CSV helpers ───────────────────────────────────────────────────────────────
+// ── Carga de datos ────────────────────────────────────────────────────────────
+async function loadJSON(url) {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`No se pudo cargar ${url} (${res.status})`);
+    return res.json();
+}
+
+function escapeHTML(value) {
+    return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+function renderLines(lines) {
+    return (lines || []).map(line => escapeHTML(line)).join("<br>");
+}
+
+
 const COLOR_CLASS = {
     "orange":      "bg-orange",
     "orange-dark": "bg-orange",
@@ -76,63 +103,59 @@ const COLOR_CLASS = {
     "black":       "bg-black",
 };
 
-function parseCSV(text) {
-    const lines = text.trim().split("\n");
-    const headers = lines[0].split(",").map(h => h.trim());
-    return lines.slice(1).map(line => {
-        const cols = [];
-        let cur = "", inQ = false;
-        for (const ch of line) {
-            if (ch === '"')          { inQ = !inQ; }
-            else if (ch === ',' && !inQ) { cols.push(cur.trim()); cur = ""; }
-            else                     { cur += ch; }
-        }
-        cols.push(cur.trim());
-        const obj = {};
-        headers.forEach((h, i) => obj[h] = cols[i] ?? "");
-        return obj;
-    });
-}
 
-async function loadCSV(url) {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`No se pudo cargar ${url} (${res.status})`);
-    return parseCSV(await res.text());
+// ── Notas generales ───────────────────────────────────────────────────────────
+async function buildGeneralNotes() {
+    const notes = await loadJSON("conf/notes.json");
+
+    const card = document.getElementById("general-notes-card");
+    if (!card) return;
+
+    card.innerHTML = `
+        <h3>NOTAS GENERALES</h3>
+        <strong>Soft Deck: ${escapeHTML(notes.softDeck)}</strong>
+        <br>
+        <strong>Hard Deck: ${escapeHTML(notes.hardDeck)}</strong>
+        <br>
+        <br>
+        <textarea id="notes-general" class="notes-input" style="min-height: 100px;" placeholder="${escapeHTML(notes.placeholder)}"></textarea>
+        <br>
+        <br>
+    `;
 }
 
 
-// ── Armamento desde CSV ──────────────────────────────────────────────────────
+// ── Armamento desde JSON ──────────────────────────────────────────────────────
+async function getLoadouts() {
+    if (!loadoutConfig) {
+        loadoutConfig = await loadJSON("conf/loadouts.json");
+    }
+    return loadoutConfig;
+}
+
 async function buildArmamento(pageId) {
     const placeholder = document.getElementById('armamento-placeholder');
-    if (!placeholder) return;   // la página no tiene sección de armamento
+    if (!placeholder) return;
 
     try {
-        // Cargar CSV solo una vez
-        if (!armamentoCache) {
-            armamentoCache = await loadCSV('conf/armamento.csv');
+        const loadouts = await getLoadouts();
+        const items = loadouts?.[pageId] || [];
+
+        placeholder.innerHTML = "<h3>Armamento</h3>";
+        if (!items.length) {
+            placeholder.insertAdjacentHTML("beforeend", "<p>No hay armamento configurado para esta página.</p>");
+            return;
         }
 
-        const items = armamentoCache.filter(row => row.page === pageId);
-        if (!items.length) return;
-
-        // Eliminar items previos (conservar el <h3> y lo que haya tras él)
-        placeholder.querySelectorAll('.arma-item').forEach(el => el.remove());
-
-        // Insertar antes del primer <br> o al final del placeholder
-        const brRef = placeholder.querySelector('br');
         items.forEach(item => {
             const div = document.createElement('div');
             div.className = 'card arma-item';
-            const nota = item.nota ? `: <span style="font-weight:normal">${item.nota}</span>` : '';
-            div.innerHTML = `<strong>${item.cantidad} ${item.arma}</strong>${nota}`;
-            if (brRef) {
-                placeholder.insertBefore(div, brRef);
-            } else {
-                placeholder.appendChild(div);
-            }
+            const nota = item.nota ? `: <span style="font-weight:normal">${escapeHTML(item.nota)}</span>` : '';
+            div.innerHTML = `<strong>${escapeHTML(item.cantidad)} ${escapeHTML(item.arma)}</strong>${nota}`;
+            placeholder.appendChild(div);
         });
     } catch (err) {
-        console.error('Error cargando armamento.csv:', err);
+        console.error('Error cargando armamento:', err);
     }
 }
 
@@ -140,103 +163,89 @@ async function buildArmamento(pageId) {
 // ── Tabla de radios ───────────────────────────────────────────────────────────
 async function buildRadioTable() {
     try {
-        const [r1, r2] = await Promise.all([
-            loadCSV("conf/radio_comms.csv"),
-            loadCSV("conf/radio_comms_2.csv"),
-        ]);
-
-        document.getElementById("radio-header-row").innerHTML = `
-            <th>PRI</th><th>AGCY(BORODINO)</th><th>FREQ</th>
-            <th>SEC</th><th>AGCY(LEIPZIG)</th><th>FREQ</th>
-        `;
-
-        const tbody = document.getElementById("radio-table-body");
-        const maxRows = Math.max(r1.length, r2.length);
-
-        for (let i = 0; i < maxRows; i++) {
-            const a = r1[i] || { radio: "", callsign: "", freq: "", color: "" };
-            const b = r2[i] || { radio: "", callsign: "", freq: "", color: "" };
-            const tr = document.createElement("tr");
-            tr.innerHTML = `
-                <td>${a.radio}</td>
-                <td class="${COLOR_CLASS[a.color] || ""}">${a.callsign}</td>
-                <td>${a.freq}</td>
-                <td>${b.radio}</td>
-                <td class="${COLOR_CLASS[b.color] || ""}">${b.callsign}</td>
-                <td>${b.freq}</td>
-            `;
-            tbody.appendChild(tr);
-        }
+        const radioConfig = await loadJSON("conf/radios.json");
+        renderRadioGroups(radioConfig.groups);
     } catch (err) {
-        console.error("Error cargando radio comms CSV:", err);
+        console.error("Error cargando radio comms:", err);
         document.getElementById("radio-table-body").innerHTML =
-            `<tr><td colspan="6" style="color:red">Error: ${err.message}</td></tr>`;
+            `<tr><td colspan="6" style="color:red">Error: ${escapeHTML(err.message)}</td></tr>`;
+    }
+}
+
+function renderRadioGroups(groups) {
+    const [primary, secondary] = groups;
+    document.getElementById("radio-header-row").innerHTML = `
+        <th>${escapeHTML(primary.channelHeader)}</th>
+        <th>${escapeHTML(primary.agencyHeader)}</th>
+        <th>${escapeHTML(primary.frequencyHeader)}</th>
+        <th>${escapeHTML(secondary.channelHeader)}</th>
+        <th>${escapeHTML(secondary.agencyHeader)}</th>
+        <th>${escapeHTML(secondary.frequencyHeader)}</th>
+    `;
+
+    const tbody = document.getElementById("radio-table-body");
+    tbody.innerHTML = "";
+    const maxRows = Math.max(primary.rows.length, secondary.rows.length);
+
+    for (let i = 0; i < maxRows; i++) {
+        const a = primary.rows[i] || { radio: "", callsign: "", freq: "", color: "" };
+        const b = secondary.rows[i] || { radio: "", callsign: "", freq: "", color: "" };
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+            <td>${escapeHTML(a.radio)}</td>
+            <td class="${COLOR_CLASS[a.color] || ""}">${escapeHTML(a.callsign)}</td>
+            <td>${escapeHTML(a.freq)}</td>
+            <td>${escapeHTML(b.radio)}</td>
+            <td class="${COLOR_CLASS[b.color] || ""}">${escapeHTML(b.callsign)}</td>
+            <td>${escapeHTML(b.freq)}</td>
+        `;
+        tbody.appendChild(tr);
     }
 }
 
 
 // ── Paquetes de vuelo ─────────────────────────────────────────────────────────
-
-function parsePackageTabs(tabsStr) {
-    if (!tabsStr) return [];
-    return tabsStr.split(";").map(entry => {
-        const [id, label] = entry.split("|");
-        return { id: id.trim(), label: (label || id).trim() };
-    });
+async function loadPackages() {
+    return loadJSON("conf/packages.json");
 }
 
 async function buildPackageSelector() {
     try {
-        const packages = await loadCSV("conf/packages.csv");
+        packageConfig = await loadPackages();
         const select = document.getElementById("package-select");
+        select.innerHTML = "";
 
-        // Opción vacía inicial
-        const placeholder = document.createElement("option");
-        placeholder.value = "";
-        placeholder.textContent = "— Selecciona paquete —";
-        select.appendChild(placeholder);
-
-        packages.forEach(pkg => {
+        packageConfig.forEach(pkg => {
             const opt = document.createElement("option");
-            opt.value = pkg.package;
-            opt.textContent = pkg.label || pkg.package;
-            // Guardamos las pestañas como data attribute serializado
-            opt.dataset.tabs = pkg.tabs;
+            opt.value = pkg.id;
+            opt.textContent = pkg.label || pkg.id;
             select.appendChild(opt);
         });
 
         select.addEventListener("change", onPackageChange);
 
-        // Restaurar paquete guardado
         const saved = localStorage.getItem("selectedPackage");
-        if (saved) {
-            select.value = saved;
-            if (select.value === saved) {
-                // Dispara el cambio para reconstruir pestañas
-                select.dispatchEvent(new Event("change"));
-            }
+        const initialPackage = packageConfig.find(pkg => pkg.id === saved) || packageConfig[0];
+        if (initialPackage) {
+            select.value = initialPackage.id;
+            applyPackage(initialPackage);
         }
     } catch (err) {
-        console.error("Error cargando packages.csv:", err);
+        console.error("Error cargando paquetes:", err);
     }
 }
 
-
 function onPackageChange(event) {
-    const select = event.currentTarget;
-    const selectedOpt = select.options[select.selectedIndex];
-    const tabsStr = selectedOpt.dataset.tabs || "";
-    currentPackageTabs = parsePackageTabs(tabsStr);
-
-    localStorage.setItem("selectedPackage", select.value);
-
-    renderTabBar();
-    loadTab(allTabs[0].id, null);
-    const firstBtn = document.querySelector('.tab-btn');
-    if (firstBtn) firstBtn.classList.add('active');
+    const selectedPackage = packageConfig.find(pkg => pkg.id === event.currentTarget.value);
+    if (selectedPackage) applyPackage(selectedPackage);
 }
 
-
+function applyPackage(selectedPackage) {
+    currentPackageTabs = selectedPackage.tabs || [];
+    localStorage.setItem("selectedPackage", selectedPackage.id);
+    renderTabBar();
+    loadFirstTab();
+}
 
 function renderTabBar() {
     const nav = document.querySelector('.tabs-nav');
@@ -257,17 +266,100 @@ function renderTabBar() {
     });
 }
 
+function loadFirstTab() {
+    const firstTab = allTabs[0];
+    if (!firstTab) {
+        document.getElementById('tab-content-container').innerHTML =
+            "<p>Selecciona un paquete de vuelo para cargar el piernografo.</p>";
+        return;
+    }
 
-// ── Inicialización ────────────────────────────────────────────────────────────
-window.addEventListener('DOMContentLoaded', () => {
-    buildRadioTable();
-    buildPackageSelector();
-
-    // Renderiza la barra sin pestañas variables (ningún paquete seleccionado aún)
-    renderTabBar();
-
-    // Carga la primera pestaña fija por defecto
-    loadTab(allTabs[0].id, null);
+    loadTab(firstTab.id, null);
     const firstBtn = document.querySelector('.tab-btn');
     if (firstBtn) firstBtn.classList.add('active');
+}
+
+
+// ── Puntos de espera ──────────────────────────────────────────────────────────
+async function getHolding(tabId) {
+    if (!holdingConfig) {
+        holdingConfig = await loadJSON("conf/holdings.json");
+    }
+    const item = holdingConfig.items?.[tabId];
+    if (!item) return null;
+
+    return {
+        ...holdingConfig.defaults,
+        ...item,
+    };
+}
+
+function renderHolding(data) {
+    const procedureItems = (data.procedureIdeal || [])
+        .map(item => `<li>${escapeHTML(item)}</li>`)
+        .join("");
+
+    const image = data.image
+        ? `<img src="${escapeHTML(data.image)}" class="img-full">`
+        : "";
+
+    return `
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h2>${escapeHTML(data.title || "Holding")}</h2>
+        </div>
+
+        <div class="card">
+            <h3>SITUACIÓN</h3>
+            <p>${escapeHTML(data.situation)}</p>
+        </div>
+
+        <div class="card">
+            <h3>RECUERDA</h3>
+            <p><strong>JOKER:</strong> ${escapeHTML(data.joker)}</p>
+            <p><strong>BINGO:</strong> ${escapeHTML(data.bingo)}</p>
+        </div>
+
+        <div class="card">
+            <h3>LLEGADA</h3>
+            <div class="notes-input" style="min-height: auto;">
+                ${renderLines(data.arrival)}
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>TOT</h3>
+            <p>${escapeHTML(data.tot?.description || "")}</p>
+            <h5>Push point: ${escapeHTML(data.tot?.pushPoint || "")}</h5>
+        </div>
+
+        <div class="card">
+            <h3>Holdings</h3>
+            <div class="data-grid">
+                <div class="card"><strong>Punto de espera asignado: </strong>${escapeHTML(data.holding?.point || "")}</div>
+                <div class="card"><strong>Altitud asignada: </strong>${escapeHTML(data.holding?.altitude || "")}</div>
+            </div>
+            ${image}
+        </div>
+
+        <div class="card">
+            <h3>Procedimiento de espera Ideal</h3>
+            <ul>${procedureItems}</ul>
+        </div>
+
+        <div class="card">
+            <h3>IMPORTANTE:</h3>
+            <p>${escapeHTML(data.important)}</p>
+        </div>
+    `;
+}
+
+
+// ── Inicialización ────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', async () => {
+    await Promise.all([
+        buildRadioTable(),
+        buildGeneralNotes(),
+    ]);
+    initNotesSaves();
+    await buildPackageSelector();
 });

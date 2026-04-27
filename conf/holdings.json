@@ -1,0 +1,77 @@
+{
+  "_help": {
+    "comentarios": "JSON no permite comentarios reales. Usa este bloque _help como documentacion editable.",
+    "uso": "Los mensajes comunes se editan una sola vez en defaults. Cada entrada de items hereda esos valores.",
+    "personalizar": "Para personalizar un vuelo, anade dentro de su bloque el campo que quieras cambiar: title, situation, arrival, procedureIdeal o important. Ese valor sustituira al de defaults solo para ese vuelo.",
+    "ejemploPersonalizado": {
+      "holding_push_ejemplo": {
+        "title": "Holding personalizado",
+        "important": "Mensaje IMPORTANTE solo para este vuelo",
+        "procedureIdeal": [
+          "Velocidad Ideal: Mach 0.7",
+          "Orbita Ideal: 10 NM",
+          "Rumbo Ideal: 090 magnetico"
+        ]
+      }
+    }
+  },
+  "defaults": {
+    "title": "Holding",
+    "situation": "Estas a punto de entrar en combate, pero tienes que esperar a que los que van delante hagan su trabajo, y a los que se han quedado atras a que te alcancen, ten paciencia, comprueba tu estado, y mantente alerta que no estas en base",
+    "arrival": [
+      "(PASANDO WP X)",
+      "PILOTO  : \"OVERLORD, Cigar-1, Pasando WP X, holding en DAVOUT\"",
+      "",
+      "(Aqui podemos esperar 2 respuestas)",
+      "OVERLORD: \"Cigar-1, Copiado, stand by\"",
+      "(o)",
+      "OVERLORD: \"Cigar-1, Copiado, prosiga con los TOTs\"",
+      "",
+      "PILOTO  : \"Copiado, Cigar-1\""
+    ],
+    "procedureIdeal": [
+      "Velocidad Ideal: Velocidad de resistencia calculada por el ordenador de abordo",
+      "Orbita Ideal: Tramo largo de 10NM, Tramo Ancho 10NM",
+      "Rumbo Ideal: 360º Magnético"
+    ],
+    "important": "A pesar de estar esperando, hay que estar siempre alerta, nunca se sabe si a la CAP se le ha filtrado algun enemigo o hay algun SAM a la espera",
+    "tot": {
+      "description": "Organizado por Mission Commander",
+      "pushPoint": "WP 7"
+    }
+  },
+  "items": {
+    "holding_push_raccoon1": {
+      "joker": "7500lb",
+      "bingo": "5000lb",
+      "holding": {
+        "point": "MONICA - WP 5 y 6",
+        "altitude": "A 26.000ft"
+      }
+    },
+    "holding_push_raccoon2": {
+      "joker": "7500lb",
+      "bingo": "5000lb",
+      "holding": {
+        "point": "MONICA - WP 5 y 6",
+        "altitude": "A 27.000ft"
+      }
+    },
+    "holding_push_badger1": {
+      "joker": "7500lb",
+      "bingo": "5000lb",
+      "holding": {
+        "point": "LAURA - WP 5 y 6",
+        "altitude": "A 20.000ft"
+      }
+    },
+    "holding_push_badger2": {
+      "joker": "7500lb",
+      "bingo": "5000lb",
+      "holding": {
+        "point": "LAURA - WP 5 y 6",
+        "altitude": "A 21.000ft"
+      }
+    }
+  }
+}
