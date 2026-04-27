@@ -149,6 +149,101 @@ async function getLoadouts() {
     return loadoutConfig;
 }
 
+function normalizeWeaponName(value) {
+    return String(value ?? "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, " ")
+        .replace(/\b(series|serie|ldgp|air|hd|ld)\b/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+function weaponTokens(value) {
+    return normalizeWeaponName(value)
+        .split(" ")
+        .filter(token => token.length > 1);
+}
+
+function getLoadoutHelpEntries(help, pageId = "") {
+    const aircraftOrder = getAircraftHelpOrder(help, pageId);
+
+    return aircraftOrder.flatMap(aircraftKey => {
+        const aircraftHelp = help?.[aircraftKey] || {};
+        return Object.entries(aircraftHelp)
+            .filter(([, value]) => Array.isArray(value))
+            .flatMap(([category, items]) => items.map(item => ({
+                ...item,
+                aircraftKey,
+                category,
+            })));
+    });
+}
+
+function getAircraftHelpOrder(help, pageId = "") {
+    const aircraftKeys = Object.keys(help || {})
+        .filter(key => help?.[key] && typeof help[key] === "object" && key !== "brevity_general" && key !== "formato");
+    const lowerPageId = String(pageId).toLowerCase();
+
+    if (lowerPageId.includes("badger")) {
+        return [...new Set(["f18", ...aircraftKeys])].filter(key => help?.[key]);
+    }
+
+    if (lowerPageId.includes("raccoon")) {
+        return [...new Set(["f16", ...aircraftKeys])].filter(key => help?.[key]);
+    }
+
+    return aircraftKeys;
+}
+
+function scoreWeaponMatch(loadoutWeapon, helpWeapon) {
+    const loadoutName = normalizeWeaponName(loadoutWeapon);
+    const helpName = normalizeWeaponName(helpWeapon);
+    if (!loadoutName || !helpName) return 0;
+    if (loadoutName === helpName) return 100;
+    if (loadoutName.includes(helpName) || helpName.includes(loadoutName)) return 85;
+
+    const loadoutTokens = weaponTokens(loadoutWeapon);
+    const helpTokens = weaponTokens(helpWeapon);
+    if (!loadoutTokens.length || !helpTokens.length) return 0;
+
+    const sharedTokens = loadoutTokens.filter(token => helpTokens.includes(token));
+    if (!sharedTokens.length) return 0;
+
+    const coverage = sharedTokens.length / Math.max(loadoutTokens.length, helpTokens.length);
+    const hasModelToken = sharedTokens.some(token => /\d/.test(token));
+    return coverage * 70 + (hasModelToken ? 10 : 0);
+}
+
+function findLoadoutHelpItem(loadouts, pageId, weaponName) {
+    const entries = getLoadoutHelpEntries(loadouts?._help, pageId);
+
+    return entries
+        .map(entry => ({ entry, score: scoreWeaponMatch(weaponName, entry.arma) }))
+        .filter(match => match.score >= 45)
+        .sort((a, b) => b.score - a.score)[0]?.entry || null;
+}
+
+function resolveLoadoutItem(loadouts, pageId, item) {
+    const helpItem = findLoadoutHelpItem(loadouts, pageId, item.arma);
+
+    return {
+        ...item,
+        brevity: item.brevity || helpItem?.brevity || "",
+        helpNota: helpItem?.nota || "",
+    };
+}
+
+function renderLoadoutItemLine(item) {
+    const brevity = item.brevity && item.brevity !== "N/A"
+        ? ` <span style="font-weight:normal">(Brevity: <strong>${escapeHTML(item.brevity)}</strong>)</span>`
+        : "";
+    const nota = item.nota ? `: <span style="font-weight:normal">${escapeHTML(item.nota)}</span>` : "";
+
+    return `<strong>${escapeHTML(item.cantidad)} ${escapeHTML(item.arma)}</strong>${brevity}${nota}`;
+}
+
 async function getRadioConfig() {
     return loadJSON("conf/radios.json");
 }
@@ -174,11 +269,11 @@ async function buildArmamento(pageId) {
             return;
         }
 
-        items.forEach(item => {
+        const resolvedItems = items.map(item => resolveLoadoutItem(loadouts, pageId, item));
+        resolvedItems.forEach(item => {
             const div = document.createElement('div');
             div.className = 'card arma-item';
-            const nota = item.nota ? `: <span style="font-weight:normal">${escapeHTML(item.nota)}</span>` : '';
-            div.innerHTML = `<strong>${escapeHTML(item.cantidad)} ${escapeHTML(item.arma)}</strong>${nota}`;
+            div.innerHTML = renderLoadoutItemLine(item);
             placeholder.appendChild(div);
         });
     } catch (err) {
@@ -445,8 +540,11 @@ function renderAtcFlightBingos(flights, holdings) {
 function renderAtcLoadouts(flights, loadouts) {
     const cards = flights.map(flight => {
         const items = loadouts?.[flight.loadoutId] || [];
+        const resolvedItems = items.map(item => resolveLoadoutItem(loadouts, flight.loadoutId, item));
         const weapons = items.length
-            ? items.map(item => `<li><strong>${escapeHTML(item.cantidad)} ${escapeHTML(item.arma)}</strong>${item.nota ? `: ${escapeHTML(item.nota)}` : ""}</li>`).join("")
+            ? resolvedItems
+                .map(item => `<li>${renderLoadoutItemLine(item)}</li>`)
+                .join("")
             : "<li>Sin armamento configurado</li>";
 
         return `

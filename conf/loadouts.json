@@ -1,42 +1,459 @@
 {
   "op_raccoon1": [
-    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP. PICKLE" },
+    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP." },
     { "cantidad": "x1", "arma": "AN/AAQ-28 LITENING II", "nota": "En anclaje de fuselaje" }
   ],
   "op_raccoon2": [
-    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP. PICKLE" },
-    { "cantidad": "x1", "arma": "AN/AAQ-28 LITENING II", "nota": "En anclaje de fuselaje" }
-  ],
-  "op_raccoon3": [
-    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP. PICKLE" },
-    { "cantidad": "x1", "arma": "AN/AAQ-28 LITENING II", "nota": "En anclaje de fuselaje" }
-  ],
-  "op_raccoon4": [
-    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP. PICKLE" },
-    { "cantidad": "x1", "arma": "AN/AAQ-28 LITENING II", "nota": "En anclaje de fuselaje" }
-  ],
-  "op_raccoon5": [
-    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP. PICKLE" },
+    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP." },
     { "cantidad": "x1", "arma": "AN/AAQ-28 LITENING II", "nota": "En anclaje de fuselaje" }
   ],
   "op_badger1": [
-    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP. PICKLE" },
+    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP." },
     { "cantidad": "x1", "arma": "AN/ASQ-228 ATFLIR", "nota": "En anclaje de fuselaje" }
   ],
   "op_badger2": [
-    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP. PICKLE" },
+    { "cantidad": "x4", "arma": "AGM-154C JSOW", "nota": "Lanzamiento sobre TGT en CCRP." },
     { "cantidad": "x1", "arma": "AN/ASQ-228 ATFLIR", "nota": "En anclaje de fuselaje" }
   ],
-  "op_badger3": [
-    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP. PICKLE" },
-    { "cantidad": "x1", "arma": "AN/ASQ-228 ATFLIR", "nota": "En anclaje de fuselaje" }
-  ],
-  "op_badger4": [
-    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP. PICKLE" },
-    { "cantidad": "x1", "arma": "AN/ASQ-228 ATFLIR", "nota": "En anclaje de fuselaje" }
-  ],
-  "op_badger5": [
-    { "cantidad": "x4", "arma": "MK-82 500lb", "nota": "Lanzamiento sobre TGT en CCRP. PICKLE" },
-    { "cantidad": "x1", "arma": "AN/ASQ-228 ATFLIR", "nota": "En anclaje de fuselaje" }
-  ]
+  "_help": {
+    "nota": "Catálogo de armamento nativo de DCS para F-16C Viper y F/A-18C Hornet. No incluye mods como APKWS/GBU-54 añadidos por usuarios.",
+    "formato": {
+      "cantidad": "Usar x1, x2, x4, etc. según el loadout de la misión.",
+      "arma": "Nombre del arma o familia de armas.",
+      "brevity": "Palabra brevity/callout recomendada al empleo o lanzamiento.",
+      "nota": "Uso recomendado, modo de empleo o aclaración."
+    },
+    "brevity_general": {
+      "FOX 2": "Lanzamiento de misil aire-aire IR, por ejemplo AIM-9.",
+      "FOX 3": "Lanzamiento de misil aire-aire radar activo, por ejemplo AIM-120.",
+      "FOX 1": "Lanzamiento de misil aire-aire SARH, por ejemplo AIM-7.",
+      "RIFLE": "Lanzamiento de misil aire-tierra, por ejemplo Maverick.",
+      "MAGNUM": "Lanzamiento de misil antirradiación, por ejemplo HARM.",
+      "PICKLE": "Suelta de bomba no guiada, munición no guiada o munición convencional.",
+      "PAVEWAY": "Suelta de bomba guiada por láser o GPS/INS, por ejemplo GBU Paveway o JDAM.",
+      "GUNS": "Empleo de cañón.",
+      "RIPPLE": "Suelta múltiple/secuencial de bombas o cohetes.",
+      "ROCKETS": "Empleo de cohetes no guiados.",
+      "PIG": "Lanzamiento de JSOW.",
+      "LONG RIFLE": "Lanzamiento de misil stand-off/crucero, por ejemplo SLAM/SLAM-ER.",
+      "BRUISER": "Lanzamiento de misil antibuque, por ejemplo Harpoon.",
+      "TRAINING": "Munición cautiva o de entrenamiento."
+    },
+    "f16": {
+      "aeronave": "DCS F-16C Viper / F-16CM Block 50",
+      "canon": [
+        {
+          "arma": "M61A1 Vulcan 20mm",
+          "brevity": "GUNS",
+          "nota": "Cañón interno. Uso A/A y A/G."
+        }
+      ],
+      "aire_aire": [
+        {
+          "arma": "AIM-9L Sidewinder",
+          "brevity": "FOX 2",
+          "nota": "Misil IR de corto alcance."
+        },
+        {
+          "arma": "AIM-9M Sidewinder",
+          "brevity": "FOX 2",
+          "nota": "Misil IR de corto alcance."
+        },
+        {
+          "arma": "AIM-9P Sidewinder",
+          "brevity": "FOX 2",
+          "nota": "Misil IR de corto alcance, versión más antigua."
+        },
+        {
+          "arma": "AIM-9X Sidewinder",
+          "brevity": "FOX 2",
+          "nota": "Misil IR moderno, compatible con HMCS/JHMCS."
+        },
+        {
+          "arma": "AIM-120B AMRAAM",
+          "brevity": "FOX 3",
+          "nota": "Misil BVR radar activo."
+        },
+        {
+          "arma": "AIM-120C AMRAAM",
+          "brevity": "FOX 3",
+          "nota": "Misil BVR radar activo."
+        },
+        {
+          "arma": "CATM-9",
+          "brevity": "TRAINING",
+          "nota": "Misil cautivo de entrenamiento, sin lanzamiento real."
+        }
+      ],
+      "aire_tierra_misiles": [
+        {
+          "arma": "AGM-65D Maverick",
+          "brevity": "RIFLE",
+          "nota": "Misil A/G guiado por IR."
+        },
+        {
+          "arma": "AGM-65G Maverick",
+          "brevity": "RIFLE",
+          "nota": "Misil A/G guiado por IR, cabeza pesada."
+        },
+        {
+          "arma": "AGM-65H Maverick",
+          "brevity": "RIFLE",
+          "nota": "Misil A/G guiado por TV/CCD."
+        },
+        {
+          "arma": "AGM-65K Maverick",
+          "brevity": "RIFLE",
+          "nota": "Misil A/G guiado por TV/CCD, cabeza pesada."
+        },
+        {
+          "arma": "AGM-88C HARM",
+          "brevity": "MAGNUM",
+          "nota": "Misil antirradiación para SEAD/DEAD."
+        },
+        {
+          "arma": "AGM-154A JSOW",
+          "brevity": "PIG",
+          "nota": "Planeadora GPS/INS de submunición."
+        },
+        {
+          "arma": "AGM-154B JSOW",
+          "brevity": "PIG",
+          "nota": "Planeadora GPS/INS. Disponibilidad dependiente de versión/configuración DCS."
+        }
+      ],
+      "bombas_no_guiadas": [
+        {
+          "arma": "Mk-82 LDGP 500lb",
+          "brevity": "PICKLE",
+          "nota": "Bomba convencional de baja resistencia."
+        },
+        {
+          "arma": "Mk-82 AIR 500lb",
+          "brevity": "PICKLE",
+          "nota": "Bomba retardada/high-drag."
+        },
+        {
+          "arma": "Mk-84 LDGP 2000lb",
+          "brevity": "PICKLE",
+          "nota": "Bomba convencional pesada."
+        }
+      ],
+      "bombas_entrenamiento": [
+        {
+          "arma": "BDU-33",
+          "brevity": "PICKLE",
+          "nota": "Bomba de entrenamiento."
+        },
+        {
+          "arma": "BDU-50LD",
+          "brevity": "PICKLE",
+          "nota": "Bomba de entrenamiento tipo Mk-82, baja resistencia."
+        },
+        {
+          "arma": "BDU-50HD",
+          "brevity": "PICKLE",
+          "nota": "Bomba de entrenamiento tipo Mk-82, alta resistencia."
+        }
+      ],
+      "bombas_racimo": [
+        {
+          "arma": "CBU-87 CEM",
+          "brevity": "PICKLE",
+          "nota": "Bomba de racimo contra blancos blandos/área."
+        },
+        {
+          "arma": "CBU-97 SFW",
+          "brevity": "PICKLE",
+          "nota": "Bomba de racimo antiblindaje."
+        },
+        {
+          "arma": "CBU-103 WCMD",
+          "brevity": "PICKLE",
+          "nota": "CBU-87 con kit WCMD."
+        },
+        {
+          "arma": "CBU-105 WCMD",
+          "brevity": "PICKLE",
+          "nota": "CBU-97 con kit WCMD."
+        }
+      ],
+      "bombas_laser": [
+        {
+          "arma": "GBU-10 Paveway II 2000lb",
+          "brevity": "PAVEWAY",
+          "nota": "Bomba guiada por láser."
+        },
+        {
+          "arma": "GBU-12 Paveway II 500lb",
+          "brevity": "PAVEWAY",
+          "nota": "Bomba guiada por láser."
+        },
+        {
+          "arma": "GBU-24 Paveway III 2000lb",
+          "brevity": "PAVEWAY",
+          "nota": "Bomba guiada por láser de penetración/pesada."
+        }
+      ],
+      "bombas_gps_ins": [
+        {
+          "arma": "GBU-31 JDAM 2000lb",
+          "brevity": "PAVEWAY",
+          "nota": "Bomba GPS/INS."
+        },
+        {
+          "arma": "GBU-31(V)3/B JDAM Penetrator",
+          "brevity": "PAVEWAY",
+          "nota": "JDAM penetradora de 2000lb."
+        },
+        {
+          "arma": "GBU-38 JDAM 500lb",
+          "brevity": "PAVEWAY",
+          "nota": "Bomba GPS/INS."
+        }
+      ],
+      "cohetes": [
+        {
+          "arma": "Hydra 70 2.75in / LAU-68",
+          "brevity": "ROCKETS",
+          "nota": "Cohetes no guiados."
+        },
+        {
+          "arma": "Hydra 70 2.75in / LAU-131",
+          "brevity": "ROCKETS",
+          "nota": "Cohetes no guiados."
+        }
+      ],
+      "pods_relacionados": [
+        {
+          "arma": "AN/AAQ-28 LITENING II",
+          "brevity": "N/A",
+          "nota": "Pod de designación; no es arma, pero necesario para empleo láser/autodesignación."
+        },
+        {
+          "arma": "HTS / AN/ASQ-213",
+          "brevity": "N/A",
+          "nota": "Pod HARM Targeting System para SEAD con AGM-88C."
+        }
+      ]
+    },
+    "f18": {
+      "aeronave": "DCS F/A-18C Hornet Lot 20",
+      "canon": [
+        {
+          "arma": "M61A2 Vulcan 20mm",
+          "brevity": "GUNS",
+          "nota": "Cañón interno. Uso A/A y A/G."
+        }
+      ],
+      "aire_aire": [
+        {
+          "arma": "AIM-9L Sidewinder",
+          "brevity": "FOX 2",
+          "nota": "Misil IR de corto alcance."
+        },
+        {
+          "arma": "AIM-9M Sidewinder",
+          "brevity": "FOX 2",
+          "nota": "Misil IR de corto alcance."
+        },
+        {
+          "arma": "AIM-9X Sidewinder",
+          "brevity": "FOX 2",
+          "nota": "Misil IR moderno, compatible con JHMCS."
+        },
+        {
+          "arma": "CATM Sidewinder",
+          "brevity": "TRAINING",
+          "nota": "Misil cautivo de entrenamiento."
+        },
+        {
+          "arma": "AIM-7F Sparrow",
+          "brevity": "FOX 1",
+          "nota": "Misil SARH de medio alcance."
+        },
+        {
+          "arma": "AIM-7M Sparrow",
+          "brevity": "FOX 1",
+          "nota": "Misil SARH de medio alcance."
+        },
+        {
+          "arma": "AIM-7MH Sparrow",
+          "brevity": "FOX 1",
+          "nota": "Misil SARH de medio alcance."
+        },
+        {
+          "arma": "AIM-7P Sparrow",
+          "brevity": "FOX 1",
+          "nota": "Misil SARH de medio alcance."
+        },
+        {
+          "arma": "AIM-120B AMRAAM",
+          "brevity": "FOX 3",
+          "nota": "Misil BVR radar activo."
+        },
+        {
+          "arma": "AIM-120C AMRAAM",
+          "brevity": "FOX 3",
+          "nota": "Misil BVR radar activo."
+        }
+      ],
+      "aire_tierra_misiles": [
+        {
+          "arma": "AGM-65E Maverick",
+          "brevity": "RIFLE",
+          "nota": "Misil A/G guiado por láser."
+        },
+        {
+          "arma": "AGM-65F Maverick",
+          "brevity": "RIFLE",
+          "nota": "Misil A/G guiado por IR."
+        },
+        {
+          "arma": "AGM-88C HARM",
+          "brevity": "MAGNUM",
+          "nota": "Misil antirradiación para SEAD/DEAD."
+        },
+        {
+          "arma": "AGM-84D Harpoon Block 1C",
+          "brevity": "BRUISER",
+          "nota": "Misil antibuque."
+        },
+        {
+          "arma": "AGM-84E SLAM",
+          "brevity": "LONG RIFLE",
+          "nota": "Misil crucero A/G con guiado terminal."
+        },
+        {
+          "arma": "AGM-84H/K SLAM-ER",
+          "brevity": "LONG RIFLE",
+          "nota": "Misil crucero A/G de mayor alcance; requiere datalink para control terminal."
+        },
+        {
+          "arma": "AGM-62 Walleye",
+          "brevity": "PICKLE",
+          "nota": "Bomba/misil guiado por TV."
+        },
+        {
+          "arma": "AGM-154A JSOW",
+          "brevity": "PIG",
+          "nota": "Planeadora GPS/INS de submunición."
+        },
+        {
+          "arma": "AGM-154C JSOW",
+          "brevity": "PIG",
+          "nota": "Planeadora GPS/INS unitaria."
+        }
+      ],
+      "bombas_no_guiadas": [
+        {
+          "arma": "Mk-82 series 500lb",
+          "brevity": "PICKLE",
+          "nota": "Familia Mk-82, incluye variantes LD/retardadas según loadout."
+        },
+        {
+          "arma": "Mk-83 series 1000lb",
+          "brevity": "PICKLE",
+          "nota": "Familia Mk-83."
+        },
+        {
+          "arma": "Mk-84 series 2000lb",
+          "brevity": "PICKLE",
+          "nota": "Familia Mk-84."
+        }
+      ],
+      "bombas_entrenamiento": [
+        {
+          "arma": "BDU-33",
+          "brevity": "PICKLE",
+          "nota": "Bomba de entrenamiento."
+        },
+        {
+          "arma": "BDU-45",
+          "brevity": "PICKLE",
+          "nota": "Bomba de entrenamiento."
+        }
+      ],
+      "bombas_racimo": [
+        {
+          "arma": "CBU-99",
+          "brevity": "PICKLE",
+          "nota": "Bomba de racimo."
+        },
+        {
+          "arma": "Mk-20 Rockeye",
+          "brevity": "PICKLE",
+          "nota": "Bomba de racimo antiblindaje/área."
+        }
+      ],
+      "bombas_laser": [
+        {
+          "arma": "GBU-10 Paveway II 2000lb",
+          "brevity": "PAVEWAY",
+          "nota": "Bomba guiada por láser."
+        },
+        {
+          "arma": "GBU-12 Paveway II 500lb",
+          "brevity": "PAVEWAY",
+          "nota": "Bomba guiada por láser."
+        },
+        {
+          "arma": "GBU-16 Paveway II 1000lb",
+          "brevity": "PAVEWAY",
+          "nota": "Bomba guiada por láser."
+        },
+        {
+          "arma": "GBU-24B Paveway III 2000lb",
+          "brevity": "PAVEWAY",
+          "nota": "Bomba guiada por láser pesada."
+        }
+      ],
+      "bombas_gps_ins": [
+        {
+          "arma": "GBU-31 JDAM 2000lb",
+          "brevity": "PAVEWAY",
+          "nota": "Bomba GPS/INS."
+        },
+        {
+          "arma": "GBU-32 JDAM 1000lb",
+          "brevity": "PAVEWAY",
+          "nota": "Bomba GPS/INS."
+        },
+        {
+          "arma": "GBU-38 JDAM 500lb",
+          "brevity": "PAVEWAY",
+          "nota": "Bomba GPS/INS."
+        }
+      ],
+      "cohetes": [
+        {
+          "arma": "Hydra 70 2.75in",
+          "brevity": "ROCKETS",
+          "nota": "Cohetes no guiados."
+        },
+        {
+          "arma": "Zuni 5in",
+          "brevity": "ROCKETS",
+          "nota": "Cohetes no guiados pesados."
+        }
+      ],
+      "pods_relacionados": [
+        {
+          "arma": "AN/ASQ-228 ATFLIR",
+          "brevity": "N/A",
+          "nota": "Pod FLIR/designación; no es arma, pero habitual para LGB/Maverick/designación."
+        },
+        {
+          "arma": "AN/AAQ-28 LITENING II",
+          "brevity": "N/A",
+          "nota": "Pod de designación alternativo según configuración DCS."
+        },
+        {
+          "arma": "AWW-13 Datalink Pod",
+          "brevity": "N/A",
+          "nota": "Pod de datalink usado con Walleye/SLAM según configuración."
+        }
+      ]
+    }
+  }
 }
