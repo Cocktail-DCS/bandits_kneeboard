@@ -4,8 +4,8 @@
     "label": "ATC",
     "tabs": [
       { "id": "atc_ground", "label": "Ground" },
-      { "id": "atc_overlord", "label": "Overlord" },
-      { "id": "atc_tower", "label": "Tower" }
+      { "id": "atc_tower", "label": "Tower" },
+      { "id": "atc_overlord", "label": "Overlord" }
     ]
   },
   {

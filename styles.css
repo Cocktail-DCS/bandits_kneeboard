@@ -124,6 +124,14 @@ body {
     max-width: 100%;
 }
 
+@media (max-width: 1700px) {
+    .img-full { width: 60vw; }
+}
+
+@media (max-width: 1450px) {
+    .img-full { width: 75vw; }
+}
+
 .col-small { width: 10%; }
 .col-medium { width: 14%; }
 .col-large { width: 38%; }
@@ -225,7 +233,7 @@ body {
 
     .radio-table { font-size: 0.72rem; }
 
-    .img-full { width: 100%; }
+    .img-full { width: 100%; max-width: 100%; }
 
     .tab-content.active {
         display: flex;
