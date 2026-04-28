@@ -343,6 +343,11 @@
           "arma": "AGM-154C JSOW",
           "brevity": "PIG",
           "nota": "Planeadora GPS/INS unitaria."
+        },
+        {
+          "arma": "ADM-141 TALD",
+          "brevity": "TROJAN",
+          "nota": "Señuelo para confundir al enemigo, no es misil ofensivo pero común en misiones de SEAD/DEAD."
         }
       ],
       "bombas_no_guiadas": [
