@@ -12,7 +12,7 @@
         { "radio": "5", "callsign": "CVN-71 ROUGH RIDER", "freq": "271.75", "color": "orange" },
         { "radio": "6", "callsign": "GOLDPLATE-7", "freq": "252.5", "color": "yellow" },
         { "radio": "7", "callsign": "ANDERSEN GROUND", "freq": "250.25", "color": "orange-dark" },
-        { "radio": "8", "callsign": "", "freq": "", "color": "" },
+        { "radio": "8", "callsign": "RED CROWN", "freq": "257", "color": "blue" },
         { "radio": "9", "callsign": "", "freq": "", "color": "" },
         { "radio": "10", "callsign": "ATIS INCIRLIK", "freq": "254.3", "color": "yellow" },
         { "radio": "G", "callsign": "UHF", "freq": "243", "color": "black" }
