@@ -32,7 +32,9 @@
         { "title": "Andersen Departure", "src": "images/airport_departures/andersen_departure.jpeg" }
       ],
       "arrivalCharts": [
-        { "title": "Andersen IFR Arrival", "src": "images/airport_arrivals/andersen_ifr.jpeg" }
+        { "title": "Andersen TACAN 06", "src": "images/airport_arrivals/andersen_TCN_06.jpg" },
+        { "title": "Andersen ILS 06", "src": "images/airport_arrivals/andersen_ILS_06.jpeg" },
+        { "title": "Andersen TACAN 24", "src": "images/airport_arrivals/andersen_TCN_24.jpg" }
       ]
     }
   }
