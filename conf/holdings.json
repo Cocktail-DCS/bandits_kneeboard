@@ -41,36 +41,16 @@
     }
   },
   "items": {
-    "holding_push_raccoon1": {
-      "joker": "7500lb",
-      "bingo": "5000lb",
-      "holding": {
-        "point": "MONICA - WP 5 y 6",
-        "altitude": "A 26.000ft"
-      }
-    },
-    "holding_push_raccoon2": {
-      "joker": "7500lb",
-      "bingo": "5000lb",
-      "holding": {
-        "point": "MONICA - WP 5 y 6",
-        "altitude": "A 27.000ft"
-      }
-    },
     "holding_push_badger1": {
-      "joker": "7500lb",
-      "bingo": "5000lb",
+      "joker": "5000lb",
+      "bingo": "2500lb",
       "holding": {
-        "point": "LAURA - WP 5 y 6",
-        "altitude": "A 20.000ft"
-      }
-    },
-    "holding_push_badger2": {
-      "joker": "7500lb",
-      "bingo": "5000lb",
-      "holding": {
-        "point": "LAURA - WP 5 y 6",
-        "altitude": "A 21.000ft"
+        "point": "N/A",
+        "altitude": "N/A"
+      },
+      "tot": {
+        "description": "N/A",
+        "pushPoint": "N/A"
       }
     }
   }

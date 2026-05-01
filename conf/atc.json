@@ -5,10 +5,10 @@
     "imagenes": "Las rutas son relativas a index.html."
   },
   "flights": [
-    { "label": "RACCOON-1", "holdingId": "holding_push_raccoon1", "loadoutId": "op_raccoon1" },
-    { "label": "RACCOON-2", "holdingId": "holding_push_raccoon2", "loadoutId": "op_raccoon2" },
     { "label": "BADGER-1", "holdingId": "holding_push_badger1", "loadoutId": "op_badger1" },
-    { "label": "BADGER-2", "holdingId": "holding_push_badger2", "loadoutId": "op_badger2" }
+    { "label": "BADGER-2", "holdingId": "holding_push_badger1", "loadoutId": "op_badger1" },
+    { "label": "BADGER-3", "holdingId": "holding_push_badger1", "loadoutId": "op_badger1" },
+    { "label": "BADGER-4", "holdingId": "holding_push_badger1", "loadoutId": "op_badger1" }
   ],
   "pages": {
     "atc_ground": {
@@ -17,11 +17,11 @@
         { "title": "Andersen Airport Chart", "src": "images/airport_charts/andersen_airport_chart.png" }
       ],
       "atis": [
-        { "callsign": "ATIS INCIRLIK", "freq": "254.3", "notes": "Informacion ATIS configurada para la mision." }
+        { "callsign": "ATIS INCIRLIK", "freq": "254.3", "notes": "Informacion X (no esta claro cual es para confirmar)" }
       ]
     },
     "atc_overlord": {
-      "title": "ATC Overlord",
+      "title": "ATC RED CROWN",
       "authCodes": [
         { "title": "Auth Codes", "src": "images/auth_codes.png" }
       ]
@@ -32,7 +32,9 @@
         { "title": "Andersen Departure", "src": "images/airport_departures/andersen_departure.jpeg" }
       ],
       "arrivalCharts": [
-        { "title": "Andersen IFR Arrival", "src": "images/airport_arrivals/andersen_ifr.jpeg" }
+        { "title": "Andersen TACAN 06", "src": "images/airport_arrivals/andersen_TCN_06.jpg" },
+        { "title": "Andersen ILS 06", "src": "images/airport_arrivals/andersen_ILS_06.jpeg" },
+        { "title": "Andersen TACAN 24", "src": "images/airport_arrivals/andersen_TCN_24.jpg" }
       ]
     }
   }
