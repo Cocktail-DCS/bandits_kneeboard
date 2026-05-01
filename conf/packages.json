@@ -5,7 +5,7 @@
     "tabs": [
       { "id": "atc_ground", "label": "Ground" },
       { "id": "atc_tower", "label": "Tower" },
-      { "id": "atc_overlord", "label": "Red Crown" }
+      { "id": "atc_overlord", "label": "Overlord" }
     ]
   },
   {
