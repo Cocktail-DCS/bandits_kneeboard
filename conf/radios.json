@@ -14,7 +14,7 @@
         { "radio": "7", "callsign": "ANDERSEN GROUND", "freq": "250.25", "color": "orange-dark" },
         { "radio": "8", "callsign": "RED CROWN", "freq": "257", "color": "blue" },
         { "radio": "9", "callsign": "", "freq": "", "color": "" },
-        { "radio": "10", "callsign": "ATIS INCIRLIK", "freq": "254.3", "color": "yellow" },
+        { "radio": "10", "callsign": "ATIS ANDERSEN", "freq": "254.3", "color": "yellow" },
         { "radio": "11", "callsign": "", "freq": "", "color": "" },
         { "radio": "12", "callsign": "GOLF-9 JTAC", "freq": "262.2", "color": "blue" },
         { "radio": "G", "callsign": "UHF", "freq": "243", "color": "black" }
