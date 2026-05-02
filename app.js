@@ -12,20 +12,6 @@ let atcConfig = null;
 let tankerConfig = null;
 
 
-// ── Analítica ────────────────────────────────────────────────────────────────
-function trackTabClick(tab) {
-    if (typeof gtag !== "function") return;
-
-    const selectedPackage = document.getElementById("package-select")?.value || "";
-
-    gtag("event", "tab_click", {
-        tab_id: tab.id,
-        tab_name: tab.label,
-        package_id: selectedPackage,
-    });
-}
-
-
 // ── Carga de páginas ──────────────────────────────────────────────────────────
 async function loadTab(tabId, event) {
     if (!tabId) return;
@@ -397,10 +383,7 @@ function renderTabBar() {
         const btn = document.createElement("button");
         btn.className = "tab-btn";
         btn.textContent = tab.label;
-        btn.onclick = (e) => {
-            trackTabClick(tab);
-            loadTab(tab.id, e);
-        };
+        btn.onclick = (e) => loadTab(tab.id, e);
         nav.appendChild(btn);
     });
 }
