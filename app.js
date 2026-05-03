@@ -540,14 +540,6 @@ function renderAtcFlightBingos(flights, holdings) {
 }
 
 function getPagePath(tabId) {
-    if (/^op_raccoon\d+$/i.test(tabId)) {
-        return "pages/templates/op_strike.html";
-    }
-
-    if (/^op_(badger|knight)\d+$/i.test(tabId)) {
-        return "pages/op_cas.html";
-    }
-
     return `pages/${tabId}.html`;
 }
 
