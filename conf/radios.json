@@ -34,7 +34,7 @@
         { "radio": "7", "callsign": "BADGER-3", "freq": "125.2", "color": "red" },
         { "radio": "8", "callsign": "BADGER-4", "freq": "125.3", "color": "red" },
         { "radio": "9", "callsign": "KNIGHT-1", "freq": "126", "color": "green" },
-        { "radio": "10", "callsign": "KNIGHT-1", "freq": "126.1", "color": "green" },
+        { "radio": "10", "callsign": "KNIGHT-2", "freq": "126.1", "color": "green" },
         { "radio": "11", "callsign": "", "freq": "", "color": "" },
         { "radio": "12", "callsign": "", "freq": "", "color": "" },
         { "radio": "G", "callsign": "VHF", "freq": "121.5", "color": "black" }

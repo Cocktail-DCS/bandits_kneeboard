@@ -1,9 +1,51 @@
 {
+  "op_raccoon1": [
+    { "cantidad": "x1", "arma": "AN/ASQ-T50 TCTS", "nota": "Pod de telemetria para entrenamiento." },
+    { "cantidad": "x1", "arma": "CATM-9", "nota": "Misil cautivo de entrenamiento, sin lanzamiento real." },
+    { "cantidad": "x2", "arma": "GBU-10 Paveway II 2000lb", "nota": "Bomba guiada por laser. Codigo laser 165x." },
+    { "cantidad": "x1", "arma": "AN/AAQ-28 LITENING II", "nota": "Pod de designacion laser. Codigo laser 165x." }
+  ],
+  "op_raccoon2": [
+    { "cantidad": "x1", "arma": "AN/ASQ-T50 TCTS", "nota": "Pod de telemetria para entrenamiento." },
+    { "cantidad": "x1", "arma": "CATM-9", "nota": "Misil cautivo de entrenamiento, sin lanzamiento real." },
+    { "cantidad": "x2", "arma": "GBU-10 Paveway II 2000lb", "nota": "Bomba guiada por laser. Codigo laser 166x." },
+    { "cantidad": "x1", "arma": "AN/AAQ-28 LITENING II", "nota": "Pod de designacion laser. Codigo laser 166x." }
+  ],
+  "op_raccoon3": [
+    { "cantidad": "x1", "arma": "AN/ASQ-T50 TCTS", "nota": "Pod de telemetria para entrenamiento." },
+    { "cantidad": "x1", "arma": "CATM-9", "nota": "Misil cautivo de entrenamiento, sin lanzamiento real." },
+    { "cantidad": "x2", "arma": "GBU-10 Paveway II 2000lb", "nota": "Bomba guiada por laser. Codigo laser 167x." },
+    { "cantidad": "x1", "arma": "AN/AAQ-28 LITENING II", "nota": "Pod de designacion laser. Codigo laser 167x." }
+  ],
+  "op_raccoon4": [
+    { "cantidad": "x1", "arma": "AN/ASQ-T50 TCTS", "nota": "Pod de telemetria para entrenamiento." },
+    { "cantidad": "x1", "arma": "CATM-9", "nota": "Misil cautivo de entrenamiento, sin lanzamiento real." },
+    { "cantidad": "x2", "arma": "GBU-10 Paveway II 2000lb", "nota": "Bomba guiada por laser. Codigo laser 168x." },
+    { "cantidad": "x1", "arma": "AN/AAQ-28 LITENING II", "nota": "Pod de designacion laser. Codigo laser 168x." }
+  ],
   "op_badger1": [
-    { "cantidad": "x1", "arma": "AN/ASQ-T50 TCTS", "nota": "Pod de telemetria para entrenamiento"},
-    { "cantidad": "x3", "arma": "FPU-8/A", "nota": "Tanque de combustible externo con 2.200lb cada uno"},
-    { "cantidad": "x1", "arma": "AN/ASQ-228 ATFLIR", "nota": "Pod de designación y reconocimiento. El único permitido para operaciones embarcadas en los F-18"},
-    { "cantidad": "x1", "arma": "CATM Sidewinder", "nota": "Misil cautivo de entrenamiento, sin lanzamiento real."}
+    { "cantidad": "x1", "arma": "AN/ASQ-T50 TCTS", "nota": "Pod de telemetria para entrenamiento." },
+    { "cantidad": "x1", "arma": "CATM Sidewinder", "nota": "Misil cautivo de entrenamiento, sin lanzamiento real." },
+    { "cantidad": "x2", "arma": "GBU-10 Paveway II 2000lb", "nota": "Bomba guiada por laser. Codigo laser 161x." },
+    { "cantidad": "x1", "arma": "AN/ASQ-228 ATFLIR", "nota": "Pod de designacion laser. Codigo laser 161x." }
+  ],
+  "op_badger2": [
+    { "cantidad": "x1", "arma": "AN/ASQ-T50 TCTS", "nota": "Pod de telemetria para entrenamiento." },
+    { "cantidad": "x1", "arma": "CATM Sidewinder", "nota": "Misil cautivo de entrenamiento, sin lanzamiento real." },
+    { "cantidad": "x2", "arma": "GBU-10 Paveway II 2000lb", "nota": "Bomba guiada por laser. Codigo laser 162x." },
+    { "cantidad": "x1", "arma": "AN/ASQ-228 ATFLIR", "nota": "Pod de designacion laser. Codigo laser 162x." }
+  ],
+  "op_knight1": [
+    { "cantidad": "x1", "arma": "AN/ASQ-T50 TCTS", "nota": "Pod de telemetria para entrenamiento." },
+    { "cantidad": "x1", "arma": "CATM Sidewinder", "nota": "Misil cautivo de entrenamiento, sin lanzamiento real." },
+    { "cantidad": "x2", "arma": "GBU-16 Paveway II 1000lb", "nota": "Bomba guiada por laser. Codigo laser 163x." },
+    { "cantidad": "x1", "arma": "AN/ASQ-228 ATFLIR", "nota": "Pod de designacion laser. Codigo laser 163x." }
+  ],
+  "op_knight2": [
+    { "cantidad": "x1", "arma": "AN/ASQ-T50 TCTS", "nota": "Pod de telemetria para entrenamiento." },
+    { "cantidad": "x1", "arma": "CATM Sidewinder", "nota": "Misil cautivo de entrenamiento, sin lanzamiento real." },
+    { "cantidad": "x2", "arma": "GBU-16 Paveway II 1000lb", "nota": "Bomba guiada por laser. Codigo laser 164x." },
+    { "cantidad": "x1", "arma": "AN/ASQ-228 ATFLIR", "nota": "Pod de designacion laser. Codigo laser 164x." }
   ],
   "_help": {
     "nota": "Catálogo de armamento nativo de DCS para F-16C Viper y F/A-18C Hornet. No incluye mods como APKWS/GBU-54 añadidos por usuarios.",

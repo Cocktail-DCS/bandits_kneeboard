@@ -41,12 +41,112 @@
     }
   },
   "items": {
-    "holding_push_badger1": {
-      "joker": "7500lb",
-      "bingo": "5100lb",
+    "holding_push_raccoon1": {
+      "title": "Holding RACCOON-1",
+      "joker": "5000lb",
+      "bingo": "2500lb",
+      "laserCode": "165x",
       "holding": {
-        "point": "N/A",
-        "altitude": "N/A"
+        "point": "SILVER (WP 5-6)",
+        "altitude": "26.000ft"
+      },
+      "tot": {
+        "description": "05:15",
+        "pushPoint": "WP 5"
+      }
+    },
+    "holding_push_raccoon2": {
+      "title": "Holding RACCOON-2",
+      "joker": "5000lb",
+      "bingo": "2500lb",
+      "laserCode": "166x",
+      "holding": {
+        "point": "SILVER (WP 5-6)",
+        "altitude": "27.000ft"
+      },
+      "tot": {
+        "description": "05:15",
+        "pushPoint": "WP 5"
+      }
+    },
+    "holding_push_raccoon3": {
+      "title": "Holding RACCOON-3",
+      "joker": "5000lb",
+      "bingo": "2500lb",
+      "laserCode": "167x",
+      "holding": {
+        "point": "SILVER (WP 5-6)",
+        "altitude": "28.000ft"
+      },
+      "tot": {
+        "description": "05:15",
+        "pushPoint": "WP 5"
+      }
+    },
+    "holding_push_raccoon4": {
+      "title": "Holding RACCOON-4",
+      "joker": "5000lb",
+      "bingo": "2500lb",
+      "laserCode": "168x",
+      "holding": {
+        "point": "SILVER (WP 5-6)",
+        "altitude": "29.000ft"
+      },
+      "tot": {
+        "description": "05:15",
+        "pushPoint": "WP 5"
+      }
+    },
+    "holding_push_badger1": {
+      "title": "Holding BADGER-1",
+      "joker": "5000lb",
+      "bingo": "2500lb",
+      "laserCode": "161x",
+      "holding": {
+        "point": "GOLDEN",
+        "altitude": "22.000ft"
+      },
+      "tot": {
+        "description": "N/A",
+        "pushPoint": "N/A"
+      }
+    },
+    "holding_push_badger2": {
+      "title": "Holding BADGER-2",
+      "joker": "5000lb",
+      "bingo": "2500lb",
+      "laserCode": "162x",
+      "holding": {
+        "point": "GOLDEN",
+        "altitude": "23.000ft"
+      },
+      "tot": {
+        "description": "N/A",
+        "pushPoint": "N/A"
+      }
+    },
+    "holding_push_knight1": {
+      "title": "Holding KNIGHT-1",
+      "joker": "5000lb",
+      "bingo": "2500lb",
+      "laserCode": "163x",
+      "holding": {
+        "point": "GOLDEN",
+        "altitude": "24.000ft"
+      },
+      "tot": {
+        "description": "N/A",
+        "pushPoint": "N/A"
+      }
+    },
+    "holding_push_knight2": {
+      "title": "Holding KNIGHT-2",
+      "joker": "5000lb",
+      "bingo": "2500lb",
+      "laserCode": "164x",
+      "holding": {
+        "point": "GOLDEN",
+        "altitude": "25.000ft"
       },
       "tot": {
         "description": "N/A",

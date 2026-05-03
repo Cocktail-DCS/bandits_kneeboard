@@ -46,7 +46,7 @@ async function loadTab(tabId, event) {
             return;
         }
 
-        const response = await fetch(`pages/${tabId}.html`);
+        const response = await fetch(getPagePath(tabId));
         if (!response.ok) throw new Error(`No se pudo cargar ${tabId}.html`);
 
         container.innerHTML = await response.text();
@@ -443,7 +443,7 @@ async function renderAtcGround(page) {
         ${renderImageSection("Cartas del aeropuerto", page.airportCharts)}
         ${renderAtcFlightBingos(page.flights, holdings)}
         ${renderAtisSection(page.atis || atisRows)}
-        ${renderAtcLoadouts(page.flights, loadouts)}
+        ${renderAtcLoadouts(page.flights, loadouts, holdings)}
     `;
 }
 
@@ -517,11 +517,13 @@ function renderAtisSection(atisRows) {
 function renderAtcFlightBingos(flights, holdings) {
     const rows = flights.map(flight => {
         const holding = holdings[flight.holdingId];
+        const laserCode = getFlightLaserCode(flight, holding);
         return `
             <tr>
                 <td>${escapeHTML(flight.label)}</td>
                 <td>${escapeHTML(holding?.joker || "")}</td>
                 <td>${escapeHTML(holding?.bingo || "")}</td>
+                <td>${escapeHTML(laserCode)}</td>
             </tr>
         `;
     }).join("");
@@ -530,15 +532,33 @@ function renderAtcFlightBingos(flights, holdings) {
         <div class="card">
             <h3>Bingos de vuelos</h3>
             <table class="data-table">
-                <thead><tr><th>Vuelo</th><th>Joker</th><th>Bingo</th></tr></thead>
+                <thead><tr><th>Vuelo</th><th>Joker</th><th>Bingo</th><th>Láser</th></tr></thead>
                 <tbody>${rows}</tbody>
             </table>
         </div>
     `;
 }
 
-function renderAtcLoadouts(flights, loadouts) {
+function getPagePath(tabId) {
+    if (/^op_raccoon\d+$/i.test(tabId)) {
+        return "pages/templates/op_strike.html";
+    }
+
+    if (/^op_(badger|knight)\d+$/i.test(tabId)) {
+        return "pages/op_cas.html";
+    }
+
+    return `pages/${tabId}.html`;
+}
+
+function getFlightLaserCode(flight, holding) {
+    return flight?.laserCode || holding?.laserCode || "";
+}
+
+function renderAtcLoadouts(flights, loadouts, holdings = {}) {
     const cards = flights.map(flight => {
+        const holding = holdings[flight.holdingId];
+        const laserCode = getFlightLaserCode(flight, holding);
         const items = loadouts?.[flight.loadoutId] || [];
         const resolvedItems = items.map(item => resolveLoadoutItem(loadouts, flight.loadoutId, item));
         const weapons = items.length
@@ -550,6 +570,7 @@ function renderAtcLoadouts(flights, loadouts) {
         return `
             <div class="card">
                 <h4>${escapeHTML(flight.label)}</h4>
+                ${laserCode ? `<p><strong>Código láser:</strong> ${escapeHTML(laserCode)}</p>` : ""}
                 <ul>${weapons}</ul>
             </div>
         `;
@@ -586,11 +607,13 @@ function renderTankers(tankers) {
 function renderAtcHoldingSummary(flights, holdings) {
     const rows = flights.map(flight => {
         const data = holdings[flight.holdingId];
+        const laserCode = getFlightLaserCode(flight, data);
         return `
             <tr>
                 <td>${escapeHTML(flight.label)}</td>
                 <td>${escapeHTML(data?.holding?.point || "")}</td>
                 <td>${escapeHTML(data?.holding?.altitude || "")}</td>
+                <td>${escapeHTML(laserCode)}</td>
             </tr>
         `;
     }).join("");
@@ -599,7 +622,7 @@ function renderAtcHoldingSummary(flights, holdings) {
         <div class="card">
             <h3>Puntos de espera</h3>
             <table class="data-table">
-                <thead><tr><th>Vuelo</th><th>Punto</th><th>Altitud</th></tr></thead>
+                <thead><tr><th>Vuelo</th><th>Punto</th><th>Altitud</th><th>Láser</th></tr></thead>
                 <tbody>${rows}</tbody>
             </table>
         </div>
@@ -728,6 +751,7 @@ function renderHolding(data) {
             <h3>RECUERDA</h3>
             <p><strong>JOKER:</strong> ${escapeHTML(data.joker)}</p>
             <p><strong>BINGO:</strong> ${escapeHTML(data.bingo)}</p>
+            ${data.laserCode ? `<p><strong>CÓDIGO LÁSER:</strong> ${escapeHTML(data.laserCode)}</p>` : ""}
         </div>
 
         <div class="card">

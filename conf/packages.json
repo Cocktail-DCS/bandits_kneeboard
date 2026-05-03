@@ -9,13 +9,66 @@
     ]
   },
   {
+    "id": "RACCOON-1",
+    "label": "RACCOON-1",
+    "tabs": [
+      { "id": "1_startup_taxi_ground", "label": "Arranque taxi y despegue" },
+      { "id": "2_departures", "label": "Check-IN" },
+      { "id": "3_tanker", "label": "Repostaje" },
+      { "id": "holding_push_raccoon1", "label": "Holding" },
+      { "id": "op_raccoon1", "label": "Strike" },
+      { "id": "8_arrivals_ground", "label": "Llegada" },
+      { "id": "9_shutdown_taxi_ground", "label": "Taxi y apagado" }
+    ]
+  },
+  {
+    "id": "RACCOON-2",
+    "label": "RACCOON-2",
+    "tabs": [
+      { "id": "1_startup_taxi_ground", "label": "Arranque taxi y despegue" },
+      { "id": "2_departures", "label": "Check-IN" },
+      { "id": "3_tanker", "label": "Repostaje" },
+      { "id": "holding_push_raccoon2", "label": "Holding" },
+      { "id": "op_raccoon2", "label": "Strike" },
+      { "id": "8_arrivals_ground", "label": "Llegada" },
+      { "id": "9_shutdown_taxi_ground", "label": "Taxi y apagado" }
+    ]
+  },
+  {
+    "id": "RACCOON-3",
+    "label": "RACCOON-3",
+    "tabs": [
+      { "id": "1_startup_taxi_ground", "label": "Arranque taxi y despegue" },
+      { "id": "2_departures", "label": "Check-IN" },
+      { "id": "3_tanker", "label": "Repostaje" },
+      { "id": "holding_push_raccoon3", "label": "Holding" },
+      { "id": "op_raccoon3", "label": "Strike" },
+      { "id": "8_arrivals_ground", "label": "Llegada" },
+      { "id": "9_shutdown_taxi_ground", "label": "Taxi y apagado" }
+    ]
+  },
+  {
+    "id": "RACCOON-4",
+    "label": "RACCOON-4",
+    "tabs": [
+      { "id": "1_startup_taxi_ground", "label": "Arranque taxi y despegue" },
+      { "id": "2_departures", "label": "Check-IN" },
+      { "id": "3_tanker", "label": "Repostaje" },
+      { "id": "holding_push_raccoon4", "label": "Holding" },
+      { "id": "op_raccoon4", "label": "Strike" },
+      { "id": "8_arrivals_ground", "label": "Llegada" },
+      { "id": "9_shutdown_taxi_ground", "label": "Taxi y apagado" }
+    ]
+  },
+  {
     "id": "BADGER-1",
     "label": "BADGER-1",
     "tabs": [
       { "id": "1_startup_taxi_ground", "label": "Arranque taxi y despegue" },
       { "id": "2_departures", "label": "Check-IN" },
       { "id": "3_tanker", "label": "Repostaje" },
-      { "id": "op_badger1", "label": "Ferry" },
+      { "id": "holding_push_badger1", "label": "Holding" },
+      { "id": "op_badger1", "label": "CAS" },
       { "id": "8_arrivals_carrier", "label": "Llegada" },
       { "id": "9_shutdown_taxi_carrier", "label": "Taxi y apagado" },
       { "id": "8_arrivals_ground", "label": "Llegada (andersen)" },
@@ -29,7 +82,8 @@
       { "id": "1_startup_taxi_ground", "label": "Arranque taxi y despegue" },
       { "id": "2_departures", "label": "Check-IN" },
       { "id": "3_tanker", "label": "Repostaje" },
-      { "id": "op_badger1", "label": "Ferry" },
+      { "id": "holding_push_badger2", "label": "Holding" },
+      { "id": "op_badger2", "label": "CAS" },
       { "id": "8_arrivals_carrier", "label": "Llegada" },
       { "id": "9_shutdown_taxi_carrier", "label": "Taxi y apagado" },
       { "id": "8_arrivals_ground", "label": "Llegada (andersen)" },
@@ -37,13 +91,14 @@
     ]
   },
   {
-    "id": "BADGER-3",
-    "label": "BADGER-3",
+    "id": "KNIGHT-1",
+    "label": "KNIGHT-1",
     "tabs": [
       { "id": "1_startup_taxi_ground", "label": "Arranque taxi y despegue" },
       { "id": "2_departures", "label": "Check-IN" },
       { "id": "3_tanker", "label": "Repostaje" },
-      { "id": "op_badger1", "label": "Ferry" },
+      { "id": "holding_push_knight1", "label": "Holding" },
+      { "id": "op_knight1", "label": "CAS" },
       { "id": "8_arrivals_carrier", "label": "Llegada" },
       { "id": "9_shutdown_taxi_carrier", "label": "Taxi y apagado" },
       { "id": "8_arrivals_ground", "label": "Llegada (andersen)" },
@@ -51,13 +106,14 @@
     ]
   },
   {
-    "id": "BADGER-4",
-    "label": "BADGER-4",
+    "id": "KNIGHT-2",
+    "label": "KNIGHT-2",
     "tabs": [
       { "id": "1_startup_taxi_ground", "label": "Arranque taxi y despegue" },
       { "id": "2_departures", "label": "Check-IN" },
       { "id": "3_tanker", "label": "Repostaje" },
-      { "id": "op_badger1", "label": "Ferry" },
+      { "id": "holding_push_knight2", "label": "Holding" },
+      { "id": "op_knight2", "label": "CAS" },
       { "id": "8_arrivals_carrier", "label": "Llegada" },
       { "id": "9_shutdown_taxi_carrier", "label": "Taxi y apagado" },
       { "id": "8_arrivals_ground", "label": "Llegada (andersen)" },

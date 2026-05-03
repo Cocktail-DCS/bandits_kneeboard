@@ -5,10 +5,14 @@
     "imagenes": "Las rutas son relativas a index.html."
   },
   "flights": [
-    { "label": "BADGER-1", "holdingId": "holding_push_badger1", "loadoutId": "op_badger1" },
-    { "label": "BADGER-2", "holdingId": "holding_push_badger1", "loadoutId": "op_badger1" },
-    { "label": "BADGER-3", "holdingId": "holding_push_badger1", "loadoutId": "op_badger1" },
-    { "label": "BADGER-4", "holdingId": "holding_push_badger1", "loadoutId": "op_badger1" }
+    { "label": "RACCOON-1", "holdingId": "holding_push_raccoon1", "loadoutId": "op_raccoon1", "laserCode": "165x" },
+    { "label": "RACCOON-2", "holdingId": "holding_push_raccoon2", "loadoutId": "op_raccoon2", "laserCode": "166x" },
+    { "label": "RACCOON-3", "holdingId": "holding_push_raccoon3", "loadoutId": "op_raccoon3", "laserCode": "167x" },
+    { "label": "RACCOON-4", "holdingId": "holding_push_raccoon4", "loadoutId": "op_raccoon4", "laserCode": "168x" },
+    { "label": "BADGER-1", "holdingId": "holding_push_badger1", "loadoutId": "op_badger1", "laserCode": "161x" },
+    { "label": "BADGER-2", "holdingId": "holding_push_badger2", "loadoutId": "op_badger2", "laserCode": "162x"  },
+    { "label": "KNIGHT-1", "holdingId": "holding_push_knight1", "loadoutId": "op_knight1", "laserCode": "163x"  },
+    { "label": "KNIGHT-2", "holdingId": "holding_push_knight2", "loadoutId": "op_knight2", "laserCode": "164x"  }
   ],
   "pages": {
     "atc_ground": {
