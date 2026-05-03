@@ -64,7 +64,7 @@
     "id": "BADGER-1",
     "label": "BADGER-1",
     "tabs": [
-      { "id": "1_startup_taxi_ground", "label": "Arranque taxi y despegue" },
+      { "id": "1_startup_taxi_carrier", "label": "Arranque taxi y despegue" },
       { "id": "2_departures", "label": "Check-IN" },
       { "id": "3_tanker", "label": "Repostaje" },
       { "id": "holding_push_badger1", "label": "Holding" },
@@ -79,7 +79,7 @@
     "id": "BADGER-2",
     "label": "BADGER-2",
     "tabs": [
-      { "id": "1_startup_taxi_ground", "label": "Arranque taxi y despegue" },
+      { "id": "1_startup_taxi_carrier", "label": "Arranque taxi y despegue" },
       { "id": "2_departures", "label": "Check-IN" },
       { "id": "3_tanker", "label": "Repostaje" },
       { "id": "holding_push_badger2", "label": "Holding" },
