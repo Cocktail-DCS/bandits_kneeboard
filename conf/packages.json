@@ -16,7 +16,7 @@
       { "id": "2_departures", "label": "Check-IN" },
       { "id": "3_tanker", "label": "Repostaje" },
       { "id": "holding_push_raccoon1", "label": "Holding" },
-      { "id": "op_raccoon1", "label": "Strike" },
+      { "id": "op_raccoon1", "label": "CAS" },
       { "id": "8_arrivals_ground", "label": "Llegada" },
       { "id": "9_shutdown_taxi_ground", "label": "Taxi y apagado" }
     ]
@@ -29,7 +29,7 @@
       { "id": "2_departures", "label": "Check-IN" },
       { "id": "3_tanker", "label": "Repostaje" },
       { "id": "holding_push_raccoon2", "label": "Holding" },
-      { "id": "op_raccoon2", "label": "Strike" },
+      { "id": "op_raccoon2", "label": "CAS" },
       { "id": "8_arrivals_ground", "label": "Llegada" },
       { "id": "9_shutdown_taxi_ground", "label": "Taxi y apagado" }
     ]
@@ -42,7 +42,7 @@
       { "id": "2_departures", "label": "Check-IN" },
       { "id": "3_tanker", "label": "Repostaje" },
       { "id": "holding_push_raccoon3", "label": "Holding" },
-      { "id": "op_raccoon3", "label": "Strike" },
+      { "id": "op_raccoon3", "label": "CAS" },
       { "id": "8_arrivals_ground", "label": "Llegada" },
       { "id": "9_shutdown_taxi_ground", "label": "Taxi y apagado" }
     ]
@@ -55,7 +55,7 @@
       { "id": "2_departures", "label": "Check-IN" },
       { "id": "3_tanker", "label": "Repostaje" },
       { "id": "holding_push_raccoon4", "label": "Holding" },
-      { "id": "op_raccoon4", "label": "Strike" },
+      { "id": "op_raccoon4", "label": "CAS" },
       { "id": "8_arrivals_ground", "label": "Llegada" },
       { "id": "9_shutdown_taxi_ground", "label": "Taxi y apagado" }
     ]
@@ -99,10 +99,8 @@
       { "id": "3_tanker", "label": "Repostaje" },
       { "id": "holding_push_knight1", "label": "Holding" },
       { "id": "op_knight1", "label": "CAS" },
-      { "id": "8_arrivals_carrier", "label": "Llegada" },
-      { "id": "9_shutdown_taxi_carrier", "label": "Taxi y apagado" },
-      { "id": "8_arrivals_ground", "label": "Llegada (andersen)" },
-      { "id": "9_shutdown_taxi_ground", "label": "Taxi y apagado (andersen)" }
+      { "id": "8_arrivals_ground", "label": "Llegada" },
+      { "id": "9_shutdown_taxi_ground", "label": "Taxi y apagado" }
     ]
   },
   {
@@ -114,10 +112,8 @@
       { "id": "3_tanker", "label": "Repostaje" },
       { "id": "holding_push_knight2", "label": "Holding" },
       { "id": "op_knight2", "label": "CAS" },
-      { "id": "8_arrivals_carrier", "label": "Llegada" },
-      { "id": "9_shutdown_taxi_carrier", "label": "Taxi y apagado" },
-      { "id": "8_arrivals_ground", "label": "Llegada (andersen)" },
-      { "id": "9_shutdown_taxi_ground", "label": "Taxi y apagado (andersen)" }
+      { "id": "8_arrivals_ground", "label": "Llegada" },
+      { "id": "9_shutdown_taxi_ground", "label": "Taxi y apagado" }
     ]
   }
   

@@ -36,7 +36,7 @@
     ],
     "important": "A pesar de estar esperando, hay que estar siempre alerta, nunca se sabe si a la CAP se le ha filtrado algun enemigo o hay algun SAM a la espera",
     "tot": {
-      "description": "Organizado por Mission Commander",
+      "description": "Acometer a la orden del JTAC",
       "pushPoint": "WP 7"
     }
   },
@@ -51,8 +51,8 @@
         "altitude": "26.000ft"
       },
       "tot": {
-        "description": "05:15",
-        "pushPoint": "WP 5"
+        "description": "Acometer a la orden del JTAC",
+        "pushPoint": "WP 7"
       }
     },
     "holding_push_raccoon2": {
@@ -65,8 +65,8 @@
         "altitude": "27.000ft"
       },
       "tot": {
-        "description": "05:15",
-        "pushPoint": "WP 5"
+        "description": "Acometer a la orden del JTAC",
+        "pushPoint": "WP 7"
       }
     },
     "holding_push_raccoon3": {
@@ -79,8 +79,8 @@
         "altitude": "28.000ft"
       },
       "tot": {
-        "description": "05:15",
-        "pushPoint": "WP 5"
+        "description": "Acometer a la orden del JTAC",
+        "pushPoint": "WP 7"
       }
     },
     "holding_push_raccoon4": {
@@ -93,64 +93,64 @@
         "altitude": "29.000ft"
       },
       "tot": {
-        "description": "05:15",
-        "pushPoint": "WP 5"
+        "description": "Acometer a la orden del JTAC",
+        "pushPoint": "WP 7"
       }
     },
     "holding_push_badger1": {
       "title": "Holding BADGER-1",
-      "joker": "5000lb",
-      "bingo": "2500lb",
+      "joker": "6000lb",
+      "bingo": "3500lb",
       "laserCode": "161x",
       "holding": {
         "point": "GOLDEN",
         "altitude": "22.000ft"
       },
       "tot": {
-        "description": "N/A",
-        "pushPoint": "N/A"
+        "description": "Acometer a la orden del JTAC",
+        "pushPoint": "WP 7"
       }
     },
     "holding_push_badger2": {
       "title": "Holding BADGER-2",
-      "joker": "5000lb",
-      "bingo": "2500lb",
+      "joker": "6000lb",
+      "bingo": "3500lb",
       "laserCode": "162x",
       "holding": {
         "point": "GOLDEN",
         "altitude": "23.000ft"
       },
       "tot": {
-        "description": "N/A",
-        "pushPoint": "N/A"
+        "description": "Acometer a la orden del JTAC",
+        "pushPoint": "WP 7"
       }
     },
     "holding_push_knight1": {
       "title": "Holding KNIGHT-1",
-      "joker": "5000lb",
-      "bingo": "2500lb",
+      "joker": "6000lb",
+      "bingo": "3500lb",
       "laserCode": "163x",
       "holding": {
         "point": "GOLDEN",
         "altitude": "24.000ft"
       },
       "tot": {
-        "description": "N/A",
-        "pushPoint": "N/A"
+        "description": "Acometer a la orden del JTAC",
+        "pushPoint": "WP 7"
       }
     },
     "holding_push_knight2": {
       "title": "Holding KNIGHT-2",
-      "joker": "5000lb",
-      "bingo": "2500lb",
+      "joker": "6000lb",
+      "bingo": "3500lb",
       "laserCode": "164x",
       "holding": {
         "point": "GOLDEN",
         "altitude": "25.000ft"
       },
       "tot": {
-        "description": "N/A",
-        "pushPoint": "N/A"
+        "description": "Acometer a la orden del JTAC",
+        "pushPoint": "WP 7"
       }
     }
   }
