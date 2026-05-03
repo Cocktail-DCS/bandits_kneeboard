@@ -48,7 +48,7 @@
       "laserCode": "165x",
       "holding": {
         "point": "SILVER (WP 5-6)",
-        "altitude": "26.000ft"
+        "altitude": "26.000ft + 1.000ft por cada vuelo en espera"
       },
       "tot": {
         "description": "Acometer a la orden del JTAC",
@@ -62,7 +62,7 @@
       "laserCode": "166x",
       "holding": {
         "point": "SILVER (WP 5-6)",
-        "altitude": "27.000ft"
+        "altitude": "26.000ft + 1.000ft por cada vuelo en espera"
       },
       "tot": {
         "description": "Acometer a la orden del JTAC",
@@ -76,7 +76,7 @@
       "laserCode": "167x",
       "holding": {
         "point": "SILVER (WP 5-6)",
-        "altitude": "28.000ft"
+        "altitude": "26.000ft + 1.000ft por cada vuelo en espera"
       },
       "tot": {
         "description": "Acometer a la orden del JTAC",
@@ -90,7 +90,7 @@
       "laserCode": "168x",
       "holding": {
         "point": "SILVER (WP 5-6)",
-        "altitude": "29.000ft"
+        "altitude": "26.000ft + 1.000ft por cada vuelo en espera"
       },
       "tot": {
         "description": "Acometer a la orden del JTAC",
@@ -104,7 +104,7 @@
       "laserCode": "161x",
       "holding": {
         "point": "GOLDEN (WP 5-6)",
-        "altitude": "22.000ft"
+        "altitude": "22.000ft + 1.000ft por cada vuelo en espera"
       },
       "tot": {
         "description": "Acometer a la orden del JTAC",
@@ -118,7 +118,7 @@
       "laserCode": "162x",
       "holding": {
         "point": "GOLDEN (WP 5-6)",
-        "altitude": "23.000ft"
+        "altitude": "22.000ft + 1.000ft por cada vuelo en espera"
       },
       "tot": {
         "description": "Acometer a la orden del JTAC",
@@ -132,7 +132,7 @@
       "laserCode": "163x",
       "holding": {
         "point": "GOLDEN (WP 5-6)",
-        "altitude": "24.000ft"
+        "altitude": "22.000ft + 1.000ft por cada vuelo en espera"
       },
       "tot": {
         "description": "Acometer a la orden del JTAC",
@@ -146,7 +146,7 @@
       "laserCode": "164x",
       "holding": {
         "point": "GOLDEN (WP 5-6)",
-        "altitude": "25.000ft"
+        "altitude": "22.000ft + 1.000ft por cada vuelo en espera"
       },
       "tot": {
         "description": "Acometer a la orden del JTAC",
