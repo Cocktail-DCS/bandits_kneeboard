@@ -125,9 +125,11 @@ async function loadOptionalText(url) {
 }
 
 function switchEditorView(view) {
-    if ((document.getElementById("editor-panel").dataset.view || "json") === "json" && !saveActiveJson()) {
+    const currentView = document.getElementById("editor-panel").dataset.view || "json";
+    if (currentView === "json" && !saveActiveJson()) {
         return;
     }
+    if (currentView === "html") syncVisualHtmlPage();
 
     document.querySelectorAll(".editor-tab").forEach(button => {
         button.classList.toggle("active", button.dataset.editorView === view);
@@ -232,8 +234,8 @@ function renderHtmlEditor() {
                         <button type="button" class="editor-btn" data-html-sync>Actualizar HTML crudo</button>
                     </div>
                 </div>
-                <div class="html-block-list">
-                    ${blocks.map(renderHtmlBlockControl).join("")}
+                <div class="html-visual-editor">
+                    ${blocks.map(renderHtmlVisualBlock).join("")}
                 </div>
                 <details class="editor-advanced">
                     <summary>HTML crudo avanzado</summary>
@@ -247,42 +249,56 @@ function renderHtmlEditor() {
     content.querySelector(".editor-file-list").addEventListener("click", event => {
         const file = event.target.dataset.htmlFile;
         if (!file) return;
+        syncVisualHtmlPage();
         editorState.activeHtmlFile = file;
         renderHtmlEditor();
     });
 
-    const updateFromBlockInput = event => {
-        const index = Number(event.target.dataset.blockIndex);
-        const field = event.target.dataset.blockField;
-        if (!Number.isInteger(index) || !field) return;
-        updateHtmlBlock(blocks[index], field, event.target.value);
-        syncActiveHtmlPage();
+    enhanceHtmlVisualEditor(content);
+
+    const updateFromVisualInput = event => {
+        if (event.target.matches("textarea")) {
+            event.target.textContent = event.target.value;
+            autoResizeTextarea(event.target);
+        }
+
+        if (event.target.matches("[data-image-index]")) {
+            const block = event.target.closest(".html-visual-block");
+            const image = block?.querySelectorAll(".html-visual-content img")[Number(event.target.dataset.imageIndex)];
+            if (image) image.setAttribute("src", event.target.value);
+        }
+
+        syncVisualHtmlPage();
         clearEditorMessage();
     };
 
-    const blockList = content.querySelector(".html-block-list");
-    blockList.addEventListener("input", updateFromBlockInput);
-    blockList.addEventListener("change", updateFromBlockInput);
-    blockList.addEventListener("click", event => {
+    const visualEditor = content.querySelector(".html-visual-editor");
+    visualEditor.addEventListener("input", updateFromVisualInput);
+    visualEditor.addEventListener("change", updateFromVisualInput);
+    visualEditor.addEventListener("click", event => {
         const action = event.target.dataset.blockAction;
         const index = Number(event.target.dataset.blockIndex);
         if (!action || !Number.isInteger(index)) return;
 
+        syncVisualHtmlPage();
+        const currentBlocks = getEditableHtmlBlocks(editorState.htmlDocs[editorState.activeHtmlFile]);
+
         if (action === "delete") {
-            deleteHtmlBlock(blocks[index]);
+            deleteHtmlBlock(currentBlocks[index]);
             renderHtmlEditor();
             showEditorMessage("Bloque eliminado.");
             return;
         }
 
         if (action === "move-up" || action === "move-down") {
-            moveHtmlBlock(blocks[index], action === "move-up" ? -1 : 1);
+            moveHtmlBlock(currentBlocks[index], action === "move-up" ? -1 : 1);
             renderHtmlEditor();
             return;
         }
     });
 
     content.querySelector("[data-html-add-block]").addEventListener("click", () => {
+        syncVisualHtmlPage();
         const type = content.querySelector("[data-new-block-type]").value;
         addHtmlBlock(type);
         renderHtmlEditor();
@@ -290,11 +306,12 @@ function renderHtmlEditor() {
     });
 
     content.querySelector("[data-html-preview]").addEventListener("click", () => {
-        syncActiveHtmlPage();
+        syncVisualHtmlPage();
         openHtmlPreview();
     });
 
     content.querySelector("[data-html-sync]").addEventListener("click", () => {
+        syncVisualHtmlPage();
         const raw = content.querySelector("#editor-html-raw");
         if (raw) raw.value = serializeHtmlDoc(editorState.htmlDocs[editorState.activeHtmlFile]);
         showEditorMessage("HTML crudo actualizado desde bloques.");
@@ -307,6 +324,8 @@ function renderHtmlEditor() {
         renderHtmlEditor();
         showEditorMessage("HTML crudo aplicado.");
     });
+
+    autoResizeTextareas(content);
 }
 
 function parseHtmlFragment(html) {
@@ -353,6 +372,94 @@ function detectHtmlBlockKind(node, parts) {
     if (parts.image && !parts.heading) return "image";
     if (node.classList?.contains("card")) return "card";
     return node.tagName.toLowerCase();
+}
+
+function renderHtmlVisualBlock(block) {
+    const imageControls = Array.from(block.node.querySelectorAll?.("img") || []).map((image, index) => `
+        <label class="html-visual-image-field">
+            Imagen ${index + 1}
+            <input type="text" value="${escapeHTML(image.getAttribute("src") || "")}" data-image-index="${index}">
+        </label>
+    `).join("");
+
+    return `
+        <article class="html-visual-block">
+            <header class="html-visual-toolbar">
+                <div>
+                    <strong>${escapeHTML(HTML_BLOCK_TYPES[block.kind] || block.kind)} ${block.editorIndex + 1}</strong>
+                    <small>${escapeHTML(block.node.tagName.toLowerCase())}</small>
+                </div>
+                <div class="html-block-actions">
+                    <button type="button" class="editor-icon-btn" data-block-index="${block.editorIndex}" data-block-action="move-up" title="Subir">↑</button>
+                    <button type="button" class="editor-icon-btn" data-block-index="${block.editorIndex}" data-block-action="move-down" title="Bajar">↓</button>
+                    <button type="button" class="editor-icon-btn danger" data-block-index="${block.editorIndex}" data-block-action="delete" title="Eliminar">×</button>
+                </div>
+            </header>
+            <div class="html-visual-content">${block.node.outerHTML}</div>
+            ${imageControls ? `<div class="html-visual-image-fields">${imageControls}</div>` : ""}
+        </article>
+    `;
+}
+
+function enhanceHtmlVisualEditor(root) {
+    root.querySelectorAll(".html-visual-content").forEach(content => {
+        content.querySelectorAll("h1, h2, h3, h4, h5, h6, p, li, small, figcaption").forEach(node => {
+            node.setAttribute("contenteditable", "true");
+            node.setAttribute("spellcheck", "false");
+        });
+
+        content.querySelectorAll(".notes-input:not(textarea)").forEach(node => {
+            node.setAttribute("contenteditable", "true");
+            node.setAttribute("spellcheck", "false");
+        });
+    });
+}
+
+function syncVisualHtmlPage() {
+    const visualEditor = document.querySelector(".html-visual-editor");
+    if (!visualEditor) return syncActiveHtmlPage();
+
+    const html = Array.from(visualEditor.querySelectorAll(".html-visual-content"))
+        .map(serializeVisualContent)
+        .filter(Boolean)
+        .join("\n\n");
+
+    editorState.htmlDocs[editorState.activeHtmlFile] = parseHtmlFragment(html);
+    syncActiveHtmlPage();
+}
+
+function serializeVisualContent(content) {
+    const clone = content.cloneNode(true);
+    cleanEditorMarkup(clone);
+    return clone.innerHTML.trim();
+}
+
+function cleanEditorMarkup(root) {
+    root.querySelectorAll("[contenteditable]").forEach(node => {
+        node.removeAttribute("contenteditable");
+        node.removeAttribute("spellcheck");
+    });
+
+    root.querySelectorAll("textarea").forEach(textarea => {
+        textarea.textContent = textarea.value;
+    });
+
+    root.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        if (checkbox.checked) {
+            checkbox.setAttribute("checked", "");
+        } else {
+            checkbox.removeAttribute("checked");
+        }
+    });
+}
+
+function autoResizeTextareas(root = document) {
+    root.querySelectorAll("textarea").forEach(autoResizeTextarea);
+}
+
+function autoResizeTextarea(textarea) {
+    textarea.style.height = "auto";
+    textarea.style.height = `${textarea.scrollHeight}px`;
 }
 
 function renderHtmlBlockControl(block) {
@@ -604,6 +711,7 @@ function closeHtmlPreview() {
 
 function exportSnapshot() {
     if (!saveActiveJson()) return;
+    syncVisualHtmlPage();
 
     for (const [file, doc] of Object.entries(editorState.htmlDocs)) {
         editorState.pages[file] = serializeHtmlDoc(doc);
