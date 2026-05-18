@@ -1,0 +1,40 @@
+{
+  "groups": [
+    {
+      "channelHeader": "PRI",
+      "agencyHeader": "AGCY(BORODINO)",
+      "frequencyHeader": "FREQ",
+      "rows": [
+        { "radio": "1", "callsign": "ANDERSEN TOWER", "freq": "250.15", "color": "orange" },
+        { "radio": "2", "callsign": "OVERLORD-1", "freq": "251", "color": "blue" },
+        { "radio": "3", "callsign": "TEXACO-1", "freq": "252", "color": "purple" },
+        { "radio": "4", "callsign": "ARCO-1", "freq": "252.1", "color": "purple" },
+        { "radio": "5", "callsign": "CVN-71 ROUGH RIDER", "freq": "271.75", "color": "orange" },
+        { "radio": "6", "callsign": "GOLDPLATE-7", "freq": "252.5", "color": "yellow" },
+        { "radio": "7", "callsign": "ANDERSEN GROUND", "freq": "250.25", "color": "orange-dark" },
+        { "radio": "8", "callsign": "", "freq": "", "color": "" },
+        { "radio": "9", "callsign": "", "freq": "", "color": "" },
+        { "radio": "10", "callsign": "ATIS INCIRLIK", "freq": "254.3", "color": "yellow" },
+        { "radio": "G", "callsign": "UHF", "freq": "243", "color": "black" }
+      ]
+    },
+    {
+      "channelHeader": "SEC",
+      "agencyHeader": "AGCY(LEIPZIG)",
+      "frequencyHeader": "FREQ",
+      "rows": [
+        { "radio": "1", "callsign": "RACCOON-1", "freq": "122", "color": "blue" },
+        { "radio": "2", "callsign": "RACCOON-2", "freq": "122.1", "color": "blue" },
+        { "radio": "3", "callsign": "RACCOON-3", "freq": "122.2", "color": "blue" },
+        { "radio": "4", "callsign": "RACCOON-4", "freq": "122.3", "color": "blue" },
+        { "radio": "5", "callsign": "BADGER-1", "freq": "125", "color": "red" },
+        { "radio": "6", "callsign": "BADGER-2", "freq": "125.1", "color": "red" },
+        { "radio": "7", "callsign": "BADGER-3", "freq": "125.2", "color": "red" },
+        { "radio": "8", "callsign": "BADGER-4", "freq": "125.3", "color": "red" },
+        { "radio": "9", "callsign": "", "freq": "", "color": "" },
+        { "radio": "10", "callsign": "", "freq": "", "color": "" },
+        { "radio": "G", "callsign": "VHF", "freq": "121.5", "color": "black" }
+      ]
+    }
+  ]
+}

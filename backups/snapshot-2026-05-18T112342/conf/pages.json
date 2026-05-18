@@ -132,27 +132,11 @@
         {
           "type": "table",
           "title": "Puntos clave",
-          "headers": [
-            "Fase",
-            "Accion",
-            "Notas"
-          ],
+          "headers": ["Fase", "Accion", "Notas"],
           "rows": [
-            [
-              "Ingreso",
-              "Contactar ATC",
-              "Confirmar informacion de pista"
-            ],
-            [
-              "Espera",
-              "Mantener altitud asignada",
-              "Vigilar trafico"
-            ],
-            [
-              "Final",
-              "Configurar aterrizaje",
-              "Respetar separacion"
-            ]
+            ["Ingreso", "Contactar ATC", "Confirmar informacion de pista"],
+            ["Espera", "Mantener altitud asignada", "Vigilar trafico"],
+            ["Final", "Configurar aterrizaje", "Respetar separacion"]
           ]
         },
         {
@@ -202,31 +186,11 @@
       "title": "STRIKE",
       "situation": "Tu tarea es atacar los WP objetivo con bombas",
       "fenceIn": [
-        {
-          "letter": "F",
-          "label": "Firepower (Armas)",
-          "text": "Master ARM ON, Armas seleccionadas y espoletas configuradas"
-        },
-        {
-          "letter": "E",
-          "label": "Emitters (Emisiones)",
-          "text": "Preparar FCR (Radar), radio altímetro, radios, IFF, Datalink, Luces OFF"
-        },
-        {
-          "letter": "N",
-          "label": "Navigation (Navegacion)",
-          "text": "Comprobar ruta de vuelo, comprobar Bullseye"
-        },
-        {
-          "letter": "C",
-          "label": "Countermeasures (Contramedidas)",
-          "text": "Dispensadores ARMADOS, ECM/ASPJ Listos para operar"
-        },
-        {
-          "letter": "E",
-          "label": "Employment (Estados)",
-          "text": "Verificar BINGO, RWR operativo y sin avisos, otros aspectos del avion en concreto"
-        }
+        { "letter": "F", "label": "Firepower (Armas)", "text": "Master ARM ON, Armas seleccionadas y espoletas configuradas" },
+        { "letter": "E", "label": "Emitters (Emisiones)", "text": "Preparar FCR (Radar), radio altímetro, radios, IFF, Datalink, Luces OFF" },
+        { "letter": "N", "label": "Navigation (Navegacion)", "text": "Comprobar ruta de vuelo, comprobar Bullseye" },
+        { "letter": "C", "label": "Countermeasures (Contramedidas)", "text": "Dispensadores ARMADOS, ECM/ASPJ Listos para operar" },
+        { "letter": "E", "label": "Employment (Estados)", "text": "Verificar BINGO, RWR operativo y sin avisos, otros aspectos del avion en concreto" }
       ],
       "important": [
         "Configrar el bullseye para realizar un correcto reporte de enemigos",

@@ -28,3 +28,21 @@ En `pages.json`, `type: "operation"` sirve para paginas STRIKE con armamento des
 Las paginas HTML de `pages/` quedan para contenido comun o muy especifico. Las esperas configuradas en `holdings.json` se renderizan directamente desde datos, por lo que no hace falta duplicar HTML para cada vuelo.
 
 En `holdings.json`, los textos comunes estan en `defaults` y cada vuelo vive en `items`. Si un vuelo necesita un texto propio, anade ese campo dentro de su bloque en `items` y sustituira al valor comun. JSON no acepta comentarios reales, asi que el bloque `_help` documenta el formato sin romper la carga de la web.
+
+## Editor web
+
+Abre la web con `?edit=1` para entrar en modo editor, por ejemplo:
+
+```text
+index.html?edit=1
+```
+
+El editor no escribe en disco desde el navegador. Permite modificar los JSON de `conf/` y los HTML existentes de `pages/`, y despues descarga un snapshot completo `kneeboard-snapshot-*.json`.
+
+Para aplicar ese snapshot en este repo:
+
+```bash
+node tools/apply_snapshot.mjs kneeboard-snapshot.json --backup
+```
+
+El script solo escribe archivos permitidos dentro de `conf/` y `pages/`. Con `--backup` guarda una copia previa en `backups/` antes de sobrescribir.
