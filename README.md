@@ -37,7 +37,11 @@ Abre la web con `?edit=1` para entrar en modo editor, por ejemplo:
 index.html?edit=1
 ```
 
+Tambien hay un boton pequeno `Editar` en la esquina inferior derecha de la pagina principal, pensado para funcionar igual en GitHub Pages.
+
 El editor no escribe en disco desde el navegador. Permite modificar los JSON de `conf/` y los HTML existentes de `pages/`, y despues descarga un snapshot completo `kneeboard-snapshot-*.json`.
+
+En la pestana HTML puedes editar bloques existentes, anadir bloques nuevos, moverlos, eliminarlos y ajustar campos como titulo, texto, imagen o HTML crudo.
 
 Para aplicar ese snapshot en este repo:
 

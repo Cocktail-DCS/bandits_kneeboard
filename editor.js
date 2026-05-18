@@ -20,6 +20,16 @@ const EDITOR_HTML_FILES = [
     "9_shutdown_taxi_carrier.html",
 ];
 
+const HTML_BLOCK_TYPES = {
+    card: "Tarjeta",
+    notes: "Comunicaciones",
+    checklist: "Checklist",
+    list: "Lista",
+    image: "Imagen",
+    textarea: "Notas editables",
+    raw: "HTML crudo",
+};
+
 const editorState = {
     enabled: false,
     conf: {},
@@ -211,7 +221,15 @@ function renderHtmlEditor() {
             <div class="editor-workspace">
                 <div class="editor-workspace-header">
                     <h3>${escapeHTML(editorState.activeHtmlFile)}</h3>
-                    <button type="button" class="editor-btn" data-html-sync>Actualizar HTML crudo</button>
+                    <div class="editor-actions">
+                        <select class="editor-select" data-new-block-type>
+                            ${Object.entries(HTML_BLOCK_TYPES).map(([value, label]) => `
+                                <option value="${escapeHTML(value)}">${escapeHTML(label)}</option>
+                            `).join("")}
+                        </select>
+                        <button type="button" class="editor-btn" data-html-add-block>Añadir bloque</button>
+                        <button type="button" class="editor-btn" data-html-sync>Actualizar HTML crudo</button>
+                    </div>
                 </div>
                 <div class="html-block-list">
                     ${blocks.map(renderHtmlBlockControl).join("")}
@@ -241,8 +259,34 @@ function renderHtmlEditor() {
         clearEditorMessage();
     };
 
-    content.querySelector(".html-block-list").addEventListener("input", updateFromBlockInput);
-    content.querySelector(".html-block-list").addEventListener("change", updateFromBlockInput);
+    const blockList = content.querySelector(".html-block-list");
+    blockList.addEventListener("input", updateFromBlockInput);
+    blockList.addEventListener("change", updateFromBlockInput);
+    blockList.addEventListener("click", event => {
+        const action = event.target.dataset.blockAction;
+        const index = Number(event.target.dataset.blockIndex);
+        if (!action || !Number.isInteger(index)) return;
+
+        if (action === "delete") {
+            deleteHtmlBlock(blocks[index]);
+            renderHtmlEditor();
+            showEditorMessage("Bloque eliminado.");
+            return;
+        }
+
+        if (action === "move-up" || action === "move-down") {
+            moveHtmlBlock(blocks[index], action === "move-up" ? -1 : 1);
+            renderHtmlEditor();
+            return;
+        }
+    });
+
+    content.querySelector("[data-html-add-block]").addEventListener("click", () => {
+        const type = content.querySelector("[data-new-block-type]").value;
+        addHtmlBlock(type);
+        renderHtmlEditor();
+        showEditorMessage("Bloque añadido.");
+    });
 
     content.querySelector("[data-html-sync]").addEventListener("click", () => {
         const raw = content.querySelector("#editor-html-raw");
@@ -275,18 +319,34 @@ function getEditableHtmlBlocks(doc) {
         const image = node.querySelector?.("img");
         const textarea = node.querySelector?.("textarea");
         const notes = node.classList?.contains("notes-input") ? node : node.querySelector?.(".notes-input");
+        const list = node.querySelector?.("ul, ol");
+        const forcedRaw = node.dataset?.editorKind === "raw";
+        const rawOnly = forcedRaw || (!heading && !image && !textarea && !notes && !list && !node.querySelector?.("p, li, small"));
 
         return {
             editorIndex: index,
             node,
-            kind: node.classList?.contains("card") ? "card" : node.tagName.toLowerCase(),
+            kind: detectHtmlBlockKind(node, { notes, textarea, list, image, rawOnly }),
             heading,
             image,
             textarea,
             notes,
+            list,
+            rawOnly,
             textNodes: Array.from(node.querySelectorAll?.("p, li, small") || []),
         };
     });
+}
+
+function detectHtmlBlockKind(node, parts) {
+    if (node.dataset?.editorKind === "raw") return "raw";
+    if (parts.rawOnly) return "raw";
+    if (parts.textarea) return "textarea";
+    if (parts.notes) return "notes";
+    if (parts.list) return "list";
+    if (parts.image && !parts.heading) return "image";
+    if (node.classList?.contains("card")) return "card";
+    return node.tagName.toLowerCase();
 }
 
 function renderHtmlBlockControl(block) {
@@ -297,29 +357,43 @@ function renderHtmlBlockControl(block) {
             ? block.notes.innerHTML.replaceAll("<br>", "\n").replaceAll("<br />", "\n")
             : block.textNodes.map(node => node.textContent).join("\n");
     const imageValue = block.image ? block.image.getAttribute("src") || "" : "";
+    const rawValue = block.kind === "raw" ? block.node.outerHTML : "";
 
     return `
         <article class="html-block">
             <header>
-                <strong>${escapeHTML(block.kind)} ${block.editorIndex + 1}</strong>
-                <small>${escapeHTML(block.node.tagName.toLowerCase())}</small>
+                <div>
+                    <strong>${escapeHTML(HTML_BLOCK_TYPES[block.kind] || block.kind)} ${block.editorIndex + 1}</strong>
+                    <small>${escapeHTML(block.node.tagName.toLowerCase())}</small>
+                </div>
+                <div class="html-block-actions">
+                    <button type="button" class="editor-icon-btn" data-block-index="${block.editorIndex}" data-block-action="move-up" title="Subir">↑</button>
+                    <button type="button" class="editor-icon-btn" data-block-index="${block.editorIndex}" data-block-action="move-down" title="Bajar">↓</button>
+                    <button type="button" class="editor-icon-btn danger" data-block-index="${block.editorIndex}" data-block-action="delete" title="Eliminar">×</button>
+                </div>
             </header>
-            ${block.heading ? `
+            ${block.heading && block.kind !== "raw" ? `
                 <label>
                     Título
                     <input type="text" value="${escapeHTML(headingValue)}" data-block-index="${block.editorIndex}" data-block-field="heading">
                 </label>
             ` : ""}
-            ${block.textarea || block.notes || block.textNodes.length ? `
+            ${(block.textarea || block.notes || block.textNodes.length) && block.kind !== "raw" ? `
                 <label>
                     Texto
                     <textarea class="editor-small-textarea" data-block-index="${block.editorIndex}" data-block-field="text">${escapeHTML(textValue)}</textarea>
                 </label>
             ` : ""}
-            ${block.image ? `
+            ${block.image && block.kind !== "raw" ? `
                 <label>
                     Imagen
                     <input type="text" value="${escapeHTML(imageValue)}" data-block-index="${block.editorIndex}" data-block-field="image">
+                </label>
+            ` : ""}
+            ${block.kind === "raw" ? `
+                <label>
+                    HTML
+                    <textarea class="editor-small-textarea" data-block-index="${block.editorIndex}" data-block-field="raw">${escapeHTML(rawValue)}</textarea>
                 </label>
             ` : ""}
         </article>
@@ -334,6 +408,12 @@ function updateHtmlBlock(block, field, value) {
 
     if (field === "image" && block.image) {
         block.image.setAttribute("src", value);
+        return;
+    }
+
+    if (field === "raw") {
+        replaceHtmlBlockWithRaw(block, value);
+        block.node = editorState.htmlDocs[editorState.activeHtmlFile].body.children[block.editorIndex];
         return;
     }
 
@@ -352,6 +432,109 @@ function updateHtmlBlock(block, field, value) {
 
     const lines = value.split("\n");
     updateTextNodes(block, lines);
+}
+
+function replaceHtmlBlockWithRaw(block, value) {
+    const doc = block.node.ownerDocument;
+    const wrapper = doc.createElement("div");
+    wrapper.innerHTML = value.trim();
+    const replacement = wrapper.firstElementChild || doc.createTextNode(value);
+    block.node.replaceWith(replacement);
+}
+
+function addHtmlBlock(type) {
+    const doc = editorState.htmlDocs[editorState.activeHtmlFile];
+    const block = createHtmlBlock(doc, type);
+    doc.body.appendChild(block);
+    syncActiveHtmlPage();
+}
+
+function createHtmlBlock(doc, type) {
+    if (type === "notes") {
+        return htmlToElement(doc, `
+            <div class="card">
+                <h3>Nueva comunicación</h3>
+                <div class="notes-input" style="min-height: auto;">PILOTO: "..."<br>CONTROL: "..."</div>
+            </div>
+        `);
+    }
+
+    if (type === "checklist") {
+        return htmlToElement(doc, `
+            <div class="card">
+                <h3>Nueva checklist</h3>
+                <ul>
+                    <li><input type="checkbox"> Primer punto</li>
+                    <li><input type="checkbox"> Segundo punto</li>
+                </ul>
+            </div>
+        `);
+    }
+
+    if (type === "list") {
+        return htmlToElement(doc, `
+            <div class="card">
+                <h3>Nueva lista</h3>
+                <ul>
+                    <li>Primer punto</li>
+                    <li>Segundo punto</li>
+                </ul>
+            </div>
+        `);
+    }
+
+    if (type === "image") {
+        return htmlToElement(doc, `
+            <div class="card">
+                <h3>Nueva imagen</h3>
+                <img src="images/emblem.png" class="img-full">
+            </div>
+        `);
+    }
+
+    if (type === "textarea") {
+        return htmlToElement(doc, `
+            <div class="card">
+                <h3>Nuevas notas</h3>
+                <textarea id="notes-new-${Date.now()}" class="notes-input" placeholder="Escribe aqui tus notas."></textarea>
+            </div>
+        `);
+    }
+
+    if (type === "raw") {
+        return htmlToElement(doc, `<div class="card" data-editor-kind="raw"><h3>HTML crudo</h3><p>Edita este bloque desde el campo HTML.</p></div>`);
+    }
+
+    return htmlToElement(doc, `
+        <div class="card">
+            <h3>Nueva sección</h3>
+            <p>Contenido de la sección.</p>
+        </div>
+    `);
+}
+
+function htmlToElement(doc, html) {
+    const wrapper = doc.createElement("div");
+    wrapper.innerHTML = html.trim();
+    return wrapper.firstElementChild;
+}
+
+function deleteHtmlBlock(block) {
+    block.node.remove();
+    syncActiveHtmlPage();
+}
+
+function moveHtmlBlock(block, direction) {
+    const sibling = direction < 0 ? block.node.previousElementSibling : block.node.nextElementSibling;
+    if (!sibling) return;
+
+    if (direction < 0) {
+        block.node.parentNode.insertBefore(block.node, sibling);
+    } else {
+        block.node.parentNode.insertBefore(sibling, block.node);
+    }
+
+    syncActiveHtmlPage();
 }
 
 function updateTextNodes(block, lines) {

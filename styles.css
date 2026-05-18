@@ -16,6 +16,25 @@ body {
     overflow: hidden;
 }
 
+#open-editor-link {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    z-index: 30;
+    padding: 6px 9px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: rgba(30, 30, 30, 0.88);
+    color: var(--text);
+    font-size: 0.75rem;
+    text-decoration: none;
+}
+
+#open-editor-link:hover {
+    background: var(--accent);
+    color: #ffffff;
+}
+
 /* ── SIDEBAR ── */
 #sidebar {
     width: 550px;
@@ -233,13 +252,27 @@ body.editor-mode #sidebar-toggle {
 
 .editor-btn,
 .editor-tab,
-.editor-file-list button {
+.editor-file-list button,
+.editor-icon-btn,
+.editor-select {
     border: 1px solid var(--border);
     background: #2f2f2f;
     color: var(--text);
     border-radius: 4px;
     padding: 8px 10px;
     cursor: pointer;
+}
+
+.editor-icon-btn {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    text-align: center;
+}
+
+.editor-icon-btn.danger {
+    border-color: #733;
+    color: #ffd9d9;
 }
 
 .editor-btn-primary,
@@ -354,6 +387,21 @@ body.editor-mode #sidebar-toggle {
     justify-content: space-between;
     gap: 10px;
     margin-bottom: 10px;
+}
+
+.html-block header > div:first-child {
+    min-width: 0;
+}
+
+.html-block header small {
+    display: block;
+    color: #aaa;
+}
+
+.html-block-actions {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
 }
 
 .html-block label {
