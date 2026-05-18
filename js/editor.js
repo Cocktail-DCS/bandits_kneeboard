@@ -210,6 +210,7 @@ function renderJsonEditor() {
     const content = document.getElementById("editor-content");
     const isRadioEditor = editorState.activeConfFile === "radios.json";
     const isTankerEditor = editorState.activeConfFile === "tankers.json";
+    const isLoadoutEditor = editorState.activeConfFile === "loadouts.json";
     content.innerHTML = `
         <div class="editor-layout">
             <nav class="editor-file-list">
@@ -224,7 +225,7 @@ function renderJsonEditor() {
                     <h3>${escapeHTML(editorState.activeConfFile)}</h3>
                     <button type="button" class="editor-btn" data-json-validate>Validar JSON</button>
                 </div>
-                ${isRadioEditor ? renderRadioJsonEditor() : isTankerEditor ? renderTankerJsonEditor() : `
+                ${isRadioEditor ? renderRadioJsonEditor() : isTankerEditor ? renderTankerJsonEditor() : isLoadoutEditor ? renderLoadoutJsonEditor() : `
                     <textarea id="editor-json-textarea" class="editor-textarea" spellcheck="false">${escapeHTML(formatJSON(editorState.conf[editorState.activeConfFile]))}</textarea>
                 `}
             </div>
@@ -249,6 +250,7 @@ function renderJsonEditor() {
 
     if (isRadioEditor) initRadioJsonEditor(content);
     if (isTankerEditor) initTankerJsonEditor(content);
+    if (isLoadoutEditor) initLoadoutJsonEditor(content);
 }
 
 function saveActiveJson() {
@@ -257,6 +259,9 @@ function saveActiveJson() {
     }
     if (editorState.activeConfFile === "tankers.json" && document.querySelector(".tanker-json-editor")) {
         return syncTankerJsonEditor();
+    }
+    if (editorState.activeConfFile === "loadouts.json" && document.querySelector(".loadout-json-editor")) {
+        return syncLoadoutJsonEditor();
     }
 
     const textarea = document.getElementById("editor-json-textarea");
@@ -775,6 +780,305 @@ function renderJsonEditorPreservingTankerScroll() {
         nextTableWrap.scrollLeft = scrollState.tableLeft;
     }
     if (nextEditor) nextEditor.scrollTop = scrollState.editorTop;
+}
+
+function renderLoadoutJsonEditor() {
+    const config = editorState.conf["loadouts.json"] || {};
+    const loadoutIds = getLoadoutIds(config);
+    const catalogItems = collectLoadoutCatalogItems(config);
+
+    return `
+        <div class="loadout-json-editor">
+            <datalist id="loadout-weapon-options">
+                ${catalogItems.map(item => `<option value="${escapeHTML(item.arma)}"></option>`).join("")}
+            </datalist>
+            <div class="editor-section-header">
+                <h4>Loadouts</h4>
+                <button type="button" class="editor-btn" data-loadout-add>Añadir loadout</button>
+            </div>
+            <div class="loadout-section-list">
+                ${loadoutIds.map(id => renderLoadoutSection(id, config[id])).join("")}
+            </div>
+            ${renderLoadoutCatalog(config)}
+            <details class="editor-advanced loadout-json-raw">
+                <summary>JSON crudo avanzado</summary>
+                <textarea id="editor-json-textarea" class="editor-textarea" spellcheck="false">${escapeHTML(formatJSON(config))}</textarea>
+            </details>
+        </div>
+    `;
+}
+
+function getLoadoutIds(config) {
+    return Object.keys(config).filter(key => Array.isArray(config[key]));
+}
+
+function renderLoadoutSection(id, items) {
+    return `
+        <section class="editor-form-section loadout-section" data-loadout-id="${escapeHTML(id)}">
+            <div class="editor-section-header">
+                <input type="text" value="${escapeHTML(id)}" data-loadout-rename="${escapeHTML(id)}">
+                <div class="radio-json-row-actions">
+                    <button type="button" class="editor-btn editor-btn-compact" data-loadout-item-add="${escapeHTML(id)}">Añadir arma</button>
+                    <button type="button" class="editor-icon-btn danger" data-loadout-delete="${escapeHTML(id)}" title="Eliminar loadout">×</button>
+                </div>
+            </div>
+            <div class="loadout-item-list">
+                ${(items || []).map((item, index) => renderLoadoutItemEditor(id, item, index)).join("")}
+            </div>
+        </section>
+    `;
+}
+
+function renderLoadoutItemEditor(loadoutId, item, index) {
+    return `
+        <article class="loadout-item-editor">
+            <input type="text" value="${escapeHTML(item.cantidad || "")}" data-loadout-id="${escapeHTML(loadoutId)}" data-loadout-index="${index}" data-loadout-field="cantidad" placeholder="x1">
+            <input type="text" value="${escapeHTML(item.arma || "")}" data-loadout-id="${escapeHTML(loadoutId)}" data-loadout-index="${index}" data-loadout-field="arma" list="loadout-weapon-options" placeholder="Arma">
+            <input type="text" value="${escapeHTML(item.brevity || "")}" data-loadout-id="${escapeHTML(loadoutId)}" data-loadout-index="${index}" data-loadout-field="brevity" placeholder="Brevity">
+            <textarea class="editor-small-textarea" data-loadout-id="${escapeHTML(loadoutId)}" data-loadout-index="${index}" data-loadout-field="nota" placeholder="Nota">${escapeHTML(item.nota || "")}</textarea>
+            <div class="radio-json-row-actions">
+                <button type="button" class="editor-icon-btn" data-loadout-item-move="${escapeHTML(loadoutId)}" data-loadout-index="${index}" data-loadout-direction="-1" title="Subir">↑</button>
+                <button type="button" class="editor-icon-btn" data-loadout-item-move="${escapeHTML(loadoutId)}" data-loadout-index="${index}" data-loadout-direction="1" title="Bajar">↓</button>
+                <button type="button" class="editor-icon-btn danger" data-loadout-item-delete="${escapeHTML(loadoutId)}" data-loadout-index="${index}" title="Eliminar">×</button>
+            </div>
+        </article>
+    `;
+}
+
+function renderLoadoutCatalog(config) {
+    const catalogItems = collectLoadoutCatalogItems(config);
+    if (!catalogItems.length) return "";
+
+    return `
+        <details class="editor-advanced loadout-catalog">
+            <summary>Catálogo de armamento (${catalogItems.length})</summary>
+            <div class="loadout-catalog-list">
+                ${catalogItems.map(item => `
+                    <button type="button" class="loadout-catalog-item" data-catalog-weapon="${escapeHTML(item.arma)}">
+                        <strong>${escapeHTML(item.arma)}</strong>
+                        <span>${escapeHTML(item.brevity || "N/A")}</span>
+                        <small>${escapeHTML(item.nota || "")}</small>
+                    </button>
+                `).join("")}
+            </div>
+        </details>
+    `;
+}
+
+function collectLoadoutCatalogItems(config) {
+    const help = config?._help || {};
+    const itemsByWeapon = new Map();
+
+    ["f16", "f18"].forEach(aircraftKey => {
+        const aircraft = help[aircraftKey] || {};
+        Object.entries(aircraft).forEach(([key, value]) => {
+            if (key === "aeronave" || !Array.isArray(value)) return;
+            value.forEach(item => {
+                if (!item?.arma || itemsByWeapon.has(item.arma)) return;
+                itemsByWeapon.set(item.arma, item);
+            });
+        });
+    });
+
+    return [...itemsByWeapon.values()].sort((a, b) => a.arma.localeCompare(b.arma));
+}
+
+function initLoadoutJsonEditor(content) {
+    const editor = content.querySelector(".loadout-json-editor");
+
+    editor.addEventListener("input", event => {
+        updateLoadoutJsonField(event.target);
+        clearEditorMessage();
+    });
+
+    editor.addEventListener("change", event => {
+        if (event.target.dataset.loadoutRename) {
+            renameLoadoutJsonSection(event.target.dataset.loadoutRename, event.target.value);
+            syncLoadoutJsonRawTextarea();
+            renderJsonEditorPreservingLoadoutScroll();
+            return;
+        }
+
+        if (event.target.dataset.loadoutField === "arma") {
+            applyCatalogWeaponToLoadoutItem(event.target);
+            renderJsonEditorPreservingLoadoutScroll();
+        }
+    });
+
+    editor.addEventListener("click", event => {
+        const catalogWeapon = event.target.dataset.catalogWeapon || event.target.closest("[data-catalog-weapon]")?.dataset.catalogWeapon;
+        if (catalogWeapon) {
+            const result = addCatalogWeaponToFirstLoadout(catalogWeapon);
+            renderJsonEditor();
+            if (result) {
+                scrollToLoadoutElement(`[data-loadout-id="${cssEscape(result.id)}"] [data-loadout-index="${result.index}"]`);
+            }
+            showEditorMessage("Arma añadida desde catálogo.");
+            return;
+        }
+
+        if (event.target.dataset.loadoutAdd != null) {
+            const id = addLoadoutJsonSection();
+            renderJsonEditor();
+            scrollToLoadoutElement(`[data-loadout-id="${cssEscape(id)}"]`);
+            showEditorMessage("Loadout añadido.");
+            return;
+        }
+
+        if (event.target.dataset.loadoutDelete != null) {
+            deleteLoadoutJsonSection(event.target.dataset.loadoutDelete);
+            renderJsonEditorPreservingLoadoutScroll();
+            showEditorMessage("Loadout eliminado.");
+            return;
+        }
+
+        if (event.target.dataset.loadoutItemAdd) {
+            const id = event.target.dataset.loadoutItemAdd;
+            const index = addLoadoutJsonItem(id);
+            renderJsonEditor();
+            scrollToLoadoutElement(`[data-loadout-id="${cssEscape(id)}"] [data-loadout-index="${index}"]`);
+            showEditorMessage("Arma añadida.");
+            return;
+        }
+
+        if (event.target.dataset.loadoutItemDelete) {
+            deleteLoadoutJsonItem(event.target.dataset.loadoutItemDelete, Number(event.target.dataset.loadoutIndex));
+            renderJsonEditorPreservingLoadoutScroll();
+            showEditorMessage("Arma eliminada.");
+            return;
+        }
+
+        if (event.target.dataset.loadoutItemMove) {
+            moveArrayItem(editorState.conf["loadouts.json"][event.target.dataset.loadoutItemMove], Number(event.target.dataset.loadoutIndex), Number(event.target.dataset.loadoutDirection));
+            syncLoadoutJsonRawTextarea();
+            renderJsonEditorPreservingLoadoutScroll();
+        }
+    });
+
+    autoResizeTextareas(editor);
+}
+
+function updateLoadoutJsonField(target) {
+    const config = editorState.conf["loadouts.json"];
+
+    if (target.dataset.loadoutRename) {
+        return;
+    }
+
+    if (!target.dataset.loadoutField) return;
+    const item = config[target.dataset.loadoutId]?.[Number(target.dataset.loadoutIndex)];
+    if (!item) return;
+    item[target.dataset.loadoutField] = target.value;
+    if (target.matches("textarea")) autoResizeTextarea(target);
+    syncLoadoutJsonRawTextarea();
+}
+
+function applyCatalogWeaponToLoadoutItem(target) {
+    const item = editorState.conf["loadouts.json"][target.dataset.loadoutId]?.[Number(target.dataset.loadoutIndex)];
+    const catalogItem = findLoadoutCatalogItem(target.value);
+    if (!item || !catalogItem) return;
+    item.arma = catalogItem.arma;
+    if (!item.brevity && catalogItem.brevity) item.brevity = catalogItem.brevity;
+    if (!item.nota && catalogItem.nota) item.nota = catalogItem.nota;
+    syncLoadoutJsonRawTextarea();
+}
+
+function findLoadoutCatalogItem(weaponName) {
+    return collectLoadoutCatalogItems(editorState.conf["loadouts.json"]).find(item => item.arma === weaponName);
+}
+
+function addLoadoutJsonSection() {
+    const config = editorState.conf["loadouts.json"];
+    let index = getLoadoutIds(config).length + 1;
+    let id = `op_nuevo${index}`;
+    while (config[id]) {
+        index += 1;
+        id = `op_nuevo${index}`;
+    }
+    config[id] = [];
+    syncLoadoutJsonRawTextarea();
+    return id;
+}
+
+function renameLoadoutJsonSection(oldId, newId) {
+    const config = editorState.conf["loadouts.json"];
+    const cleanId = String(newId || "").trim();
+    if (!cleanId || cleanId === oldId || config[cleanId]) return;
+    const reordered = {};
+    Object.entries(config).forEach(([key, value]) => {
+        reordered[key === oldId ? cleanId : key] = value;
+    });
+    editorState.conf["loadouts.json"] = reordered;
+}
+
+function deleteLoadoutJsonSection(id) {
+    delete editorState.conf["loadouts.json"][id];
+    syncLoadoutJsonRawTextarea();
+}
+
+function addLoadoutJsonItem(id, item = { cantidad: "x1", arma: "", brevity: "", nota: "" }) {
+    editorState.conf["loadouts.json"][id] ||= [];
+    editorState.conf["loadouts.json"][id].push(item);
+    syncLoadoutJsonRawTextarea();
+    return editorState.conf["loadouts.json"][id].length - 1;
+}
+
+function deleteLoadoutJsonItem(id, index) {
+    editorState.conf["loadouts.json"][id]?.splice(index, 1);
+    syncLoadoutJsonRawTextarea();
+}
+
+function addCatalogWeaponToFirstLoadout(weaponName) {
+    const firstId = getLoadoutIds(editorState.conf["loadouts.json"])[0];
+    if (!firstId) return null;
+    const catalogItem = findLoadoutCatalogItem(weaponName);
+    const index = addLoadoutJsonItem(firstId, {
+        cantidad: "x1",
+        arma: catalogItem?.arma || weaponName,
+        brevity: catalogItem?.brevity || "",
+        nota: catalogItem?.nota || "",
+    });
+    return { id: firstId, index };
+}
+
+function syncLoadoutJsonEditor() {
+    const raw = document.getElementById("editor-json-textarea");
+    if (!raw) return true;
+
+    try {
+        editorState.conf["loadouts.json"] = JSON.parse(raw.value);
+        return true;
+    } catch (error) {
+        showEditorError(`JSON inválido en loadouts.json: ${error.message}`);
+        return false;
+    }
+}
+
+function syncLoadoutJsonRawTextarea() {
+    const raw = document.getElementById("editor-json-textarea");
+    if (raw) raw.value = formatJSON(editorState.conf["loadouts.json"]);
+}
+
+function renderJsonEditorPreservingLoadoutScroll() {
+    const editor = document.querySelector(".loadout-json-editor");
+    const scrollTop = editor?.scrollTop || 0;
+    renderJsonEditor();
+    const nextEditor = document.querySelector(".loadout-json-editor");
+    if (nextEditor) nextEditor.scrollTop = scrollTop;
+}
+
+function scrollToLoadoutElement(selector) {
+    const editor = document.querySelector(".loadout-json-editor");
+    const element = document.querySelector(selector);
+    if (!editor || !element) return;
+    const editorRect = editor.getBoundingClientRect();
+    const elementRect = element.getBoundingClientRect();
+    editor.scrollTop += elementRect.top - editorRect.top - 16;
+}
+
+function cssEscape(value) {
+    if (window.CSS?.escape) return CSS.escape(value);
+    return String(value).replaceAll('"', '\\"');
 }
 
 function renderHtmlEditor() {

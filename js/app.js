@@ -214,13 +214,18 @@ async function buildArmamento(pageId) {
         items.forEach(item => {
             const div = document.createElement('div');
             div.className = 'card arma-item';
-            const nota = item.nota ? `: <span style="font-weight:normal">${escapeHTML(item.nota)}</span>` : '';
-            div.innerHTML = `<strong>${escapeHTML(item.cantidad)} ${escapeHTML(item.arma)}</strong>${nota}`;
+            div.innerHTML = renderLoadoutItem(item);
             placeholder.appendChild(div);
         });
     } catch (err) {
         console.error('Error cargando armamento:', err);
     }
+}
+
+function renderLoadoutItem(item) {
+    const brevity = item.brevity ? ` <span style="font-weight:normal">[${escapeHTML(item.brevity)}]</span>` : "";
+    const nota = item.nota ? `: <span style="font-weight:normal">${escapeHTML(item.nota)}</span>` : "";
+    return `<strong>${escapeHTML(item.cantidad)} ${escapeHTML(item.arma)}</strong>${brevity}${nota}`;
 }
 
 
@@ -619,7 +624,7 @@ function renderAtcLoadouts(flights, loadouts) {
     const cards = flights.map(flight => {
         const items = loadouts?.[flight.loadoutId] || [];
         const weapons = items.length
-            ? items.map(item => `<li><strong>${escapeHTML(item.cantidad)} ${escapeHTML(item.arma)}</strong>${item.nota ? `: ${escapeHTML(item.nota)}` : ""}</li>`).join("")
+            ? items.map(item => `<li>${renderLoadoutItem(item)}</li>`).join("")
             : "<li>Sin armamento configurado</li>";
 
         return `
