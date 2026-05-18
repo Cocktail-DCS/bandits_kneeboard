@@ -80,6 +80,12 @@ body {
 .tab-content { display: none; padding: 20px; overflow-y: auto; flex: 1; }
 .tab-content.active { display: block; }
 
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .card {
     background: #2a2a2a; border-radius: 8px;
     padding: 15px; margin-bottom: 15px; border: 1px solid var(--border);
@@ -123,6 +129,22 @@ body {
 .atc-img {
     max-width: 100%;
 }
+.img-narrow {
+    width: 40%;
+}
+.image-figure {
+    margin: 0;
+}
+.image-figure figcaption {
+    margin-top: 6px;
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+.error-panel {
+    color: red;
+    padding: 20px;
+}
 
 @media (max-width: 1700px) {
     .img-full { width: 60vw; }
@@ -153,6 +175,10 @@ body {
     outline: none;
     border-color: var(--accent);
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+.notes-display {
+    min-height: auto;
+    resize: none;
 }
 
 .package-select {
@@ -234,6 +260,7 @@ body {
     .radio-table { font-size: 0.72rem; }
 
     .img-full { width: 100%; max-width: 100%; }
+    .img-narrow { width: 100%; }
 
     .tab-content.active {
         display: flex;

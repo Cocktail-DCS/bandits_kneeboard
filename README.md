@@ -13,6 +13,17 @@ El contenido que cambia entre misiones esta en `conf/`:
 - `loadouts.json`: armamento por pagina de operacion.
 - `holdings.json`: puntos de espera, altitudes, fuel y procedimiento.
 - `notes.json`: notas generales, soft deck y hard deck.
+- `pages.json`: paginas editables desde datos y plantillas reutilizables.
+
+La carga de paginas es compatible con los HTML existentes:
+
+1. Si la pestana es ATC, Repostaje o una espera de `holdings.json`, se renderiza desde su configuracion especifica.
+2. Si el `id` existe en `pages.json`, se renderiza desde datos.
+3. Si no existe en `pages.json`, se carga `pages/{id}.html` como antes.
+
+Usa `pages.json` para contenido repetido o facil de editar entre misiones. Usa `pages/` para HTML muy especifico, maquetacion especial o pruebas rapidas que no merezcan una plantilla.
+
+En `pages.json`, `type: "operation"` sirve para paginas STRIKE con armamento desde `loadouts.json`. `type: "standard"` permite componer una pagina con bloques (`card`, `notes`, `list`, `checklist`, `image`, `table`, `textarea`). `type: "html"` fuerza la carga de un HTML personalizado.
 
 Las paginas HTML de `pages/` quedan para contenido comun o muy especifico. Las esperas configuradas en `holdings.json` se renderizan directamente desde datos, por lo que no hace falta duplicar HTML para cada vuelo.
 

@@ -10,6 +10,7 @@ let loadoutConfig = null;
 let holdingConfig = null;
 let atcConfig = null;
 let tankerConfig = null;
+let pageConfig = null;
 
 
 // ── Carga de páginas ──────────────────────────────────────────────────────────
@@ -46,15 +47,18 @@ async function loadTab(tabId, event) {
             return;
         }
 
-        const response = await fetch(`pages/${tabId}.html`);
-        if (!response.ok) throw new Error(`No se pudo cargar ${tabId}.html`);
+        const configuredPage = await getConfiguredPage(tabId);
+        if (configuredPage) {
+            container.innerHTML = await renderConfiguredPage(configuredPage);
+        } else {
+            container.innerHTML = await loadHtmlPage(tabId);
+        }
 
-        container.innerHTML = await response.text();
         initNotesSaves();
         await buildArmamento(tabId);
     } catch (error) {
         console.error("Error cargando la pestaña:", error);
-        container.innerHTML = `<div style="color: red; padding: 20px;">
+        container.innerHTML = `<div class="error-panel">
             <h3>Error</h3>
             <p>No se encontró el archivo de este waypoint.</p>
         </div>`;
@@ -66,6 +70,7 @@ async function loadTab(tabId, event) {
 function initNotesSaves() {
     const textareas = document.querySelectorAll('textarea.notes-input');
     textareas.forEach(textarea => {
+        if (!textarea.id) return;
         const savedText = localStorage.getItem(textarea.id);
         if (savedText) textarea.value = savedText;
         textarea.addEventListener('input', function(event) {
@@ -100,8 +105,40 @@ function escapeHTML(value) {
         .replaceAll("'", "&#039;");
 }
 
+function toLines(value) {
+    if (Array.isArray(value)) return value;
+    if (value == null) return [];
+    return [value];
+}
+
 function renderLines(lines) {
-    return (lines || []).map(line => escapeHTML(line)).join("<br>");
+    return toLines(lines).map(line => escapeHTML(line)).join("<br>");
+}
+
+function renderPageTitle(title) {
+    return `
+        <div class="page-header">
+            <h2>${escapeHTML(title)}</h2>
+        </div>
+    `;
+}
+
+function renderParagraphs(lines) {
+    return toLines(lines).map(line => `<p>${escapeHTML(line)}</p>`).join("");
+}
+
+function renderCard(title, content, className = "") {
+    const classes = ["card", className].filter(Boolean).join(" ");
+    return `
+        <div class="${classes}">
+            <h3>${escapeHTML(title)}</h3>
+            ${content}
+        </div>
+    `;
+}
+
+function renderNotesBlock(lines) {
+    return `<div class="notes-input notes-display">${renderLines(lines)}</div>`;
 }
 
 
@@ -184,6 +221,142 @@ async function buildArmamento(pageId) {
     } catch (err) {
         console.error('Error cargando armamento:', err);
     }
+}
+
+
+// ── Páginas configurables ────────────────────────────────────────────────────
+async function getPageConfig() {
+    if (!pageConfig) {
+        pageConfig = await loadJSON("conf/pages.json");
+    }
+    return pageConfig;
+}
+
+async function getConfiguredPage(tabId) {
+    const config = await getPageConfig();
+    const page = config.pages?.[tabId];
+    if (!page) return null;
+
+    const template = page.template ? config.templates?.[page.template] || {} : {};
+    return {
+        id: tabId,
+        ...template,
+        ...page,
+    };
+}
+
+async function renderConfiguredPage(page) {
+    if (page.type === "html") return loadHtmlPage(page.html || page.id);
+    if (page.type === "standard") return renderStandardPage(page);
+    if (page.type === "operation") return renderOperationPage(page);
+    return loadHtmlPage(page.id);
+}
+
+async function loadHtmlPage(pageId) {
+    const response = await fetch(`pages/${pageId}.html`);
+    if (!response.ok) throw new Error(`No se pudo cargar ${pageId}.html`);
+    return response.text();
+}
+
+function renderOperationPage(page) {
+    return `
+        ${renderPageTitle(page.title || "Operación")}
+        ${renderCard("SITUACIÓN", `<p>${escapeHTML(page.situation || "")}</p>`)}
+        ${renderFenceIn(page.fenceIn)}
+        ${renderCard("IMPORTANTE", renderParagraphs(page.important || []))}
+        <div class="card" id="armamento-placeholder"></div>
+        ${renderObjectives(page.objectives)}
+        ${renderCard("Regreso", `<p>${escapeHTML(page.return || "")}</p>`)}
+    `;
+}
+
+function renderStandardPage(page) {
+    const blocks = (page.blocks || []).map(renderPageBlock).join("");
+    return `
+        ${renderPageTitle(page.title || "Página")}
+        ${blocks}
+    `;
+}
+
+function renderPageBlock(block) {
+    if (block.type === "notes") {
+        return renderCard(block.title || "Notas", renderNotesBlock(block.lines || block.text || []));
+    }
+
+    if (block.type === "list" || block.type === "checklist") {
+        const items = (block.items || []).map(item => {
+            const checkbox = block.type === "checklist" ? '<input type="checkbox"> ' : "";
+            return `<li>${checkbox}${escapeHTML(item)}</li>`;
+        }).join("");
+        return renderCard(block.title || "Lista", `<ul>${items}</ul>`);
+    }
+
+    if (block.type === "image") {
+        const images = (block.images || [block]).filter(image => image.src);
+        const content = images.map(image => `
+            <figure class="image-figure">
+                <img src="${escapeHTML(image.src)}" class="img-full${image.narrow ? " img-narrow" : ""}">
+                ${image.caption ? `<figcaption>${escapeHTML(image.caption)}</figcaption>` : ""}
+            </figure>
+        `).join("");
+        return renderCard(block.title || "Imagen", content);
+    }
+
+    if (block.type === "table") {
+        const headers = (block.headers || []).map(header => `<th>${escapeHTML(header)}</th>`).join("");
+        const rows = (block.rows || []).map(row => `
+            <tr>${(row || []).map(cell => `<td>${escapeHTML(cell)}</td>`).join("")}</tr>
+        `).join("");
+        return renderCard(block.title || "Tabla", `
+            <table class="data-table">
+                ${headers ? `<thead><tr>${headers}</tr></thead>` : ""}
+                <tbody>${rows}</tbody>
+            </table>
+        `);
+    }
+
+    if (block.type === "textarea") {
+        const minHeight = block.minHeight ? ` style="min-height: ${escapeHTML(block.minHeight)};"` : "";
+        const id = block.id ? ` id="${escapeHTML(block.id)}"` : "";
+        return renderCard(
+            block.title || "Notas",
+            `<textarea${id} class="notes-input"${minHeight} placeholder="${escapeHTML(block.placeholder || "")}"></textarea>`
+        );
+    }
+
+    return renderCard(block.title || "Sección", renderParagraphs(block.lines || block.text || []));
+}
+
+function renderFenceIn(items) {
+    if (!items?.length) return "";
+
+    const list = items.map(item => `
+        <li><strong>${escapeHTML(item.letter)}</strong>${escapeHTML(item.label ? ` ${item.label}:` : "")} ${escapeHTML(item.text || "")}</li>
+    `).join("");
+
+    return renderCard("FENCE-IN", `<ul>${list}</ul>`);
+}
+
+function renderObjectives(objectives) {
+    if (!objectives) return "";
+
+    const intro = renderParagraphs(objectives.intro || []);
+    const items = (objectives.items || []).map(item => {
+        const image = item.image
+            ? `<img src="${escapeHTML(item.image)}" class="img-full">`
+            : "";
+        const details = (item.details || []).map(detail => `<p>${escapeHTML(detail)}</p>`).join("");
+
+        return `
+            <div class="card">
+                <h4>${escapeHTML(item.title || "Objetivo")}</h4>
+                ${image}
+                ${details ? `<h5>Coordenadas</h5>${details}` : ""}
+            </div>
+        `;
+    }).join("");
+
+    return renderCard("Objetivos", `${intro}${items}`);
 }
 
 
@@ -577,10 +750,7 @@ function renderTankerPage(data) {
     `).join("");
 
     return `
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h2>${escapeHTML(data.title || "Repostaje")}</h2>
-        </div>
-
+        ${renderPageTitle(data.title || "Repostaje")}
         <div class="card">
             <h3>SITUACIÓN</h3>
             <p>${escapeHTML(data.situation)}</p>
@@ -617,10 +787,7 @@ function renderHolding(data) {
         : "";
 
     return `
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h2>${escapeHTML(data.title || "Holding")}</h2>
-        </div>
-
+        ${renderPageTitle(data.title || "Holding")}
         <div class="card">
             <h3>SITUACIÓN</h3>
             <p>${escapeHTML(data.situation)}</p>
@@ -634,9 +801,7 @@ function renderHolding(data) {
 
         <div class="card">
             <h3>LLEGADA</h3>
-            <div class="notes-input" style="min-height: auto;">
-                ${renderLines(data.arrival)}
-            </div>
+            ${renderNotesBlock(data.arrival)}
         </div>
 
         <div class="card">
