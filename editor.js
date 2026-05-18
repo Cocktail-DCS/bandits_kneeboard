@@ -228,6 +228,7 @@ function renderHtmlEditor() {
                             `).join("")}
                         </select>
                         <button type="button" class="editor-btn" data-html-add-block>Añadir bloque</button>
+                        <button type="button" class="editor-btn" data-html-preview>Preview</button>
                         <button type="button" class="editor-btn" data-html-sync>Actualizar HTML crudo</button>
                     </div>
                 </div>
@@ -286,6 +287,11 @@ function renderHtmlEditor() {
         addHtmlBlock(type);
         renderHtmlEditor();
         showEditorMessage("Bloque añadido.");
+    });
+
+    content.querySelector("[data-html-preview]").addEventListener("click", () => {
+        syncActiveHtmlPage();
+        openHtmlPreview();
     });
 
     content.querySelector("[data-html-sync]").addEventListener("click", () => {
@@ -567,6 +573,33 @@ function syncActiveHtmlPage() {
 
     const raw = document.getElementById("editor-html-raw");
     if (raw) raw.value = html;
+}
+
+function openHtmlPreview() {
+    closeHtmlPreview();
+
+    const overlay = document.createElement("div");
+    overlay.className = "editor-preview-overlay";
+    overlay.innerHTML = `
+        <section class="editor-preview-modal">
+            <header>
+                <h3>Preview: ${escapeHTML(editorState.activeHtmlFile)}</h3>
+                <button type="button" class="editor-icon-btn" data-preview-close title="Cerrar">×</button>
+            </header>
+            <div class="editor-preview-content">${editorState.pages[editorState.activeHtmlFile] || ""}</div>
+        </section>
+    `;
+    document.body.appendChild(overlay);
+
+    overlay.addEventListener("click", event => {
+        if (event.target === overlay || event.target.dataset.previewClose != null) {
+            closeHtmlPreview();
+        }
+    });
+}
+
+function closeHtmlPreview() {
+    document.querySelector(".editor-preview-overlay")?.remove();
 }
 
 function exportSnapshot() {

@@ -427,6 +427,49 @@ body.editor-mode #sidebar-toggle {
     margin: 10px 0;
 }
 
+.editor-preview-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    padding: 28px;
+    background: rgba(0, 0, 0, 0.72);
+}
+
+.editor-preview-modal {
+    width: min(1100px, 100%);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.editor-preview-modal > header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--panel-bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.editor-preview-modal h3 {
+    margin: 0;
+}
+
+.editor-preview-content {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 18px;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 1300px) {
     body {
