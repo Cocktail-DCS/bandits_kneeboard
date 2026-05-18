@@ -57,6 +57,21 @@ const EDITOR_IMAGE_FILES = [
     "images/eor.png",
 ];
 
+const EDITOR_RADIO_COLOR_OPTIONS = [
+    ["", "Sin color"],
+    ["orange", "Naranja"],
+    ["orange-dark", "Naranja oscuro"],
+    ["blue", "Azul"],
+    ["blue-dark", "Azul oscuro"],
+    ["purple", "Morado"],
+    ["yellow", "Amarillo"],
+    ["green-light", "Verde claro"],
+    ["green", "Verde"],
+    ["red", "Rojo"],
+    ["red-light", "Rojo claro"],
+    ["black", "Negro"],
+];
+
 const editorState = {
     enabled: false,
     conf: {},
@@ -193,6 +208,8 @@ function rerenderHtmlEditorPreservingScroll() {
 
 function renderJsonEditor() {
     const content = document.getElementById("editor-content");
+    const isRadioEditor = editorState.activeConfFile === "radios.json";
+    const isTankerEditor = editorState.activeConfFile === "tankers.json";
     content.innerHTML = `
         <div class="editor-layout">
             <nav class="editor-file-list">
@@ -207,7 +224,9 @@ function renderJsonEditor() {
                     <h3>${escapeHTML(editorState.activeConfFile)}</h3>
                     <button type="button" class="editor-btn" data-json-validate>Validar JSON</button>
                 </div>
-                <textarea id="editor-json-textarea" class="editor-textarea" spellcheck="false">${escapeHTML(formatJSON(editorState.conf[editorState.activeConfFile]))}</textarea>
+                ${isRadioEditor ? renderRadioJsonEditor() : isTankerEditor ? renderTankerJsonEditor() : `
+                    <textarea id="editor-json-textarea" class="editor-textarea" spellcheck="false">${escapeHTML(formatJSON(editorState.conf[editorState.activeConfFile]))}</textarea>
+                `}
             </div>
         </div>
     `;
@@ -224,12 +243,22 @@ function renderJsonEditor() {
         if (saveActiveJson()) showEditorMessage(`${editorState.activeConfFile} es válido.`);
     });
 
-    content.querySelector("#editor-json-textarea").addEventListener("input", () => {
+    content.querySelector("#editor-json-textarea")?.addEventListener("input", () => {
         clearEditorMessage();
     });
+
+    if (isRadioEditor) initRadioJsonEditor(content);
+    if (isTankerEditor) initTankerJsonEditor(content);
 }
 
 function saveActiveJson() {
+    if (editorState.activeConfFile === "radios.json" && document.querySelector(".radio-json-editor")) {
+        return syncRadioJsonEditor();
+    }
+    if (editorState.activeConfFile === "tankers.json" && document.querySelector(".tanker-json-editor")) {
+        return syncTankerJsonEditor();
+    }
+
     const textarea = document.getElementById("editor-json-textarea");
     if (!textarea) return true;
 
@@ -240,6 +269,512 @@ function saveActiveJson() {
         showEditorError(`JSON inválido en ${editorState.activeConfFile}: ${error.message}`);
         return false;
     }
+}
+
+function renderRadioJsonEditor() {
+    const config = editorState.conf["radios.json"] || { groups: [] };
+    return `
+        <div class="radio-json-editor">
+            <div class="radio-json-table-wrap">
+                <table class="radio-table radio-json-table">
+                    <colgroup>
+                        <col class="col-small"> <col class="col-large"> <col class="col-medium"> <col class="radio-json-color-col"> <col class="radio-json-action-col">
+                        <col class="col-small"> <col class="col-large"> <col class="col-medium"> <col class="radio-json-color-col"> <col class="radio-json-action-col">
+                    </colgroup>
+                    <thead>
+                        <tr><th colspan="10" class="header-green">RADIO COMMS</th></tr>
+                        <tr class="bg-white">
+                            ${renderRadioJsonGroupHeaders(config.groups?.[0], 0)}
+                            ${renderRadioJsonGroupHeaders(config.groups?.[1], 1)}
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                        ${renderRadioJsonRows(config.groups || [])}
+                    </tbody>
+                </table>
+            </div>
+            <div class="radio-json-actions">
+                ${(config.groups || []).map((group, index) => `
+                    <button type="button" class="editor-btn" data-radio-add-row="${index}">
+                        Añadir fila ${escapeHTML(group.channelHeader || `Grupo ${index + 1}`)}
+                    </button>
+                `).join("")}
+            </div>
+            <details class="editor-advanced radio-json-raw">
+                <summary>JSON crudo avanzado</summary>
+                <textarea id="editor-json-textarea" class="editor-textarea" spellcheck="false">${escapeHTML(formatJSON(config))}</textarea>
+            </details>
+        </div>
+    `;
+}
+
+function renderRadioJsonGroupHeaders(group = {}, groupIndex) {
+    return `
+        <th><input type="text" value="${escapeHTML(group.channelHeader || "")}" data-radio-header="${groupIndex}" data-radio-field="channelHeader"></th>
+        <th><input type="text" value="${escapeHTML(group.agencyHeader || "")}" data-radio-header="${groupIndex}" data-radio-field="agencyHeader"></th>
+        <th><input type="text" value="${escapeHTML(group.frequencyHeader || "")}" data-radio-header="${groupIndex}" data-radio-field="frequencyHeader"></th>
+        <th>COLOR</th>
+        <th></th>
+    `;
+}
+
+function renderRadioJsonRows(groups) {
+    const maxRows = Math.max(...groups.map(group => group.rows?.length || 0), 0);
+    return Array.from({ length: maxRows }).map((_, rowIndex) => `
+        <tr>
+            ${renderRadioJsonRowCells(groups[0], 0, rowIndex)}
+            ${renderRadioJsonRowCells(groups[1], 1, rowIndex)}
+        </tr>
+    `).join("");
+}
+
+function renderRadioJsonRowCells(group = {}, groupIndex, rowIndex) {
+    const row = group.rows?.[rowIndex] || { radio: "", callsign: "", freq: "", color: "" };
+    return `
+        <td><input type="text" value="${escapeHTML(row.radio)}" data-radio-group="${groupIndex}" data-radio-row="${rowIndex}" data-radio-field="radio"></td>
+        <td class="${COLOR_CLASS[row.color] || ""}"><input type="text" value="${escapeHTML(row.callsign)}" data-radio-group="${groupIndex}" data-radio-row="${rowIndex}" data-radio-field="callsign"></td>
+        <td><input type="text" value="${escapeHTML(row.freq)}" data-radio-group="${groupIndex}" data-radio-row="${rowIndex}" data-radio-field="freq"></td>
+        <td>${renderRadioColorSelect(row.color, groupIndex, rowIndex)}</td>
+        <td>
+            <div class="radio-json-row-actions">
+                <button type="button" class="editor-icon-btn" data-radio-move-row="${rowIndex}" data-radio-move-group="${groupIndex}" data-radio-move-direction="-1" title="Subir">↑</button>
+                <button type="button" class="editor-icon-btn" data-radio-move-row="${rowIndex}" data-radio-move-group="${groupIndex}" data-radio-move-direction="1" title="Bajar">↓</button>
+                <button type="button" class="editor-icon-btn danger" data-radio-delete-row="${rowIndex}" data-radio-delete-group="${groupIndex}" title="Eliminar fila">×</button>
+            </div>
+        </td>
+    `;
+}
+
+function renderRadioColorSelect(selectedColor, groupIndex, rowIndex) {
+    return `
+        <select data-radio-group="${groupIndex}" data-radio-row="${rowIndex}" data-radio-field="color">
+            ${EDITOR_RADIO_COLOR_OPTIONS.map(([value, label]) => `
+                <option value="${escapeHTML(value)}"${value === selectedColor ? " selected" : ""}>${escapeHTML(label)}</option>
+            `).join("")}
+        </select>
+    `;
+}
+
+function initRadioJsonEditor(content) {
+    content.querySelector(".radio-json-editor").addEventListener("input", event => {
+        updateRadioJsonField(event.target);
+        clearEditorMessage();
+    });
+
+    content.querySelector(".radio-json-editor").addEventListener("change", event => {
+        if (!event.target.dataset.radioField) return;
+        updateRadioJsonField(event.target);
+        if (event.target.dataset.radioField === "color") {
+            renderJsonEditorPreservingRadioScroll();
+        }
+        clearEditorMessage();
+    });
+
+    content.querySelector(".radio-json-editor").addEventListener("click", event => {
+        const addGroupIndex = event.target.dataset.radioAddRow;
+        if (addGroupIndex != null) {
+            addRadioJsonRow(Number(addGroupIndex));
+            renderJsonEditorPreservingRadioScroll();
+            showEditorMessage("Fila añadida.");
+            return;
+        }
+
+        const moveGroupIndex = event.target.dataset.radioMoveGroup;
+        const moveRowIndex = event.target.dataset.radioMoveRow;
+        const moveDirection = event.target.dataset.radioMoveDirection;
+        if (moveGroupIndex != null && moveRowIndex != null && moveDirection != null) {
+            moveRadioJsonRow(Number(moveGroupIndex), Number(moveRowIndex), Number(moveDirection));
+            renderJsonEditorPreservingRadioScroll();
+            return;
+        }
+
+        const deleteGroupIndex = event.target.dataset.radioDeleteGroup;
+        const deleteRowIndex = event.target.dataset.radioDeleteRow;
+        if (deleteGroupIndex != null && deleteRowIndex != null) {
+            deleteRadioJsonRow(Number(deleteGroupIndex), Number(deleteRowIndex));
+            renderJsonEditorPreservingRadioScroll();
+            showEditorMessage("Fila eliminada.");
+        }
+    });
+}
+
+function updateRadioJsonField(target) {
+    if (!target.dataset.radioField) return;
+
+    const config = editorState.conf["radios.json"];
+    const groupIndex = Number(target.dataset.radioGroup ?? target.dataset.radioHeader);
+    const group = config.groups?.[groupIndex];
+    if (!group) return;
+
+    if (target.dataset.radioHeader != null) {
+        group[target.dataset.radioField] = target.value;
+        syncRadioJsonRawTextarea();
+        return;
+    }
+
+    const rowIndex = Number(target.dataset.radioRow);
+    if (!Number.isInteger(rowIndex)) return;
+    group.rows ||= [];
+    group.rows[rowIndex] ||= { radio: "", callsign: "", freq: "", color: "" };
+    group.rows[rowIndex][target.dataset.radioField] = target.value;
+    syncRadioJsonRawTextarea();
+}
+
+function addRadioJsonRow(groupIndex) {
+    const group = editorState.conf["radios.json"].groups?.[groupIndex];
+    if (!group) return;
+    group.rows ||= [];
+    group.rows.push({ radio: "", callsign: "", freq: "", color: "" });
+    syncRadioJsonRawTextarea();
+}
+
+function deleteRadioJsonRow(groupIndex, rowIndex) {
+    const rows = editorState.conf["radios.json"].groups?.[groupIndex]?.rows;
+    if (!rows?.[rowIndex]) return;
+    rows.splice(rowIndex, 1);
+    syncRadioJsonRawTextarea();
+}
+
+function moveRadioJsonRow(groupIndex, rowIndex, direction) {
+    const rows = editorState.conf["radios.json"].groups?.[groupIndex]?.rows;
+    if (!rows?.[rowIndex]) return;
+
+    const nextIndex = rowIndex + direction;
+    if (nextIndex < 0 || nextIndex >= rows.length) return;
+
+    const [row] = rows.splice(rowIndex, 1);
+    rows.splice(nextIndex, 0, row);
+    syncRadioJsonRawTextarea();
+}
+
+function syncRadioJsonEditor() {
+    const raw = document.getElementById("editor-json-textarea");
+    if (!raw) return true;
+
+    try {
+        editorState.conf["radios.json"] = JSON.parse(raw.value);
+        return true;
+    } catch (error) {
+        showEditorError(`JSON inválido en radios.json: ${error.message}`);
+        return false;
+    }
+}
+
+function syncRadioJsonRawTextarea() {
+    const raw = document.getElementById("editor-json-textarea");
+    if (raw) raw.value = formatJSON(editorState.conf["radios.json"]);
+}
+
+function renderJsonEditorPreservingRadioScroll() {
+    const scrollable = document.querySelector(".radio-json-table-wrap");
+    const scrollState = {
+        top: scrollable?.scrollTop || 0,
+        left: scrollable?.scrollLeft || 0,
+    };
+
+    renderJsonEditor();
+
+    const nextScrollable = document.querySelector(".radio-json-table-wrap");
+    if (nextScrollable) {
+        nextScrollable.scrollTop = scrollState.top;
+        nextScrollable.scrollLeft = scrollState.left;
+    }
+}
+
+function renderTankerJsonEditor() {
+    const config = editorState.conf["tankers.json"] || {};
+    return `
+        <div class="tanker-json-editor">
+            <section class="editor-form-section">
+                <label>
+                    Título
+                    <input type="text" value="${escapeHTML(config.title || "")}" data-tanker-field="title">
+                </label>
+                <label>
+                    Situación
+                    <textarea class="editor-small-textarea" data-tanker-field="situation">${escapeHTML(config.situation || "")}</textarea>
+                </label>
+            </section>
+
+            <section class="editor-form-section">
+                <div class="editor-section-header">
+                    <h4>Tankers</h4>
+                    <button type="button" class="editor-btn" data-tanker-add>Añadir tanker</button>
+                </div>
+                <div class="tanker-json-table-wrap">
+                    <table class="data-table tanker-json-table">
+                        <thead>
+                            <tr>
+                                <th>Callsign</th>
+                                <th>Aeronave</th>
+                                <th>Rol</th>
+                                <th>Frecuencia</th>
+                                <th>TACAN</th>
+                                <th>Altitud</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${(config.tankers || []).map(renderTankerJsonRow).join("")}
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="editor-form-section">
+                <div class="editor-section-header">
+                    <h4>Notas</h4>
+                    <button type="button" class="editor-btn" data-note-add>Añadir nota</button>
+                </div>
+                <div class="tanker-note-list">
+                    ${(config.notes || []).map(renderTankerNoteEditor).join("")}
+                </div>
+            </section>
+
+            <details class="editor-advanced tanker-json-raw">
+                <summary>JSON crudo avanzado</summary>
+                <textarea id="editor-json-textarea" class="editor-textarea" spellcheck="false">${escapeHTML(formatJSON(config))}</textarea>
+            </details>
+        </div>
+    `;
+}
+
+function renderTankerJsonRow(tanker, index) {
+    const fields = ["callsign", "aircraft", "role", "freq", "tacan", "altitude"];
+    return `
+        <tr>
+            ${fields.map(field => `
+                <td><input type="text" value="${escapeHTML(tanker[field] || "")}" data-tanker-index="${index}" data-tanker-row-field="${field}"></td>
+            `).join("")}
+            <td>
+                <div class="radio-json-row-actions">
+                    <button type="button" class="editor-icon-btn" data-tanker-move="${index}" data-tanker-direction="-1" title="Subir">↑</button>
+                    <button type="button" class="editor-icon-btn" data-tanker-move="${index}" data-tanker-direction="1" title="Bajar">↓</button>
+                    <button type="button" class="editor-icon-btn danger" data-tanker-delete="${index}" title="Eliminar">×</button>
+                </div>
+            </td>
+        </tr>
+    `;
+}
+
+function renderTankerNoteEditor(note, noteIndex) {
+    return `
+        <article class="tanker-note-editor">
+            <header>
+                <input type="text" value="${escapeHTML(note.title || "")}" data-note-index="${noteIndex}" data-note-field="title">
+                <div class="radio-json-row-actions">
+                    <button type="button" class="editor-icon-btn" data-note-move="${noteIndex}" data-note-direction="-1" title="Subir">↑</button>
+                    <button type="button" class="editor-icon-btn" data-note-move="${noteIndex}" data-note-direction="1" title="Bajar">↓</button>
+                    <button type="button" class="editor-icon-btn danger" data-note-delete="${noteIndex}" title="Eliminar">×</button>
+                </div>
+            </header>
+            <div class="tanker-note-lines">
+                ${(note.text || []).map((line, lineIndex) => `
+                    <div class="tanker-note-line">
+                        <textarea class="editor-small-textarea" data-note-index="${noteIndex}" data-note-line="${lineIndex}">${escapeHTML(line)}</textarea>
+                        <button type="button" class="editor-icon-btn danger" data-note-index="${noteIndex}" data-note-line-delete="${lineIndex}" title="Eliminar línea">×</button>
+                    </div>
+                `).join("")}
+            </div>
+            <button type="button" class="editor-btn editor-btn-compact" data-note-index="${noteIndex}" data-note-line-add>Añadir párrafo</button>
+        </article>
+    `;
+}
+
+function initTankerJsonEditor(content) {
+    const editor = content.querySelector(".tanker-json-editor");
+
+    editor.addEventListener("input", event => {
+        updateTankerJsonField(event.target);
+        clearEditorMessage();
+    });
+
+    editor.addEventListener("click", event => {
+        if (event.target.dataset.tankerAdd != null) {
+            addTankerJsonTanker();
+            renderJsonEditorPreservingTankerScroll();
+            showEditorMessage("Tanker añadido.");
+            return;
+        }
+
+        if (event.target.dataset.tankerDelete != null) {
+            deleteTankerJsonTanker(Number(event.target.dataset.tankerDelete));
+            renderJsonEditorPreservingTankerScroll();
+            showEditorMessage("Tanker eliminado.");
+            return;
+        }
+
+        if (event.target.dataset.tankerMove != null) {
+            moveArrayItem(editorState.conf["tankers.json"].tankers, Number(event.target.dataset.tankerMove), Number(event.target.dataset.tankerDirection));
+            syncTankerJsonRawTextarea();
+            renderJsonEditorPreservingTankerScroll();
+            return;
+        }
+
+        if (event.target.dataset.noteAdd != null) {
+            addTankerJsonNote();
+            renderJsonEditorPreservingTankerScroll();
+            showEditorMessage("Nota añadida.");
+            return;
+        }
+
+        if (event.target.dataset.noteDelete != null) {
+            deleteTankerJsonNote(Number(event.target.dataset.noteDelete));
+            renderJsonEditorPreservingTankerScroll();
+            showEditorMessage("Nota eliminada.");
+            return;
+        }
+
+        if (event.target.dataset.noteMove != null) {
+            moveArrayItem(editorState.conf["tankers.json"].notes, Number(event.target.dataset.noteMove), Number(event.target.dataset.noteDirection));
+            syncTankerJsonRawTextarea();
+            renderJsonEditorPreservingTankerScroll();
+            return;
+        }
+
+        if (event.target.dataset.noteLineAdd != null) {
+            addTankerJsonNoteLine(Number(event.target.dataset.noteIndex));
+            renderJsonEditorPreservingTankerScroll();
+            showEditorMessage("Párrafo añadido.");
+            return;
+        }
+
+        if (event.target.dataset.noteLineDelete != null) {
+            deleteTankerJsonNoteLine(Number(event.target.dataset.noteIndex), Number(event.target.dataset.noteLineDelete));
+            renderJsonEditorPreservingTankerScroll();
+            showEditorMessage("Párrafo eliminado.");
+        }
+    });
+
+    autoResizeTextareas(editor);
+}
+
+function updateTankerJsonField(target) {
+    const config = editorState.conf["tankers.json"];
+
+    if (target.dataset.tankerField) {
+        config[target.dataset.tankerField] = target.value;
+        syncTankerJsonRawTextarea();
+        return;
+    }
+
+    if (target.dataset.tankerRowField) {
+        const tanker = config.tankers?.[Number(target.dataset.tankerIndex)];
+        if (!tanker) return;
+        tanker[target.dataset.tankerRowField] = target.value;
+        syncTankerJsonRawTextarea();
+        return;
+    }
+
+    if (target.dataset.noteField === "title") {
+        const note = config.notes?.[Number(target.dataset.noteIndex)];
+        if (!note) return;
+        note.title = target.value;
+        syncTankerJsonRawTextarea();
+        return;
+    }
+
+    if (target.dataset.noteLine != null) {
+        const note = config.notes?.[Number(target.dataset.noteIndex)];
+        if (!note) return;
+        note.text ||= [];
+        note.text[Number(target.dataset.noteLine)] = target.value;
+        autoResizeTextarea(target);
+        syncTankerJsonRawTextarea();
+    }
+}
+
+function addTankerJsonTanker() {
+    editorState.conf["tankers.json"].tankers ||= [];
+    editorState.conf["tankers.json"].tankers.push({
+        callsign: "NUEVO",
+        aircraft: "",
+        role: "",
+        freq: "",
+        tacan: "",
+        altitude: "",
+    });
+    syncTankerJsonRawTextarea();
+}
+
+function deleteTankerJsonTanker(index) {
+    editorState.conf["tankers.json"].tankers?.splice(index, 1);
+    syncTankerJsonRawTextarea();
+}
+
+function addTankerJsonNote() {
+    editorState.conf["tankers.json"].notes ||= [];
+    editorState.conf["tankers.json"].notes.push({
+        title: "Nueva nota",
+        text: ["Nuevo párrafo."],
+    });
+    syncTankerJsonRawTextarea();
+}
+
+function deleteTankerJsonNote(index) {
+    editorState.conf["tankers.json"].notes?.splice(index, 1);
+    syncTankerJsonRawTextarea();
+}
+
+function addTankerJsonNoteLine(noteIndex) {
+    const note = editorState.conf["tankers.json"].notes?.[noteIndex];
+    if (!note) return;
+    note.text ||= [];
+    note.text.push("Nuevo párrafo.");
+    syncTankerJsonRawTextarea();
+}
+
+function deleteTankerJsonNoteLine(noteIndex, lineIndex) {
+    const lines = editorState.conf["tankers.json"].notes?.[noteIndex]?.text;
+    if (!lines) return;
+    lines.splice(lineIndex, 1);
+    syncTankerJsonRawTextarea();
+}
+
+function moveArrayItem(items, index, direction) {
+    if (!items?.[index]) return;
+    const nextIndex = index + direction;
+    if (nextIndex < 0 || nextIndex >= items.length) return;
+    const [item] = items.splice(index, 1);
+    items.splice(nextIndex, 0, item);
+}
+
+function syncTankerJsonEditor() {
+    const raw = document.getElementById("editor-json-textarea");
+    if (!raw) return true;
+
+    try {
+        editorState.conf["tankers.json"] = JSON.parse(raw.value);
+        return true;
+    } catch (error) {
+        showEditorError(`JSON inválido en tankers.json: ${error.message}`);
+        return false;
+    }
+}
+
+function syncTankerJsonRawTextarea() {
+    const raw = document.getElementById("editor-json-textarea");
+    if (raw) raw.value = formatJSON(editorState.conf["tankers.json"]);
+}
+
+function renderJsonEditorPreservingTankerScroll() {
+    const tableWrap = document.querySelector(".tanker-json-table-wrap");
+    const editor = document.querySelector(".tanker-json-editor");
+    const scrollState = {
+        tableTop: tableWrap?.scrollTop || 0,
+        tableLeft: tableWrap?.scrollLeft || 0,
+        editorTop: editor?.scrollTop || 0,
+    };
+
+    renderJsonEditor();
+
+    const nextTableWrap = document.querySelector(".tanker-json-table-wrap");
+    const nextEditor = document.querySelector(".tanker-json-editor");
+    if (nextTableWrap) {
+        nextTableWrap.scrollTop = scrollState.tableTop;
+        nextTableWrap.scrollLeft = scrollState.tableLeft;
+    }
+    if (nextEditor) nextEditor.scrollTop = scrollState.editorTop;
 }
 
 function renderHtmlEditor() {
