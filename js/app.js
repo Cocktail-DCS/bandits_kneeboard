@@ -164,6 +164,13 @@ async function buildGeneralNotes() {
     const card = document.getElementById("general-notes-card");
     if (!card) return;
 
+    const noteLines = (notes.lines || [])
+        .map(line => `<p>${escapeHTML(line)}</p>`)
+        .join("");
+    const image = notes.image
+        ? `<img src="${escapeHTML(notes.image)}" class="img-full">`
+        : "";
+
     card.innerHTML = `
         <h3>NOTAS GENERALES</h3>
         <strong>Soft Deck: ${escapeHTML(notes.softDeck)}</strong>
@@ -171,9 +178,11 @@ async function buildGeneralNotes() {
         <strong>Hard Deck: ${escapeHTML(notes.hardDeck)}</strong>
         <br>
         <br>
+        ${noteLines}
         <textarea id="notes-general" class="notes-input" style="min-height: 100px;" placeholder="${escapeHTML(notes.placeholder)}"></textarea>
         <br>
         <br>
+        ${image}
     `;
 }
 

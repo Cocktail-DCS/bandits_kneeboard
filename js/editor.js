@@ -211,6 +211,8 @@ function renderJsonEditor() {
     const isRadioEditor = editorState.activeConfFile === "radios.json";
     const isTankerEditor = editorState.activeConfFile === "tankers.json";
     const isLoadoutEditor = editorState.activeConfFile === "loadouts.json";
+    const isHoldingEditor = editorState.activeConfFile === "holdings.json";
+    const isNotesEditor = editorState.activeConfFile === "notes.json";
     content.innerHTML = `
         <div class="editor-layout">
             <nav class="editor-file-list">
@@ -225,7 +227,7 @@ function renderJsonEditor() {
                     <h3>${escapeHTML(editorState.activeConfFile)}</h3>
                     <button type="button" class="editor-btn" data-json-validate>Validar JSON</button>
                 </div>
-                ${isRadioEditor ? renderRadioJsonEditor() : isTankerEditor ? renderTankerJsonEditor() : isLoadoutEditor ? renderLoadoutJsonEditor() : `
+                ${isRadioEditor ? renderRadioJsonEditor() : isTankerEditor ? renderTankerJsonEditor() : isLoadoutEditor ? renderLoadoutJsonEditor() : isHoldingEditor ? renderHoldingJsonEditor() : isNotesEditor ? renderNotesJsonEditor() : `
                     <textarea id="editor-json-textarea" class="editor-textarea" spellcheck="false">${escapeHTML(formatJSON(editorState.conf[editorState.activeConfFile]))}</textarea>
                 `}
             </div>
@@ -251,6 +253,8 @@ function renderJsonEditor() {
     if (isRadioEditor) initRadioJsonEditor(content);
     if (isTankerEditor) initTankerJsonEditor(content);
     if (isLoadoutEditor) initLoadoutJsonEditor(content);
+    if (isHoldingEditor) initHoldingJsonEditor(content);
+    if (isNotesEditor) initNotesJsonEditor(content);
 }
 
 function saveActiveJson() {
@@ -262,6 +266,12 @@ function saveActiveJson() {
     }
     if (editorState.activeConfFile === "loadouts.json" && document.querySelector(".loadout-json-editor")) {
         return syncLoadoutJsonEditor();
+    }
+    if (editorState.activeConfFile === "holdings.json" && document.querySelector(".holding-json-editor")) {
+        return syncHoldingJsonEditor();
+    }
+    if (editorState.activeConfFile === "notes.json" && document.querySelector(".notes-json-editor")) {
+        return syncNotesJsonEditor();
     }
 
     const textarea = document.getElementById("editor-json-textarea");
@@ -1064,6 +1074,423 @@ function renderJsonEditorPreservingLoadoutScroll() {
     const scrollTop = editor?.scrollTop || 0;
     renderJsonEditor();
     const nextEditor = document.querySelector(".loadout-json-editor");
+    if (nextEditor) nextEditor.scrollTop = scrollTop;
+}
+
+function renderHoldingJsonEditor() {
+    const config = editorState.conf["holdings.json"] || {};
+    const defaults = config.defaults || {};
+    const itemIds = getHoldingItemIds(config);
+
+    return `
+        <div class="holding-json-editor">
+            <section class="editor-form-section">
+                <div class="editor-section-header">
+                    <h4>Contenido común de la página</h4>
+                </div>
+                <label>
+                    Título
+                    <input type="text" value="${escapeHTML(defaults.title || "")}" data-holding-default-field="title">
+                </label>
+                <label>
+                    Situación
+                    <textarea class="editor-small-textarea" data-holding-default-field="situation">${escapeHTML(defaults.situation || "")}</textarea>
+                </label>
+                <label>
+                    Llegada / comunicaciones
+                    <textarea class="editor-small-textarea" data-holding-default-list="arrival">${escapeHTML((defaults.arrival || []).join("\n"))}</textarea>
+                </label>
+                <label>
+                    Procedimiento ideal
+                    <textarea class="editor-small-textarea" data-holding-default-list="procedureIdeal">${escapeHTML((defaults.procedureIdeal || []).join("\n"))}</textarea>
+                </label>
+                <label>
+                    Importante
+                    <textarea class="editor-small-textarea" data-holding-default-field="important">${escapeHTML(defaults.important || "")}</textarea>
+                </label>
+                <div class="editor-two-col">
+                    <label>
+                        TOT
+                        <input type="text" value="${escapeHTML(defaults.tot?.description || "")}" data-holding-default-tot="description">
+                    </label>
+                    <label>
+                        Push point
+                        <input type="text" value="${escapeHTML(defaults.tot?.pushPoint || "")}" data-holding-default-tot="pushPoint">
+                    </label>
+                </div>
+            </section>
+
+            <section class="editor-form-section">
+                <div class="editor-section-header">
+                    <h4>Holdings por vuelo</h4>
+                    <button type="button" class="editor-btn" data-holding-add>Añadir holding</button>
+                </div>
+                <div class="holding-item-list">
+                    ${itemIds.map(id => renderHoldingItemEditor(id, config.items[id])).join("")}
+                </div>
+            </section>
+
+            <details class="editor-advanced holding-json-raw">
+                <summary>JSON crudo avanzado</summary>
+                <textarea id="editor-json-textarea" class="editor-textarea" spellcheck="false">${escapeHTML(formatJSON(config))}</textarea>
+            </details>
+        </div>
+    `;
+}
+
+function getHoldingItemIds(config) {
+    return Object.keys(config.items || {});
+}
+
+function renderHoldingItemEditor(id, item = {}) {
+    return `
+        <article class="holding-item-editor" data-holding-id="${escapeHTML(id)}">
+            <header>
+                <input type="text" value="${escapeHTML(id)}" data-holding-rename="${escapeHTML(id)}">
+                <div class="radio-json-row-actions">
+                    <button type="button" class="editor-icon-btn" data-holding-move="${escapeHTML(id)}" data-holding-direction="-1" title="Subir">↑</button>
+                    <button type="button" class="editor-icon-btn" data-holding-move="${escapeHTML(id)}" data-holding-direction="1" title="Bajar">↓</button>
+                    <button type="button" class="editor-icon-btn danger" data-holding-delete="${escapeHTML(id)}" title="Eliminar">×</button>
+                </div>
+            </header>
+            <div class="editor-two-col">
+                <label>
+                    Joker
+                    <input type="text" value="${escapeHTML(item.joker || "")}" data-holding-id="${escapeHTML(id)}" data-holding-field="joker">
+                </label>
+                <label>
+                    Bingo
+                    <input type="text" value="${escapeHTML(item.bingo || "")}" data-holding-id="${escapeHTML(id)}" data-holding-field="bingo">
+                </label>
+                <label>
+                    Punto
+                    <input type="text" value="${escapeHTML(item.holding?.point || "")}" data-holding-id="${escapeHTML(id)}" data-holding-nested="holding" data-holding-field="point">
+                </label>
+                <label>
+                    Altitud
+                    <input type="text" value="${escapeHTML(item.holding?.altitude || "")}" data-holding-id="${escapeHTML(id)}" data-holding-nested="holding" data-holding-field="altitude">
+                </label>
+                <label>
+                    Imagen
+                    <input type="text" value="${escapeHTML(item.image || "")}" data-holding-id="${escapeHTML(id)}" data-holding-field="image">
+                </label>
+            </div>
+            <details>
+                <summary>Overrides de página para este vuelo</summary>
+                <label>
+                    Título propio
+                    <input type="text" value="${escapeHTML(item.title || "")}" data-holding-id="${escapeHTML(id)}" data-holding-field="title">
+                </label>
+                <label>
+                    Situación propia
+                    <textarea class="editor-small-textarea" data-holding-id="${escapeHTML(id)}" data-holding-field="situation">${escapeHTML(item.situation || "")}</textarea>
+                </label>
+                <label>
+                    Llegada propia
+                    <textarea class="editor-small-textarea" data-holding-id="${escapeHTML(id)}" data-holding-list="arrival">${escapeHTML((item.arrival || []).join("\n"))}</textarea>
+                </label>
+                <label>
+                    Procedimiento propio
+                    <textarea class="editor-small-textarea" data-holding-id="${escapeHTML(id)}" data-holding-list="procedureIdeal">${escapeHTML((item.procedureIdeal || []).join("\n"))}</textarea>
+                </label>
+                <label>
+                    Importante propio
+                    <textarea class="editor-small-textarea" data-holding-id="${escapeHTML(id)}" data-holding-field="important">${escapeHTML(item.important || "")}</textarea>
+                </label>
+                <div class="editor-two-col">
+                    <label>
+                        TOT propio
+                        <input type="text" value="${escapeHTML(item.tot?.description || "")}" data-holding-id="${escapeHTML(id)}" data-holding-nested="tot" data-holding-field="description">
+                    </label>
+                    <label>
+                        Push point propio
+                        <input type="text" value="${escapeHTML(item.tot?.pushPoint || "")}" data-holding-id="${escapeHTML(id)}" data-holding-nested="tot" data-holding-field="pushPoint">
+                    </label>
+                </div>
+            </details>
+        </article>
+    `;
+}
+
+function initHoldingJsonEditor(content) {
+    const editor = content.querySelector(".holding-json-editor");
+
+    editor.addEventListener("input", event => {
+        updateHoldingJsonField(event.target);
+        clearEditorMessage();
+    });
+
+    editor.addEventListener("change", event => {
+        if (event.target.dataset.holdingRename) {
+            const id = renameHoldingJsonItem(event.target.dataset.holdingRename, event.target.value);
+            syncHoldingJsonRawTextarea();
+            renderJsonEditorPreservingHoldingScroll();
+            if (id) scrollToHoldingElement(`[data-holding-id="${cssEscape(id)}"]`);
+        }
+    });
+
+    editor.addEventListener("click", event => {
+        if (event.target.dataset.holdingAdd != null) {
+            const id = addHoldingJsonItem();
+            renderJsonEditor();
+            scrollToHoldingElement(`[data-holding-id="${cssEscape(id)}"]`);
+            showEditorMessage("Holding añadido.");
+            return;
+        }
+
+        if (event.target.dataset.holdingDelete) {
+            deleteHoldingJsonItem(event.target.dataset.holdingDelete);
+            renderJsonEditorPreservingHoldingScroll();
+            showEditorMessage("Holding eliminado.");
+            return;
+        }
+
+        if (event.target.dataset.holdingMove) {
+            moveHoldingJsonItem(event.target.dataset.holdingMove, Number(event.target.dataset.holdingDirection));
+            renderJsonEditorPreservingHoldingScroll();
+        }
+    });
+
+    autoResizeTextareas(editor);
+}
+
+function updateHoldingJsonField(target) {
+    const config = editorState.conf["holdings.json"];
+
+    if (target.dataset.holdingRename) return;
+
+    if (target.dataset.holdingDefaultField) {
+        config.defaults ||= {};
+        config.defaults[target.dataset.holdingDefaultField] = target.value;
+        if (target.matches("textarea")) autoResizeTextarea(target);
+        syncHoldingJsonRawTextarea();
+        return;
+    }
+
+    if (target.dataset.holdingDefaultList) {
+        config.defaults ||= {};
+        config.defaults[target.dataset.holdingDefaultList] = splitTextareaLines(target.value);
+        autoResizeTextarea(target);
+        syncHoldingJsonRawTextarea();
+        return;
+    }
+
+    if (target.dataset.holdingDefaultTot) {
+        config.defaults ||= {};
+        config.defaults.tot ||= {};
+        config.defaults.tot[target.dataset.holdingDefaultTot] = target.value;
+        syncHoldingJsonRawTextarea();
+        return;
+    }
+
+    const id = target.dataset.holdingId;
+    if (!id) return;
+    config.items ||= {};
+    config.items[id] ||= {};
+    const item = config.items[id];
+
+    if (target.dataset.holdingList) {
+        item[target.dataset.holdingList] = splitTextareaLines(target.value);
+        autoResizeTextarea(target);
+        syncHoldingJsonRawTextarea();
+        return;
+    }
+
+    if (target.dataset.holdingNested) {
+        item[target.dataset.holdingNested] ||= {};
+        item[target.dataset.holdingNested][target.dataset.holdingField] = target.value;
+        syncHoldingJsonRawTextarea();
+        return;
+    }
+
+    if (target.dataset.holdingField) {
+        item[target.dataset.holdingField] = target.value;
+        if (target.matches("textarea")) autoResizeTextarea(target);
+        syncHoldingJsonRawTextarea();
+    }
+}
+
+function splitTextareaLines(value) {
+    return String(value).split("\n");
+}
+
+function addHoldingJsonItem() {
+    const config = editorState.conf["holdings.json"];
+    config.items ||= {};
+    let index = getHoldingItemIds(config).length + 1;
+    let id = `holding_push_nuevo${index}`;
+    while (config.items[id]) {
+        index += 1;
+        id = `holding_push_nuevo${index}`;
+    }
+    config.items[id] = {
+        joker: "",
+        bingo: "",
+        holding: { point: "", altitude: "" },
+    };
+    syncHoldingJsonRawTextarea();
+    return id;
+}
+
+function deleteHoldingJsonItem(id) {
+    delete editorState.conf["holdings.json"].items?.[id];
+    syncHoldingJsonRawTextarea();
+}
+
+function renameHoldingJsonItem(oldId, newId) {
+    const config = editorState.conf["holdings.json"];
+    const cleanId = String(newId || "").trim();
+    if (!cleanId || cleanId === oldId || config.items?.[cleanId]) return oldId;
+    const reordered = {};
+    Object.entries(config.items || {}).forEach(([key, value]) => {
+        reordered[key === oldId ? cleanId : key] = value;
+    });
+    config.items = reordered;
+    return cleanId;
+}
+
+function moveHoldingJsonItem(id, direction) {
+    const config = editorState.conf["holdings.json"];
+    const entries = Object.entries(config.items || {});
+    const index = entries.findIndex(([key]) => key === id);
+    const nextIndex = index + direction;
+    if (index < 0 || nextIndex < 0 || nextIndex >= entries.length) return;
+    const [entry] = entries.splice(index, 1);
+    entries.splice(nextIndex, 0, entry);
+    config.items = Object.fromEntries(entries);
+    syncHoldingJsonRawTextarea();
+}
+
+function syncHoldingJsonEditor() {
+    const raw = document.getElementById("editor-json-textarea");
+    if (!raw) return true;
+
+    try {
+        editorState.conf["holdings.json"] = JSON.parse(raw.value);
+        return true;
+    } catch (error) {
+        showEditorError(`JSON inválido en holdings.json: ${error.message}`);
+        return false;
+    }
+}
+
+function syncHoldingJsonRawTextarea() {
+    const raw = document.getElementById("editor-json-textarea");
+    if (raw) raw.value = formatJSON(editorState.conf["holdings.json"]);
+}
+
+function renderJsonEditorPreservingHoldingScroll() {
+    const editor = document.querySelector(".holding-json-editor");
+    const scrollTop = editor?.scrollTop || 0;
+    renderJsonEditor();
+    const nextEditor = document.querySelector(".holding-json-editor");
+    if (nextEditor) nextEditor.scrollTop = scrollTop;
+}
+
+function scrollToHoldingElement(selector) {
+    const editor = document.querySelector(".holding-json-editor");
+    const element = document.querySelector(selector);
+    if (!editor || !element) return;
+    const editorRect = editor.getBoundingClientRect();
+    const elementRect = element.getBoundingClientRect();
+    editor.scrollTop += elementRect.top - editorRect.top - 16;
+}
+
+function renderNotesJsonEditor() {
+    const config = editorState.conf["notes.json"] || {};
+    return `
+        <div class="notes-json-editor">
+            <section class="editor-form-section">
+                <label>
+                    Soft Deck
+                    <input type="text" value="${escapeHTML(config.softDeck || "")}" data-notes-field="softDeck">
+                </label>
+                <label>
+                    Hard Deck
+                    <input type="text" value="${escapeHTML(config.hardDeck || "")}" data-notes-field="hardDeck">
+                </label>
+                <label>
+                    Líneas visibles
+                    <textarea class="editor-small-textarea" data-notes-list="lines">${escapeHTML((config.lines || []).join("\n"))}</textarea>
+                </label>
+                <label>
+                    Texto placeholder para tus notas
+                    <textarea class="editor-small-textarea" data-notes-field="placeholder">${escapeHTML(config.placeholder || "")}</textarea>
+                </label>
+                <label>
+                    Imagen opcional
+                    <input type="text" value="${escapeHTML(config.image || "")}" data-notes-field="image" list="notes-image-options" placeholder="images/...">
+                </label>
+                <datalist id="notes-image-options">
+                    ${EDITOR_IMAGE_FILES.map(path => `<option value="${escapeHTML(path)}"></option>`).join("")}
+                </datalist>
+                ${config.image ? `<img src="${escapeHTML(config.image)}" class="notes-json-preview" alt="">` : ""}
+            </section>
+            <details class="editor-advanced notes-json-raw">
+                <summary>JSON crudo avanzado</summary>
+                <textarea id="editor-json-textarea" class="editor-textarea" spellcheck="false">${escapeHTML(formatJSON(config))}</textarea>
+            </details>
+        </div>
+    `;
+}
+
+function initNotesJsonEditor(content) {
+    const editor = content.querySelector(".notes-json-editor");
+
+    editor.addEventListener("input", event => {
+        updateNotesJsonField(event.target);
+        clearEditorMessage();
+    });
+
+    editor.addEventListener("change", event => {
+        if (event.target.dataset.notesField === "image") {
+            renderJsonEditorPreservingNotesScroll();
+        }
+    });
+
+    autoResizeTextareas(editor);
+}
+
+function updateNotesJsonField(target) {
+    const config = editorState.conf["notes.json"];
+
+    if (target.dataset.notesList) {
+        config[target.dataset.notesList] = splitTextareaLines(target.value);
+        autoResizeTextarea(target);
+        syncNotesJsonRawTextarea();
+        return;
+    }
+
+    if (target.dataset.notesField) {
+        config[target.dataset.notesField] = target.value;
+        if (target.matches("textarea")) autoResizeTextarea(target);
+        syncNotesJsonRawTextarea();
+    }
+}
+
+function syncNotesJsonEditor() {
+    const raw = document.getElementById("editor-json-textarea");
+    if (!raw) return true;
+
+    try {
+        editorState.conf["notes.json"] = JSON.parse(raw.value);
+        return true;
+    } catch (error) {
+        showEditorError(`JSON inválido en notes.json: ${error.message}`);
+        return false;
+    }
+}
+
+function syncNotesJsonRawTextarea() {
+    const raw = document.getElementById("editor-json-textarea");
+    if (raw) raw.value = formatJSON(editorState.conf["notes.json"]);
+}
+
+function renderJsonEditorPreservingNotesScroll() {
+    const editor = document.querySelector(".notes-json-editor");
+    const scrollTop = editor?.scrollTop || 0;
+    renderJsonEditor();
+    const nextEditor = document.querySelector(".notes-json-editor");
     if (nextEditor) nextEditor.scrollTop = scrollTop;
 }
 
