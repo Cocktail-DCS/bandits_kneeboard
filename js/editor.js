@@ -805,6 +805,7 @@ function renderLoadoutSection(id, items) {
                 <input type="text" value="${escapeHTML(id)}" data-loadout-rename="${escapeHTML(id)}">
                 <div class="radio-json-row-actions">
                     <button type="button" class="editor-btn editor-btn-compact" data-loadout-item-add="${escapeHTML(id)}">Añadir arma</button>
+                    <button type="button" class="editor-icon-btn" data-loadout-duplicate="${escapeHTML(id)}" title="Duplicar loadout">D</button>
                     <button type="button" class="editor-icon-btn danger" data-loadout-delete="${escapeHTML(id)}" title="Eliminar loadout">×</button>
                 </div>
             </div>
@@ -918,6 +919,14 @@ function initLoadoutJsonEditor(content) {
             return;
         }
 
+        if (event.target.dataset.loadoutDuplicate != null) {
+            const id = duplicateLoadoutJsonSection(event.target.dataset.loadoutDuplicate);
+            renderJsonEditor();
+            scrollToLoadoutElement(`[data-loadout-id="${cssEscape(id)}"]`);
+            showEditorMessage("Loadout duplicado.");
+            return;
+        }
+
         if (event.target.dataset.loadoutItemAdd) {
             const id = event.target.dataset.loadoutItemAdd;
             const index = addLoadoutJsonItem(id);
@@ -1002,6 +1011,19 @@ function renameLoadoutJsonSection(oldId, newId) {
 function deleteLoadoutJsonSection(id) {
     delete editorState.conf["loadouts.json"][id];
     syncLoadoutJsonRawTextarea();
+}
+
+function duplicateLoadoutJsonSection(id) {
+    const config = editorState.conf["loadouts.json"];
+    const nextId = makeUniqueId(id, config);
+    const reordered = {};
+    Object.entries(config).forEach(([key, value]) => {
+        reordered[key] = value;
+        if (key === id) reordered[nextId] = cloneJSON(value);
+    });
+    editorState.conf["loadouts.json"] = reordered;
+    syncLoadoutJsonRawTextarea();
+    return nextId;
 }
 
 function addLoadoutJsonItem(id, item = { cantidad: "x1", arma: "", brevity: "", nota: "" }) {
@@ -1128,6 +1150,7 @@ function renderHoldingItemEditor(id, item = {}) {
                 <div class="radio-json-row-actions">
                     <button type="button" class="editor-icon-btn" data-holding-move="${escapeHTML(id)}" data-holding-direction="-1" title="Subir">↑</button>
                     <button type="button" class="editor-icon-btn" data-holding-move="${escapeHTML(id)}" data-holding-direction="1" title="Bajar">↓</button>
+                    <button type="button" class="editor-icon-btn" data-holding-duplicate="${escapeHTML(id)}" title="Duplicar holding">D</button>
                     <button type="button" class="editor-icon-btn danger" data-holding-delete="${escapeHTML(id)}" title="Eliminar">×</button>
                 </div>
             </header>
@@ -1223,6 +1246,14 @@ function initHoldingJsonEditor(content) {
             return;
         }
 
+        if (event.target.dataset.holdingDuplicate) {
+            const id = duplicateHoldingJsonItem(event.target.dataset.holdingDuplicate);
+            renderJsonEditor();
+            scrollToHoldingElement(`[data-holding-id="${cssEscape(id)}"]`);
+            showEditorMessage("Holding duplicado.");
+            return;
+        }
+
         if (event.target.dataset.holdingMove) {
             const id = moveHoldingJsonItem(event.target.dataset.holdingMove, Number(event.target.dataset.holdingDirection));
             renderJsonEditor();
@@ -1314,6 +1345,20 @@ function addHoldingJsonItem() {
 function deleteHoldingJsonItem(id) {
     delete editorState.conf["holdings.json"].items?.[id];
     syncHoldingJsonRawTextarea();
+}
+
+function duplicateHoldingJsonItem(id) {
+    const config = editorState.conf["holdings.json"];
+    config.items ||= {};
+    const nextId = makeUniqueId(id, config.items);
+    const reordered = {};
+    Object.entries(config.items).forEach(([key, value]) => {
+        reordered[key] = value;
+        if (key === id) reordered[nextId] = cloneJSON(value);
+    });
+    config.items = reordered;
+    syncHoldingJsonRawTextarea();
+    return nextId;
 }
 
 function renameHoldingJsonItem(oldId, newId) {
@@ -1680,6 +1725,7 @@ function renderPackageEditor(pkg, packageIndex) {
                     <button type="button" class="editor-btn editor-btn-compact" data-tab-add="${packageIndex}">Añadir pestaña</button>
                     <button type="button" class="editor-icon-btn" data-package-move="${packageIndex}" data-package-direction="-1" title="Subir">↑</button>
                     <button type="button" class="editor-icon-btn" data-package-move="${packageIndex}" data-package-direction="1" title="Bajar">↓</button>
+                    <button type="button" class="editor-icon-btn" data-package-duplicate="${packageIndex}" title="Duplicar paquete">D</button>
                     <button type="button" class="editor-icon-btn danger" data-package-delete="${packageIndex}" title="Eliminar">×</button>
                 </div>
             </header>
@@ -1737,6 +1783,12 @@ function initPackagesJsonEditor(content) {
             renderJsonEditorPreservingGenericScroll(".packages-json-editor");
             return;
         }
+        if (event.target.dataset.packageDuplicate != null) {
+            const index = duplicatePackageJsonItem(Number(event.target.dataset.packageDuplicate));
+            renderJsonEditor();
+            scrollToGenericElement(".packages-json-editor", `[data-package-anchor="${index}"]`);
+            return;
+        }
         if (event.target.dataset.packageMove != null) {
             const nextIndex = moveArrayItem(packages, Number(event.target.dataset.packageMove), Number(event.target.dataset.packageDirection));
             syncPackagesJsonRawTextarea();
@@ -1779,6 +1831,18 @@ function updatePackagesJsonField(target) {
         if (tab) tab[target.dataset.tabField] = target.value;
     }
     syncPackagesJsonRawTextarea();
+}
+
+function duplicatePackageJsonItem(index) {
+    const packages = editorState.conf["packages.json"];
+    const original = packages[index];
+    if (!original) return index;
+    const duplicate = cloneJSON(original);
+    duplicate.id = makeUniqueId(original.id || `paquete_${index + 1}`, Object.fromEntries(packages.map(pkg => [pkg.id, true])));
+    duplicate.label = `${original.label || original.id || "Paquete"} copia`;
+    packages.splice(index + 1, 0, duplicate);
+    syncPackagesJsonRawTextarea();
+    return index + 1;
 }
 
 function syncPackagesJsonEditor() {
@@ -1836,7 +1900,10 @@ function renderPageConfigEditor(id, page, isTemplate) {
                 <select data-page-id="${escapeHTML(id)}" data-page-scope="${scope}" data-page-field="type">
                     ${["operation", "standard", "html"].map(type => `<option value="${type}"${effectivePage.type === type ? " selected" : ""}>${type}</option>`).join("")}
                 </select>
-                <button type="button" class="editor-icon-btn danger" data-page-delete="${escapeHTML(id)}" data-page-scope="${scope}" title="Eliminar">×</button>
+                <div class="radio-json-row-actions">
+                    <button type="button" class="editor-icon-btn" data-page-duplicate="${escapeHTML(id)}" data-page-scope="${scope}" title="Duplicar ${isTemplate ? "plantilla" : "pagina"}">D</button>
+                    <button type="button" class="editor-icon-btn danger" data-page-delete="${escapeHTML(id)}" data-page-scope="${scope}" title="Eliminar">×</button>
+                </div>
             </header>
             ${renderPageConfigFields(id, effectivePage, scope)}
         </section>
@@ -1996,6 +2063,12 @@ function handlePagesJsonAction(target) {
         renderJsonEditorPreservingGenericScroll(".pages-json-editor");
         return;
     }
+    if (target.dataset.pageDuplicate) {
+        const nextId = duplicatePageConfig(scope, target.dataset.pageDuplicate);
+        renderJsonEditor();
+        scrollToGenericElement(".pages-json-editor", `[data-page-scope="${scope}"][data-page-id="${cssEscape(nextId)}"]`);
+        return;
+    }
     if (!page) return;
     if (target.dataset.fenceAdd) {
         page.fenceIn ||= [];
@@ -2072,6 +2145,20 @@ function createPageFromTemplate(requestedId, templateId) {
     return id;
 }
 
+function duplicatePageConfig(scope, id) {
+    const bucket = getPageConfigBucket(scope);
+    const nextId = makeUniqueId(id, bucket);
+    const reordered = {};
+    Object.entries(bucket).forEach(([key, value]) => {
+        reordered[key] = value;
+        if (key === id) reordered[nextId] = cloneJSON(value);
+    });
+    if (scope === "template") editorState.conf["pages.json"].templates = reordered;
+    else editorState.conf["pages.json"].pages = reordered;
+    syncPagesJsonRawTextarea();
+    return nextId;
+}
+
 function renamePageConfig(scope, oldId, newId) {
     const bucket = getPageConfigBucket(scope);
     const cleanId = String(newId || "").trim();
@@ -2087,6 +2174,17 @@ function renamePageConfig(scope, oldId, newId) {
 
 function cloneJSON(value) {
     return JSON.parse(JSON.stringify(value));
+}
+
+function makeUniqueId(baseId, bucket) {
+    const cleanBase = String(baseId || "item").trim() || "item";
+    let id = `${cleanBase}_copy`;
+    let index = 2;
+    while (bucket[id]) {
+        id = `${cleanBase}_copy${index}`;
+        index += 1;
+    }
+    return id;
 }
 
 function syncPagesJsonEditor() {

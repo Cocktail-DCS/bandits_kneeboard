@@ -49,6 +49,12 @@
         },
         {
           "radio": "8",
+          "callsign": "RED CROWN",
+          "freq": "257",
+          "color": "blue"
+        },
+        {
+          "radio": "9",
           "callsign": "",
           "freq": "",
           "color": ""
@@ -64,6 +70,12 @@
           "callsign": "",
           "freq": "",
           "color": ""
+        },
+        {
+          "radio": "12",
+          "callsign": "GOLF-9 JTAC",
+          "freq": "262.2",
+          "color": "blue"
         },
         {
           "radio": "G",
@@ -127,13 +139,25 @@
           "color": "red"
         },
         {
+          "radio": "9",
+          "callsign": "KNIGTH-1",
+          "freq": "126",
+          "color": "green"
+        },
+        {
           "radio": "10",
+          "callsign": "KNIGTH-2",
+          "freq": "126.1",
+          "color": "green"
+        },
+        {
+          "radio": "11",
           "callsign": "",
           "freq": "",
           "color": ""
         },
         {
-          "radio": "11",
+          "radio": "12",
           "callsign": "",
           "freq": "",
           "color": ""

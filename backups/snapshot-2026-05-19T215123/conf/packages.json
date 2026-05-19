@@ -34,6 +34,10 @@
         "label": "Tankers"
       },
       {
+        "id": "holding_push_raccoon1",
+        "label": "Holdings"
+      },
+      {
         "id": "op_raccoon1",
         "label": "Operaciones"
       },
