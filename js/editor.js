@@ -86,11 +86,28 @@ window.addEventListener("DOMContentLoaded", () => {
     if (!new URLSearchParams(window.location.search).has("edit")) return;
     editorState.enabled = true;
     document.body.classList.add("editor-mode");
+    setupEditorReturnLink();
     initEditor().catch(error => {
         console.error("Error iniciando editor:", error);
         showEditorError(error.message);
     });
 });
+
+function setupEditorReturnLink() {
+    const link = document.getElementById("open-editor-link");
+    if (!link) return;
+
+    const targetUrl = new URL(window.location.href);
+    targetUrl.searchParams.delete("edit");
+
+    link.textContent = "Volver";
+    link.title = "Volver a la pagina principal";
+    link.href = targetUrl.href;
+    link.addEventListener("click", event => {
+        const confirmed = window.confirm("Se perderan los cambios no exportados del editor. ¿Quieres volver a la pagina principal?");
+        if (!confirmed) event.preventDefault();
+    });
+}
 
 async function initEditor() {
     mountEditorShell();

@@ -1,6 +1,6 @@
 #open-editor-link {
     position: fixed;
-    right: 10px;
+    left: 10px;
     bottom: 10px;
     z-index: 30;
     padding: 6px 9px;
