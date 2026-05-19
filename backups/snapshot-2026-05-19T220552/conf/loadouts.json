@@ -688,31 +688,5 @@
       "brevity": "N/A",
       "nota": "Pod de telemetria para entrenamientos"
     }
-  ],
-  "op_kight2": [
-    {
-      "cantidad": "x1",
-      "arma": "CATM-9",
-      "brevity": "N/A",
-      "nota": "Misil cautivo de entrenamiento, sin lanzamiento real."
-    },
-    {
-      "cantidad": "x2",
-      "arma": "GBU-16 Paveway II 1000lb",
-      "brevity": "PAVEWAY",
-      "nota": "Bomba guiada por láser."
-    },
-    {
-      "cantidad": "x1",
-      "arma": "AN/AAQ-28 LITENING II",
-      "brevity": "N/A",
-      "nota": "Pod de designación; no es arma, pero necesario para empleo láser/autodesignación."
-    },
-    {
-      "cantidad": "x1",
-      "arma": "AN/ASQ-T50 TCTS",
-      "brevity": "N/A",
-      "nota": "Pod de telemetria para entrenamientos"
-    }
   ]
 }

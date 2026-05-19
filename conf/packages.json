@@ -50,5 +50,311 @@
         "label": "Apagado"
       }
     ]
+  },
+  {
+    "id": "RACCOON-2",
+    "label": "RACCOON-2",
+    "tabs": [
+      {
+        "id": "1_startup_taxi_ground",
+        "label": "Inicio en tierra"
+      },
+      {
+        "id": "2_departures",
+        "label": "Salida"
+      },
+      {
+        "id": "3_tanker",
+        "label": "Tankers"
+      },
+      {
+        "id": "holding_push_raccoon2",
+        "label": "Holdings"
+      },
+      {
+        "id": "op_raccoon2",
+        "label": "Operaciones"
+      },
+      {
+        "id": "8_arrivals_ground",
+        "label": "Llegadas"
+      },
+      {
+        "id": "9_shutdown_taxi_ground",
+        "label": "Apagado"
+      }
+    ]
+  },
+  {
+    "id": "RACCOON-3",
+    "label": "RACCOON-3",
+    "tabs": [
+      {
+        "id": "1_startup_taxi_ground",
+        "label": "Inicio en tierra"
+      },
+      {
+        "id": "2_departures",
+        "label": "Salida"
+      },
+      {
+        "id": "3_tanker",
+        "label": "Tankers"
+      },
+      {
+        "id": "holding_push_raccoon3",
+        "label": "Holdings"
+      },
+      {
+        "id": "op_raccoon3",
+        "label": "Operaciones"
+      },
+      {
+        "id": "8_arrivals_ground",
+        "label": "Llegadas"
+      },
+      {
+        "id": "9_shutdown_taxi_ground",
+        "label": "Apagado"
+      }
+    ]
+  },
+  {
+    "id": "RACCOON-4",
+    "label": "RACCOON-4",
+    "tabs": [
+      {
+        "id": "1_startup_taxi_ground",
+        "label": "Inicio en tierra"
+      },
+      {
+        "id": "2_departures",
+        "label": "Salida"
+      },
+      {
+        "id": "3_tanker",
+        "label": "Tankers"
+      },
+      {
+        "id": "holding_push_raccoon4",
+        "label": "Holdings"
+      },
+      {
+        "id": "op_raccoon4",
+        "label": "Operaciones"
+      },
+      {
+        "id": "8_arrivals_ground",
+        "label": "Llegadas"
+      },
+      {
+        "id": "9_shutdown_taxi_ground",
+        "label": "Apagado"
+      }
+    ]
+  },
+  {
+    "id": "BADGER-1",
+    "label": "BADGER-1",
+    "tabs": [
+      {
+        "id": "1_startup_taxi_ground",
+        "label": "Inicio en tierra"
+      },
+      {
+        "id": "2_departures",
+        "label": "Salida"
+      },
+      {
+        "id": "3_tanker",
+        "label": "Tankers"
+      },
+      {
+        "id": "holding_push_badger1",
+        "label": "Holdings"
+      },
+      {
+        "id": "op_badger1",
+        "label": "Operaciones"
+      },
+      {
+        "id": "8_arrivals_ground",
+        "label": "Llegadas"
+      },
+      {
+        "id": "9_shutdown_taxi_ground",
+        "label": "Apagado"
+      }
+    ]
+  },
+  {
+    "id": "BADGER-2",
+    "label": "BADGER-2",
+    "tabs": [
+      {
+        "id": "1_startup_taxi_ground",
+        "label": "Inicio en tierra"
+      },
+      {
+        "id": "2_departures",
+        "label": "Salida"
+      },
+      {
+        "id": "3_tanker",
+        "label": "Tankers"
+      },
+      {
+        "id": "holding_push_badger2",
+        "label": "Holdings"
+      },
+      {
+        "id": "op_badger2",
+        "label": "Operaciones"
+      },
+      {
+        "id": "8_arrivals_ground",
+        "label": "Llegadas"
+      },
+      {
+        "id": "9_shutdown_taxi_ground",
+        "label": "Apagado"
+      }
+    ]
+  },
+  {
+    "id": "BADGER-3",
+    "label": "BADGER-3",
+    "tabs": [
+      {
+        "id": "1_startup_taxi_ground",
+        "label": "Inicio en tierra"
+      },
+      {
+        "id": "2_departures",
+        "label": "Salida"
+      },
+      {
+        "id": "3_tanker",
+        "label": "Tankers"
+      },
+      {
+        "id": "holding_push_badger3",
+        "label": "Holdings"
+      },
+      {
+        "id": "op_badger3",
+        "label": "Operaciones"
+      },
+      {
+        "id": "8_arrivals_ground",
+        "label": "Llegadas"
+      },
+      {
+        "id": "9_shutdown_taxi_ground",
+        "label": "Apagado"
+      }
+    ]
+  },
+  {
+    "id": "BADGER-4",
+    "label": "BADGER-4",
+    "tabs": [
+      {
+        "id": "1_startup_taxi_ground",
+        "label": "Inicio en tierra"
+      },
+      {
+        "id": "2_departures",
+        "label": "Salida"
+      },
+      {
+        "id": "3_tanker",
+        "label": "Tankers"
+      },
+      {
+        "id": "holding_push_badger4",
+        "label": "Holdings"
+      },
+      {
+        "id": "op_badger4",
+        "label": "Operaciones"
+      },
+      {
+        "id": "8_arrivals_ground",
+        "label": "Llegadas"
+      },
+      {
+        "id": "9_shutdown_taxi_ground",
+        "label": "Apagado"
+      }
+    ]
+  },
+  {
+    "id": "KNIGHT-1",
+    "label": "KNIGHT-1",
+    "tabs": [
+      {
+        "id": "1_startup_taxi_ground",
+        "label": "Inicio en tierra"
+      },
+      {
+        "id": "2_departures",
+        "label": "Salida"
+      },
+      {
+        "id": "3_tanker",
+        "label": "Tankers"
+      },
+      {
+        "id": "holding_push_knight1",
+        "label": "Holdings"
+      },
+      {
+        "id": "op_kight1",
+        "label": "Operaciones"
+      },
+      {
+        "id": "8_arrivals_ground",
+        "label": "Llegadas"
+      },
+      {
+        "id": "9_shutdown_taxi_ground",
+        "label": "Apagado"
+      }
+    ]
+  },
+  {
+    "id": "KNIGHT-2",
+    "label": "KNIGHT-2",
+    "tabs": [
+      {
+        "id": "1_startup_taxi_ground",
+        "label": "Inicio en tierra"
+      },
+      {
+        "id": "2_departures",
+        "label": "Salida"
+      },
+      {
+        "id": "3_tanker",
+        "label": "Tankers"
+      },
+      {
+        "id": "holding_push_knight2",
+        "label": "Holdings"
+      },
+      {
+        "id": "op_kight2",
+        "label": "Operaciones"
+      },
+      {
+        "id": "8_arrivals_ground",
+        "label": "Llegadas"
+      },
+      {
+        "id": "9_shutdown_taxi_ground",
+        "label": "Apagado"
+      }
+    ]
   }
 ]

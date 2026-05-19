@@ -1,0 +1,9 @@
+{
+  "softDeck": "8.000 ft AGL",
+  "hardDeck": "5.000 ft AGL",
+  "lines": [
+    "Es obligatorio mantener el hard deck"
+  ],
+  "placeholder": "Este espacio esta reservado para tus notas.\nUsalo sabiamente.",
+  "image": ""
+}

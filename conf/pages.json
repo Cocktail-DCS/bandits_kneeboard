@@ -83,6 +83,492 @@
         ]
       },
       "return": "Tras bombardear dirigirse directamente al punto de retorno a base"
+    },
+    "op_raccoon2": {
+      "type": "operation",
+      "title": "STRIKE",
+      "situation": "Tu tarea es atacar los WP objetivo con bombas",
+      "fenceIn": [
+        {
+          "letter": "F",
+          "label": "Firepower (Armas)",
+          "text": "Master ARM ON, Armas seleccionadas y espoletas configuradas"
+        },
+        {
+          "letter": "E",
+          "label": "Emitters (Emisiones)",
+          "text": "Preparar FCR (Radar), radio altímetro, radios, IFF, Datalink, Luces OFF"
+        },
+        {
+          "letter": "N",
+          "label": "Navigation (Navegacion)",
+          "text": "Comprobar ruta de vuelo, comprobar Bullseye"
+        },
+        {
+          "letter": "C",
+          "label": "Countermeasures (Contramedidas)",
+          "text": "Dispensadores ARMADOS, ECM/ASPJ Listos para operar"
+        },
+        {
+          "letter": "E",
+          "label": "Employment (Estados)",
+          "text": "Verificar BINGO, RWR operativo y sin avisos, otros aspectos del avion en concreto"
+        }
+      ],
+      "important": [
+        "Configrar el bullseye para realizar un correcto reporte de enemigos",
+        "Anunciar lanzamientos de bombas/misiles"
+      ],
+      "objectives": {
+        "intro": [
+          "Vuestro objetivo es Isla de practica WP 9",
+          "Solo hay que lanzar bombas en CCRP sobre la isla y abandonar el area de operaciones"
+        ],
+        "items": [
+          {
+            "title": "Isla de practicas WP 9",
+            "image": "images/Ruta.png",
+            "details": [
+              "MGRS: 55 Q CU 58585 08943",
+              "Lat/Long: N16°21'28.04\", E145°40'34.31\"",
+              "Elevacion: 705ft"
+            ]
+          }
+        ]
+      },
+      "return": "Tras bombardear dirigirse directamente al punto de retorno a base"
+    },
+    "op_raccoon3": {
+      "type": "operation",
+      "title": "STRIKE",
+      "situation": "Tu tarea es atacar los WP objetivo con bombas",
+      "fenceIn": [
+        {
+          "letter": "F",
+          "label": "Firepower (Armas)",
+          "text": "Master ARM ON, Armas seleccionadas y espoletas configuradas"
+        },
+        {
+          "letter": "E",
+          "label": "Emitters (Emisiones)",
+          "text": "Preparar FCR (Radar), radio altímetro, radios, IFF, Datalink, Luces OFF"
+        },
+        {
+          "letter": "N",
+          "label": "Navigation (Navegacion)",
+          "text": "Comprobar ruta de vuelo, comprobar Bullseye"
+        },
+        {
+          "letter": "C",
+          "label": "Countermeasures (Contramedidas)",
+          "text": "Dispensadores ARMADOS, ECM/ASPJ Listos para operar"
+        },
+        {
+          "letter": "E",
+          "label": "Employment (Estados)",
+          "text": "Verificar BINGO, RWR operativo y sin avisos, otros aspectos del avion en concreto"
+        }
+      ],
+      "important": [
+        "Configrar el bullseye para realizar un correcto reporte de enemigos",
+        "Anunciar lanzamientos de bombas/misiles"
+      ],
+      "objectives": {
+        "intro": [
+          "Vuestro objetivo es Isla de practica WP 9",
+          "Solo hay que lanzar bombas en CCRP sobre la isla y abandonar el area de operaciones"
+        ],
+        "items": [
+          {
+            "title": "Isla de practicas WP 9",
+            "image": "images/Ruta.png",
+            "details": [
+              "MGRS: 55 Q CU 58585 08943",
+              "Lat/Long: N16°21'28.04\", E145°40'34.31\"",
+              "Elevacion: 705ft"
+            ]
+          }
+        ]
+      },
+      "return": "Tras bombardear dirigirse directamente al punto de retorno a base"
+    },
+    "op_raccoon4": {
+      "type": "operation",
+      "title": "STRIKE",
+      "situation": "Tu tarea es atacar los WP objetivo con bombas",
+      "fenceIn": [
+        {
+          "letter": "F",
+          "label": "Firepower (Armas)",
+          "text": "Master ARM ON, Armas seleccionadas y espoletas configuradas"
+        },
+        {
+          "letter": "E",
+          "label": "Emitters (Emisiones)",
+          "text": "Preparar FCR (Radar), radio altímetro, radios, IFF, Datalink, Luces OFF"
+        },
+        {
+          "letter": "N",
+          "label": "Navigation (Navegacion)",
+          "text": "Comprobar ruta de vuelo, comprobar Bullseye"
+        },
+        {
+          "letter": "C",
+          "label": "Countermeasures (Contramedidas)",
+          "text": "Dispensadores ARMADOS, ECM/ASPJ Listos para operar"
+        },
+        {
+          "letter": "E",
+          "label": "Employment (Estados)",
+          "text": "Verificar BINGO, RWR operativo y sin avisos, otros aspectos del avion en concreto"
+        }
+      ],
+      "important": [
+        "Configrar el bullseye para realizar un correcto reporte de enemigos",
+        "Anunciar lanzamientos de bombas/misiles"
+      ],
+      "objectives": {
+        "intro": [
+          "Vuestro objetivo es Isla de practica WP 9",
+          "Solo hay que lanzar bombas en CCRP sobre la isla y abandonar el area de operaciones"
+        ],
+        "items": [
+          {
+            "title": "Isla de practicas WP 9",
+            "image": "images/Ruta.png",
+            "details": [
+              "MGRS: 55 Q CU 58585 08943",
+              "Lat/Long: N16°21'28.04\", E145°40'34.31\"",
+              "Elevacion: 705ft"
+            ]
+          }
+        ]
+      },
+      "return": "Tras bombardear dirigirse directamente al punto de retorno a base"
+    },
+    "op_badger1": {
+      "type": "operation",
+      "title": "STRIKE",
+      "situation": "Tu tarea es atacar los WP objetivo con bombas",
+      "fenceIn": [
+        {
+          "letter": "F",
+          "label": "Firepower (Armas)",
+          "text": "Master ARM ON, Armas seleccionadas y espoletas configuradas"
+        },
+        {
+          "letter": "E",
+          "label": "Emitters (Emisiones)",
+          "text": "Preparar FCR (Radar), radio altímetro, radios, IFF, Datalink, Luces OFF"
+        },
+        {
+          "letter": "N",
+          "label": "Navigation (Navegacion)",
+          "text": "Comprobar ruta de vuelo, comprobar Bullseye"
+        },
+        {
+          "letter": "C",
+          "label": "Countermeasures (Contramedidas)",
+          "text": "Dispensadores ARMADOS, ECM/ASPJ Listos para operar"
+        },
+        {
+          "letter": "E",
+          "label": "Employment (Estados)",
+          "text": "Verificar BINGO, RWR operativo y sin avisos, otros aspectos del avion en concreto"
+        }
+      ],
+      "important": [
+        "Configrar el bullseye para realizar un correcto reporte de enemigos",
+        "Anunciar lanzamientos de bombas/misiles"
+      ],
+      "objectives": {
+        "intro": [
+          "Vuestro objetivo es Isla de practica WP 9",
+          "Solo hay que lanzar bombas en CCRP sobre la isla y abandonar el area de operaciones"
+        ],
+        "items": [
+          {
+            "title": "Isla de practicas WP 9",
+            "image": "images/Ruta.png",
+            "details": [
+              "MGRS: 55 Q CU 58585 08943",
+              "Lat/Long: N16°21'28.04\", E145°40'34.31\"",
+              "Elevacion: 705ft"
+            ]
+          }
+        ]
+      },
+      "return": "Tras bombardear dirigirse directamente al punto de retorno a base"
+    },
+    "op_badger2": {
+      "type": "operation",
+      "title": "STRIKE",
+      "situation": "Tu tarea es atacar los WP objetivo con bombas",
+      "fenceIn": [
+        {
+          "letter": "F",
+          "label": "Firepower (Armas)",
+          "text": "Master ARM ON, Armas seleccionadas y espoletas configuradas"
+        },
+        {
+          "letter": "E",
+          "label": "Emitters (Emisiones)",
+          "text": "Preparar FCR (Radar), radio altímetro, radios, IFF, Datalink, Luces OFF"
+        },
+        {
+          "letter": "N",
+          "label": "Navigation (Navegacion)",
+          "text": "Comprobar ruta de vuelo, comprobar Bullseye"
+        },
+        {
+          "letter": "C",
+          "label": "Countermeasures (Contramedidas)",
+          "text": "Dispensadores ARMADOS, ECM/ASPJ Listos para operar"
+        },
+        {
+          "letter": "E",
+          "label": "Employment (Estados)",
+          "text": "Verificar BINGO, RWR operativo y sin avisos, otros aspectos del avion en concreto"
+        }
+      ],
+      "important": [
+        "Configrar el bullseye para realizar un correcto reporte de enemigos",
+        "Anunciar lanzamientos de bombas/misiles"
+      ],
+      "objectives": {
+        "intro": [
+          "Vuestro objetivo es Isla de practica WP 9",
+          "Solo hay que lanzar bombas en CCRP sobre la isla y abandonar el area de operaciones"
+        ],
+        "items": [
+          {
+            "title": "Isla de practicas WP 9",
+            "image": "images/Ruta.png",
+            "details": [
+              "MGRS: 55 Q CU 58585 08943",
+              "Lat/Long: N16°21'28.04\", E145°40'34.31\"",
+              "Elevacion: 705ft"
+            ]
+          }
+        ]
+      },
+      "return": "Tras bombardear dirigirse directamente al punto de retorno a base"
+    },
+    "op_badger3": {
+      "type": "operation",
+      "title": "STRIKE",
+      "situation": "Tu tarea es atacar los WP objetivo con bombas",
+      "fenceIn": [
+        {
+          "letter": "F",
+          "label": "Firepower (Armas)",
+          "text": "Master ARM ON, Armas seleccionadas y espoletas configuradas"
+        },
+        {
+          "letter": "E",
+          "label": "Emitters (Emisiones)",
+          "text": "Preparar FCR (Radar), radio altímetro, radios, IFF, Datalink, Luces OFF"
+        },
+        {
+          "letter": "N",
+          "label": "Navigation (Navegacion)",
+          "text": "Comprobar ruta de vuelo, comprobar Bullseye"
+        },
+        {
+          "letter": "C",
+          "label": "Countermeasures (Contramedidas)",
+          "text": "Dispensadores ARMADOS, ECM/ASPJ Listos para operar"
+        },
+        {
+          "letter": "E",
+          "label": "Employment (Estados)",
+          "text": "Verificar BINGO, RWR operativo y sin avisos, otros aspectos del avion en concreto"
+        }
+      ],
+      "important": [
+        "Configrar el bullseye para realizar un correcto reporte de enemigos",
+        "Anunciar lanzamientos de bombas/misiles"
+      ],
+      "objectives": {
+        "intro": [
+          "Vuestro objetivo es Isla de practica WP 9",
+          "Solo hay que lanzar bombas en CCRP sobre la isla y abandonar el area de operaciones"
+        ],
+        "items": [
+          {
+            "title": "Isla de practicas WP 9",
+            "image": "images/Ruta.png",
+            "details": [
+              "MGRS: 55 Q CU 58585 08943",
+              "Lat/Long: N16°21'28.04\", E145°40'34.31\"",
+              "Elevacion: 705ft"
+            ]
+          }
+        ]
+      },
+      "return": "Tras bombardear dirigirse directamente al punto de retorno a base"
+    },
+    "op_badger4": {
+      "type": "operation",
+      "title": "STRIKE",
+      "situation": "Tu tarea es atacar los WP objetivo con bombas",
+      "fenceIn": [
+        {
+          "letter": "F",
+          "label": "Firepower (Armas)",
+          "text": "Master ARM ON, Armas seleccionadas y espoletas configuradas"
+        },
+        {
+          "letter": "E",
+          "label": "Emitters (Emisiones)",
+          "text": "Preparar FCR (Radar), radio altímetro, radios, IFF, Datalink, Luces OFF"
+        },
+        {
+          "letter": "N",
+          "label": "Navigation (Navegacion)",
+          "text": "Comprobar ruta de vuelo, comprobar Bullseye"
+        },
+        {
+          "letter": "C",
+          "label": "Countermeasures (Contramedidas)",
+          "text": "Dispensadores ARMADOS, ECM/ASPJ Listos para operar"
+        },
+        {
+          "letter": "E",
+          "label": "Employment (Estados)",
+          "text": "Verificar BINGO, RWR operativo y sin avisos, otros aspectos del avion en concreto"
+        }
+      ],
+      "important": [
+        "Configrar el bullseye para realizar un correcto reporte de enemigos",
+        "Anunciar lanzamientos de bombas/misiles"
+      ],
+      "objectives": {
+        "intro": [
+          "Vuestro objetivo es Isla de practica WP 9",
+          "Solo hay que lanzar bombas en CCRP sobre la isla y abandonar el area de operaciones"
+        ],
+        "items": [
+          {
+            "title": "Isla de practicas WP 9",
+            "image": "images/Ruta.png",
+            "details": [
+              "MGRS: 55 Q CU 58585 08943",
+              "Lat/Long: N16°21'28.04\", E145°40'34.31\"",
+              "Elevacion: 705ft"
+            ]
+          }
+        ]
+      },
+      "return": "Tras bombardear dirigirse directamente al punto de retorno a base"
+    },
+    "op_kinght1": {
+      "type": "operation",
+      "title": "STRIKE",
+      "situation": "Tu tarea es atacar los WP objetivo con bombas",
+      "fenceIn": [
+        {
+          "letter": "F",
+          "label": "Firepower (Armas)",
+          "text": "Master ARM ON, Armas seleccionadas y espoletas configuradas"
+        },
+        {
+          "letter": "E",
+          "label": "Emitters (Emisiones)",
+          "text": "Preparar FCR (Radar), radio altímetro, radios, IFF, Datalink, Luces OFF"
+        },
+        {
+          "letter": "N",
+          "label": "Navigation (Navegacion)",
+          "text": "Comprobar ruta de vuelo, comprobar Bullseye"
+        },
+        {
+          "letter": "C",
+          "label": "Countermeasures (Contramedidas)",
+          "text": "Dispensadores ARMADOS, ECM/ASPJ Listos para operar"
+        },
+        {
+          "letter": "E",
+          "label": "Employment (Estados)",
+          "text": "Verificar BINGO, RWR operativo y sin avisos, otros aspectos del avion en concreto"
+        }
+      ],
+      "important": [
+        "Configrar el bullseye para realizar un correcto reporte de enemigos",
+        "Anunciar lanzamientos de bombas/misiles"
+      ],
+      "objectives": {
+        "intro": [
+          "Vuestro objetivo es Isla de practica WP 9",
+          "Solo hay que lanzar bombas en CCRP sobre la isla y abandonar el area de operaciones"
+        ],
+        "items": [
+          {
+            "title": "Isla de practicas WP 9",
+            "image": "images/Ruta.png",
+            "details": [
+              "MGRS: 55 Q CU 58585 08943",
+              "Lat/Long: N16°21'28.04\", E145°40'34.31\"",
+              "Elevacion: 705ft"
+            ]
+          }
+        ]
+      },
+      "return": "Tras bombardear dirigirse directamente al punto de retorno a base"
+    },
+    "op_kinght2": {
+      "type": "operation",
+      "title": "STRIKE",
+      "situation": "Tu tarea es atacar los WP objetivo con bombas",
+      "fenceIn": [
+        {
+          "letter": "F",
+          "label": "Firepower (Armas)",
+          "text": "Master ARM ON, Armas seleccionadas y espoletas configuradas"
+        },
+        {
+          "letter": "E",
+          "label": "Emitters (Emisiones)",
+          "text": "Preparar FCR (Radar), radio altímetro, radios, IFF, Datalink, Luces OFF"
+        },
+        {
+          "letter": "N",
+          "label": "Navigation (Navegacion)",
+          "text": "Comprobar ruta de vuelo, comprobar Bullseye"
+        },
+        {
+          "letter": "C",
+          "label": "Countermeasures (Contramedidas)",
+          "text": "Dispensadores ARMADOS, ECM/ASPJ Listos para operar"
+        },
+        {
+          "letter": "E",
+          "label": "Employment (Estados)",
+          "text": "Verificar BINGO, RWR operativo y sin avisos, otros aspectos del avion en concreto"
+        }
+      ],
+      "important": [
+        "Configrar el bullseye para realizar un correcto reporte de enemigos",
+        "Anunciar lanzamientos de bombas/misiles"
+      ],
+      "objectives": {
+        "intro": [
+          "Vuestro objetivo es Isla de practica WP 9",
+          "Solo hay que lanzar bombas en CCRP sobre la isla y abandonar el area de operaciones"
+        ],
+        "items": [
+          {
+            "title": "Isla de practicas WP 9",
+            "image": "images/Ruta.png",
+            "details": [
+              "MGRS: 55 Q CU 58585 08943",
+              "Lat/Long: N16°21'28.04\", E145°40'34.31\"",
+              "Elevacion: 705ft"
+            ]
+          }
+        ]
+      },
+      "return": "Tras bombardear dirigirse directamente al punto de retorno a base"
     }
   },
   "templates": {

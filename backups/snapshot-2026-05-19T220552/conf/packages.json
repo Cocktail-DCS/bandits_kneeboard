@@ -1,0 +1,54 @@
+[
+  {
+    "id": "ATC",
+    "label": "ATC",
+    "tabs": [
+      {
+        "id": "atc_ground",
+        "label": "Ground"
+      },
+      {
+        "id": "atc_tower",
+        "label": "Tower"
+      },
+      {
+        "id": "atc_overlord",
+        "label": "Overlord"
+      }
+    ]
+  },
+  {
+    "id": "RACCOON-1",
+    "label": "RACCOON-1",
+    "tabs": [
+      {
+        "id": "1_startup_taxi_ground",
+        "label": "Inicio en tierra"
+      },
+      {
+        "id": "2_departures",
+        "label": "Salida"
+      },
+      {
+        "id": "3_tanker",
+        "label": "Tankers"
+      },
+      {
+        "id": "holding_push_raccoon1",
+        "label": "Holdings"
+      },
+      {
+        "id": "op_raccoon1",
+        "label": "Operaciones"
+      },
+      {
+        "id": "8_arrivals_ground",
+        "label": "Llegadas"
+      },
+      {
+        "id": "9_shutdown_taxi_ground",
+        "label": "Apagado"
+      }
+    ]
+  }
+]
