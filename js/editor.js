@@ -273,11 +273,9 @@ function renderRadioJsonEditor() {
                 </table>
             </div>
             <div class="radio-json-actions">
-                ${(config.groups || []).map((group, index) => `
-                    <button type="button" class="editor-btn" data-radio-add-row="${index}">
-                        Añadir fila ${escapeHTML(group.channelHeader || `Grupo ${index + 1}`)}
-                    </button>
-                `).join("")}
+                <button type="button" class="editor-btn" data-radio-add-row>
+                    Añadir fila en ambas radios
+                </button>
             </div>
             <details class="editor-advanced radio-json-raw">
                 <summary>JSON crudo avanzado</summary>
@@ -350,12 +348,10 @@ function initRadioJsonEditor(content) {
     });
 
     content.querySelector(".radio-json-editor").addEventListener("click", event => {
-        const addGroupIndex = event.target.dataset.radioAddRow;
-        if (addGroupIndex != null) {
-            addRadioJsonRow(Number(addGroupIndex));
-            const rowIndex = editorState.conf["radios.json"].groups?.[Number(addGroupIndex)]?.rows?.length - 1;
+        if (event.target.dataset.radioAddRow != null) {
+            const rowIndex = addRadioJsonRow();
             renderJsonEditor();
-            scrollToGenericElement(".radio-json-table-wrap", `[data-radio-row-anchor="${addGroupIndex}-${rowIndex}"]`);
+            scrollToGenericElement(".radio-json-table-wrap", `[data-radio-row-anchor="0-${rowIndex}"]`);
             showEditorMessage("Fila añadida.");
             return;
         }
@@ -402,12 +398,14 @@ function updateRadioJsonField(target) {
     syncRadioJsonRawTextarea();
 }
 
-function addRadioJsonRow(groupIndex) {
-    const group = editorState.conf["radios.json"].groups?.[groupIndex];
-    if (!group) return;
-    group.rows ||= [];
-    group.rows.push({ radio: "", callsign: "", freq: "", color: "" });
+function addRadioJsonRow() {
+    const groups = editorState.conf["radios.json"].groups || [];
+    groups.forEach(group => {
+        group.rows ||= [];
+        group.rows.push({ radio: "", callsign: "", freq: "", color: "" });
+    });
     syncRadioJsonRawTextarea();
+    return Math.max(...groups.map(group => group.rows?.length || 0), 1) - 1;
 }
 
 function deleteRadioJsonRow(groupIndex, rowIndex) {
@@ -1670,8 +1668,14 @@ function renderPackageEditor(pkg, packageIndex) {
     return `
         <section class="editor-form-section package-editor" data-package-anchor="${packageIndex}">
             <header>
-                <input type="text" value="${escapeHTML(pkg.id || "")}" data-package-index="${packageIndex}" data-package-field="id" placeholder="id">
-                <input type="text" value="${escapeHTML(pkg.label || "")}" data-package-index="${packageIndex}" data-package-field="label" placeholder="label">
+                <label class="editor-field-label">
+                    ID paquete
+                    <input type="text" value="${escapeHTML(pkg.id || "")}" data-package-index="${packageIndex}" data-package-field="id" placeholder="id">
+                </label>
+                <label class="editor-field-label">
+                    Nombre visible
+                    <input type="text" value="${escapeHTML(pkg.label || "")}" data-package-index="${packageIndex}" data-package-field="label" placeholder="label">
+                </label>
                 <div class="radio-json-row-actions">
                     <button type="button" class="editor-btn editor-btn-compact" data-tab-add="${packageIndex}">Añadir pestaña</button>
                     <button type="button" class="editor-icon-btn" data-package-move="${packageIndex}" data-package-direction="-1" title="Subir">↑</button>
@@ -1690,8 +1694,14 @@ function renderPackageTabEditor(tab, packageIndex, tabIndex) {
     const valid = getKnownTabIds().has(tab.id);
     return `
         <article class="package-tab-editor ${valid ? "" : "invalid-id"}" data-package-tab-anchor="${packageIndex}-${tabIndex}">
-            <input type="text" value="${escapeHTML(tab.id || "")}" data-package-index="${packageIndex}" data-tab-index="${tabIndex}" data-tab-field="id" list="known-tab-id-options" placeholder="page id">
-            <input type="text" value="${escapeHTML(tab.label || "")}" data-package-index="${packageIndex}" data-tab-index="${tabIndex}" data-tab-field="label" placeholder="label">
+            <label class="editor-field-label">
+                ID página
+                <input type="text" value="${escapeHTML(tab.id || "")}" data-package-index="${packageIndex}" data-tab-index="${tabIndex}" data-tab-field="id" list="known-tab-id-options" placeholder="page id">
+            </label>
+            <label class="editor-field-label">
+                Nombre pestaña
+                <input type="text" value="${escapeHTML(tab.label || "")}" data-package-index="${packageIndex}" data-tab-index="${tabIndex}" data-tab-field="label" placeholder="label">
+            </label>
             <span class="id-status">${valid ? "OK" : "ID no encontrado"}</span>
             <div class="radio-json-row-actions">
                 <button type="button" class="editor-icon-btn" data-tab-move="${tabIndex}" data-package-index="${packageIndex}" data-tab-direction="-1" title="Subir">↑</button>

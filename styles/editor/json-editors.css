@@ -424,6 +424,13 @@
     font: 14px Consolas, monospace;
 }
 
+.editor-field-label {
+    display: grid;
+    gap: 5px;
+    color: #bbb;
+    font-size: 0.82rem;
+}
+
 .package-editor > header,
 .page-config-editor > header {
     display: grid;
