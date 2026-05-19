@@ -6,7 +6,7 @@
   },
   "pages": {
     "atc_ground": {
-      "title": "ATC Ground",
+      "title": "ATC Groundasdfasdfasdfasdfasd",
       "airportCharts": [
         {
           "title": "Andersen Airport Chart",
@@ -15,32 +15,32 @@
       ],
       "atis": [
         {
-          "callsign": "ATIS ANDERSEN",
-          "freq": "254.3",
-          "notes": "Todo despejado sin vientos"
+          "callsign": "asdfasdfasdf",
+          "freq": "13",
+          "notes": "zdfasfasdf"
         }
       ]
     },
     "atc_overlord": {
-      "title": "ATC Overlord",
+      "title": "ATC Overlordasdfasdf",
       "authCodes": [
         {
-          "title": "Auth Codes",
+          "title": "Auth Codesasdfasdf",
           "src": "images/auth_codes.png"
         }
       ]
     },
     "atc_tower": {
-      "title": "ATC Tower",
+      "title": "ATC Tower asdfasdfasdf",
       "departureCharts": [
         {
-          "title": "Andersen Departure",
+          "title": "Andersen Departureasdfasdf",
           "src": "images/airport_departures/andersen_departure.jpeg"
         }
       ],
       "arrivalCharts": [
         {
-          "title": "Andersen IFR Arrival",
+          "title": "Andersen IFR Arrivalasdfasdfasd",
           "src": "images/airport_arrivals/andersen_ifr.jpeg"
         }
       ]

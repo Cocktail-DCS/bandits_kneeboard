@@ -36,17 +36,41 @@
     ],
     "important": "A pesar de estar esperando, hay que estar siempre alerta, nunca se sabe si a la CAP se le ha filtrado algun enemigo o hay algun SAM a la espera",
     "tot": {
-      "description": "Organizado por Mission alksdjflkasjdflñkajsdlñfkjaslñdf",
+      "description": "Organizado por Mission Commander",
       "pushPoint": "WP 7"
     }
   },
   "items": {
     "holding_push_raccoon1": {
-      "joker": "5000",
-      "bingo": "3000",
+      "joker": "7500lb",
+      "bingo": "5000lb",
       "holding": {
-        "point": "WP 4",
-        "altitude": "20.000ft"
+        "point": "MONICA - WP 5 y 6",
+        "altitude": "A 26.000ft"
+      }
+    },
+    "holding_push_raccoon2": {
+      "joker": "7500lb",
+      "bingo": "5000lb",
+      "holding": {
+        "point": "MONICA - WP 5 y 6",
+        "altitude": "A 27.000ft"
+      }
+    },
+    "holding_push_badger1": {
+      "joker": "7500lb",
+      "bingo": "5000lb",
+      "holding": {
+        "point": "LAURA - WP 5 y 6",
+        "altitude": "A 20.000ft"
+      }
+    },
+    "holding_push_badger2": {
+      "joker": "7500lb",
+      "bingo": "5000lb",
+      "holding": {
+        "point": "LAURA - WP 5 y 6",
+        "altitude": "A 21.000ft"
       }
     }
   }

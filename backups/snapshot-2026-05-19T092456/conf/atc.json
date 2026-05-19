@@ -15,9 +15,9 @@
       ],
       "atis": [
         {
-          "callsign": "ATIS ANDERSEN",
+          "callsign": "ATIS INCIRLIK",
           "freq": "254.3",
-          "notes": "Todo despejado sin vientos"
+          "notes": "Informacion ATIS configurada para la mision."
         }
       ]
     },

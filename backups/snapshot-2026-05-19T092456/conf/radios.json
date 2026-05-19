@@ -54,16 +54,16 @@
           "color": ""
         },
         {
-          "radio": "10",
-          "callsign": "ATIS ANDERSEN",
-          "freq": "254.3",
-          "color": "yellow"
-        },
-        {
-          "radio": "11",
+          "radio": "9",
           "callsign": "",
           "freq": "",
           "color": ""
+        },
+        {
+          "radio": "10",
+          "callsign": "ATIS INCIRLIK",
+          "freq": "254.3",
+          "color": "yellow"
         },
         {
           "radio": "G",
@@ -127,13 +127,13 @@
           "color": "red"
         },
         {
-          "radio": "10",
+          "radio": "9",
           "callsign": "",
           "freq": "",
           "color": ""
         },
         {
-          "radio": "11",
+          "radio": "10",
           "callsign": "",
           "freq": "",
           "color": ""

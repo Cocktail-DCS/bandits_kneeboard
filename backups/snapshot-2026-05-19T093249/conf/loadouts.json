@@ -454,31 +454,5 @@
         }
       ]
     }
-  },
-  "op_raccoon1": [
-    {
-      "cantidad": "x3",
-      "arma": "AGM-65G Maverick",
-      "brevity": "RIFLE",
-      "nota": "Misil A/G guiado por IR, cabeza pesada."
-    },
-    {
-      "cantidad": "x3",
-      "arma": "AGM-65H Maverick",
-      "brevity": "RIFLE",
-      "nota": "Misil A/G guiado por TV/CCD."
-    },
-    {
-      "cantidad": "x2",
-      "arma": "FPU-8/A",
-      "brevity": "N/A",
-      "nota": "Tanke de combustible externo con 2.200lb de combustible."
-    },
-    {
-      "cantidad": "x1",
-      "arma": "AN/AAQ-28 LITENING II",
-      "brevity": "N/A",
-      "nota": "Pod de designación; no es arma, pero necesario para empleo láser/autodesignación."
-    }
-  ]
+  }
 }

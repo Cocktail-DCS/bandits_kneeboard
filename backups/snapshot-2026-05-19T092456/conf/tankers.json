@@ -8,7 +8,7 @@
   "tankers": [
     {
       "callsign": "TEXACO-1",
-      "aircraft": "1x KC-135 nigga",
+      "aircraft": "1x KC-135",
       "role": "Reabastecimiento Aereo General",
       "freq": "252",
       "tacan": "30Y",

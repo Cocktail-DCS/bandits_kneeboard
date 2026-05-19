@@ -40,14 +40,5 @@
       "pushPoint": "WP 7"
     }
   },
-  "items": {
-    "holding_push_raccoon1": {
-      "joker": "5000",
-      "bingo": "3000",
-      "holding": {
-        "point": "WP 4",
-        "altitude": "20.000ft"
-      }
-    }
-  }
+  "items": {}
 }
