@@ -1,0 +1,67 @@
+/* ── RESPONSIVE ── */
+@media (max-width: 1300px) {
+    /* Botón toggle visible en móvil */
+    #sidebar-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        background: var(--panel-bg);
+        color: var(--text);
+        border: none;
+        border-bottom: 2px solid var(--border);
+        padding: 10px 14px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        cursor: pointer;
+        text-align: left;
+        z-index: 10;
+        flex-shrink: 0;
+    }
+
+    #sidebar-toggle .toggle-arrow {
+        display: inline-block;
+        transition: transform 0.3s ease;
+        font-size: 1rem;
+    }
+
+    /* Sidebar colapsado por defecto en móvil */
+    #sidebar {
+        width: 95%;
+        min-width: unset;
+        max-height: 0;
+        overflow: hidden;
+        padding: 0 10px;
+        border-right: none;
+        border-bottom: 2px solid var(--border);
+        transition: max-height 0.35s ease, padding 0.3s ease;
+    }
+
+    /* Sidebar expandido */
+    #sidebar.open {
+        max-height: 60vh;
+        overflow-y: auto;
+        padding: 10px;
+    }
+
+    /* Flecha rotada cuando está abierto */
+    #sidebar.open ~ * #sidebar-toggle .toggle-arrow,
+    body.sidebar-open #sidebar-toggle .toggle-arrow {
+        transform: rotate(180deg);
+    }
+
+    #main {
+        flex: 1;
+        min-height: 0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tab-content.active {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        overflow-y: auto;
+    }
+}

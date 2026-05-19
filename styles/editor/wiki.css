@@ -1,0 +1,93 @@
+.editor-wiki {
+    height: 100%;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 18px;
+}
+
+.editor-wiki-nav {
+    min-height: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #202020;
+}
+
+.editor-wiki-nav a {
+    color: var(--text);
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+}
+
+.editor-wiki-nav a:hover,
+.editor-wiki-nav a:focus {
+    background: #2f2f2f;
+    border-color: #444;
+    color: #ffffff;
+}
+
+.editor-wiki-content {
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 8px;
+    scroll-behavior: smooth;
+}
+
+.editor-wiki-hero,
+.editor-wiki-content section {
+    margin-bottom: 14px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #222;
+}
+
+.editor-wiki h3,
+.editor-wiki h4 {
+    margin: 0 0 10px;
+    color: var(--accent);
+}
+
+.editor-wiki p,
+.editor-wiki li,
+.editor-wiki dd {
+    line-height: 1.45;
+}
+
+.editor-wiki dt {
+    margin-top: 10px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.editor-wiki dd {
+    margin: 4px 0 8px 0;
+}
+
+.editor-wiki code {
+    padding: 1px 4px;
+    border-radius: 3px;
+    background: #151515;
+    color: #d7f5dc;
+}
+
+.editor-wiki pre {
+    overflow-x: auto;
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background: #151515;
+}
+
+.editor-wiki pre code {
+    padding: 0;
+    background: transparent;
+    color: var(--text);
+}

@@ -1,0 +1,238 @@
+.html-visual-editor {
+    min-height: 0;
+    overflow-y: auto;
+    padding: 0 8px 8px 0;
+}
+
+.html-visual-block {
+    border: 1px solid var(--border);
+    background: transparent;
+    border-radius: 8px;
+    margin-bottom: 14px;
+    overflow: hidden;
+}
+
+.html-visual-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 10px;
+    background: #202020;
+    border-bottom: 1px solid var(--border);
+    color: #bfbfbf;
+    font-size: 0.85rem;
+}
+
+.html-visual-toolbar > div:first-child {
+    min-width: 0;
+    flex: 1;
+}
+
+.html-visual-toolbar small {
+    display: block;
+    color: #aaa;
+}
+
+.html-insert-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.html-block-actions {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+}
+
+.html-visual-content {
+    padding: 16px;
+    background: var(--bg-dark);
+}
+
+.html-element-delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    margin: 0 6px 4px 0;
+    border: 1px solid #733;
+    border-radius: 50%;
+    background: #2b1717;
+    color: #ffd9d9;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.html-element-delete:hover {
+    background: #7a2424;
+}
+
+li > .html-element-delete {
+    margin-left: -4px;
+}
+
+.html-visual-content [contenteditable="true"] {
+    border-radius: 4px;
+    outline: 1px dashed transparent;
+}
+
+.html-visual-content [contenteditable="true"]:hover {
+    outline-color: #555;
+}
+
+.html-visual-content [contenteditable="true"]:focus {
+    outline-color: var(--accent);
+    background: rgba(0, 123, 255, 0.08);
+}
+
+.html-visual-content textarea {
+    overflow: hidden;
+}
+
+.html-visual-image-fields {
+    display: grid;
+    gap: 8px;
+    padding: 10px;
+    background: #202020;
+    border-top: 1px solid var(--border);
+}
+
+.html-visual-image-field {
+    display: block;
+    color: #bbb;
+    font-size: 0.85rem;
+}
+
+.html-visual-image-field input {
+    margin-top: 5px;
+}
+
+.editor-image-library {
+    flex: 0 1 50%;
+    min-height: 180px;
+    max-height: 50%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #222;
+    overflow: hidden;
+}
+
+.editor-image-library header {
+    padding: 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+.editor-image-library h4 {
+    margin: 0;
+}
+
+.editor-image-library small {
+    display: block;
+    margin-top: 4px;
+    color: #aaa;
+    line-height: 1.3;
+}
+
+.editor-image-list {
+    min-height: 0;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    padding: 10px;
+}
+
+.editor-image-item {
+    min-width: 0;
+    display: grid;
+    gap: 5px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 6px;
+    background: #171717;
+    color: var(--text);
+    cursor: pointer;
+    text-align: left;
+}
+
+.editor-image-item:hover {
+    border-color: var(--accent);
+}
+
+.editor-image-item img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 3px;
+    background: #0f0f0f;
+}
+
+.editor-image-item span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.72rem;
+}
+
+.editor-advanced {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px;
+    background: #222;
+}
+
+.editor-advanced .editor-textarea {
+    height: 260px;
+    margin: 10px 0;
+}
+
+.editor-preview-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    padding: 28px;
+    background: rgba(0, 0, 0, 0.72);
+}
+
+.editor-preview-modal {
+    width: min(1100px, 100%);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.editor-preview-modal > header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--panel-bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.editor-preview-modal h3 {
+    margin: 0;
+}
+
+.editor-preview-content {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 18px;
+}

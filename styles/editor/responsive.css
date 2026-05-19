@@ -1,0 +1,58 @@
+@media (max-width: 1300px) {
+    .editor-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .editor-wiki {
+        grid-template-columns: 1fr;
+    }
+
+    .editor-wiki-nav {
+        max-height: 170px;
+    }
+
+    .editor-sidebar {
+        max-height: 320px;
+    }
+
+    .editor-file-list {
+        flex-basis: auto;
+        max-height: 180px;
+    }
+
+    .editor-image-library {
+        flex-basis: auto;
+        max-height: 50%;
+    }
+
+    .editor-image-list {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    .html-visual-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .html-insert-actions {
+        justify-content: flex-start;
+    }
+
+    .loadout-item-editor {
+        grid-template-columns: 1fr;
+    }
+
+    .editor-two-col,
+    .holding-item-editor > header {
+        grid-template-columns: 1fr;
+    }
+
+    .editor-mini-card,
+    .atc-atis-row,
+    .page-fence-row,
+    .package-editor > header,
+    .page-config-editor > header,
+    .package-tab-editor {
+        grid-template-columns: 1fr;
+    }
+}

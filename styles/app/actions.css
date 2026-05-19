@@ -1,0 +1,18 @@
+#open-editor-link {
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    z-index: 30;
+    padding: 6px 9px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: rgba(30, 30, 30, 0.88);
+    color: var(--text);
+    font-size: 0.75rem;
+    text-decoration: none;
+}
+
+#open-editor-link:hover {
+    background: var(--accent);
+    color: #ffffff;
+}
