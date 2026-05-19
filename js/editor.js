@@ -133,6 +133,7 @@ function mountEditorShell() {
         <div class="editor-tabs">
             <button type="button" class="editor-tab active" data-editor-view="json">JSON</button>
             <button type="button" class="editor-tab" data-editor-view="html">HTML</button>
+            <button type="button" class="editor-tab" data-editor-view="wiki">Wiki</button>
         </div>
         <div id="editor-content"></div>
     `;
@@ -200,11 +201,222 @@ function switchEditorView(view) {
 
 function renderEditor() {
     const view = document.getElementById("editor-panel").dataset.view || "json";
+    if (view === "wiki") {
+        renderEditorWiki();
+        return;
+    }
     if (view === "html") {
         renderHtmlEditor();
         return;
     }
     renderJsonEditor();
+}
+
+function renderEditorWiki() {
+    const content = document.getElementById("editor-content");
+    content.innerHTML = `
+        <article class="editor-wiki">
+            <aside class="editor-wiki-nav">
+                <a href="#wiki-flujo">Flujo</a>
+                <a href="#wiki-resolucion">Orden de carga</a>
+                <a href="#wiki-ids">IDs</a>
+                <a href="#wiki-config">Configuraciones</a>
+                <a href="#wiki-crear-vuelo">Crear vuelo</a>
+                <a href="#wiki-operacion">Operación STRIKE</a>
+                <a href="#wiki-espera">Esperas</a>
+                <a href="#wiki-atc">ATC</a>
+                <a href="#wiki-html">HTML</a>
+                <a href="#wiki-imagenes">Imágenes</a>
+                <a href="#wiki-exportar">Exportar</a>
+                <a href="#wiki-problemas">Problemas</a>
+            </aside>
+            <div class="editor-wiki-content">
+                <header class="editor-wiki-hero">
+                    <h3>Wiki del editor</h3>
+                    <p>Referencia para montar una misión, entender qué controla cada archivo y decidir dónde editar cada tipo de contenido.</p>
+                    <p><strong>Importante:</strong> entrar en esta wiki no recarga la página. Los cambios hechos en JSON o HTML se sincronizan en memoria al cambiar de pestaña y seguirán disponibles para exportar.</p>
+                </header>
+
+                <section id="wiki-flujo">
+                    <h4>Flujo recomendado para crear una misión</h4>
+                    <ol>
+                        <li><strong>Define radios</strong> en <code>radios.json</code>: agencias, canales, frecuencias y colores.</li>
+                        <li><strong>Define tankers</strong> en <code>tankers.json</code>: se usan en Repostaje y en ATC Overlord.</li>
+                        <li><strong>Define esperas</strong> en <code>holdings.json</code>: punto, altitud, Joker, Bingo, TOT y procedimientos.</li>
+                        <li><strong>Define armamento</strong> en <code>loadouts.json</code>: una entrada por página de operación.</li>
+                        <li><strong>Define páginas generadas</strong> en <code>pages.json</code>: operaciones STRIKE, plantillas reutilizables o páginas estándar.</li>
+                        <li><strong>Define paquetes</strong> en <code>packages.json</code>: cada paquete decide qué pestañas verá el piloto.</li>
+                        <li><strong>Revisa ATC</strong> en <code>atc.json</code>: cartas, ATIS y códigos de autorización.</li>
+                        <li><strong>Exporta el snapshot</strong> y aplícalo en el repo con el script local.</li>
+                    </ol>
+                </section>
+
+                <section id="wiki-resolucion">
+                    <h4>Orden de carga de una pestaña</h4>
+                    <p>Cuando un piloto pulsa una pestaña, la app busca el contenido en este orden:</p>
+                    <ol>
+                        <li><code>atc.json</code>: si el id existe en <code>pages</code>, se renderiza como pantalla ATC.</li>
+                        <li><code>holdings.json</code>: si el id existe en <code>items</code>, se renderiza como espera.</li>
+                        <li><code>3_tanker</code>: se renderiza desde <code>tankers.json</code>.</li>
+                        <li><code>pages.json</code>: si el id existe en <code>pages</code>, usa datos y plantillas.</li>
+                        <li><code>pages/{id}.html</code>: fallback para HTML manual.</li>
+                    </ol>
+                    <p>Esto significa que un id de espera o ATC tiene prioridad sobre una página HTML con el mismo nombre.</p>
+                </section>
+
+                <section id="wiki-ids">
+                    <h4>Convenciones de IDs</h4>
+                    <table class="data-table">
+                        <thead><tr><th>Tipo</th><th>Formato recomendado</th><th>Ejemplo</th></tr></thead>
+                        <tbody>
+                            <tr><td>Paquete</td><td>Callsign en mayúsculas</td><td><code>RACCOON-1</code></td></tr>
+                            <tr><td>Operación</td><td><code>op_</code> + vuelo en minúsculas</td><td><code>op_raccoon1</code></td></tr>
+                            <tr><td>Espera</td><td><code>holding_push_</code> + vuelo</td><td><code>holding_push_raccoon1</code></td></tr>
+                            <tr><td>HTML común</td><td>Número + nombre descriptivo</td><td><code>1_startup_taxi_ground</code></td></tr>
+                            <tr><td>ATC</td><td><code>atc_</code> + rol</td><td><code>atc_overlord</code></td></tr>
+                        </tbody>
+                    </table>
+                    <p>Evita espacios, tildes y símbolos raros en IDs. Usa el mismo id al conectar <code>packages.json</code>, <code>pages.json</code>, <code>holdings.json</code> y <code>loadouts.json</code>.</p>
+                    <p>Regla clave: el id de una operación debe coincidir exactamente en los tres sitios que la usan. Por ejemplo, <code>op_raccoon1</code> tiene que aparecer como pestaña en <code>packages.json</code>, como página en <code>pages.json</code> y como entrada de armamento en <code>loadouts.json</code>. Si uno de los tres nombres cambia, la app puede mostrar la pestaña sin página, una página sin armamento o ATC sin datos completos.</p>
+                </section>
+
+                <section id="wiki-config">
+                    <h4>Para qué sirve cada configuración</h4>
+                    <dl>
+                        <dt><code>packages.json</code></dt>
+                        <dd>Lista los paquetes de vuelo y sus pestañas. Es el índice principal que ve el piloto en el selector de paquete.</dd>
+                        <dt><code>radios.json</code></dt>
+                        <dd>Construye la tabla lateral de comunicaciones. Tiene dos grupos, normalmente PRI y SEC.</dd>
+                        <dt><code>tankers.json</code></dt>
+                        <dd>Fuente única de repostaje. Evita duplicar datos entre la pestaña Repostaje y ATC Overlord.</dd>
+                        <dt><code>holdings.json</code></dt>
+                        <dd>Define esperas. <code>defaults</code> contiene textos comunes y <code>items</code> los datos específicos de cada vuelo.</dd>
+                        <dt><code>loadouts.json</code></dt>
+                        <dd>Define armamento por id de operación. ATC Ground también lo usa para resumir carga por vuelo.</dd>
+                        <dt><code>pages.json</code></dt>
+                        <dd>Genera páginas desde datos. Ideal para STRIKE, checklists y contenido repetido.</dd>
+                        <dt><code>atc.json</code></dt>
+                        <dd>Configura Ground, Tower y Overlord. Los vuelos se derivan de paquetes, esperas y armamento.</dd>
+                        <dt><code>notes.json</code></dt>
+                        <dd>Configura notas generales, soft deck, hard deck e imagen opcional del panel lateral.</dd>
+                    </dl>
+                </section>
+
+                <section id="wiki-crear-vuelo">
+                    <h4>Crear un vuelo nuevo</h4>
+                    <ol>
+                        <li>Crea la espera en <code>holdings.json</code>, por ejemplo <code>holding_push_viper1</code>.</li>
+                        <li>Crea el armamento en <code>loadouts.json</code>, por ejemplo <code>op_viper1</code>.</li>
+                        <li>Crea la página de operación en <code>pages.json</code> con ese mismo id, por ejemplo <code>op_viper1</code>, usando <code>type: "operation"</code> o una plantilla.</li>
+                        <li>Añade el paquete en <code>packages.json</code> con sus pestañas en orden de vuelo, incluyendo una pestaña con <code>id: "op_viper1"</code>.</li>
+                        <li>Añade radios del vuelo en <code>radios.json</code> si necesita frecuencia propia.</li>
+                    </ol>
+                    <pre><code>{
+  "id": "VIPER-1",
+  "label": "VIPER-1",
+  "tabs": [
+    { "id": "1_startup_taxi_ground", "label": "Arranque taxi y despegue" },
+    { "id": "2_departures", "label": "Check-IN" },
+    { "id": "3_tanker", "label": "Repostaje" },
+    { "id": "holding_push_viper1", "label": "Esperas" },
+    { "id": "op_viper1", "label": "STRIKE" },
+    { "id": "8_arrivals_ground", "label": "Llegada" },
+    { "id": "9_shutdown_taxi_ground", "label": "Taxi y apagado" }
+  ]
+}</code></pre>
+                </section>
+
+                <section id="wiki-operacion">
+                    <h4>Páginas de operación STRIKE</h4>
+                    <p>Usa <code>type: "operation"</code> para páginas de ataque. La estructura renderiza situación, FENCE-IN, importante, armamento, objetivos y regreso.</p>
+                    <p>El bloque de armamento sale de <code>loadouts.json</code> usando el mismo id de la operación. Si la página es <code>op_viper1</code>, el armamento debe vivir en <code>loadouts.json &gt; op_viper1</code>.</p>
+                    <pre><code>"op_viper1": {
+  "type": "operation",
+  "template": "strike_practice_island",
+  "title": "STRIKE VIPER-1",
+  "return": "Regreso segun instrucciones de Mission Commander"
+}</code></pre>
+                </section>
+
+                <section id="wiki-espera">
+                    <h4>Esperas y defaults</h4>
+                    <p><code>holdings.json</code> está pensado para no repetir textos. Todo lo común vive en <code>defaults</code>. Cada vuelo en <code>items</code> hereda esos valores y puede sobrescribir solo lo que cambie.</p>
+                    <pre><code>"holding_push_viper1": {
+  "joker": "7500lb",
+  "bingo": "5000lb",
+  "holding": {
+    "point": "MONICA - WP 5 y 6",
+    "altitude": "A 26.000ft"
+  },
+  "tot": {
+    "description": "TOT asignado por Mission Commander",
+    "pushPoint": "WP 7"
+  }
+}</code></pre>
+                </section>
+
+                <section id="wiki-atc">
+                    <h4>ATC Ground, Tower y Overlord</h4>
+                    <p>El paquete ATC usa tres ids: <code>atc_ground</code>, <code>atc_tower</code> y <code>atc_overlord</code>.</p>
+                    <ul>
+                        <li><strong>Ground</strong>: cartas de aeropuerto, ATIS, bingos y armamento por vuelo.</li>
+                        <li><strong>Tower</strong>: cartas de salida y llegada.</li>
+                        <li><strong>Overlord</strong>: tankers, puntos de espera, TOT, Bingo y códigos de autorización.</li>
+                    </ul>
+                    <p>Los vuelos ATC se derivan automáticamente desde <code>packages.json</code>. Para que ATC encuentre datos, cada paquete debe tener una pestaña de espera y una pestaña de operación con armamento.</p>
+                </section>
+
+                <section id="wiki-html">
+                    <h4>Cuándo usar HTML manual</h4>
+                    <p>Usa la pestaña HTML para páginas muy específicas, maquetación especial, contenido largo que no merece plantilla o pruebas rápidas.</p>
+                    <p>Usa <code>pages.json</code> cuando el contenido sea repetible, dependa de datos de misión o quieras que sea fácil de mantener desde formularios.</p>
+                    <table class="data-table">
+                        <thead><tr><th>Necesidad</th><th>Mejor lugar</th></tr></thead>
+                        <tbody>
+                            <tr><td>Checklist común</td><td><code>pages.json</code> tipo <code>standard</code></td></tr>
+                            <tr><td>STRIKE con objetivos</td><td><code>pages.json</code> tipo <code>operation</code></td></tr>
+                            <tr><td>Procedimiento largo con diseño especial</td><td><code>pages/*.html</code></td></tr>
+                            <tr><td>Imagen + texto simple</td><td><code>pages.json</code> bloque <code>image</code> o <code>card</code></td></tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section id="wiki-imagenes">
+                    <h4>Imágenes</h4>
+                    <p>Las rutas son relativas a <code>index.html</code>. Ejemplo: <code>images/airport_charts/andersen_airport_chart.png</code>.</p>
+                    <p>El editor tiene una biblioteca de imágenes en la pestaña HTML. Al seleccionar un campo de imagen, puedes usar esa lista para copiar o colocar rutas.</p>
+                    <p>Si añades imágenes nuevas al repo, recuerda que el editor solo lista las rutas definidas en <code>EDITOR_IMAGE_FILES</code> dentro de <code>js/editor.js</code>.</p>
+                </section>
+
+                <section id="wiki-exportar">
+                    <h4>Exportar y aplicar cambios</h4>
+                    <ol>
+                        <li>Usa <strong>Exportar cambios</strong> en el editor.</li>
+                        <li>Se descargará un archivo <code>kneeboard-snapshot-*.json</code>.</li>
+                        <li>Aplica el snapshot en el repo con <code>node tools/apply_snapshot.mjs kneeboard-snapshot.json --backup</code>.</li>
+                        <li>El script solo escribe en <code>conf/</code> y <code>pages/</code>. Con <code>--backup</code> guarda copia previa en <code>backups/</code>.</li>
+                    </ol>
+                    <p>Si abres la wiki antes de exportar, los cambios hechos en la pestaña activa se guardan en memoria. No cierres ni recargues el navegador hasta exportar.</p>
+                </section>
+
+                <section id="wiki-problemas">
+                    <h4>Problemas frecuentes</h4>
+                    <dl>
+                        <dt>No aparece una pestaña</dt>
+                        <dd>Comprueba que está dentro de <code>packages.json</code> en el paquete seleccionado.</dd>
+                        <dt>Una página carga contenido inesperado</dt>
+                        <dd>Revisa el orden de carga. ATC y esperas tienen prioridad sobre <code>pages.json</code> y HTML.</dd>
+                        <dt>ATC no muestra un vuelo</dt>
+                        <dd>El paquete debe tener una pestaña de espera reconocida y una operación con armamento en <code>loadouts.json</code>.</dd>
+                        <dt>Una imagen no se ve</dt>
+                        <dd>Comprueba mayúsculas, extensión y ruta relativa desde <code>index.html</code>.</dd>
+                        <dt>Las notas no se limpian</dt>
+                        <dd>Las notas de textareas se guardan en <code>localStorage</code> del navegador por id del textarea.</dd>
+                    </dl>
+                </section>
+            </div>
+        </article>
+    `;
 }
 
 function rerenderHtmlEditorPreservingScroll() {
