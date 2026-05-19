@@ -509,9 +509,38 @@ async function getAtcPage(tabId) {
 
     return {
         id: tabId,
-        flights: config.flights || [],
+        flights: await getAtcFlights(config),
         ...page,
     };
+}
+
+async function getAtcFlights(config) {
+    const [packages, holdings, loadouts] = await Promise.all([
+        loadPackages(),
+        getMergedHoldings(),
+        getLoadouts(),
+    ]);
+
+    const loadoutIds = new Set(
+        Object.entries(loadouts || {})
+            .filter(([, value]) => Array.isArray(value))
+            .map(([id]) => id)
+    );
+
+    const derivedFlights = (packages || [])
+        .filter(pkg => pkg.id !== "ATC")
+        .map(pkg => {
+            const tabs = pkg.tabs || [];
+            const holdingTab = tabs.find(tab => holdings[tab.id]);
+            const loadoutTab = tabs.find(tab => loadoutIds.has(tab.id));
+            return {
+                label: pkg.label || pkg.id,
+                holdingId: holdingTab?.id || "",
+                loadoutId: loadoutTab?.id || "",
+            };
+        });
+
+    return derivedFlights.length ? derivedFlights : config.flights || [];
 }
 
 async function renderAtcPage(page) {

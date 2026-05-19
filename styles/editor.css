@@ -524,6 +524,119 @@ body.editor-mode #sidebar-toggle {
     height: 220px;
 }
 
+.atc-json-editor,
+.packages-json-editor,
+.pages-json-editor {
+    min-height: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 6px;
+}
+
+.editor-subsection {
+    display: grid;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.editor-subsection h5 {
+    margin: 0;
+}
+
+.editor-card-list,
+.package-editor-list,
+.package-tab-list,
+.page-editor-list {
+    display: grid;
+    gap: 10px;
+}
+
+.editor-mini-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) auto;
+    gap: 8px;
+    align-items: start;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px;
+    background: #1f1f1f;
+}
+
+.atc-atis-row {
+    grid-template-columns: minmax(0, 1fr) 120px minmax(0, 1.4fr) auto;
+}
+
+.page-fence-row {
+    grid-template-columns: 70px minmax(0, 0.8fr) minmax(0, 1.5fr) auto;
+}
+
+.objective-editor,
+.page-block-editor {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.editor-mini-card input,
+.editor-mini-card textarea,
+.editor-mini-card select,
+.package-editor input,
+.package-tab-editor input,
+.package-tab-editor select,
+.page-config-editor input,
+.page-config-editor textarea,
+.page-config-editor select,
+.pages-json-editor [data-new-page-id] {
+    width: 100%;
+    box-sizing: border-box;
+    background: #171717;
+    color: var(--text);
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 8px;
+    font: 14px Consolas, monospace;
+}
+
+.package-editor > header,
+.page-config-editor > header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+    gap: 8px;
+    align-items: start;
+    margin-bottom: 10px;
+}
+
+.package-tab-editor {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 110px auto;
+    gap: 8px;
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px;
+    background: #1f1f1f;
+}
+
+.package-tab-editor.invalid-id {
+    border-color: #8b3030;
+}
+
+.id-status {
+    color: #d7f5dc;
+    font-size: 0.8rem;
+}
+
+.invalid-id .id-status {
+    color: #ffd9d9;
+}
+
+.page-config-editor label {
+    display: block;
+    margin-bottom: 10px;
+    color: #bbb;
+    font-size: 0.9rem;
+}
+
 .html-visual-editor {
     min-height: 0;
     overflow-y: auto;
@@ -812,6 +925,15 @@ li > .html-element-delete {
 
     .editor-two-col,
     .holding-item-editor > header {
+        grid-template-columns: 1fr;
+    }
+
+    .editor-mini-card,
+    .atc-atis-row,
+    .page-fence-row,
+    .package-editor > header,
+    .page-config-editor > header,
+    .package-tab-editor {
         grid-template-columns: 1fr;
     }
 }
