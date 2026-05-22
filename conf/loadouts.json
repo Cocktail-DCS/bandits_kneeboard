@@ -687,7 +687,7 @@
       "nota": "Pod de telemetria de entrenamiento."
     }
   ],
-  "op_knight1": [
+  "op_spear1": [
     {
       "cantidad": "x1",
       "arma": "CATM-9",
@@ -719,7 +719,7 @@
       "nota": "Pod de telemetria de entrenamiento."
     }
   ],
-  "op_knight2": [
+  "op_spear2": [
     {
       "cantidad": "x1",
       "arma": "CATM-9",

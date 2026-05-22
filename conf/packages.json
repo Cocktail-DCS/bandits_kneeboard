@@ -158,7 +158,7 @@
     "label": "BADGER-1",
     "tabs": [
       {
-        "id": "1_startup_taxi_ground",
+        "id": "1_startup_taxi_carrier",
         "label": "Inicio en tierra"
       },
       {
@@ -178,11 +178,11 @@
         "label": "Operaciones"
       },
       {
-        "id": "8_arrivals_ground",
+        "id": "8_arrivals_carrier",
         "label": "Llegadas"
       },
       {
-        "id": "9_shutdown_taxi_ground",
+        "id": "9_shutdown_taxi_carrier",
         "label": "Apagado"
       }
     ]
@@ -192,7 +192,7 @@
     "label": "BADGER-2",
     "tabs": [
       {
-        "id": "1_startup_taxi_ground",
+        "id": "1_startup_taxi_carrier",
         "label": "Inicio en tierra"
       },
       {
@@ -212,11 +212,11 @@
         "label": "Operaciones"
       },
       {
-        "id": "8_arrivals_ground",
+        "id": "8_arrivals_carrier",
         "label": "Llegadas"
       },
       {
-        "id": "9_shutdown_taxi_ground",
+        "id": "9_shutdown_taxi_carrier",
         "label": "Apagado"
       }
     ]
@@ -226,7 +226,7 @@
     "label": "BADGER-3",
     "tabs": [
       {
-        "id": "1_startup_taxi_ground",
+        "id": "1_startup_taxi_carrier",
         "label": "Inicio en tierra"
       },
       {
@@ -246,11 +246,11 @@
         "label": "Operaciones"
       },
       {
-        "id": "8_arrivals_ground",
+        "id": "8_arrivals_carrier",
         "label": "Llegadas"
       },
       {
-        "id": "9_shutdown_taxi_ground",
+        "id": "9_shutdown_taxi_carrier",
         "label": "Apagado"
       }
     ]
@@ -260,7 +260,7 @@
     "label": "BADGER-4",
     "tabs": [
       {
-        "id": "1_startup_taxi_ground",
+        "id": "1_startup_taxi_carrier",
         "label": "Inicio en tierra"
       },
       {
@@ -280,18 +280,18 @@
         "label": "Operaciones"
       },
       {
-        "id": "8_arrivals_ground",
+        "id": "8_arrivals_carrier",
         "label": "Llegadas"
       },
       {
-        "id": "9_shutdown_taxi_ground",
+        "id": "9_shutdown_taxi_carrier",
         "label": "Apagado"
       }
     ]
   },
   {
-    "id": "KNIGHT-1",
-    "label": "KNIGHT-1",
+    "id": "SPEAR-1",
+    "label": "SPEAR-1",
     "tabs": [
       {
         "id": "1_startup_taxi_ground",
@@ -306,11 +306,11 @@
         "label": "Tankers"
       },
       {
-        "id": "holding_push_knight1",
+        "id": "holding_push_spear1",
         "label": "Holdings"
       },
       {
-        "id": "op_knight1",
+        "id": "op_spear1",
         "label": "Operaciones"
       },
       {
@@ -324,8 +324,8 @@
     ]
   },
   {
-    "id": "KNIGHT-2",
-    "label": "KNIGHT-2",
+    "id": "SPEAR-2",
+    "label": "SPEAR-2",
     "tabs": [
       {
         "id": "1_startup_taxi_ground",
@@ -340,11 +340,11 @@
         "label": "Tankers"
       },
       {
-        "id": "holding_push_knight2",
+        "id": "holding_push_spear2",
         "label": "Holdings"
       },
       {
-        "id": "op_knight2",
+        "id": "op_spear2",
         "label": "Operaciones"
       },
       {

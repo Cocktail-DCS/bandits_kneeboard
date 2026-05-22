@@ -203,30 +203,6 @@
           "callsign": "VHF GUARD",
           "freq": "121.5",
           "color": "black"
-        },
-        {
-          "radio": "CIGAR-1",
-          "callsign": "CIGAR-1",
-          "freq": "123.0",
-          "color": "blue"
-        },
-        {
-          "radio": "CIGAR-2",
-          "callsign": "CIGAR-2",
-          "freq": "123.1",
-          "color": "blue"
-        },
-        {
-          "radio": "KNIGHT-1",
-          "callsign": "KNIGHT-1",
-          "freq": "124.0",
-          "color": "green"
-        },
-        {
-          "radio": "KNIGHT-2",
-          "callsign": "KNIGHT-2",
-          "freq": "124.1",
-          "color": "green"
         }
       ]
     }

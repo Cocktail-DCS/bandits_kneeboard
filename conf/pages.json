@@ -33,7 +33,7 @@
     "op_raccoon1": {
       "type": "operation",
       "title": "RACCOON TASMO / STRIKE",
-      "situation": "RACCOON ejecuta entrada desde MRSL SILVER y ataque al objetivo asignado tras llamada JTAC/Overlord.",
+      "situation": "RACCOON ejecuta entrada desde MRSL SILVER y ataque al objetivo asignado tras llamada de Overlord/Mission Commander.",
       "fenceIn": [
         {
           "letter": "F",
@@ -63,9 +63,9 @@
       ],
       "important": [
         "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
-        "CONTACTAR CON AFAC/JTAC en WP 6.",
-        "Entrada segun llamada JTAC desde WP 7. Una unica pasada sobre TGT.",
-        "Configurar Bullseye para reportes: N14 10 17.94 E145 14 23.52 / 55P CR 10037 67425."
+        "TOT asignado en PP. Mantener separacion de 3 minutos entre vuelos.",
+        "Entrada segun llamada de Overlord/Mission Commander desde WP 7. Una unica pasada sobre TGT.",
+        "Configurar Bullseye para reportes: N14 10'17.95\" E145 14'23.51\" / 55P CR 10037 67425."
       ],
       "objectives": {
         "intro": [
@@ -77,7 +77,7 @@
             "image": "images/Ruta.png",
             "details": [
               "MGRS: 55P CS 50000 20000",
-              "Lat/Long: N 33 25 53.58 E 36 31 35.73",
+              "Lat/Long: N14 38'57.52\" E145 36'25.61\"",
               "ALT: 2.008 ft",
               "Remarks: UNA UNICA PASADA"
             ]
@@ -89,7 +89,7 @@
     "op_raccoon2": {
       "type": "operation",
       "title": "RACCOON TASMO / STRIKE",
-      "situation": "RACCOON ejecuta entrada desde MRSL SILVER y ataque al objetivo asignado tras llamada JTAC/Overlord.",
+      "situation": "RACCOON ejecuta entrada desde MRSL SILVER y ataque al objetivo asignado tras llamada de Overlord/Mission Commander.",
       "fenceIn": [
         {
           "letter": "F",
@@ -119,9 +119,9 @@
       ],
       "important": [
         "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
-        "CONTACTAR CON AFAC/JTAC en WP 6.",
-        "Entrada segun llamada JTAC desde WP 7. Una unica pasada sobre TGT.",
-        "Configurar Bullseye para reportes: N14 10 17.94 E145 14 23.52 / 55P CR 10037 67425."
+        "TOT asignado en PP. Mantener separacion de 3 minutos entre vuelos.",
+        "Entrada segun llamada de Overlord/Mission Commander desde WP 7. Una unica pasada sobre TGT.",
+        "Configurar Bullseye para reportes: N14 10'17.95\" E145 14'23.51\" / 55P CR 10037 67425."
       ],
       "objectives": {
         "intro": [
@@ -133,7 +133,7 @@
             "image": "images/Ruta.png",
             "details": [
               "MGRS: 55P CS 50000 20000",
-              "Lat/Long: N 33 25 53.58 E 36 31 35.73",
+              "Lat/Long: N14 38'57.52\" E145 36'25.61\"",
               "ALT: 2.008 ft",
               "Remarks: UNA UNICA PASADA"
             ]
@@ -145,7 +145,7 @@
     "op_raccoon3": {
       "type": "operation",
       "title": "RACCOON TASMO / STRIKE",
-      "situation": "RACCOON ejecuta entrada desde MRSL SILVER y ataque al objetivo asignado tras llamada JTAC/Overlord.",
+      "situation": "RACCOON ejecuta entrada desde MRSL SILVER y ataque al objetivo asignado tras llamada de Overlord/Mission Commander.",
       "fenceIn": [
         {
           "letter": "F",
@@ -175,9 +175,9 @@
       ],
       "important": [
         "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
-        "CONTACTAR CON AFAC/JTAC en WP 6.",
-        "Entrada segun llamada JTAC desde WP 7. Una unica pasada sobre TGT.",
-        "Configurar Bullseye para reportes: N14 10 17.94 E145 14 23.52 / 55P CR 10037 67425."
+        "TOT asignado en PP. Mantener separacion de 3 minutos entre vuelos.",
+        "Entrada segun llamada de Overlord/Mission Commander desde WP 7. Una unica pasada sobre TGT.",
+        "Configurar Bullseye para reportes: N14 10'17.95\" E145 14'23.51\" / 55P CR 10037 67425."
       ],
       "objectives": {
         "intro": [
@@ -189,7 +189,7 @@
             "image": "images/Ruta.png",
             "details": [
               "MGRS: 55P CS 50000 20000",
-              "Lat/Long: N 33 25 53.58 E 36 31 35.73",
+              "Lat/Long: N14 38'57.52\" E145 36'25.61\"",
               "ALT: 2.008 ft",
               "Remarks: UNA UNICA PASADA"
             ]
@@ -201,7 +201,7 @@
     "op_raccoon4": {
       "type": "operation",
       "title": "RACCOON TASMO / STRIKE",
-      "situation": "RACCOON ejecuta entrada desde MRSL SILVER y ataque al objetivo asignado tras llamada JTAC/Overlord.",
+      "situation": "RACCOON ejecuta entrada desde MRSL SILVER y ataque al objetivo asignado tras llamada de Overlord/Mission Commander.",
       "fenceIn": [
         {
           "letter": "F",
@@ -231,9 +231,9 @@
       ],
       "important": [
         "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
-        "CONTACTAR CON AFAC/JTAC en WP 6.",
-        "Entrada segun llamada JTAC desde WP 7. Una unica pasada sobre TGT.",
-        "Configurar Bullseye para reportes: N14 10 17.94 E145 14 23.52 / 55P CR 10037 67425."
+        "TOT asignado en PP. Mantener separacion de 3 minutos entre vuelos.",
+        "Entrada segun llamada de Overlord/Mission Commander desde WP 7. Una unica pasada sobre TGT.",
+        "Configurar Bullseye para reportes: N14 10'17.95\" E145 14'23.51\" / 55P CR 10037 67425."
       ],
       "objectives": {
         "intro": [
@@ -245,7 +245,7 @@
             "image": "images/Ruta.png",
             "details": [
               "MGRS: 55P CS 50000 20000",
-              "Lat/Long: N 33 25 53.58 E 36 31 35.73",
+              "Lat/Long: N14 38'57.52\" E145 36'25.61\"",
               "ALT: 2.008 ft",
               "Remarks: UNA UNICA PASADA"
             ]
@@ -256,8 +256,8 @@
     },
     "op_badger1": {
       "type": "operation",
-      "title": "BADGER / KNIGHT TASMO",
-      "situation": "BADGER/KNIGHT ejecuta entrada desde MRSL GOLDEN y ataque al objetivo asignado tras llamada JTAC/Overlord.",
+      "title": "BADGER / SPEAR TASMO",
+      "situation": "BADGER/SPEAR ejecuta entrada desde MRSL GOLDEN y ataque al objetivo asignado tras llamada de Overlord/Mission Commander.",
       "fenceIn": [
         {
           "letter": "F",
@@ -287,8 +287,8 @@
       ],
       "important": [
         "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
-        "CONTACTAR CON AFAC/JTAC en WP 6.",
-        "Entrada segun llamada JTAC desde WP 7. Una unica pasada sobre TGT.",
+        "TOT asignado en PP. Mantener separacion de 3 minutos entre vuelos.",
+        "Entrada segun llamada de Overlord/Mission Commander desde WP 7. Una unica pasada sobre TGT.",
         "CVN-71 ROUGH RIDER: TACAN 71X, ICLS 17, expected BRC 095."
       ],
       "objectives": {
@@ -301,19 +301,19 @@
             "image": "images/Ruta.png",
             "details": [
               "MGRS: 55P CS 50000 20000",
-              "Lat/Long: N 33 25 53.58 E 36 31 35.73",
+              "Lat/Long: N14 38'57.52\" E145 36'25.61\"",
               "ALT: 2.008 ft",
               "Remarks: UNA UNICA PASADA"
             ]
           }
         ]
       },
-      "return": "Salir por EP WP 10, EXT WP 11 y volver a MRSL GOLDEN o recuperar en CVN-71/Andersen segun instrucciones."
+      "return": "Salir por EP WP 10, EXT WP 11 y recuperar en CVN-71 segun instrucciones."
     },
     "op_badger2": {
       "type": "operation",
-      "title": "BADGER / KNIGHT TASMO",
-      "situation": "BADGER/KNIGHT ejecuta entrada desde MRSL GOLDEN y ataque al objetivo asignado tras llamada JTAC/Overlord.",
+      "title": "BADGER / SPEAR TASMO",
+      "situation": "BADGER/SPEAR ejecuta entrada desde MRSL GOLDEN y ataque al objetivo asignado tras llamada de Overlord/Mission Commander.",
       "fenceIn": [
         {
           "letter": "F",
@@ -343,8 +343,8 @@
       ],
       "important": [
         "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
-        "CONTACTAR CON AFAC/JTAC en WP 6.",
-        "Entrada segun llamada JTAC desde WP 7. Una unica pasada sobre TGT.",
+        "TOT asignado en PP. Mantener separacion de 3 minutos entre vuelos.",
+        "Entrada segun llamada de Overlord/Mission Commander desde WP 7. Una unica pasada sobre TGT.",
         "CVN-71 ROUGH RIDER: TACAN 71X, ICLS 17, expected BRC 095."
       ],
       "objectives": {
@@ -357,19 +357,19 @@
             "image": "images/Ruta.png",
             "details": [
               "MGRS: 55P CS 50000 20000",
-              "Lat/Long: N 33 25 53.58 E 36 31 35.73",
+              "Lat/Long: N14 38'57.52\" E145 36'25.61\"",
               "ALT: 2.008 ft",
               "Remarks: UNA UNICA PASADA"
             ]
           }
         ]
       },
-      "return": "Salir por EP WP 10, EXT WP 11 y volver a MRSL GOLDEN o recuperar en CVN-71/Andersen segun instrucciones."
+      "return": "Salir por EP WP 10, EXT WP 11 y recuperar en CVN-71 segun instrucciones."
     },
     "op_badger3": {
       "type": "operation",
-      "title": "BADGER / KNIGHT TASMO",
-      "situation": "BADGER/KNIGHT ejecuta entrada desde MRSL GOLDEN y ataque al objetivo asignado tras llamada JTAC/Overlord.",
+      "title": "BADGER / SPEAR TASMO",
+      "situation": "BADGER/SPEAR ejecuta entrada desde MRSL GOLDEN y ataque al objetivo asignado tras llamada de Overlord/Mission Commander.",
       "fenceIn": [
         {
           "letter": "F",
@@ -399,8 +399,8 @@
       ],
       "important": [
         "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
-        "CONTACTAR CON AFAC/JTAC en WP 6.",
-        "Entrada segun llamada JTAC desde WP 7. Una unica pasada sobre TGT.",
+        "TOT asignado en PP. Mantener separacion de 3 minutos entre vuelos.",
+        "Entrada segun llamada de Overlord/Mission Commander desde WP 7. Una unica pasada sobre TGT.",
         "CVN-71 ROUGH RIDER: TACAN 71X, ICLS 17, expected BRC 095."
       ],
       "objectives": {
@@ -413,19 +413,19 @@
             "image": "images/Ruta.png",
             "details": [
               "MGRS: 55P CS 50000 20000",
-              "Lat/Long: N 33 25 53.58 E 36 31 35.73",
+              "Lat/Long: N14 38'57.52\" E145 36'25.61\"",
               "ALT: 2.008 ft",
               "Remarks: UNA UNICA PASADA"
             ]
           }
         ]
       },
-      "return": "Salir por EP WP 10, EXT WP 11 y volver a MRSL GOLDEN o recuperar en CVN-71/Andersen segun instrucciones."
+      "return": "Salir por EP WP 10, EXT WP 11 y recuperar en CVN-71 segun instrucciones."
     },
     "op_badger4": {
       "type": "operation",
-      "title": "BADGER / KNIGHT TASMO",
-      "situation": "BADGER/KNIGHT ejecuta entrada desde MRSL GOLDEN y ataque al objetivo asignado tras llamada JTAC/Overlord.",
+      "title": "BADGER / SPEAR TASMO",
+      "situation": "BADGER/SPEAR ejecuta entrada desde MRSL GOLDEN y ataque al objetivo asignado tras llamada de Overlord/Mission Commander.",
       "fenceIn": [
         {
           "letter": "F",
@@ -455,8 +455,8 @@
       ],
       "important": [
         "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
-        "CONTACTAR CON AFAC/JTAC en WP 6.",
-        "Entrada segun llamada JTAC desde WP 7. Una unica pasada sobre TGT.",
+        "TOT asignado en PP. Mantener separacion de 3 minutos entre vuelos.",
+        "Entrada segun llamada de Overlord/Mission Commander desde WP 7. Una unica pasada sobre TGT.",
         "CVN-71 ROUGH RIDER: TACAN 71X, ICLS 17, expected BRC 095."
       ],
       "objectives": {
@@ -469,19 +469,19 @@
             "image": "images/Ruta.png",
             "details": [
               "MGRS: 55P CS 50000 20000",
-              "Lat/Long: N 33 25 53.58 E 36 31 35.73",
+              "Lat/Long: N14 38'57.52\" E145 36'25.61\"",
               "ALT: 2.008 ft",
               "Remarks: UNA UNICA PASADA"
             ]
           }
         ]
       },
-      "return": "Salir por EP WP 10, EXT WP 11 y volver a MRSL GOLDEN o recuperar en CVN-71/Andersen segun instrucciones."
+      "return": "Salir por EP WP 10, EXT WP 11 y recuperar en CVN-71 segun instrucciones."
     },
-    "op_knight1": {
+    "op_spear1": {
       "type": "operation",
-      "title": "BADGER / KNIGHT TASMO",
-      "situation": "BADGER/KNIGHT ejecuta entrada desde MRSL GOLDEN y ataque al objetivo asignado tras llamada JTAC/Overlord.",
+      "title": "BADGER / SPEAR TASMO",
+      "situation": "BADGER/SPEAR ejecuta entrada desde MRSL GOLDEN y ataque al objetivo asignado tras llamada de Overlord/Mission Commander.",
       "fenceIn": [
         {
           "letter": "F",
@@ -511,9 +511,8 @@
       ],
       "important": [
         "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
-        "CONTACTAR CON AFAC/JTAC en WP 6.",
-        "Entrada segun llamada JTAC desde WP 7. Una unica pasada sobre TGT.",
-        "CVN-71 ROUGH RIDER: TACAN 71X, ICLS 17, expected BRC 095."
+        "TOT asignado en PP. Mantener separacion de 3 minutos entre vuelos.",
+        "Entrada segun llamada de Overlord/Mission Commander desde WP 7. Una unica pasada sobre TGT."
       ],
       "objectives": {
         "intro": [
@@ -525,19 +524,19 @@
             "image": "images/Ruta.png",
             "details": [
               "MGRS: 55P CS 50000 20000",
-              "Lat/Long: N 33 25 53.58 E 36 31 35.73",
+              "Lat/Long: N14 38'57.52\" E145 36'25.61\"",
               "ALT: 2.008 ft",
               "Remarks: UNA UNICA PASADA"
             ]
           }
         ]
       },
-      "return": "Salir por EP WP 10, EXT WP 11 y volver a MRSL GOLDEN o recuperar en CVN-71/Andersen segun instrucciones."
+      "return": "Salir por EP WP 10, EXT WP 11 y recuperar en Andersen segun instrucciones."
     },
-    "op_knight2": {
+    "op_spear2": {
       "type": "operation",
-      "title": "BADGER / KNIGHT TASMO",
-      "situation": "BADGER/KNIGHT ejecuta entrada desde MRSL GOLDEN y ataque al objetivo asignado tras llamada JTAC/Overlord.",
+      "title": "BADGER / SPEAR TASMO",
+      "situation": "BADGER/SPEAR ejecuta entrada desde MRSL GOLDEN y ataque al objetivo asignado tras llamada de Overlord/Mission Commander.",
       "fenceIn": [
         {
           "letter": "F",
@@ -567,9 +566,8 @@
       ],
       "important": [
         "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
-        "CONTACTAR CON AFAC/JTAC en WP 6.",
-        "Entrada segun llamada JTAC desde WP 7. Una unica pasada sobre TGT.",
-        "CVN-71 ROUGH RIDER: TACAN 71X, ICLS 17, expected BRC 095."
+        "TOT asignado en PP. Mantener separacion de 3 minutos entre vuelos.",
+        "Entrada segun llamada de Overlord/Mission Commander desde WP 7. Una unica pasada sobre TGT."
       ],
       "objectives": {
         "intro": [
@@ -581,14 +579,14 @@
             "image": "images/Ruta.png",
             "details": [
               "MGRS: 55P CS 50000 20000",
-              "Lat/Long: N 33 25 53.58 E 36 31 35.73",
+              "Lat/Long: N14 38'57.52\" E145 36'25.61\"",
               "ALT: 2.008 ft",
               "Remarks: UNA UNICA PASADA"
             ]
           }
         ]
       },
-      "return": "Salir por EP WP 10, EXT WP 11 y volver a MRSL GOLDEN o recuperar en CVN-71/Andersen segun instrucciones."
+      "return": "Salir por EP WP 10, EXT WP 11 y recuperar en Andersen segun instrucciones."
     }
   },
   "templates": {

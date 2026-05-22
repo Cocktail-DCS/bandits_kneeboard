@@ -31,160 +31,200 @@
     ],
     "important": "A pesar de estar esperando, hay que estar siempre alerta, nunca se sabe si a la CAP se le ha filtrado algun enemigo o hay algun SAM a la espera",
     "tot": {
-      "description": "Organizado por Mission Commander segun departure plan y orden de push.",
-      "pushPoint": "WP 7"
+      "description": "TOT asignado en el PP. Hora local de Marianas = Zulu +10; cruza al dia siguiente para los TOT posteriores a 14:00Z.",
+      "pushPoint": "PP WP 7"
     }
   },
   "items": {
     "holding_push_raccoon1": {
       "title": "Holding MRSL SILVER",
-      "joker": "7000",
-      "bingo": "5000",
-      "important": "RACCOON mantiene MRSL SILVER hasta llamada de push/JTAC. CONTACTAR CON AFAC/JTAC en WP 6.",
+      "joker": "5000lb",
+      "bingo": "2500lb",
+      "important": "RACCOON mantiene MRSL SILVER hasta la llamada de push de Overlord/Mission Commander.",
       "holding": {
         "point": "WP 5 MRSL SILVER / WP 6 MRSL SILVER",
         "altitude": "20K"
       },
       "procedureIdeal": [
         "MRSL SILVER: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
-        "WP 5: 55P BS 56638 34700.",
-        "WP 6: 55P BS 75243 34681."
-      ]
+        "WP 5: 55P BS 56638 34700 / N14 46'31.13\" E144 44'21.06\".",
+        "WP 6: 55P BS 75243 34681 / N14 46'36.37\" E144 54'42.98\"."
+      ],
+      "tot": {
+        "description": "TOT asignado en PP: 22:55Z / 08:55L Marianas. Intervalo de 3 minutos entre vuelos.",
+        "pushPoint": "PP WP 7"
+      }
     },
     "holding_push_raccoon2": {
       "title": "Holding MRSL SILVER",
-      "joker": "7000",
-      "bingo": "5000",
-      "important": "RACCOON mantiene MRSL SILVER hasta llamada de push/JTAC. CONTACTAR CON AFAC/JTAC en WP 6.",
+      "joker": "5000lb",
+      "bingo": "2500lb",
+      "important": "RACCOON mantiene MRSL SILVER hasta la llamada de push de Overlord/Mission Commander.",
       "holding": {
         "point": "WP 5 MRSL SILVER / WP 6 MRSL SILVER",
         "altitude": "21K"
       },
       "procedureIdeal": [
         "MRSL SILVER: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
-        "WP 5: 55P BS 56638 34700.",
-        "WP 6: 55P BS 75243 34681."
-      ]
+        "WP 5: 55P BS 56638 34700 / N14 46'31.13\" E144 44'21.06\".",
+        "WP 6: 55P BS 75243 34681 / N14 46'36.37\" E144 54'42.98\"."
+      ],
+      "tot": {
+        "description": "TOT asignado en PP: 22:58Z / 08:58L Marianas. Intervalo de 3 minutos entre vuelos.",
+        "pushPoint": "PP WP 7"
+      }
     },
     "holding_push_raccoon3": {
       "title": "Holding MRSL SILVER",
-      "joker": "7000",
-      "bingo": "5000",
-      "important": "RACCOON mantiene MRSL SILVER hasta llamada de push/JTAC. CONTACTAR CON AFAC/JTAC en WP 6.",
+      "joker": "5000lb",
+      "bingo": "2500lb",
+      "important": "RACCOON mantiene MRSL SILVER hasta la llamada de push de Overlord/Mission Commander.",
       "holding": {
         "point": "WP 5 MRSL SILVER / WP 6 MRSL SILVER",
         "altitude": "22K"
       },
       "procedureIdeal": [
         "MRSL SILVER: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
-        "WP 5: 55P BS 56638 34700.",
-        "WP 6: 55P BS 75243 34681."
-      ]
+        "WP 5: 55P BS 56638 34700 / N14 46'31.13\" E144 44'21.06\".",
+        "WP 6: 55P BS 75243 34681 / N14 46'36.37\" E144 54'42.98\"."
+      ],
+      "tot": {
+        "description": "TOT asignado en PP: 23:01Z / 09:01L Marianas. Intervalo de 3 minutos entre vuelos.",
+        "pushPoint": "PP WP 7"
+      }
     },
     "holding_push_raccoon4": {
       "title": "Holding MRSL SILVER",
-      "joker": "7000",
-      "bingo": "5000",
-      "important": "RACCOON mantiene MRSL SILVER hasta llamada de push/JTAC. CONTACTAR CON AFAC/JTAC en WP 6.",
+      "joker": "5000lb",
+      "bingo": "2500lb",
+      "important": "RACCOON mantiene MRSL SILVER hasta la llamada de push de Overlord/Mission Commander.",
       "holding": {
         "point": "WP 5 MRSL SILVER / WP 6 MRSL SILVER",
         "altitude": "23K"
       },
       "procedureIdeal": [
         "MRSL SILVER: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
-        "WP 5: 55P BS 56638 34700.",
-        "WP 6: 55P BS 75243 34681."
-      ]
+        "WP 5: 55P BS 56638 34700 / N14 46'31.13\" E144 44'21.06\".",
+        "WP 6: 55P BS 75243 34681 / N14 46'36.37\" E144 54'42.98\"."
+      ],
+      "tot": {
+        "description": "TOT asignado en PP: 23:04Z / 09:04L Marianas. Intervalo de 3 minutos entre vuelos.",
+        "pushPoint": "PP WP 7"
+      }
     },
     "holding_push_badger1": {
       "title": "Holding MRSL GOLDEN",
-      "joker": "7000",
-      "bingo": "5000",
-      "important": "BADGER mantiene MRSL GOLDEN hasta llamada de push/JTAC. CONTACTAR CON AFAC/JTAC en WP 6.",
+      "joker": "6000lb",
+      "bingo": "3500lb",
+      "important": "BADGER mantiene MRSL GOLDEN hasta la llamada de push de Overlord/Mission Commander.",
       "holding": {
         "point": "WP 5 MRSL GOLDEN / WP 6 MRSL GOLDEN",
         "altitude": "22K"
       },
       "procedureIdeal": [
         "MRSL GOLDEN: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
-        "WP 5: 55P BS 56196 64647.",
-        "WP 6: 55P BS 75020 64722."
-      ]
+        "WP 5: 55P BS 56196 64647 / N15 02'44.96\" E144 43'56.08\".",
+        "WP 6: 55P BS 75020 64722 / N15 02'53.45\" E144 54'26.08\"."
+      ],
+      "tot": {
+        "description": "TOT asignado en PP: 23:13Z / 09:13L Marianas. Intervalo de 3 minutos entre vuelos.",
+        "pushPoint": "PP WP 7"
+      }
     },
     "holding_push_badger2": {
       "title": "Holding MRSL GOLDEN",
-      "joker": "7000",
-      "bingo": "5000",
-      "important": "BADGER mantiene MRSL GOLDEN hasta llamada de push/JTAC. CONTACTAR CON AFAC/JTAC en WP 6.",
+      "joker": "6000lb",
+      "bingo": "3500lb",
+      "important": "BADGER mantiene MRSL GOLDEN hasta la llamada de push de Overlord/Mission Commander.",
       "holding": {
         "point": "WP 5 MRSL GOLDEN / WP 6 MRSL GOLDEN",
         "altitude": "23K"
       },
       "procedureIdeal": [
         "MRSL GOLDEN: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
-        "WP 5: 55P BS 56196 64647.",
-        "WP 6: 55P BS 75020 64722."
-      ]
+        "WP 5: 55P BS 56196 64647 / N15 02'44.96\" E144 43'56.08\".",
+        "WP 6: 55P BS 75020 64722 / N15 02'53.45\" E144 54'26.08\"."
+      ],
+      "tot": {
+        "description": "TOT asignado en PP: 23:16Z / 09:16L Marianas. Intervalo de 3 minutos entre vuelos.",
+        "pushPoint": "PP WP 7"
+      }
     },
     "holding_push_badger3": {
       "title": "Holding MRSL GOLDEN",
-      "joker": "7000",
-      "bingo": "5000",
-      "important": "BADGER mantiene MRSL GOLDEN hasta llamada de push/JTAC. CONTACTAR CON AFAC/JTAC en WP 6.",
+      "joker": "6000lb",
+      "bingo": "3500lb",
+      "important": "BADGER mantiene MRSL GOLDEN hasta la llamada de push de Overlord/Mission Commander.",
       "holding": {
         "point": "WP 5 MRSL GOLDEN / WP 6 MRSL GOLDEN",
         "altitude": "24K"
       },
       "procedureIdeal": [
         "MRSL GOLDEN: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
-        "WP 5: 55P BS 56196 64647.",
-        "WP 6: 55P BS 75020 64722."
-      ]
+        "WP 5: 55P BS 56196 64647 / N15 02'44.96\" E144 43'56.08\".",
+        "WP 6: 55P BS 75020 64722 / N15 02'53.45\" E144 54'26.08\"."
+      ],
+      "tot": {
+        "description": "TOT asignado en PP: 23:19Z / 09:19L Marianas. Intervalo de 3 minutos entre vuelos.",
+        "pushPoint": "PP WP 7"
+      }
     },
     "holding_push_badger4": {
       "title": "Holding MRSL GOLDEN",
-      "joker": "7000",
-      "bingo": "5000",
-      "important": "BADGER mantiene MRSL GOLDEN hasta llamada de push/JTAC. CONTACTAR CON AFAC/JTAC en WP 6.",
+      "joker": "6000lb",
+      "bingo": "3500lb",
+      "important": "BADGER mantiene MRSL GOLDEN hasta la llamada de push de Overlord/Mission Commander.",
       "holding": {
         "point": "WP 5 MRSL GOLDEN / WP 6 MRSL GOLDEN",
         "altitude": "25K"
       },
       "procedureIdeal": [
         "MRSL GOLDEN: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
-        "WP 5: 55P BS 56196 64647.",
-        "WP 6: 55P BS 75020 64722."
-      ]
+        "WP 5: 55P BS 56196 64647 / N15 02'44.96\" E144 43'56.08\".",
+        "WP 6: 55P BS 75020 64722 / N15 02'53.45\" E144 54'26.08\"."
+      ],
+      "tot": {
+        "description": "TOT asignado en PP: 23:22Z / 09:22L Marianas. Intervalo de 3 minutos entre vuelos.",
+        "pushPoint": "PP WP 7"
+      }
     },
-    "holding_push_knight1": {
+    "holding_push_spear1": {
       "title": "Holding MRSL GOLDEN",
-      "joker": "7000",
-      "bingo": "5000",
-      "important": "KNIGHT usa el plan BADGER F/A-18C y mantiene MRSL GOLDEN hasta llamada de push/JTAC.",
+      "joker": "6000lb",
+      "bingo": "3500lb",
+      "important": "SPEAR usa el plan F/A-18C y mantiene MRSL GOLDEN hasta la llamada de push de Overlord/Mission Commander.",
       "holding": {
         "point": "WP 5 MRSL GOLDEN / WP 6 MRSL GOLDEN",
         "altitude": "22K"
       },
       "procedureIdeal": [
         "MRSL GOLDEN: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
-        "WP 5: 55P BS 56196 64647.",
-        "WP 6: 55P BS 75020 64722."
-      ]
+        "WP 5: 55P BS 56196 64647 / N15 02'44.96\" E144 43'56.08\".",
+        "WP 6: 55P BS 75020 64722 / N15 02'53.45\" E144 54'26.08\"."
+      ],
+      "tot": {
+        "description": "TOT asignado en PP: 23:07Z / 09:07L Marianas. Intervalo de 3 minutos entre vuelos.",
+        "pushPoint": "PP WP 7"
+      }
     },
-    "holding_push_knight2": {
+    "holding_push_spear2": {
       "title": "Holding MRSL GOLDEN",
-      "joker": "7000",
-      "bingo": "5000",
-      "important": "KNIGHT usa el plan BADGER F/A-18C y mantiene MRSL GOLDEN hasta llamada de push/JTAC.",
+      "joker": "6000lb",
+      "bingo": "3500lb",
+      "important": "SPEAR usa el plan F/A-18C y mantiene MRSL GOLDEN hasta la llamada de push de Overlord/Mission Commander.",
       "holding": {
         "point": "WP 5 MRSL GOLDEN / WP 6 MRSL GOLDEN",
         "altitude": "23K"
       },
       "procedureIdeal": [
         "MRSL GOLDEN: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
-        "WP 5: 55P BS 56196 64647.",
-        "WP 6: 55P BS 75020 64722."
-      ]
+        "WP 5: 55P BS 56196 64647 / N15 02'44.96\" E144 43'56.08\".",
+        "WP 6: 55P BS 75020 64722 / N15 02'53.45\" E144 54'26.08\"."
+      ],
+      "tot": {
+        "description": "TOT asignado en PP: 23:10Z / 09:10L Marianas. Intervalo de 3 minutos entre vuelos.",
+        "pushPoint": "PP WP 7"
+      }
     }
   }
 }
