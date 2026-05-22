@@ -19,107 +19,172 @@
     "title": "Holding",
     "situation": "Estas a punto de entrar en combate, pero tienes que esperar a que los que van delante hagan su trabajo, y a los que se han quedado atras a que te alcancen, ten paciencia, comprueba tu estado, y mantente alerta que no estas en base",
     "arrival": [
-      "(PASANDO WP X)",
-      "PILOTO  : \"OVERLORD, Cigar-1, Pasando WP X, holding en DAVOUT\"",
-      "",
-      "(Aqui podemos esperar 2 respuestas)",
-      "OVERLORD: \"Cigar-1, Copiado, stand by\"",
-      "(o)",
-      "OVERLORD: \"Cigar-1, Copiado, prosiga con los TOTs\"",
-      "",
-      "PILOTO  : \"Copiado, Cigar-1\""
+      "(PASANDO WP 4 PRE VUL)",
+      "PILOTO: \"OVERLORD, callsign, pasando PRE VUL, entrando a marshal\"",
+      "OVERLORD: \"callsign, copiado, mantenga marshal y espere push\"",
+      "PILOTO: \"Copiado, callsign\""
     ],
     "procedureIdeal": [
-      "Velocidad Ideal: Velocidad de resistencia calculada por el ordenador de abordo",
-      "Orbita Ideal: Tramo largo de 10NM, Tramo Ancho 10NM",
-      "Rumbo Ideal: 360º Magnético"
+      "Velocidad Ideal: segun performance y combustible del avion.",
+      "Orbita Ideal: HOT LEG 090, 10 NM LEG, 10 NM WIDE.",
+      "Mantener escucha con Overlord y esperar autorizacion de push."
     ],
     "important": "A pesar de estar esperando, hay que estar siempre alerta, nunca se sabe si a la CAP se le ha filtrado algun enemigo o hay algun SAM a la espera",
     "tot": {
-      "description": "Organizado por Mission alksdjflkasjdflñkajsdlñfkjaslñdf",
+      "description": "Organizado por Mission Commander segun departure plan y orden de push.",
       "pushPoint": "WP 7"
     }
   },
   "items": {
     "holding_push_raccoon1": {
-      "joker": "5000",
-      "bingo": "3000",
+      "title": "Holding MRSL SILVER",
+      "joker": "7000",
+      "bingo": "5000",
+      "important": "RACCOON mantiene MRSL SILVER hasta llamada de push/JTAC. CONTACTAR CON AFAC/JTAC en WP 6.",
       "holding": {
-        "point": "WP 4",
-        "altitude": "20.000ft"
-      }
+        "point": "WP 5 MRSL SILVER / WP 6 MRSL SILVER",
+        "altitude": "20K"
+      },
+      "procedureIdeal": [
+        "MRSL SILVER: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
+        "WP 5: 55P BS 56638 34700.",
+        "WP 6: 55P BS 75243 34681."
+      ]
     },
     "holding_push_raccoon2": {
-      "joker": "5000",
-      "bingo": "3000",
+      "title": "Holding MRSL SILVER",
+      "joker": "7000",
+      "bingo": "5000",
+      "important": "RACCOON mantiene MRSL SILVER hasta llamada de push/JTAC. CONTACTAR CON AFAC/JTAC en WP 6.",
       "holding": {
-        "point": "WP 4",
-        "altitude": "21.000ft"
-      }
+        "point": "WP 5 MRSL SILVER / WP 6 MRSL SILVER",
+        "altitude": "21K"
+      },
+      "procedureIdeal": [
+        "MRSL SILVER: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
+        "WP 5: 55P BS 56638 34700.",
+        "WP 6: 55P BS 75243 34681."
+      ]
     },
     "holding_push_raccoon3": {
-      "joker": "5000",
-      "bingo": "3000",
+      "title": "Holding MRSL SILVER",
+      "joker": "7000",
+      "bingo": "5000",
+      "important": "RACCOON mantiene MRSL SILVER hasta llamada de push/JTAC. CONTACTAR CON AFAC/JTAC en WP 6.",
       "holding": {
-        "point": "WP 4",
-        "altitude": "22.000ft"
-      }
+        "point": "WP 5 MRSL SILVER / WP 6 MRSL SILVER",
+        "altitude": "22K"
+      },
+      "procedureIdeal": [
+        "MRSL SILVER: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
+        "WP 5: 55P BS 56638 34700.",
+        "WP 6: 55P BS 75243 34681."
+      ]
     },
     "holding_push_raccoon4": {
-      "joker": "5000",
-      "bingo": "3000",
+      "title": "Holding MRSL SILVER",
+      "joker": "7000",
+      "bingo": "5000",
+      "important": "RACCOON mantiene MRSL SILVER hasta llamada de push/JTAC. CONTACTAR CON AFAC/JTAC en WP 6.",
       "holding": {
-        "point": "WP 4",
-        "altitude": "23.000ft"
-      }
+        "point": "WP 5 MRSL SILVER / WP 6 MRSL SILVER",
+        "altitude": "23K"
+      },
+      "procedureIdeal": [
+        "MRSL SILVER: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
+        "WP 5: 55P BS 56638 34700.",
+        "WP 6: 55P BS 75243 34681."
+      ]
     },
     "holding_push_badger1": {
-      "joker": "5000",
-      "bingo": "3000",
+      "title": "Holding MRSL GOLDEN",
+      "joker": "7000",
+      "bingo": "5000",
+      "important": "BADGER mantiene MRSL GOLDEN hasta llamada de push/JTAC. CONTACTAR CON AFAC/JTAC en WP 6.",
       "holding": {
-        "point": "WP 4",
-        "altitude": "24.000ft"
-      }
+        "point": "WP 5 MRSL GOLDEN / WP 6 MRSL GOLDEN",
+        "altitude": "22K"
+      },
+      "procedureIdeal": [
+        "MRSL GOLDEN: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
+        "WP 5: 55P BS 56196 64647.",
+        "WP 6: 55P BS 75020 64722."
+      ]
     },
     "holding_push_badger2": {
-      "joker": "5000",
-      "bingo": "3000",
+      "title": "Holding MRSL GOLDEN",
+      "joker": "7000",
+      "bingo": "5000",
+      "important": "BADGER mantiene MRSL GOLDEN hasta llamada de push/JTAC. CONTACTAR CON AFAC/JTAC en WP 6.",
       "holding": {
-        "point": "WP 4",
-        "altitude": "25.000ft"
-      }
+        "point": "WP 5 MRSL GOLDEN / WP 6 MRSL GOLDEN",
+        "altitude": "23K"
+      },
+      "procedureIdeal": [
+        "MRSL GOLDEN: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
+        "WP 5: 55P BS 56196 64647.",
+        "WP 6: 55P BS 75020 64722."
+      ]
     },
     "holding_push_badger3": {
-      "joker": "5000",
-      "bingo": "3000",
+      "title": "Holding MRSL GOLDEN",
+      "joker": "7000",
+      "bingo": "5000",
+      "important": "BADGER mantiene MRSL GOLDEN hasta llamada de push/JTAC. CONTACTAR CON AFAC/JTAC en WP 6.",
       "holding": {
-        "point": "WP 4",
-        "altitude": "26.000ft"
-      }
+        "point": "WP 5 MRSL GOLDEN / WP 6 MRSL GOLDEN",
+        "altitude": "24K"
+      },
+      "procedureIdeal": [
+        "MRSL GOLDEN: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
+        "WP 5: 55P BS 56196 64647.",
+        "WP 6: 55P BS 75020 64722."
+      ]
     },
     "holding_push_badger4": {
-      "joker": "5000",
-      "bingo": "3000",
+      "title": "Holding MRSL GOLDEN",
+      "joker": "7000",
+      "bingo": "5000",
+      "important": "BADGER mantiene MRSL GOLDEN hasta llamada de push/JTAC. CONTACTAR CON AFAC/JTAC en WP 6.",
       "holding": {
-        "point": "WP 4",
-        "altitude": "27.000ft"
-      }
+        "point": "WP 5 MRSL GOLDEN / WP 6 MRSL GOLDEN",
+        "altitude": "25K"
+      },
+      "procedureIdeal": [
+        "MRSL GOLDEN: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
+        "WP 5: 55P BS 56196 64647.",
+        "WP 6: 55P BS 75020 64722."
+      ]
     },
     "holding_push_knight1": {
+      "title": "Holding MRSL GOLDEN",
       "joker": "7000",
-      "bingo": "4000",
+      "bingo": "5000",
+      "important": "KNIGHT usa el plan BADGER F/A-18C y mantiene MRSL GOLDEN hasta llamada de push/JTAC.",
       "holding": {
-        "point": "WP 4",
-        "altitude": "28.000ft"
-      }
+        "point": "WP 5 MRSL GOLDEN / WP 6 MRSL GOLDEN",
+        "altitude": "22K"
+      },
+      "procedureIdeal": [
+        "MRSL GOLDEN: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
+        "WP 5: 55P BS 56196 64647.",
+        "WP 6: 55P BS 75020 64722."
+      ]
     },
     "holding_push_knight2": {
+      "title": "Holding MRSL GOLDEN",
       "joker": "7000",
-      "bingo": "4000",
+      "bingo": "5000",
+      "important": "KNIGHT usa el plan BADGER F/A-18C y mantiene MRSL GOLDEN hasta llamada de push/JTAC.",
       "holding": {
-        "point": "WP 4",
-        "altitude": "28.000ft"
-      }
+        "point": "WP 5 MRSL GOLDEN / WP 6 MRSL GOLDEN",
+        "altitude": "23K"
+      },
+      "procedureIdeal": [
+        "MRSL GOLDEN: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
+        "WP 5: 55P BS 56196 64647.",
+        "WP 6: 55P BS 75020 64722."
+      ]
     }
   }
 }

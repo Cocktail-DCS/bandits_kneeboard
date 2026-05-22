@@ -1,6 +1,6 @@
 {
-  "softDeck": "8.000 ft AGL",
-  "hardDeck": "5.000 ft AGL",
+  "softDeck": "6,000 ft",
+  "hardDeck": "N/A",
   "lines": [
     "Es obligatorio mantener el hard deck"
   ],

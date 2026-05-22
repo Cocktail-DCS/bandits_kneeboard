@@ -4,13 +4,13 @@
     "campos": "callsign, aircraft, role, freq, tacan y altitude se muestran automaticamente donde corresponda."
   },
   "title": "Repostaje",
-  "situation": "Tienes un pequeño descanso, te diriges al tanker, solo tienes que hacer una buena aproximación, repostar y continuar con la misión",
+  "situation": "Dirigete al tanker asignado segun necesidad de combustible y coordinacion con Overlord.",
   "tankers": [
     {
       "callsign": "TEXACO-1",
-      "aircraft": "1x KC-135 nigga",
+      "aircraft": "1x KC-135",
       "role": "Reabastecimiento Aereo General",
-      "freq": "252",
+      "freq": "252.0",
       "tacan": "30Y",
       "altitude": "23.000ft"
     },
@@ -24,8 +24,8 @@
     },
     {
       "callsign": "GOLDPLATE-7",
-      "aircraft": "1x A-6E",
-      "role": "Reabastecimiento Aereo de Recuperación",
+      "aircraft": "1x A-6E RCVY",
+      "role": "Reabastecimiento Aereo de Recuperacion",
       "freq": "252.5",
       "tacan": "40Y",
       "altitude": "8.000ft"
@@ -35,14 +35,14 @@
     {
       "title": "IMPORTANTE Reabastecimiento general:",
       "text": [
-        "Es una misision de corto alcance por lo que solo hace falta repostar unas 2.000LB de combustible.",
-        "Esto es importante para no estar repostando mucho tiempo y obligar a el resto de vuelos que no necesitan repostar a esperar demasido o directamente obligarlos a repostar por una espera excesiva."
+        "Coordina entrada y salida del tanker con Overlord.",
+        "Reposta solo lo necesario para cumplir la mision y mantener separacion con otros vuelos."
       ]
     },
     {
       "title": "IMPORTANTE Reabastecimiento de recuperacion:",
       "text": [
-        "Estas al lado de la base, solo hay que repostar lo justo para un para un par de intentos de aterrizaje en el portaaviones."
+        "GOLDPLATE-7 queda como tanker de recuperacion asociado a CVN-71 ROUGH RIDER."
       ]
     }
   ]

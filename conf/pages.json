@@ -32,543 +32,563 @@
   "pages": {
     "op_raccoon1": {
       "type": "operation",
-      "title": "STRIKE",
-      "situation": "Tu tarea es atacar los WP objetivo con bombas",
+      "title": "RACCOON TASMO / STRIKE",
+      "situation": "RACCOON ejecuta entrada desde MRSL SILVER y ataque al objetivo asignado tras llamada JTAC/Overlord.",
       "fenceIn": [
         {
           "letter": "F",
           "label": "Firepower (Armas)",
-          "text": "Master ARM ON, Armas seleccionadas y espoletas configuradas"
+          "text": "Master ARM ON, armas seleccionadas y espoletas configuradas."
         },
         {
           "letter": "E",
           "label": "Emitters (Emisiones)",
-          "text": "Preparar FCR (Radar), radio altímetro, radios, IFF, Datalink, Luces OFF"
+          "text": "Radar, radios, IFF, datalink y luces configuradas para entrada en zona."
         },
         {
           "letter": "N",
           "label": "Navigation (Navegacion)",
-          "text": "Comprobar ruta de vuelo, comprobar Bullseye"
+          "text": "Comprobar Bullseye, ruta, PP, IP, TGT, EP y EXT."
         },
         {
           "letter": "C",
           "label": "Countermeasures (Contramedidas)",
-          "text": "Dispensadores ARMADOS, ECM/ASPJ Listos para operar"
+          "text": "Dispensadores armados y programa adecuado para amenaza."
         },
         {
           "letter": "E",
           "label": "Employment (Estados)",
-          "text": "Verificar BINGO, RWR operativo y sin avisos, otros aspectos del avion en concreto"
+          "text": "Bingo/Joker revisados, RWR operativo y separacion con el paquete."
         }
       ],
       "important": [
-        "Configrar el bullseye para realizar un correcto reporte de enemigos",
-        "Anunciar lanzamientos de bombas/misiles"
+        "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
+        "CONTACTAR CON AFAC/JTAC en WP 6.",
+        "Entrada segun llamada JTAC desde WP 7. Una unica pasada sobre TGT.",
+        "Configurar Bullseye para reportes: N14 10 17.94 E145 14 23.52 / 55P CR 10037 67425."
       ],
       "objectives": {
         "intro": [
-          "Vuestro objetivo es Isla de practica WP 9",
-          "Solo hay que lanzar bombas en CCRP sobre la isla y abandonar el area de operaciones"
+          "Objetivo principal en WP 9 segun DATACARD IRON HORIZON 26 Dia 3."
         ],
         "items": [
           {
-            "title": "Isla de practicas WP 9",
+            "title": "TGT WP 9",
             "image": "images/Ruta.png",
             "details": [
-              "MGRS: 55 Q CU 58585 08943",
-              "Lat/Long: N16°21'28.04\", E145°40'34.31\"",
-              "Elevacion: 705ft"
+              "MGRS: 55P CS 50000 20000",
+              "Lat/Long: N 33 25 53.58 E 36 31 35.73",
+              "ALT: 2.008 ft",
+              "Remarks: UNA UNICA PASADA"
             ]
           }
         ]
       },
-      "return": "Tras bombardear dirigirse directamente al punto de retorno a base"
+      "return": "Salir por EP WP 10, EXT WP 11 y volver a MRSL SILVER o RTB segun orden de Overlord/Mission Commander."
     },
     "op_raccoon2": {
       "type": "operation",
-      "title": "STRIKE",
-      "situation": "Tu tarea es atacar los WP objetivo con bombas",
+      "title": "RACCOON TASMO / STRIKE",
+      "situation": "RACCOON ejecuta entrada desde MRSL SILVER y ataque al objetivo asignado tras llamada JTAC/Overlord.",
       "fenceIn": [
         {
           "letter": "F",
           "label": "Firepower (Armas)",
-          "text": "Master ARM ON, Armas seleccionadas y espoletas configuradas"
+          "text": "Master ARM ON, armas seleccionadas y espoletas configuradas."
         },
         {
           "letter": "E",
           "label": "Emitters (Emisiones)",
-          "text": "Preparar FCR (Radar), radio altímetro, radios, IFF, Datalink, Luces OFF"
+          "text": "Radar, radios, IFF, datalink y luces configuradas para entrada en zona."
         },
         {
           "letter": "N",
           "label": "Navigation (Navegacion)",
-          "text": "Comprobar ruta de vuelo, comprobar Bullseye"
+          "text": "Comprobar Bullseye, ruta, PP, IP, TGT, EP y EXT."
         },
         {
           "letter": "C",
           "label": "Countermeasures (Contramedidas)",
-          "text": "Dispensadores ARMADOS, ECM/ASPJ Listos para operar"
+          "text": "Dispensadores armados y programa adecuado para amenaza."
         },
         {
           "letter": "E",
           "label": "Employment (Estados)",
-          "text": "Verificar BINGO, RWR operativo y sin avisos, otros aspectos del avion en concreto"
+          "text": "Bingo/Joker revisados, RWR operativo y separacion con el paquete."
         }
       ],
       "important": [
-        "Configrar el bullseye para realizar un correcto reporte de enemigos",
-        "Anunciar lanzamientos de bombas/misiles"
+        "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
+        "CONTACTAR CON AFAC/JTAC en WP 6.",
+        "Entrada segun llamada JTAC desde WP 7. Una unica pasada sobre TGT.",
+        "Configurar Bullseye para reportes: N14 10 17.94 E145 14 23.52 / 55P CR 10037 67425."
       ],
       "objectives": {
         "intro": [
-          "Vuestro objetivo es Isla de practica WP 9",
-          "Solo hay que lanzar bombas en CCRP sobre la isla y abandonar el area de operaciones"
+          "Objetivo principal en WP 9 segun DATACARD IRON HORIZON 26 Dia 3."
         ],
         "items": [
           {
-            "title": "Isla de practicas WP 9",
+            "title": "TGT WP 9",
             "image": "images/Ruta.png",
             "details": [
-              "MGRS: 55 Q CU 58585 08943",
-              "Lat/Long: N16°21'28.04\", E145°40'34.31\"",
-              "Elevacion: 705ft"
+              "MGRS: 55P CS 50000 20000",
+              "Lat/Long: N 33 25 53.58 E 36 31 35.73",
+              "ALT: 2.008 ft",
+              "Remarks: UNA UNICA PASADA"
             ]
           }
         ]
       },
-      "return": "Tras bombardear dirigirse directamente al punto de retorno a base"
+      "return": "Salir por EP WP 10, EXT WP 11 y volver a MRSL SILVER o RTB segun orden de Overlord/Mission Commander."
     },
     "op_raccoon3": {
       "type": "operation",
-      "title": "STRIKE",
-      "situation": "Tu tarea es atacar los WP objetivo con bombas",
+      "title": "RACCOON TASMO / STRIKE",
+      "situation": "RACCOON ejecuta entrada desde MRSL SILVER y ataque al objetivo asignado tras llamada JTAC/Overlord.",
       "fenceIn": [
         {
           "letter": "F",
           "label": "Firepower (Armas)",
-          "text": "Master ARM ON, Armas seleccionadas y espoletas configuradas"
+          "text": "Master ARM ON, armas seleccionadas y espoletas configuradas."
         },
         {
           "letter": "E",
           "label": "Emitters (Emisiones)",
-          "text": "Preparar FCR (Radar), radio altímetro, radios, IFF, Datalink, Luces OFF"
+          "text": "Radar, radios, IFF, datalink y luces configuradas para entrada en zona."
         },
         {
           "letter": "N",
           "label": "Navigation (Navegacion)",
-          "text": "Comprobar ruta de vuelo, comprobar Bullseye"
+          "text": "Comprobar Bullseye, ruta, PP, IP, TGT, EP y EXT."
         },
         {
           "letter": "C",
           "label": "Countermeasures (Contramedidas)",
-          "text": "Dispensadores ARMADOS, ECM/ASPJ Listos para operar"
+          "text": "Dispensadores armados y programa adecuado para amenaza."
         },
         {
           "letter": "E",
           "label": "Employment (Estados)",
-          "text": "Verificar BINGO, RWR operativo y sin avisos, otros aspectos del avion en concreto"
+          "text": "Bingo/Joker revisados, RWR operativo y separacion con el paquete."
         }
       ],
       "important": [
-        "Configrar el bullseye para realizar un correcto reporte de enemigos",
-        "Anunciar lanzamientos de bombas/misiles"
+        "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
+        "CONTACTAR CON AFAC/JTAC en WP 6.",
+        "Entrada segun llamada JTAC desde WP 7. Una unica pasada sobre TGT.",
+        "Configurar Bullseye para reportes: N14 10 17.94 E145 14 23.52 / 55P CR 10037 67425."
       ],
       "objectives": {
         "intro": [
-          "Vuestro objetivo es Isla de practica WP 9",
-          "Solo hay que lanzar bombas en CCRP sobre la isla y abandonar el area de operaciones"
+          "Objetivo principal en WP 9 segun DATACARD IRON HORIZON 26 Dia 3."
         ],
         "items": [
           {
-            "title": "Isla de practicas WP 9",
+            "title": "TGT WP 9",
             "image": "images/Ruta.png",
             "details": [
-              "MGRS: 55 Q CU 58585 08943",
-              "Lat/Long: N16°21'28.04\", E145°40'34.31\"",
-              "Elevacion: 705ft"
+              "MGRS: 55P CS 50000 20000",
+              "Lat/Long: N 33 25 53.58 E 36 31 35.73",
+              "ALT: 2.008 ft",
+              "Remarks: UNA UNICA PASADA"
             ]
           }
         ]
       },
-      "return": "Tras bombardear dirigirse directamente al punto de retorno a base"
+      "return": "Salir por EP WP 10, EXT WP 11 y volver a MRSL SILVER o RTB segun orden de Overlord/Mission Commander."
     },
     "op_raccoon4": {
       "type": "operation",
-      "title": "STRIKE",
-      "situation": "Tu tarea es atacar los WP objetivo con bombas",
+      "title": "RACCOON TASMO / STRIKE",
+      "situation": "RACCOON ejecuta entrada desde MRSL SILVER y ataque al objetivo asignado tras llamada JTAC/Overlord.",
       "fenceIn": [
         {
           "letter": "F",
           "label": "Firepower (Armas)",
-          "text": "Master ARM ON, Armas seleccionadas y espoletas configuradas"
+          "text": "Master ARM ON, armas seleccionadas y espoletas configuradas."
         },
         {
           "letter": "E",
           "label": "Emitters (Emisiones)",
-          "text": "Preparar FCR (Radar), radio altímetro, radios, IFF, Datalink, Luces OFF"
+          "text": "Radar, radios, IFF, datalink y luces configuradas para entrada en zona."
         },
         {
           "letter": "N",
           "label": "Navigation (Navegacion)",
-          "text": "Comprobar ruta de vuelo, comprobar Bullseye"
+          "text": "Comprobar Bullseye, ruta, PP, IP, TGT, EP y EXT."
         },
         {
           "letter": "C",
           "label": "Countermeasures (Contramedidas)",
-          "text": "Dispensadores ARMADOS, ECM/ASPJ Listos para operar"
+          "text": "Dispensadores armados y programa adecuado para amenaza."
         },
         {
           "letter": "E",
           "label": "Employment (Estados)",
-          "text": "Verificar BINGO, RWR operativo y sin avisos, otros aspectos del avion en concreto"
+          "text": "Bingo/Joker revisados, RWR operativo y separacion con el paquete."
         }
       ],
       "important": [
-        "Configrar el bullseye para realizar un correcto reporte de enemigos",
-        "Anunciar lanzamientos de bombas/misiles"
+        "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
+        "CONTACTAR CON AFAC/JTAC en WP 6.",
+        "Entrada segun llamada JTAC desde WP 7. Una unica pasada sobre TGT.",
+        "Configurar Bullseye para reportes: N14 10 17.94 E145 14 23.52 / 55P CR 10037 67425."
       ],
       "objectives": {
         "intro": [
-          "Vuestro objetivo es Isla de practica WP 9",
-          "Solo hay que lanzar bombas en CCRP sobre la isla y abandonar el area de operaciones"
+          "Objetivo principal en WP 9 segun DATACARD IRON HORIZON 26 Dia 3."
         ],
         "items": [
           {
-            "title": "Isla de practicas WP 9",
+            "title": "TGT WP 9",
             "image": "images/Ruta.png",
             "details": [
-              "MGRS: 55 Q CU 58585 08943",
-              "Lat/Long: N16°21'28.04\", E145°40'34.31\"",
-              "Elevacion: 705ft"
+              "MGRS: 55P CS 50000 20000",
+              "Lat/Long: N 33 25 53.58 E 36 31 35.73",
+              "ALT: 2.008 ft",
+              "Remarks: UNA UNICA PASADA"
             ]
           }
         ]
       },
-      "return": "Tras bombardear dirigirse directamente al punto de retorno a base"
+      "return": "Salir por EP WP 10, EXT WP 11 y volver a MRSL SILVER o RTB segun orden de Overlord/Mission Commander."
     },
     "op_badger1": {
       "type": "operation",
-      "title": "STRIKE",
-      "situation": "Tu tarea es atacar los WP objetivo con bombas",
+      "title": "BADGER / KNIGHT TASMO",
+      "situation": "BADGER/KNIGHT ejecuta entrada desde MRSL GOLDEN y ataque al objetivo asignado tras llamada JTAC/Overlord.",
       "fenceIn": [
         {
           "letter": "F",
           "label": "Firepower (Armas)",
-          "text": "Master ARM ON, Armas seleccionadas y espoletas configuradas"
+          "text": "Master ARM ON, armas seleccionadas y espoletas configuradas."
         },
         {
           "letter": "E",
           "label": "Emitters (Emisiones)",
-          "text": "Preparar FCR (Radar), radio altímetro, radios, IFF, Datalink, Luces OFF"
+          "text": "Radar, radios, IFF, datalink y luces configuradas para entrada en zona."
         },
         {
           "letter": "N",
           "label": "Navigation (Navegacion)",
-          "text": "Comprobar ruta de vuelo, comprobar Bullseye"
+          "text": "Comprobar Bullseye, ruta, PP, IP, TGT, EP y EXT."
         },
         {
           "letter": "C",
           "label": "Countermeasures (Contramedidas)",
-          "text": "Dispensadores ARMADOS, ECM/ASPJ Listos para operar"
+          "text": "Dispensadores armados y programa adecuado para amenaza."
         },
         {
           "letter": "E",
           "label": "Employment (Estados)",
-          "text": "Verificar BINGO, RWR operativo y sin avisos, otros aspectos del avion en concreto"
+          "text": "Bingo/Joker revisados, RWR operativo y separacion con el paquete."
         }
       ],
       "important": [
-        "Configrar el bullseye para realizar un correcto reporte de enemigos",
-        "Anunciar lanzamientos de bombas/misiles"
+        "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
+        "CONTACTAR CON AFAC/JTAC en WP 6.",
+        "Entrada segun llamada JTAC desde WP 7. Una unica pasada sobre TGT.",
+        "CVN-71 ROUGH RIDER: TACAN 71X, ICLS 17, expected BRC 095."
       ],
       "objectives": {
         "intro": [
-          "Vuestro objetivo es Isla de practica WP 9",
-          "Solo hay que lanzar bombas en CCRP sobre la isla y abandonar el area de operaciones"
+          "Objetivo principal en WP 9 segun DATACARD IRON HORIZON 26 Dia 3."
         ],
         "items": [
           {
-            "title": "Isla de practicas WP 9",
+            "title": "TGT WP 9",
             "image": "images/Ruta.png",
             "details": [
-              "MGRS: 55 Q CU 58585 08943",
-              "Lat/Long: N16°21'28.04\", E145°40'34.31\"",
-              "Elevacion: 705ft"
+              "MGRS: 55P CS 50000 20000",
+              "Lat/Long: N 33 25 53.58 E 36 31 35.73",
+              "ALT: 2.008 ft",
+              "Remarks: UNA UNICA PASADA"
             ]
           }
         ]
       },
-      "return": "Tras bombardear dirigirse directamente al punto de retorno a base"
+      "return": "Salir por EP WP 10, EXT WP 11 y volver a MRSL GOLDEN o recuperar en CVN-71/Andersen segun instrucciones."
     },
     "op_badger2": {
       "type": "operation",
-      "title": "STRIKE",
-      "situation": "Tu tarea es atacar los WP objetivo con bombas",
+      "title": "BADGER / KNIGHT TASMO",
+      "situation": "BADGER/KNIGHT ejecuta entrada desde MRSL GOLDEN y ataque al objetivo asignado tras llamada JTAC/Overlord.",
       "fenceIn": [
         {
           "letter": "F",
           "label": "Firepower (Armas)",
-          "text": "Master ARM ON, Armas seleccionadas y espoletas configuradas"
+          "text": "Master ARM ON, armas seleccionadas y espoletas configuradas."
         },
         {
           "letter": "E",
           "label": "Emitters (Emisiones)",
-          "text": "Preparar FCR (Radar), radio altímetro, radios, IFF, Datalink, Luces OFF"
+          "text": "Radar, radios, IFF, datalink y luces configuradas para entrada en zona."
         },
         {
           "letter": "N",
           "label": "Navigation (Navegacion)",
-          "text": "Comprobar ruta de vuelo, comprobar Bullseye"
+          "text": "Comprobar Bullseye, ruta, PP, IP, TGT, EP y EXT."
         },
         {
           "letter": "C",
           "label": "Countermeasures (Contramedidas)",
-          "text": "Dispensadores ARMADOS, ECM/ASPJ Listos para operar"
+          "text": "Dispensadores armados y programa adecuado para amenaza."
         },
         {
           "letter": "E",
           "label": "Employment (Estados)",
-          "text": "Verificar BINGO, RWR operativo y sin avisos, otros aspectos del avion en concreto"
+          "text": "Bingo/Joker revisados, RWR operativo y separacion con el paquete."
         }
       ],
       "important": [
-        "Configrar el bullseye para realizar un correcto reporte de enemigos",
-        "Anunciar lanzamientos de bombas/misiles"
+        "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
+        "CONTACTAR CON AFAC/JTAC en WP 6.",
+        "Entrada segun llamada JTAC desde WP 7. Una unica pasada sobre TGT.",
+        "CVN-71 ROUGH RIDER: TACAN 71X, ICLS 17, expected BRC 095."
       ],
       "objectives": {
         "intro": [
-          "Vuestro objetivo es Isla de practica WP 9",
-          "Solo hay que lanzar bombas en CCRP sobre la isla y abandonar el area de operaciones"
+          "Objetivo principal en WP 9 segun DATACARD IRON HORIZON 26 Dia 3."
         ],
         "items": [
           {
-            "title": "Isla de practicas WP 9",
+            "title": "TGT WP 9",
             "image": "images/Ruta.png",
             "details": [
-              "MGRS: 55 Q CU 58585 08943",
-              "Lat/Long: N16°21'28.04\", E145°40'34.31\"",
-              "Elevacion: 705ft"
+              "MGRS: 55P CS 50000 20000",
+              "Lat/Long: N 33 25 53.58 E 36 31 35.73",
+              "ALT: 2.008 ft",
+              "Remarks: UNA UNICA PASADA"
             ]
           }
         ]
       },
-      "return": "Tras bombardear dirigirse directamente al punto de retorno a base"
+      "return": "Salir por EP WP 10, EXT WP 11 y volver a MRSL GOLDEN o recuperar en CVN-71/Andersen segun instrucciones."
     },
     "op_badger3": {
       "type": "operation",
-      "title": "STRIKE",
-      "situation": "Tu tarea es atacar los WP objetivo con bombas",
+      "title": "BADGER / KNIGHT TASMO",
+      "situation": "BADGER/KNIGHT ejecuta entrada desde MRSL GOLDEN y ataque al objetivo asignado tras llamada JTAC/Overlord.",
       "fenceIn": [
         {
           "letter": "F",
           "label": "Firepower (Armas)",
-          "text": "Master ARM ON, Armas seleccionadas y espoletas configuradas"
+          "text": "Master ARM ON, armas seleccionadas y espoletas configuradas."
         },
         {
           "letter": "E",
           "label": "Emitters (Emisiones)",
-          "text": "Preparar FCR (Radar), radio altímetro, radios, IFF, Datalink, Luces OFF"
+          "text": "Radar, radios, IFF, datalink y luces configuradas para entrada en zona."
         },
         {
           "letter": "N",
           "label": "Navigation (Navegacion)",
-          "text": "Comprobar ruta de vuelo, comprobar Bullseye"
+          "text": "Comprobar Bullseye, ruta, PP, IP, TGT, EP y EXT."
         },
         {
           "letter": "C",
           "label": "Countermeasures (Contramedidas)",
-          "text": "Dispensadores ARMADOS, ECM/ASPJ Listos para operar"
+          "text": "Dispensadores armados y programa adecuado para amenaza."
         },
         {
           "letter": "E",
           "label": "Employment (Estados)",
-          "text": "Verificar BINGO, RWR operativo y sin avisos, otros aspectos del avion en concreto"
+          "text": "Bingo/Joker revisados, RWR operativo y separacion con el paquete."
         }
       ],
       "important": [
-        "Configrar el bullseye para realizar un correcto reporte de enemigos",
-        "Anunciar lanzamientos de bombas/misiles"
+        "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
+        "CONTACTAR CON AFAC/JTAC en WP 6.",
+        "Entrada segun llamada JTAC desde WP 7. Una unica pasada sobre TGT.",
+        "CVN-71 ROUGH RIDER: TACAN 71X, ICLS 17, expected BRC 095."
       ],
       "objectives": {
         "intro": [
-          "Vuestro objetivo es Isla de practica WP 9",
-          "Solo hay que lanzar bombas en CCRP sobre la isla y abandonar el area de operaciones"
+          "Objetivo principal en WP 9 segun DATACARD IRON HORIZON 26 Dia 3."
         ],
         "items": [
           {
-            "title": "Isla de practicas WP 9",
+            "title": "TGT WP 9",
             "image": "images/Ruta.png",
             "details": [
-              "MGRS: 55 Q CU 58585 08943",
-              "Lat/Long: N16°21'28.04\", E145°40'34.31\"",
-              "Elevacion: 705ft"
+              "MGRS: 55P CS 50000 20000",
+              "Lat/Long: N 33 25 53.58 E 36 31 35.73",
+              "ALT: 2.008 ft",
+              "Remarks: UNA UNICA PASADA"
             ]
           }
         ]
       },
-      "return": "Tras bombardear dirigirse directamente al punto de retorno a base"
+      "return": "Salir por EP WP 10, EXT WP 11 y volver a MRSL GOLDEN o recuperar en CVN-71/Andersen segun instrucciones."
     },
     "op_badger4": {
       "type": "operation",
-      "title": "STRIKE",
-      "situation": "Tu tarea es atacar los WP objetivo con bombas",
+      "title": "BADGER / KNIGHT TASMO",
+      "situation": "BADGER/KNIGHT ejecuta entrada desde MRSL GOLDEN y ataque al objetivo asignado tras llamada JTAC/Overlord.",
       "fenceIn": [
         {
           "letter": "F",
           "label": "Firepower (Armas)",
-          "text": "Master ARM ON, Armas seleccionadas y espoletas configuradas"
+          "text": "Master ARM ON, armas seleccionadas y espoletas configuradas."
         },
         {
           "letter": "E",
           "label": "Emitters (Emisiones)",
-          "text": "Preparar FCR (Radar), radio altímetro, radios, IFF, Datalink, Luces OFF"
+          "text": "Radar, radios, IFF, datalink y luces configuradas para entrada en zona."
         },
         {
           "letter": "N",
           "label": "Navigation (Navegacion)",
-          "text": "Comprobar ruta de vuelo, comprobar Bullseye"
+          "text": "Comprobar Bullseye, ruta, PP, IP, TGT, EP y EXT."
         },
         {
           "letter": "C",
           "label": "Countermeasures (Contramedidas)",
-          "text": "Dispensadores ARMADOS, ECM/ASPJ Listos para operar"
+          "text": "Dispensadores armados y programa adecuado para amenaza."
         },
         {
           "letter": "E",
           "label": "Employment (Estados)",
-          "text": "Verificar BINGO, RWR operativo y sin avisos, otros aspectos del avion en concreto"
+          "text": "Bingo/Joker revisados, RWR operativo y separacion con el paquete."
         }
       ],
       "important": [
-        "Configrar el bullseye para realizar un correcto reporte de enemigos",
-        "Anunciar lanzamientos de bombas/misiles"
+        "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
+        "CONTACTAR CON AFAC/JTAC en WP 6.",
+        "Entrada segun llamada JTAC desde WP 7. Una unica pasada sobre TGT.",
+        "CVN-71 ROUGH RIDER: TACAN 71X, ICLS 17, expected BRC 095."
       ],
       "objectives": {
         "intro": [
-          "Vuestro objetivo es Isla de practica WP 9",
-          "Solo hay que lanzar bombas en CCRP sobre la isla y abandonar el area de operaciones"
+          "Objetivo principal en WP 9 segun DATACARD IRON HORIZON 26 Dia 3."
         ],
         "items": [
           {
-            "title": "Isla de practicas WP 9",
+            "title": "TGT WP 9",
             "image": "images/Ruta.png",
             "details": [
-              "MGRS: 55 Q CU 58585 08943",
-              "Lat/Long: N16°21'28.04\", E145°40'34.31\"",
-              "Elevacion: 705ft"
+              "MGRS: 55P CS 50000 20000",
+              "Lat/Long: N 33 25 53.58 E 36 31 35.73",
+              "ALT: 2.008 ft",
+              "Remarks: UNA UNICA PASADA"
             ]
           }
         ]
       },
-      "return": "Tras bombardear dirigirse directamente al punto de retorno a base"
+      "return": "Salir por EP WP 10, EXT WP 11 y volver a MRSL GOLDEN o recuperar en CVN-71/Andersen segun instrucciones."
     },
-    "op_kinght1": {
+    "op_knight1": {
       "type": "operation",
-      "title": "STRIKE",
-      "situation": "Tu tarea es atacar los WP objetivo con bombas",
+      "title": "BADGER / KNIGHT TASMO",
+      "situation": "BADGER/KNIGHT ejecuta entrada desde MRSL GOLDEN y ataque al objetivo asignado tras llamada JTAC/Overlord.",
       "fenceIn": [
         {
           "letter": "F",
           "label": "Firepower (Armas)",
-          "text": "Master ARM ON, Armas seleccionadas y espoletas configuradas"
+          "text": "Master ARM ON, armas seleccionadas y espoletas configuradas."
         },
         {
           "letter": "E",
           "label": "Emitters (Emisiones)",
-          "text": "Preparar FCR (Radar), radio altímetro, radios, IFF, Datalink, Luces OFF"
+          "text": "Radar, radios, IFF, datalink y luces configuradas para entrada en zona."
         },
         {
           "letter": "N",
           "label": "Navigation (Navegacion)",
-          "text": "Comprobar ruta de vuelo, comprobar Bullseye"
+          "text": "Comprobar Bullseye, ruta, PP, IP, TGT, EP y EXT."
         },
         {
           "letter": "C",
           "label": "Countermeasures (Contramedidas)",
-          "text": "Dispensadores ARMADOS, ECM/ASPJ Listos para operar"
+          "text": "Dispensadores armados y programa adecuado para amenaza."
         },
         {
           "letter": "E",
           "label": "Employment (Estados)",
-          "text": "Verificar BINGO, RWR operativo y sin avisos, otros aspectos del avion en concreto"
+          "text": "Bingo/Joker revisados, RWR operativo y separacion con el paquete."
         }
       ],
       "important": [
-        "Configrar el bullseye para realizar un correcto reporte de enemigos",
-        "Anunciar lanzamientos de bombas/misiles"
+        "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
+        "CONTACTAR CON AFAC/JTAC en WP 6.",
+        "Entrada segun llamada JTAC desde WP 7. Una unica pasada sobre TGT.",
+        "CVN-71 ROUGH RIDER: TACAN 71X, ICLS 17, expected BRC 095."
       ],
       "objectives": {
         "intro": [
-          "Vuestro objetivo es Isla de practica WP 9",
-          "Solo hay que lanzar bombas en CCRP sobre la isla y abandonar el area de operaciones"
+          "Objetivo principal en WP 9 segun DATACARD IRON HORIZON 26 Dia 3."
         ],
         "items": [
           {
-            "title": "Isla de practicas WP 9",
+            "title": "TGT WP 9",
             "image": "images/Ruta.png",
             "details": [
-              "MGRS: 55 Q CU 58585 08943",
-              "Lat/Long: N16°21'28.04\", E145°40'34.31\"",
-              "Elevacion: 705ft"
+              "MGRS: 55P CS 50000 20000",
+              "Lat/Long: N 33 25 53.58 E 36 31 35.73",
+              "ALT: 2.008 ft",
+              "Remarks: UNA UNICA PASADA"
             ]
           }
         ]
       },
-      "return": "Tras bombardear dirigirse directamente al punto de retorno a base"
+      "return": "Salir por EP WP 10, EXT WP 11 y volver a MRSL GOLDEN o recuperar en CVN-71/Andersen segun instrucciones."
     },
-    "op_kinght2": {
+    "op_knight2": {
       "type": "operation",
-      "title": "STRIKE",
-      "situation": "Tu tarea es atacar los WP objetivo con bombas",
+      "title": "BADGER / KNIGHT TASMO",
+      "situation": "BADGER/KNIGHT ejecuta entrada desde MRSL GOLDEN y ataque al objetivo asignado tras llamada JTAC/Overlord.",
       "fenceIn": [
         {
           "letter": "F",
           "label": "Firepower (Armas)",
-          "text": "Master ARM ON, Armas seleccionadas y espoletas configuradas"
+          "text": "Master ARM ON, armas seleccionadas y espoletas configuradas."
         },
         {
           "letter": "E",
           "label": "Emitters (Emisiones)",
-          "text": "Preparar FCR (Radar), radio altímetro, radios, IFF, Datalink, Luces OFF"
+          "text": "Radar, radios, IFF, datalink y luces configuradas para entrada en zona."
         },
         {
           "letter": "N",
           "label": "Navigation (Navegacion)",
-          "text": "Comprobar ruta de vuelo, comprobar Bullseye"
+          "text": "Comprobar Bullseye, ruta, PP, IP, TGT, EP y EXT."
         },
         {
           "letter": "C",
           "label": "Countermeasures (Contramedidas)",
-          "text": "Dispensadores ARMADOS, ECM/ASPJ Listos para operar"
+          "text": "Dispensadores armados y programa adecuado para amenaza."
         },
         {
           "letter": "E",
           "label": "Employment (Estados)",
-          "text": "Verificar BINGO, RWR operativo y sin avisos, otros aspectos del avion en concreto"
+          "text": "Bingo/Joker revisados, RWR operativo y separacion con el paquete."
         }
       ],
       "important": [
-        "Configrar el bullseye para realizar un correcto reporte de enemigos",
-        "Anunciar lanzamientos de bombas/misiles"
+        "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
+        "CONTACTAR CON AFAC/JTAC en WP 6.",
+        "Entrada segun llamada JTAC desde WP 7. Una unica pasada sobre TGT.",
+        "CVN-71 ROUGH RIDER: TACAN 71X, ICLS 17, expected BRC 095."
       ],
       "objectives": {
         "intro": [
-          "Vuestro objetivo es Isla de practica WP 9",
-          "Solo hay que lanzar bombas en CCRP sobre la isla y abandonar el area de operaciones"
+          "Objetivo principal en WP 9 segun DATACARD IRON HORIZON 26 Dia 3."
         ],
         "items": [
           {
-            "title": "Isla de practicas WP 9",
+            "title": "TGT WP 9",
             "image": "images/Ruta.png",
             "details": [
-              "MGRS: 55 Q CU 58585 08943",
-              "Lat/Long: N16°21'28.04\", E145°40'34.31\"",
-              "Elevacion: 705ft"
+              "MGRS: 55P CS 50000 20000",
+              "Lat/Long: N 33 25 53.58 E 36 31 35.73",
+              "ALT: 2.008 ft",
+              "Remarks: UNA UNICA PASADA"
             ]
           }
         ]
       },
-      "return": "Tras bombardear dirigirse directamente al punto de retorno a base"
+      "return": "Salir por EP WP 10, EXT WP 11 y volver a MRSL GOLDEN o recuperar en CVN-71/Andersen segun instrucciones."
     }
   },
   "templates": {

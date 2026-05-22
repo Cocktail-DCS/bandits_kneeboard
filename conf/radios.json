@@ -13,14 +13,14 @@
         },
         {
           "radio": "2",
-          "callsign": "OVERLORD-1",
-          "freq": "251",
+          "callsign": "WIZARD-1",
+          "freq": "251.0",
           "color": "blue"
         },
         {
           "radio": "3",
           "callsign": "TEXACO-1",
-          "freq": "252",
+          "freq": "252.0",
           "color": "purple"
         },
         {
@@ -31,7 +31,7 @@
         },
         {
           "radio": "5",
-          "callsign": "CVN-71 ROUGH RIDER",
+          "callsign": "CVN-71 \"ROUGH RIDER\"",
           "freq": "271.75",
           "color": "orange"
         },
@@ -50,7 +50,7 @@
         {
           "radio": "8",
           "callsign": "RED CROWN",
-          "freq": "257",
+          "freq": "257.0",
           "color": "blue"
         },
         {
@@ -73,14 +73,32 @@
         },
         {
           "radio": "12",
-          "callsign": "GOLF-9 JTAC",
-          "freq": "262.2",
-          "color": "blue"
+          "callsign": "",
+          "freq": "",
+          "color": ""
         },
         {
-          "radio": "G",
-          "callsign": "UHF",
-          "freq": "243",
+          "radio": "13",
+          "callsign": "",
+          "freq": "",
+          "color": ""
+        },
+        {
+          "radio": "14",
+          "callsign": "",
+          "freq": "",
+          "color": ""
+        },
+        {
+          "radio": "15",
+          "callsign": "",
+          "freq": "",
+          "color": ""
+        },
+        {
+          "radio": "16",
+          "callsign": "UHF GUARD",
+          "freq": "243.0",
           "color": "black"
         }
       ]
@@ -92,63 +110,63 @@
       "rows": [
         {
           "radio": "1",
-          "callsign": "RACCOON-1",
-          "freq": "122",
+          "callsign": "RACCOON 1",
+          "freq": "122.0",
           "color": "blue"
         },
         {
           "radio": "2",
-          "callsign": "RACCOON-2",
+          "callsign": "RACCOON 2",
           "freq": "122.1",
           "color": "blue"
         },
         {
           "radio": "3",
-          "callsign": "RACCOON-3",
+          "callsign": "RACCOON 3",
           "freq": "122.2",
           "color": "blue"
         },
         {
           "radio": "4",
-          "callsign": "RACCOON-4",
+          "callsign": "RACCOON 4",
           "freq": "122.3",
           "color": "blue"
         },
         {
           "radio": "5",
-          "callsign": "BADGER-1",
-          "freq": "125",
-          "color": "red"
+          "callsign": "BADGER 1",
+          "freq": "125.0",
+          "color": "green"
         },
         {
           "radio": "6",
-          "callsign": "BADGER-2",
+          "callsign": "BADGER 2",
           "freq": "125.1",
-          "color": "red"
+          "color": "green"
         },
         {
           "radio": "7",
-          "callsign": "BADGER-3",
+          "callsign": "BADGER 3",
           "freq": "125.2",
-          "color": "red"
+          "color": "green"
         },
         {
           "radio": "8",
-          "callsign": "BADGER-4",
+          "callsign": "BADGER 4",
           "freq": "125.3",
-          "color": "red"
+          "color": "green"
         },
         {
           "radio": "9",
-          "callsign": "KNIGTH-1",
-          "freq": "126",
-          "color": "green"
+          "callsign": "SPEAR 1",
+          "freq": "126.0",
+          "color": "yellow"
         },
         {
           "radio": "10",
-          "callsign": "KNIGTH-2",
+          "callsign": "SPEAR 2",
           "freq": "126.1",
-          "color": "green"
+          "color": "yellow"
         },
         {
           "radio": "11",
@@ -163,10 +181,52 @@
           "color": ""
         },
         {
-          "radio": "G",
-          "callsign": "VHF",
+          "radio": "13",
+          "callsign": "",
+          "freq": "",
+          "color": ""
+        },
+        {
+          "radio": "14",
+          "callsign": "",
+          "freq": "",
+          "color": ""
+        },
+        {
+          "radio": "15",
+          "callsign": "",
+          "freq": "",
+          "color": ""
+        },
+        {
+          "radio": "16",
+          "callsign": "VHF GUARD",
           "freq": "121.5",
           "color": "black"
+        },
+        {
+          "radio": "CIGAR-1",
+          "callsign": "CIGAR-1",
+          "freq": "123.0",
+          "color": "blue"
+        },
+        {
+          "radio": "CIGAR-2",
+          "callsign": "CIGAR-2",
+          "freq": "123.1",
+          "color": "blue"
+        },
+        {
+          "radio": "KNIGHT-1",
+          "callsign": "KNIGHT-1",
+          "freq": "124.0",
+          "color": "green"
+        },
+        {
+          "radio": "KNIGHT-2",
+          "callsign": "KNIGHT-2",
+          "freq": "124.1",
+          "color": "green"
         }
       ]
     }

@@ -16,8 +16,8 @@
       "atis": [
         {
           "callsign": "ATIS ANDERSEN",
-          "freq": "254.3",
-          "notes": "Todo despejado sin vientos"
+          "freq": "254.300",
+          "notes": "QNH 29.97. Viento 095/4kt en superficie, 090/6kt a 6.600ft."
         }
       ]
     },
@@ -34,13 +34,13 @@
       "title": "ATC Tower",
       "departureCharts": [
         {
-          "title": "Andersen Departure",
+          "title": "Andersen 06R CALIBUR Departure",
           "src": "images/airport_departures/andersen_departure.jpeg"
         }
       ],
       "arrivalCharts": [
         {
-          "title": "Andersen IFR Arrival",
+          "title": "Andersen 06L EXCALIBUR Arrival",
           "src": "images/airport_arrivals/andersen_ifr.jpeg"
         }
       ]

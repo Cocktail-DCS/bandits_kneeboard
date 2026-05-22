@@ -458,105 +458,105 @@
   "op_raccoon1": [
     {
       "cantidad": "x1",
-      "arma": "CATM-9",
+      "arma": "ACMI / TCTS pod",
       "brevity": "N/A",
-      "nota": "Misil cautivo de entrenamiento, sin lanzamiento real."
+      "nota": "Pod de telemetria de entrenamiento."
     },
     {
       "cantidad": "x2",
-      "arma": "GBU-10 Paveway II 2000lb",
-      "brevity": "PAVEWAY",
-      "nota": "Bomba guiada por láser."
+      "arma": "AGM-65G Maverick",
+      "brevity": "RIFLE",
+      "nota": "Misil A/G guiado por IR, cabeza pesada."
+    },
+    {
+      "cantidad": "x2",
+      "arma": "Wing Tank",
+      "brevity": "N/A",
+      "nota": "Tanques externos segun loadout de la mision."
     },
     {
       "cantidad": "x1",
       "arma": "AN/AAQ-28 LITENING II",
       "brevity": "N/A",
-      "nota": "Pod de designación; no es arma, pero necesario para empleo láser/autodesignación."
-    },
-    {
-      "cantidad": "x1",
-      "arma": "AN/ASQ-T50 TCTS",
-      "brevity": "N/A",
-      "nota": "Pod de telemetria para entrenamientos"
+      "nota": "Pod de designacion laser."
     }
   ],
   "op_raccoon2": [
     {
       "cantidad": "x1",
-      "arma": "CATM-9",
+      "arma": "ACMI / TCTS pod",
       "brevity": "N/A",
-      "nota": "Misil cautivo de entrenamiento, sin lanzamiento real."
+      "nota": "Pod de telemetria de entrenamiento."
     },
     {
       "cantidad": "x2",
-      "arma": "GBU-10 Paveway II 2000lb",
-      "brevity": "PAVEWAY",
-      "nota": "Bomba guiada por láser."
+      "arma": "AGM-65G Maverick",
+      "brevity": "RIFLE",
+      "nota": "Misil A/G guiado por IR, cabeza pesada."
+    },
+    {
+      "cantidad": "x2",
+      "arma": "Wing Tank",
+      "brevity": "N/A",
+      "nota": "Tanques externos segun loadout de la mision."
     },
     {
       "cantidad": "x1",
       "arma": "AN/AAQ-28 LITENING II",
       "brevity": "N/A",
-      "nota": "Pod de designación; no es arma, pero necesario para empleo láser/autodesignación."
-    },
-    {
-      "cantidad": "x1",
-      "arma": "AN/ASQ-T50 TCTS",
-      "brevity": "N/A",
-      "nota": "Pod de telemetria para entrenamientos"
+      "nota": "Pod de designacion laser."
     }
   ],
   "op_raccoon3": [
     {
       "cantidad": "x1",
-      "arma": "CATM-9",
+      "arma": "ACMI / TCTS pod",
       "brevity": "N/A",
-      "nota": "Misil cautivo de entrenamiento, sin lanzamiento real."
+      "nota": "Pod de telemetria de entrenamiento."
     },
     {
       "cantidad": "x2",
-      "arma": "GBU-10 Paveway II 2000lb",
-      "brevity": "PAVEWAY",
-      "nota": "Bomba guiada por láser."
+      "arma": "AGM-65G Maverick",
+      "brevity": "RIFLE",
+      "nota": "Misil A/G guiado por IR, cabeza pesada."
+    },
+    {
+      "cantidad": "x2",
+      "arma": "Wing Tank",
+      "brevity": "N/A",
+      "nota": "Tanques externos segun loadout de la mision."
     },
     {
       "cantidad": "x1",
       "arma": "AN/AAQ-28 LITENING II",
       "brevity": "N/A",
-      "nota": "Pod de designación; no es arma, pero necesario para empleo láser/autodesignación."
-    },
-    {
-      "cantidad": "x1",
-      "arma": "AN/ASQ-T50 TCTS",
-      "brevity": "N/A",
-      "nota": "Pod de telemetria para entrenamientos"
+      "nota": "Pod de designacion laser."
     }
   ],
   "op_raccoon4": [
     {
       "cantidad": "x1",
-      "arma": "CATM-9",
+      "arma": "ACMI / TCTS pod",
       "brevity": "N/A",
-      "nota": "Misil cautivo de entrenamiento, sin lanzamiento real."
+      "nota": "Pod de telemetria de entrenamiento."
     },
     {
       "cantidad": "x2",
-      "arma": "GBU-10 Paveway II 2000lb",
-      "brevity": "PAVEWAY",
-      "nota": "Bomba guiada por láser."
+      "arma": "AGM-65G Maverick",
+      "brevity": "RIFLE",
+      "nota": "Misil A/G guiado por IR, cabeza pesada."
+    },
+    {
+      "cantidad": "x2",
+      "arma": "Wing Tank",
+      "brevity": "N/A",
+      "nota": "Tanques externos segun loadout de la mision."
     },
     {
       "cantidad": "x1",
       "arma": "AN/AAQ-28 LITENING II",
       "brevity": "N/A",
-      "nota": "Pod de designación; no es arma, pero necesario para empleo láser/autodesignación."
-    },
-    {
-      "cantidad": "x1",
-      "arma": "AN/ASQ-T50 TCTS",
-      "brevity": "N/A",
-      "nota": "Pod de telemetria para entrenamientos"
+      "nota": "Pod de designacion laser."
     }
   ],
   "op_badger1": [
@@ -564,25 +564,31 @@
       "cantidad": "x1",
       "arma": "CATM-9",
       "brevity": "N/A",
-      "nota": "Misil cautivo de entrenamiento, sin lanzamiento real."
+      "nota": "Misil cautivo de entrenamiento."
     },
     {
       "cantidad": "x2",
-      "arma": "GBU-10 Paveway II 2000lb",
-      "brevity": "PAVEWAY",
-      "nota": "Bomba guiada por láser."
+      "arma": "AGM-65F Maverick",
+      "brevity": "RIFLE",
+      "nota": "Misil A/G guiado por IR."
+    },
+    {
+      "cantidad": "x2",
+      "arma": "Wing Tank",
+      "brevity": "N/A",
+      "nota": "Tanques externos segun loadout de la mision."
     },
     {
       "cantidad": "x1",
       "arma": "AN/ASQ-228 ATFLIR",
       "brevity": "N/A",
-      "nota": "Pod FLIR/designación; no es arma, pero habitual para LGB/Maverick/designación."
+      "nota": "Pod FLIR/designacion."
     },
     {
       "cantidad": "x1",
-      "arma": "AN/ASQ-T50 TCTS",
+      "arma": "ACMI / TCTS pod",
       "brevity": "N/A",
-      "nota": "Pod de telemetria para entrenamientos"
+      "nota": "Pod de telemetria de entrenamiento."
     }
   ],
   "op_badger2": [
@@ -590,25 +596,31 @@
       "cantidad": "x1",
       "arma": "CATM-9",
       "brevity": "N/A",
-      "nota": "Misil cautivo de entrenamiento, sin lanzamiento real."
+      "nota": "Misil cautivo de entrenamiento."
     },
     {
       "cantidad": "x2",
-      "arma": "GBU-10 Paveway II 2000lb",
-      "brevity": "PAVEWAY",
-      "nota": "Bomba guiada por láser."
+      "arma": "AGM-65F Maverick",
+      "brevity": "RIFLE",
+      "nota": "Misil A/G guiado por IR."
+    },
+    {
+      "cantidad": "x2",
+      "arma": "Wing Tank",
+      "brevity": "N/A",
+      "nota": "Tanques externos segun loadout de la mision."
     },
     {
       "cantidad": "x1",
       "arma": "AN/ASQ-228 ATFLIR",
       "brevity": "N/A",
-      "nota": "Pod FLIR/designación; no es arma, pero habitual para LGB/Maverick/designación."
+      "nota": "Pod FLIR/designacion."
     },
     {
       "cantidad": "x1",
-      "arma": "AN/ASQ-T50 TCTS",
+      "arma": "ACMI / TCTS pod",
       "brevity": "N/A",
-      "nota": "Pod de telemetria para entrenamientos"
+      "nota": "Pod de telemetria de entrenamiento."
     }
   ],
   "op_badger3": [
@@ -616,25 +628,31 @@
       "cantidad": "x1",
       "arma": "CATM-9",
       "brevity": "N/A",
-      "nota": "Misil cautivo de entrenamiento, sin lanzamiento real."
+      "nota": "Misil cautivo de entrenamiento."
     },
     {
       "cantidad": "x2",
-      "arma": "GBU-10 Paveway II 2000lb",
-      "brevity": "PAVEWAY",
-      "nota": "Bomba guiada por láser."
+      "arma": "AGM-65F Maverick",
+      "brevity": "RIFLE",
+      "nota": "Misil A/G guiado por IR."
+    },
+    {
+      "cantidad": "x2",
+      "arma": "Wing Tank",
+      "brevity": "N/A",
+      "nota": "Tanques externos segun loadout de la mision."
     },
     {
       "cantidad": "x1",
       "arma": "AN/ASQ-228 ATFLIR",
       "brevity": "N/A",
-      "nota": "Pod FLIR/designación; no es arma, pero habitual para LGB/Maverick/designación."
+      "nota": "Pod FLIR/designacion."
     },
     {
       "cantidad": "x1",
-      "arma": "AN/ASQ-T50 TCTS",
+      "arma": "ACMI / TCTS pod",
       "brevity": "N/A",
-      "nota": "Pod de telemetria para entrenamientos"
+      "nota": "Pod de telemetria de entrenamiento."
     }
   ],
   "op_badger4": [
@@ -642,77 +660,95 @@
       "cantidad": "x1",
       "arma": "CATM-9",
       "brevity": "N/A",
-      "nota": "Misil cautivo de entrenamiento, sin lanzamiento real."
+      "nota": "Misil cautivo de entrenamiento."
     },
     {
       "cantidad": "x2",
-      "arma": "GBU-10 Paveway II 2000lb",
-      "brevity": "PAVEWAY",
-      "nota": "Bomba guiada por láser."
+      "arma": "AGM-65F Maverick",
+      "brevity": "RIFLE",
+      "nota": "Misil A/G guiado por IR."
+    },
+    {
+      "cantidad": "x2",
+      "arma": "Wing Tank",
+      "brevity": "N/A",
+      "nota": "Tanques externos segun loadout de la mision."
     },
     {
       "cantidad": "x1",
       "arma": "AN/ASQ-228 ATFLIR",
       "brevity": "N/A",
-      "nota": "Pod FLIR/designación; no es arma, pero habitual para LGB/Maverick/designación."
+      "nota": "Pod FLIR/designacion."
     },
     {
       "cantidad": "x1",
-      "arma": "AN/ASQ-T50 TCTS",
+      "arma": "ACMI / TCTS pod",
       "brevity": "N/A",
-      "nota": "Pod de telemetria para entrenamientos"
+      "nota": "Pod de telemetria de entrenamiento."
     }
   ],
-  "op_kight1": [
+  "op_knight1": [
     {
       "cantidad": "x1",
       "arma": "CATM-9",
       "brevity": "N/A",
-      "nota": "Misil cautivo de entrenamiento, sin lanzamiento real."
+      "nota": "Misil cautivo de entrenamiento."
     },
     {
       "cantidad": "x2",
-      "arma": "GBU-16 Paveway II 1000lb",
-      "brevity": "PAVEWAY",
-      "nota": "Bomba guiada por láser."
+      "arma": "AGM-65F Maverick",
+      "brevity": "RIFLE",
+      "nota": "Misil A/G guiado por IR."
+    },
+    {
+      "cantidad": "x2",
+      "arma": "Wing Tank",
+      "brevity": "N/A",
+      "nota": "Tanques externos segun loadout de la mision."
     },
     {
       "cantidad": "x1",
       "arma": "AN/AAQ-28 LITENING II",
       "brevity": "N/A",
-      "nota": "Pod de designación; no es arma, pero necesario para empleo láser/autodesignación."
+      "nota": "Pod de designacion laser."
     },
     {
       "cantidad": "x1",
-      "arma": "AN/ASQ-T50 TCTS",
+      "arma": "ACMI / TCTS pod",
       "brevity": "N/A",
-      "nota": "Pod de telemetria para entrenamientos"
+      "nota": "Pod de telemetria de entrenamiento."
     }
   ],
-  "op_kight2": [
+  "op_knight2": [
     {
       "cantidad": "x1",
       "arma": "CATM-9",
       "brevity": "N/A",
-      "nota": "Misil cautivo de entrenamiento, sin lanzamiento real."
+      "nota": "Misil cautivo de entrenamiento."
     },
     {
       "cantidad": "x2",
-      "arma": "GBU-16 Paveway II 1000lb",
-      "brevity": "PAVEWAY",
-      "nota": "Bomba guiada por láser."
+      "arma": "AGM-65F Maverick",
+      "brevity": "RIFLE",
+      "nota": "Misil A/G guiado por IR."
+    },
+    {
+      "cantidad": "x2",
+      "arma": "Wing Tank",
+      "brevity": "N/A",
+      "nota": "Tanques externos segun loadout de la mision."
     },
     {
       "cantidad": "x1",
       "arma": "AN/AAQ-28 LITENING II",
       "brevity": "N/A",
-      "nota": "Pod de designación; no es arma, pero necesario para empleo láser/autodesignación."
+      "nota": "Pod de designacion laser."
     },
     {
       "cantidad": "x1",
-      "arma": "AN/ASQ-T50 TCTS",
+      "arma": "ACMI / TCTS pod",
       "brevity": "N/A",
-      "nota": "Pod de telemetria para entrenamientos"
+      "nota": "Pod de telemetria de entrenamiento."
     }
   ]
 }
