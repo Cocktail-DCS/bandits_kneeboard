@@ -2120,8 +2120,6 @@ function handlePagesJsonAction(target) {
         scrollToGenericElement(".pages-json-editor", `[data-page-block-anchor="${scope}-${id}-${nextIndex}"]`);
         return;
     }
-    syncPagesJsonRawTextarea();
-    renderJsonEditorPreservingGenericScroll(".pages-json-editor");
 }
 
 function getPageConfigBucket(scope) {
