@@ -43,7 +43,7 @@
       "important": "RACCOON mantiene MRSL SILVER hasta la llamada de push de Overlord/Mission Commander.",
       "holding": {
         "point": "WP 5 MRSL SILVER / WP 6 MRSL SILVER",
-        "altitude": "22K"
+        "altitude": "20K"
       },
       "procedureIdeal": [
         "MRSL SILVER: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
@@ -62,7 +62,7 @@
       "important": "RACCOON mantiene MRSL SILVER hasta la llamada de push de Overlord/Mission Commander.",
       "holding": {
         "point": "WP 5 MRSL SILVER / WP 6 MRSL SILVER",
-        "altitude": "23K"
+        "altitude": "21K"
       },
       "procedureIdeal": [
         "MRSL SILVER: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
@@ -81,7 +81,7 @@
       "important": "RACCOON mantiene MRSL SILVER hasta la llamada de push de Overlord/Mission Commander.",
       "holding": {
         "point": "WP 5 MRSL SILVER / WP 6 MRSL SILVER",
-        "altitude": "24K"
+        "altitude": "22K"
       },
       "procedureIdeal": [
         "MRSL SILVER: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
@@ -100,7 +100,7 @@
       "important": "RACCOON mantiene MRSL SILVER hasta la llamada de push de Overlord/Mission Commander.",
       "holding": {
         "point": "WP 5 MRSL SILVER / WP 6 MRSL SILVER",
-        "altitude": "25K"
+        "altitude": "23K"
       },
       "procedureIdeal": [
         "MRSL SILVER: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
@@ -195,7 +195,7 @@
       "important": "SPEAR usa el plan F/A-18C y mantiene MRSL GOLDEN hasta la llamada de push de Overlord/Mission Commander.",
       "holding": {
         "point": "WP 5 MRSL GOLDEN / WP 6 MRSL GOLDEN",
-        "altitude": "26K"
+        "altitude": "20K"
       },
       "procedureIdeal": [
         "MRSL GOLDEN: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
@@ -214,7 +214,7 @@
       "important": "SPEAR usa el plan F/A-18C y mantiene MRSL GOLDEN hasta la llamada de push de Overlord/Mission Commander.",
       "holding": {
         "point": "WP 5 MRSL GOLDEN / WP 6 MRSL GOLDEN",
-        "altitude": "27K"
+        "altitude": "21K"
       },
       "procedureIdeal": [
         "MRSL GOLDEN: 090 HOT LEG, 10NM LEG, 10NM WIDE.",
