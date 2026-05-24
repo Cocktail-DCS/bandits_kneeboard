@@ -65,7 +65,8 @@
         "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
         "TOT asignado en PP. Mantener separacion de 3 minutos entre vuelos.",
         "Entrada segun llamada de Overlord/Mission Commander desde WP 7. Una unica pasada sobre TGT.",
-        "Configurar Bullseye para reportes: N14 10'17.95\" E145 14'23.51\" / 55P CR 10037 67425."
+        "Configurar Bullseye para reportes: N14 10'17.95\" E145 14'23.51\" / 55P CR 10037 67425.",
+        "Durante IP hasta TGT mantener menos de 300ft de altitud. Se recomienda uso de radioaltímetro."
       ],
       "objectives": {
         "intro": [
@@ -121,7 +122,8 @@
         "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
         "TOT asignado en PP. Mantener separacion de 3 minutos entre vuelos.",
         "Entrada segun llamada de Overlord/Mission Commander desde WP 7. Una unica pasada sobre TGT.",
-        "Configurar Bullseye para reportes: N14 10'17.95\" E145 14'23.51\" / 55P CR 10037 67425."
+        "Configurar Bullseye para reportes: N14 10'17.95\" E145 14'23.51\" / 55P CR 10037 67425.",
+        "Durante IP hasta TGT mantener menos de 300ft de altitud. Se recomienda uso de radioaltímetro."
       ],
       "objectives": {
         "intro": [
@@ -177,7 +179,8 @@
         "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
         "TOT asignado en PP. Mantener separacion de 3 minutos entre vuelos.",
         "Entrada segun llamada de Overlord/Mission Commander desde WP 7. Una unica pasada sobre TGT.",
-        "Configurar Bullseye para reportes: N14 10'17.95\" E145 14'23.51\" / 55P CR 10037 67425."
+        "Configurar Bullseye para reportes: N14 10'17.95\" E145 14'23.51\" / 55P CR 10037 67425.",
+        "Durante IP hasta TGT mantener menos de 300ft de altitud. Se recomienda uso de radioaltímetro."
       ],
       "objectives": {
         "intro": [
@@ -233,7 +236,8 @@
         "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
         "TOT asignado en PP. Mantener separacion de 3 minutos entre vuelos.",
         "Entrada segun llamada de Overlord/Mission Commander desde WP 7. Una unica pasada sobre TGT.",
-        "Configurar Bullseye para reportes: N14 10'17.95\" E145 14'23.51\" / 55P CR 10037 67425."
+        "Configurar Bullseye para reportes: N14 10'17.95\" E145 14'23.51\" / 55P CR 10037 67425.",
+        "Durante IP hasta TGT mantener menos de 300ft de altitud. Se recomienda uso de radioaltímetro."
       ],
       "objectives": {
         "intro": [
@@ -289,7 +293,8 @@
         "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
         "TOT asignado en PP. Mantener separacion de 3 minutos entre vuelos.",
         "Entrada segun llamada de Overlord/Mission Commander desde WP 7. Una unica pasada sobre TGT.",
-        "CVN-71 ROUGH RIDER: TACAN 71X, ICLS 17, expected BRC 095."
+        "CVN-71 ROUGH RIDER: TACAN 71X, ICLS 17, expected BRC 095.",
+        "Durante IP hasta TGT mantener menos de 300ft de altitud. Se recomienda uso de radioaltímetro."
       ],
       "objectives": {
         "intro": [
@@ -345,7 +350,8 @@
         "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
         "TOT asignado en PP. Mantener separacion de 3 minutos entre vuelos.",
         "Entrada segun llamada de Overlord/Mission Commander desde WP 7. Una unica pasada sobre TGT.",
-        "CVN-71 ROUGH RIDER: TACAN 71X, ICLS 17, expected BRC 095."
+        "CVN-71 ROUGH RIDER: TACAN 71X, ICLS 17, expected BRC 095.",
+        "Durante IP hasta TGT mantener menos de 300ft de altitud. Se recomienda uso de radioaltímetro."
       ],
       "objectives": {
         "intro": [
@@ -401,7 +407,8 @@
         "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
         "TOT asignado en PP. Mantener separacion de 3 minutos entre vuelos.",
         "Entrada segun llamada de Overlord/Mission Commander desde WP 7. Una unica pasada sobre TGT.",
-        "CVN-71 ROUGH RIDER: TACAN 71X, ICLS 17, expected BRC 095."
+        "CVN-71 ROUGH RIDER: TACAN 71X, ICLS 17, expected BRC 095.",
+        "Durante IP hasta TGT mantener menos de 300ft de altitud. Se recomienda uso de radioaltímetro."
       ],
       "objectives": {
         "intro": [
@@ -457,7 +464,8 @@
         "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
         "TOT asignado en PP. Mantener separacion de 3 minutos entre vuelos.",
         "Entrada segun llamada de Overlord/Mission Commander desde WP 7. Una unica pasada sobre TGT.",
-        "CVN-71 ROUGH RIDER: TACAN 71X, ICLS 17, expected BRC 095."
+        "CVN-71 ROUGH RIDER: TACAN 71X, ICLS 17, expected BRC 095.",
+        "Durante IP hasta TGT mantener menos de 300ft de altitud. Se recomienda uso de radioaltímetro."
       ],
       "objectives": {
         "intro": [
@@ -512,7 +520,8 @@
       "important": [
         "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
         "TOT asignado en PP. Mantener separacion de 3 minutos entre vuelos.",
-        "Entrada segun llamada de Overlord/Mission Commander desde WP 7. Una unica pasada sobre TGT."
+        "Entrada segun llamada de Overlord/Mission Commander desde WP 7. Una unica pasada sobre TGT.",
+        "Durante IP hasta TGT mantener menos de 300ft de altitud. Se recomienda uso de radioaltímetro."
       ],
       "objectives": {
         "intro": [
@@ -567,7 +576,8 @@
       "important": [
         "Secuencia de ataque: MARSHALL > PP > IP > TGT > EP > EXT > MARSHALL > REPETIR.",
         "TOT asignado en PP. Mantener separacion de 3 minutos entre vuelos.",
-        "Entrada segun llamada de Overlord/Mission Commander desde WP 7. Una unica pasada sobre TGT."
+        "Entrada segun llamada de Overlord/Mission Commander desde WP 7. Una unica pasada sobre TGT.",
+        "Durante IP hasta TGT mantener menos de 300ft de altitud. Se recomienda uso de radioaltímetro."
       ],
       "objectives": {
         "intro": [
@@ -772,7 +782,8 @@
       ],
       "important": [
         "Configrar el bullseye para realizar un correcto reporte de enemigos",
-        "Anunciar lanzamientos de bombas/misiles"
+        "Anunciar lanzamientos de bombas/misiles",
+        "Durante IP hasta TGT mantener menos de 300ft de altitud. Se recomienda uso de radioaltímetro."
       ],
       "objectives": {
         "intro": [
